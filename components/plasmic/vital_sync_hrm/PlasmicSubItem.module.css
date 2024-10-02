@@ -1,0 +1,128 @@
+.subItem {
+  background: none;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  overflow: hidden;
+  flex-direction: column;
+  position: relative;
+  border-radius: 25px;
+  padding: 0px 0px 0px 40px;
+}
+.subItem > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: calc(0px - 12px);
+  width: calc(100% + 12px);
+  margin-top: calc(0px - 5px);
+  height: calc(100% + 5px);
+}
+.subItem > :global(.__wab_flex-container) > *,
+.subItem > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.subItem > :global(.__wab_flex-container) > picture > img,
+.subItem
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 12px;
+  margin-top: 5px;
+}
+.link {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
+  max-width: 100%;
+  cursor: pointer;
+  width: 100%;
+  min-width: 0;
+  padding: 5px;
+}
+.slotTargetChildren {
+  color: var(--token-db3btmdZTlPQ);
+  font-size: 12px;
+}
+.slotTargetChildrenpressed {
+  color: var(--token-Ja7FXg_cLkuz);
+}
+.subItem:hover .slotTargetChildren {
+  color: var(--token-Ja7FXg_cLkuz);
+}
+.subItem:focus-within .slotTargetChildren {
+  color: var(--token-iNAvusl4ky87);
+}
+.subItem:focus-within .slotTargetChildren > *,
+.subItem:focus-within .slotTargetChildren > :global(.__wab_slot) > *,
+.subItem:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.subItem:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.subItem:focus-within .slotTargetChildren > picture > img,
+.subItem:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.subItem:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.subItem:focus-within
+  .slotTargetChildren
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
+}
+.subItem .slotTargetChildren___focusVisibleWithin {
+  color: var(--token-iNAvusl4ky87);
+}
+.subItem .slotTargetChildren___focusVisibleWithin > *,
+.subItem .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > *,
+.subItem
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.subItem
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > *,
+.subItem .slotTargetChildren___focusVisibleWithin > picture > img,
+.subItem
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.subItem
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img,
+.subItem
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
+}

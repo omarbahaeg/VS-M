@@ -1,0 +1,24 @@
+.icon {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+.slotTargetChildren {
+  color: #27272cb3;
+}
+.icon:hover .slotTargetChildren {
+  color: var(--token-iNAvusl4ky87);
+}
+.svg__spCmK {
+  object-fit: cover;
+  max-width: 100%;
+  height: 24px;
+  width: 24px;
+  flex-shrink: 0;
+}
