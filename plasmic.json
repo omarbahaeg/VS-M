@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -41,7 +41,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-nav"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -75,7 +76,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -141,7 +143,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "kS7YGZfVr6mU43XDQjXELc",
@@ -163,7 +166,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -191,7 +195,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "k6BnBuAUepzRX8Qs2WvkKs",
@@ -206,7 +211,8 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -260,7 +266,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -350,7 +357,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -750,7 +758,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "qFgf32neWRE8gRveVBaatz",
@@ -1166,19 +1175,6 @@
           "componentType": "component"
         },
         {
-          "id": "oUw-Oq8BPl_P",
-          "name": "DropdownButton",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicDropdownButton.tsx",
-          "importSpec": {
-            "modulePath": "DropdownButton.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicDropdownButton.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "ssintioay6Yy",
           "name": "Checkbox",
           "type": "managed",
@@ -1204,6 +1200,98 @@
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicIcon.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "oUw-Oq8BPl_P",
+          "name": "CustomDropdown",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCustomDropdown.tsx",
+          "importSpec": {
+            "modulePath": "CustomDropdown.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCustomDropdown.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "VUxalQKdyCYj",
+          "name": "ActionsList",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicActionsList.tsx",
+          "importSpec": {
+            "modulePath": "ActionsList.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicActionsList.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "SyYLCRWlXb0u",
+          "name": "CustomTable",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCustomTable.tsx",
+          "importSpec": {
+            "modulePath": "CustomTable.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCustomTable.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "r1AkQsrHSZtQ",
+          "name": "CustomButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCustomButton.tsx",
+          "importSpec": {
+            "modulePath": "CustomButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCustomButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "B0GpRQnxoYTt",
+          "name": "CustomIcon",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCustomIcon.tsx",
+          "importSpec": {
+            "modulePath": "CustomIcon.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCustomIcon.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "_msz16lTRhj1",
+          "name": "ActionListItems",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicActionListItems.tsx",
+          "importSpec": {
+            "modulePath": "ActionListItems.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicActionListItems.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "rOOOzuY_irvz",
+          "name": "NewPage",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicNewPage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicNewPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new-page"
         }
       ],
       "icons": [
@@ -1736,6 +1824,31 @@
           "id": "7xqRrcjhZPHC",
           "name": "SquareMinusSvgIcon",
           "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__SquareMinusSvg.tsx"
+        },
+        {
+          "id": "Kq2sI6IXlzM2",
+          "name": "AntEmptySvgIcon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__AntEmptySvg.tsx"
+        },
+        {
+          "id": "MkGrbQTFNEAF",
+          "name": "Svgexport36SvgIcon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__Svgexport36Svg.tsx"
+        },
+        {
+          "id": "HVL8Mn2vX38q",
+          "name": "Svgexport37SvgIcon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__Svgexport37Svg.tsx"
+        },
+        {
+          "id": "GwVz15svOXJ1",
+          "name": "SettingSvgIcon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__SettingSvg.tsx"
+        },
+        {
+          "id": "UR9SzrRcmRdF",
+          "name": "ColumnHeightSvgIcon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__ColumnHeightSvg.tsx"
         }
       ],
       "images": [
@@ -1977,18 +2090,6 @@
         "name": "Screen",
         "projectId": "qFgf32neWRE8gRveVBaatz",
         "contextFilePath": "plasmic/vital_sync_hrm/PlasmicGlobalVariant__Screen.tsx"
-      },
-      {
-        "id": "GglOZOxTGWlO",
-        "name": "Experiment",
-        "projectId": "qFgf32neWRE8gRveVBaatz",
-        "contextFilePath": "plasmic/vital_sync_hrm/PlasmicGlobalVariant__Experiment.tsx"
-      },
-      {
-        "id": "kzhf10oRw2c0",
-        "name": "Segment",
-        "projectId": "qFgf32neWRE8gRveVBaatz",
-        "contextFilePath": "plasmic/vital_sync_hrm/PlasmicGlobalVariant__Segment.tsx"
       }
     ]
   },

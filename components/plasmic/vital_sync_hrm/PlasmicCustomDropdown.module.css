@@ -1,0 +1,94 @@
+.dropdown {
+  display: inline-flex;
+  height: auto;
+  max-width: 100%;
+  flex-direction: column;
+  justify-self: flex-start;
+  position: relative;
+  width: auto;
+  transition-property: all;
+  transition-duration: 1s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
+}
+.dropdown > :global(.__wab_flex-container) {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: calc(0px - 5px);
+  height: calc(100% + 5px);
+}
+.dropdown > :global(.__wab_flex-container) > *,
+.dropdown > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.dropdown > :global(.__wab_flex-container) > picture > img,
+.dropdown
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 5px;
+}
+.dropdowndropdownAlignment_left > :global(.__wab_flex-container) {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.dropdowndropdownAlignment_right > :global(.__wab_flex-container) {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.freeBox__lDdac {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+}
+.freeBoxisOpen__lDdac69FUm {
+  width: auto;
+  justify-content: center;
+  align-items: center;
+}
+.customButton__yt0Wy:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg___7Deev {
+  object-fit: cover;
+  max-width: 100%;
+  height: 18px;
+  width: auto;
+}
+.freeBox__w5LgS {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: flex-start;
+}
+.freeBoxisOpen__w5LgS69FUm {
+  display: flex;
+}
+.freeBoxdropdownAlignment_left__w5LgSba33L {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.freeBoxdropdownAlignment_right__w5LgSTaeEz {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.actionsList__u5RQy:global(.__wab_instance) {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 99;
+}
+.actionListItems__sz4A1:global(.__wab_instance) {
+  position: relative;
+}
+.actionListItems__cAs0O:global(.__wab_instance) {
+  position: relative;
+}

@@ -1,0 +1,40 @@
+.actionListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  cursor: pointer;
+  background: var(--token-Ja7FXg_cLkuz);
+  min-width: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.actionListItemisPressed {
+  background: #006e28b3;
+}
+.actionListItem:hover {
+  background: #cecece40;
+}
+.actionListItemisPressed:hover {
+  background: var(--token-iNAvusl4ky87);
+}
+.freeBox {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetChildren {
+  white-space: pre;
+  font-size: 14px;
+}
+.slotTargetChildrenisPressed {
+  color: var(--token-Ja7FXg_cLkuz);
+}

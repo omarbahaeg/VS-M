@@ -66,12 +66,10 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import TableSearch from "../../TableSearch"; // plasmic-import: v9TOdYeoUJJU/component
-import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
-import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
-import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
-import DropdownButton from "../../DropdownButton"; // plasmic-import: oUw-Oq8BPl_P/component
-import Checkbox from "../../Checkbox"; // plasmic-import: ssintioay6Yy/component
-import Icon from "../../Icon"; // plasmic-import: brSTv-__77Vi/component
+import CustomDropdown from "../../CustomDropdown"; // plasmic-import: oUw-Oq8BPl_P/component
+import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/component
+import ActionsList from "../../ActionsList"; // plasmic-import: VUxalQKdyCYj/component
+import ActionListItems from "../../ActionListItems"; // plasmic-import: _msz16lTRhj1/component
 import TableColumnHeader from "../../TableColumnHeader"; // plasmic-import: 6J6LHNmu-UTh/component
 import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
@@ -86,7 +84,7 @@ import sty from "./PlasmicMainTable.module.css"; // plasmic-import: K5hS48T_EbYY
 
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
-import SettingsSvgIcon from "./icons/PlasmicIcon__SettingsSvg"; // plasmic-import: naJAblHQSjQc/icon
+import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
 
 createPlasmicElementProxy;
 
@@ -100,13 +98,9 @@ type ArgPropType = keyof PlasmicMainTable__ArgsType;
 export const PlasmicMainTable__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicMainTable__OverridesType = {
-  root?: Flex__<"div">;
+  tableBody?: Flex__<"div">;
   tableColumnActions?: Flex__<"div">;
   tableSearch?: Flex__<typeof TableSearch>;
-  button?: Flex__<typeof AntdButton>;
-  dropdownButton?: Flex__<typeof DropdownButton>;
-  dropdown?: Flex__<"div">;
-  checkbox?: Flex__<typeof Checkbox>;
   tableColumnHeader?: Flex__<"div">;
   tableColumnRow?: Flex__<"div">;
   table2?: Flex__<typeof RichTable>;
@@ -201,11 +195,6 @@ function PlasmicMainTable__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "checkbox[].isChecked",
-        type: "private",
-        variableType: "boolean"
-      },
-      {
         path: "table3.selectedRowKey",
         type: "private",
         variableType: "text",
@@ -268,8 +257,8 @@ function PlasmicMainTable__RenderFunc(props: {
   return (
     <Stack__
       as={"div"}
-      data-plasmic-name={"root"}
-      data-plasmic-override={overrides.root}
+      data-plasmic-name={"tableBody"}
+      data-plasmic-override={overrides.tableBody}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       hasGap={true}
@@ -281,7 +270,7 @@ function PlasmicMainTable__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.root
+        sty.tableBody
       )}
     >
       <div
@@ -306,171 +295,22 @@ function PlasmicMainTable__RenderFunc(props: {
           hasGap={true}
           className={classNames(projectcss.all, sty.freeBox__j4HIp)}
         >
-          <AntdDropdown
-            className={classNames("__wab_instance", sty.dropdown__znizs)}
-            dropdownMenuScopeClassName={sty["dropdown__znizs__dropdownMenu"]}
-            fakeOpen={false}
-            menuItems={() => (
-              <React.Fragment>
-                <AntdMenuItem
-                  className={classNames("__wab_instance", sty.menuItem__gyLpa)}
-                  key={"menu-item-1"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__zL2Pw
-                    )}
-                  >
-                    <Trans__>{"Menu item"}</Trans__>
-                  </div>
-                </AntdMenuItem>
-                <AntdMenuItem
-                  className={classNames("__wab_instance", sty.menuItem__m5WQ)}
-                  key={"menu-item-2"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__iHid1
-                    )}
-                  >
-                    <Trans__>{"Menu item"}</Trans__>
-                  </div>
-                </AntdMenuItem>
-              </React.Fragment>
-            )}
-            menuItemsJson={(() => {
-              const __composite = [
-                { type: null, value: "action1", label: null },
-                { type: "item", value: "action2", label: null }
-              ];
-              __composite["0"]["type"] = "item";
-              __composite["0"]["label"] = "Download as CSV";
-              __composite["1"]["label"] = "Download as JSON";
-              return __composite;
-            })()}
+          <CustomDropdown
+            className={classNames("__wab_instance", sty.customDropdown__cwKFt)}
+            dropdownAlignment={"right"}
           >
-            <AntdButton
-              data-plasmic-name={"button"}
-              data-plasmic-override={overrides.button}
-              className={classNames("__wab_instance", sty.button)}
-              loading={false}
-              onClick={async () => {
-                const $steps = {};
-
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return undefined;
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
-                ) {
-                  $steps["runCode"] = await $steps["runCode"];
-                }
-              }}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__q9N4E
-                )}
-              >
-                <Trans__>{"Export"}</Trans__>
-              </div>
-            </AntdButton>
-          </AntdDropdown>
-          <DropdownButton
-            data-plasmic-name={"dropdownButton"}
-            data-plasmic-override={overrides.dropdownButton}
-            className={classNames("__wab_instance", sty.dropdownButton)}
-            slot={
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"dropdown"}
-                data-plasmic-override={overrides.dropdown}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.dropdown)}
-              >
-                <div className={classNames(projectcss.all, sty.freeBox__zuRp)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___5QKqU
-                    )}
-                  >
-                    <Trans__>{"Column Display"}</Trans__>
-                  </div>
-                </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__fXXaZ)}
-                >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    [2, 3, 4]
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (() => {
-                      const child$Props = {
-                        className: classNames("__wab_instance", sty.checkbox),
-                        isChecked:
-                          generateStateValueProp($state, [
-                            "checkbox",
-                            __plasmic_idx_0,
-                            "isChecked"
-                          ]) ?? false,
-                        key: currentIndex,
-                        onChange: (...eventArgs) => {
-                          generateStateOnChangeProp($state, [
-                            "checkbox",
-                            __plasmic_idx_0,
-                            "isChecked"
-                          ])(eventArgs[0]);
-                        }
-                      };
-
-                      initializePlasmicStates(
-                        $state,
-                        [
-                          {
-                            name: "checkbox[].isChecked",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              "isChecked"
-                          }
-                        ],
-                        [__plasmic_idx_0]
-                      );
-                      return (
-                        <Checkbox
-                          data-plasmic-name={"checkbox"}
-                          data-plasmic-override={overrides.checkbox}
-                          {...child$Props}
-                        >
-                          <Trans__>{"Table Label"}</Trans__>
-                        </Checkbox>
-                      );
-                    })();
-                  })}
-                </Stack__>
-              </Stack__>
-            }
-          />
+            <CustomButton
+              className={classNames("__wab_instance", sty.customButton__fjeg7)}
+            />
+          </CustomDropdown>
+          <CustomDropdown
+            className={classNames("__wab_instance", sty.customDropdown__bvqDz)}
+            dropdownAlignment={"right"}
+          >
+            <CustomButton
+              className={classNames("__wab_instance", sty.customButton__ewwL)}
+            />
+          </CustomDropdown>
         </Stack__>
       </div>
       <div
@@ -498,26 +338,8 @@ function PlasmicMainTable__RenderFunc(props: {
         data-plasmic-name={"tableColumnRow"}
         data-plasmic-override={overrides.tableColumnRow}
         className={classNames(projectcss.all, sty.tableColumnRow)}
-      >
-        <TableColumnHeader
-          className={classNames("__wab_instance", sty.tableColumnHeader__rktrE)}
-          stateTypes={"checkBox"}
-        />
+      />
 
-        <TableColumnHeader
-          className={classNames(
-            "__wab_instance",
-            sty.tableColumnHeader___9ZnYj
-          )}
-          stateTypes={"empty"}
-        />
-
-        <TableColumnHeader
-          className={classNames("__wab_instance", sty.tableColumnHeader__mmdM3)}
-          endRow={true}
-          stateTypes={"sorting"}
-        />
-      </div>
       <div className={classNames(projectcss.all, sty.freeBox__l41V)}>
         {(() => {
           const child$Props = {
@@ -741,32 +563,17 @@ function PlasmicMainTable__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: [
-    "root",
+  tableBody: [
+    "tableBody",
     "tableColumnActions",
     "tableSearch",
-    "button",
-    "dropdownButton",
-    "dropdown",
-    "checkbox",
     "tableColumnHeader",
     "tableColumnRow",
     "table2",
     "table3"
   ],
-  tableColumnActions: [
-    "tableColumnActions",
-    "tableSearch",
-    "button",
-    "dropdownButton",
-    "dropdown",
-    "checkbox"
-  ],
+  tableColumnActions: ["tableColumnActions", "tableSearch"],
   tableSearch: ["tableSearch"],
-  button: ["button"],
-  dropdownButton: ["dropdownButton", "dropdown", "checkbox"],
-  dropdown: ["dropdown", "checkbox"],
-  checkbox: ["checkbox"],
   tableColumnHeader: ["tableColumnHeader"],
   tableColumnRow: ["tableColumnRow"],
   table2: ["table2"],
@@ -776,13 +583,9 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: "div";
+  tableBody: "div";
   tableColumnActions: "div";
   tableSearch: typeof TableSearch;
-  button: typeof AntdButton;
-  dropdownButton: typeof DropdownButton;
-  dropdown: "div";
-  checkbox: typeof Checkbox;
   tableColumnHeader: "div";
   tableColumnRow: "div";
   table2: typeof RichTable;
@@ -836,7 +639,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "root") {
+  if (nodeName === "tableBody") {
     func.displayName = "PlasmicMainTable";
   } else {
     func.displayName = `PlasmicMainTable.${nodeName}`;
@@ -846,15 +649,11 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicMainTable = Object.assign(
   // Top-level PlasmicMainTable renders the root element
-  makeNodeComponent("root"),
+  makeNodeComponent("tableBody"),
   {
     // Helper components rendering sub-elements
     tableColumnActions: makeNodeComponent("tableColumnActions"),
     tableSearch: makeNodeComponent("tableSearch"),
-    button: makeNodeComponent("button"),
-    dropdownButton: makeNodeComponent("dropdownButton"),
-    dropdown: makeNodeComponent("dropdown"),
-    checkbox: makeNodeComponent("checkbox"),
     tableColumnHeader: makeNodeComponent("tableColumnHeader"),
     tableColumnRow: makeNodeComponent("tableColumnRow"),
     table2: makeNodeComponent("table2"),
