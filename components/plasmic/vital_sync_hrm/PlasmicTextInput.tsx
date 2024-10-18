@@ -356,7 +356,6 @@ function PlasmicTextInput__RenderFunc(props: {
         }}
         required={args.required}
         type={args.type}
-        value={args.value}
       />
 
       <div

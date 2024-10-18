@@ -2,6 +2,8 @@
   display: inline-flex;
   height: auto;
   max-width: 100%;
+  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   justify-self: flex-start;
   position: relative;
@@ -11,28 +13,11 @@
   -webkit-transition-property: all;
   -webkit-transition-duration: 1s;
 }
-.dropdown > :global(.__wab_flex-container) {
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  margin-top: calc(0px - 5px);
-  height: calc(100% + 5px);
-}
-.dropdown > :global(.__wab_flex-container) > *,
-.dropdown > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.dropdown > :global(.__wab_flex-container) > picture > img,
-.dropdown
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 5px;
-}
-.dropdowndropdownAlignment_left > :global(.__wab_flex-container) {
+.dropdowndropdownAlignment_left {
   align-items: flex-start;
   justify-content: flex-start;
 }
-.dropdowndropdownAlignment_right > :global(.__wab_flex-container) {
+.dropdowndropdownAlignment_right {
   align-items: flex-end;
   justify-content: flex-start;
 }
@@ -85,6 +70,7 @@
   width: auto;
   height: auto;
   z-index: 99;
+  top: 5px;
 }
 .actionListItems__sz4A1:global(.__wab_instance) {
   position: relative;

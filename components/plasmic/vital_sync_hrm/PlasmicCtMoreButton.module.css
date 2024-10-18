@@ -1,0 +1,9 @@
+.moreButtonIcon {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-6D_pqZd49N3h);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}

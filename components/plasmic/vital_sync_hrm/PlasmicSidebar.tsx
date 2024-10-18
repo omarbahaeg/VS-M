@@ -809,12 +809,6 @@ function PlasmicSidebar__RenderFunc(props: {
             displayMinWidth={"0"}
             displayWidth={"40px"}
             loading={"lazy"}
-            src={{
-              src: "/plasmic/vital_sync_hrm/images/defaultUserImagePng2.webp",
-              fullWidth: 1280,
-              fullHeight: 1280,
-              aspectRatio: undefined
-            }}
           />
 
           <Stack__

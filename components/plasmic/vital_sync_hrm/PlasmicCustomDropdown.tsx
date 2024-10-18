@@ -176,13 +176,11 @@ function PlasmicCustomDropdown__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"dropdown"}
       data-plasmic-override={overrides.dropdown}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -215,35 +213,6 @@ function PlasmicCustomDropdown__RenderFunc(props: {
             "isOpen"
           )
         })}
-        onClick={async event => {
-          const $steps = {};
-
-          $steps["updateIsOpen"] = true
-            ? (() => {
-                const actionArgs = {
-                  vgroup: "isOpen",
-                  operation: 2,
-                  value: "isOpen"
-                };
-                return (({ vgroup, value }) => {
-                  if (typeof value === "string") {
-                    value = [value];
-                  }
-
-                  const oldValue = $stateGet($state, vgroup);
-                  $stateSet($state, vgroup, !oldValue);
-                  return !oldValue;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateIsOpen"] != null &&
-            typeof $steps["updateIsOpen"] === "object" &&
-            typeof $steps["updateIsOpen"].then === "function"
-          ) {
-            $steps["updateIsOpen"] = await $steps["updateIsOpen"];
-          }
-        }}
       >
         {renderPlasmicSlot({
           defaultContents: (
@@ -302,7 +271,7 @@ function PlasmicCustomDropdown__RenderFunc(props: {
           })}
         </div>
       ) : null}
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

@@ -1966,12 +1966,6 @@ function PlasmicOverview__RenderFunc(props: {
                         displayMinWidth={"0"}
                         displayWidth={"556.517px"}
                         loading={"lazy"}
-                        src={{
-                          src: "/plasmic/vital_sync_hrm/images/background.svg",
-                          fullWidth: 556.517,
-                          fullHeight: 219.6,
-                          aspectRatio: 2.531818
-                        }}
                       />
 
                       <PlasmicImg__
@@ -1984,12 +1978,6 @@ function PlasmicOverview__RenderFunc(props: {
                         displayMinWidth={"0"}
                         displayWidth={"559px"}
                         loading={"lazy"}
-                        src={{
-                          src: "/plasmic/vital_sync_hrm/images/line.svg",
-                          fullWidth: 559,
-                          fullHeight: 137,
-                          aspectRatio: 4.080292
-                        }}
                       />
                     </div>
                   </div>
@@ -3055,12 +3043,6 @@ function PlasmicOverview__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"74.3px"}
                       loading={"lazy"}
-                      src={{
-                        src: "/plasmic/vital_sync_hrm/images/frame.svg",
-                        fullWidth: 74.3,
-                        fullHeight: 119.967,
-                        aspectRatio: 0.625
-                      }}
                     />
 
                     <Stack__
@@ -3106,12 +3088,6 @@ function PlasmicOverview__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"51.532px"}
                       loading={"lazy"}
-                      src={{
-                        src: "/plasmic/vital_sync_hrm/images/frame2.svg",
-                        fullWidth: 51.532,
-                        fullHeight: 73.186,
-                        aspectRatio: 0.702703
-                      }}
                     />
 
                     <Stack__
@@ -3157,12 +3133,6 @@ function PlasmicOverview__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"42.268px"}
                       loading={"lazy"}
-                      src={{
-                        src: "/plasmic/vital_sync_hrm/images/frame3.svg",
-                        fullWidth: 42.268,
-                        fullHeight: 42.302,
-                        aspectRatio: 1
-                      }}
                     />
 
                     <Stack__
@@ -3208,12 +3178,6 @@ function PlasmicOverview__RenderFunc(props: {
                       displayMinWidth={"0"}
                       displayWidth={"28.448px"}
                       loading={"lazy"}
-                      src={{
-                        src: "/plasmic/vital_sync_hrm/images/frame5.svg",
-                        fullWidth: 28.448,
-                        fullHeight: 33.168,
-                        aspectRatio: 0.852941
-                      }}
                     />
 
                     <Stack__

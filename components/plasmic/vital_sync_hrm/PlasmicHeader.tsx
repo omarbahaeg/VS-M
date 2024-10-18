@@ -100,6 +100,7 @@ export type PlasmicHeader__OverridesType = {
   button2?: Flex__<"div">;
   text110?: Flex__<"div">;
   text111?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
   userAvatar?: Flex__<typeof PlasmicImg__>;
 };
 
@@ -310,39 +311,45 @@ function PlasmicHeader__RenderFunc(props: {
           </section>
         </section>
       </Stack__>
-      <PlasmicImg__
-        data-plasmic-name={"userAvatar"}
-        data-plasmic-override={overrides.userAvatar}
-        alt={""}
-        className={classNames(sty.userAvatar)}
-        displayHeight={"auto"}
-        displayMaxHeight={"none"}
-        displayMaxWidth={"100%"}
-        displayMinHeight={"0"}
-        displayMinWidth={"0"}
-        displayWidth={"auto"}
-        height={"40"}
-        loading={"lazy"}
-        src={(() => {
-          try {
-            return $props.user.data.response[6].avatar;
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return {
-                src: "/plasmic/vital_sync_hrm/images/defaultUserImagePng.png",
-                fullWidth: 1280,
-                fullHeight: 1280,
-                aspectRatio: undefined
-              };
+      <div
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+        className={classNames(projectcss.all, sty.freeBox)}
+      >
+        <PlasmicImg__
+          data-plasmic-name={"userAvatar"}
+          data-plasmic-override={overrides.userAvatar}
+          alt={""}
+          className={classNames(sty.userAvatar)}
+          displayHeight={"auto"}
+          displayMaxHeight={"none"}
+          displayMaxWidth={"100%"}
+          displayMinHeight={"0"}
+          displayMinWidth={"0"}
+          displayWidth={"auto"}
+          height={"40"}
+          loading={"lazy"}
+          src={(() => {
+            try {
+              return $props.user.data.response[6].avatar;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {
+                  src: "/plasmic/vital_sync_hrm/images/defaultUserImagePng.png",
+                  fullWidth: 1280,
+                  fullHeight: 1280,
+                  aspectRatio: undefined
+                };
+              }
+              throw e;
             }
-            throw e;
-          }
-        })()}
-        width={"40"}
-      />
+          })()}
+          width={"40"}
+        />
+      </div>
     </Stack__>
   ) as React.ReactElement | null;
 }
@@ -360,6 +367,7 @@ const PlasmicDescendants = {
     "button2",
     "text110",
     "text111",
+    "freeBox",
     "userAvatar"
   ],
   rightBarToggle: ["rightBarToggle"],
@@ -382,6 +390,7 @@ const PlasmicDescendants = {
   button2: ["button2", "text110", "text111"],
   text110: ["text110", "text111"],
   text111: ["text111"],
+  freeBox: ["freeBox", "userAvatar"],
   userAvatar: ["userAvatar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -399,6 +408,7 @@ type NodeDefaultElementType = {
   button2: "div";
   text110: "div";
   text111: "div";
+  freeBox: "div";
   userAvatar: typeof PlasmicImg__;
 };
 
@@ -472,6 +482,7 @@ export const PlasmicHeader = Object.assign(
     button2: makeNodeComponent("button2"),
     text110: makeNodeComponent("text110"),
     text111: makeNodeComponent("text111"),
+    freeBox: makeNodeComponent("freeBox"),
     userAvatar: makeNodeComponent("userAvatar"),
 
     // Metadata about props expected for PlasmicHeader

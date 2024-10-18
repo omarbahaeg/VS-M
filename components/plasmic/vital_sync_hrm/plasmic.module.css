@@ -21,6 +21,10 @@
   --plasmic-token-white-a: var(--token-Qi_GcLGvv6A8);
   --token-0eEXGjtMoqHb: #f3f3f3;
   --plasmic-token-white-b: var(--token-0eEXGjtMoqHb);
+  --token-OmDX5aGPAakM: #cecece80;
+  --plasmic-token-white-c: var(--token-OmDX5aGPAakM);
+  --token-hnOulcbGGs5_: 1px;
+  --plasmic-token-unnamed-style-token: var(--token-hnOulcbGGs5_);
 }
 
 .plasmic_tokens {

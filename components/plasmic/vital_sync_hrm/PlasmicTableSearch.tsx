@@ -69,37 +69,32 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gR
 import sty from "./PlasmicTableSearch.module.css"; // plasmic-import: v9TOdYeoUJJU/css
 
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
+import CloseSvgIcon from "./icons/PlasmicIcon__CloseSvg"; // plasmic-import: IGlXIVeYZFwp/icon
 
 createPlasmicElementProxy;
 
 export type PlasmicTableSearch__VariantMembers = {
   showStartIcon: "showStartIcon";
-  showEndIcon: "showEndIcon";
   isDisabled: "isDisabled";
   color: "dark";
 };
 export type PlasmicTableSearch__VariantsArgs = {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
-  showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   isDisabled?: SingleBooleanChoiceArg<"isDisabled">;
   color?: SingleChoiceArg<"dark">;
 };
 type VariantPropType = keyof PlasmicTableSearch__VariantsArgs;
 export const PlasmicTableSearch__VariantProps = new Array<VariantPropType>(
   "showStartIcon",
-  "showEndIcon",
   "isDisabled",
   "color"
 );
 
 export type PlasmicTableSearch__ArgsType = {
   placeholder?: string;
-  endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
   value?: string;
   name?: string;
-  required?: boolean;
   "aria-label"?: string;
   "aria-labelledby"?: string;
   onChange?: (event: any) => void;
@@ -113,35 +108,33 @@ export type PlasmicTableSearch__ArgsType = {
     | "time"
     | "email"
     | "tel";
-  autoFocus?: boolean;
+  clearButton?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicTableSearch__ArgsType;
 export const PlasmicTableSearch__ArgProps = new Array<ArgPropType>(
   "placeholder",
-  "endIcon",
   "startIcon",
   "value",
   "name",
-  "required",
   "aria-label",
   "aria-labelledby",
   "onChange",
   "type",
-  "autoFocus"
+  "clearButton"
 );
 
 export type PlasmicTableSearch__OverridesType = {
   root?: Flex__<"div">;
   startIconContainer?: Flex__<"div">;
-  input?: Flex__<"input">;
+  searchInput?: Flex__<"input">;
   endIconContainer?: Flex__<"div">;
+  svg?: Flex__<"svg">;
 };
 
 export interface DefaultTableSearchProps extends pp.BaseTextInputProps {
   placeholder?: string;
   value?: string;
   name?: string;
-  required?: boolean;
   "aria-label"?: string;
   "aria-labelledby"?: string;
   onChange?: (event: any) => void;
@@ -155,7 +148,7 @@ export interface DefaultTableSearchProps extends pp.BaseTextInputProps {
     | "time"
     | "email"
     | "tel";
-  autoFocus?: boolean;
+  clearButton?: (event: any) => void;
   color?: SingleChoiceArg<"dark">;
 }
 
@@ -208,12 +201,6 @@ function PlasmicTableSearch__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.showStartIcon
-      },
-      {
-        path: "showEndIcon",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showEndIcon
       },
       {
         path: "isDisabled",
@@ -330,69 +317,89 @@ function PlasmicTableSearch__RenderFunc(props: {
         })}
       </div>
       <input
-        data-plasmic-name={"input"}
-        data-plasmic-override={overrides.input}
+        data-plasmic-name={"searchInput"}
+        data-plasmic-override={overrides.searchInput}
         aria-label={args["aria-label"]}
         aria-labelledby={args["aria-labelledby"]}
-        autoFocus={args.autoFocus}
-        className={classNames(projectcss.all, projectcss.input, sty.input, {
-          [sty.input___focusVisibleWithin]: triggers.focusVisibleWithin_root,
-          [sty.inputcolor_dark]: hasVariant($state, "color", "dark"),
-          [sty.inputisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
-          [sty.inputshowStartIcon]: hasVariant(
-            $state,
-            "showStartIcon",
-            "showStartIcon"
-          )
-        })}
-        disabled={
-          hasVariant($state, "isDisabled", "isDisabled") ? true : undefined
-        }
+        className={classNames(
+          projectcss.all,
+          projectcss.input,
+          sty.searchInput
+        )}
         name={args.name}
+        onChange={args.onChange}
         placeholder={args.placeholder}
         ref={ref => {
-          $refs["input"] = ref;
+          $refs["searchInput"] = ref;
         }}
-        required={args.required}
         type={args.type}
         value={args.value}
       />
 
-      <div
-        data-plasmic-name={"endIconContainer"}
-        data-plasmic-override={overrides.endIconContainer}
-        className={classNames(projectcss.all, sty.endIconContainer, {
-          [sty.endIconContainercolor_dark]: hasVariant($state, "color", "dark"),
-          [sty.endIconContainershowEndIcon]: hasVariant(
-            $state,
-            "showEndIcon",
-            "showEndIcon"
-          )
-        })}
-      >
-        {renderPlasmicSlot({
-          defaultContents: (
-            <CheckSvgIcon
-              className={classNames(projectcss.all, sty.svg__qf1Lz)}
-              role={"img"}
-            />
-          ),
-
-          value: args.endIcon,
-          className: classNames(sty.slotTargetEndIcon, {
-            [sty.slotTargetEndIconcolor_dark]: hasVariant(
+      {(() => {
+        try {
+          return $state.value !== "";
+        } catch (e) {
+          if (
+            e instanceof TypeError ||
+            e?.plasmicType === "PlasmicUndefinedDataError"
+          ) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
+        <div
+          data-plasmic-name={"endIconContainer"}
+          data-plasmic-override={overrides.endIconContainer}
+          className={classNames(projectcss.all, sty.endIconContainer, {
+            [sty.endIconContainercolor_dark]: hasVariant(
               $state,
               "color",
               "dark"
-            ),
-            [sty.slotTargetEndIconshowEndIcon]: hasVariant(
-              $state,
-              "showEndIcon",
-              "showEndIcon"
             )
-          })
-        })}
-      </div>
+          })}
+          onClick={async event => {
+            const $steps = {};
+
+            $steps["updateValue"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["value"]
+                    },
+                    operation: 0,
+                    value: ""
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateValue"] != null &&
+              typeof $steps["updateValue"] === "object" &&
+              typeof $steps["updateValue"].then === "function"
+            ) {
+              $steps["updateValue"] = await $steps["updateValue"];
+            }
+          }}
+        >
+          <CloseSvgIcon
+            data-plasmic-name={"svg"}
+            data-plasmic-override={overrides.svg}
+            className={classNames(projectcss.all, sty.svg)}
+            role={"img"}
+          />
+        </div>
+      ) : null}
     </Stack__>
   ) as React.ReactElement | null;
 }
@@ -421,10 +428,17 @@ function useBehavior<P extends pp.PlumeTextInputProps>(
 }
 
 const PlasmicDescendants = {
-  root: ["root", "startIconContainer", "input", "endIconContainer"],
+  root: [
+    "root",
+    "startIconContainer",
+    "searchInput",
+    "endIconContainer",
+    "svg"
+  ],
   startIconContainer: ["startIconContainer"],
-  input: ["input"],
-  endIconContainer: ["endIconContainer"]
+  searchInput: ["searchInput"],
+  endIconContainer: ["endIconContainer", "svg"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -432,8 +446,9 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   startIconContainer: "div";
-  input: "input";
+  searchInput: "input";
   endIconContainer: "div";
+  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -497,8 +512,9 @@ export const PlasmicTableSearch = Object.assign(
   {
     // Helper components rendering sub-elements
     startIconContainer: makeNodeComponent("startIconContainer"),
-    input: makeNodeComponent("input"),
+    searchInput: makeNodeComponent("searchInput"),
     endIconContainer: makeNodeComponent("endIconContainer"),
+    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicTableSearch
     internalVariantProps: PlasmicTableSearch__VariantProps,

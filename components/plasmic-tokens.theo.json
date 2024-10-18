@@ -2111,6 +2111,16 @@
       }
     },
     {
+      "name": "Unnamed Style Token",
+      "type": "spacing",
+      "value": "1px",
+      "category": "spacing",
+      "meta": {
+        "projectId": "qFgf32neWRE8gRveVBaatz",
+        "id": "hnOulcbGGs5_"
+      }
+    },
+    {
       "name": "White",
       "type": "color",
       "value": "#FFFFFF",
@@ -2138,6 +2148,16 @@
       "meta": {
         "projectId": "qFgf32neWRE8gRveVBaatz",
         "id": "0eEXGjtMoqHb"
+      }
+    },
+    {
+      "name": "White C",
+      "type": "color",
+      "value": "#CECECE80",
+      "category": "color",
+      "meta": {
+        "projectId": "qFgf32neWRE8gRveVBaatz",
+        "id": "OmDX5aGPAakM"
       }
     }
   ],

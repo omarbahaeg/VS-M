@@ -65,7 +65,10 @@ import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/c
 import ActionsList from "../../ActionsList"; // plasmic-import: VUxalQKdyCYj/component
 import ActionListItems from "../../ActionListItems"; // plasmic-import: _msz16lTRhj1/component
 import Checkbox from "../../Checkbox"; // plasmic-import: ssintioay6Yy/component
-import TableColumnHeader from "../../TableColumnHeader"; // plasmic-import: 6J6LHNmu-UTh/component
+import CtHeader from "../../CtHeader"; // plasmic-import: CjCWQ83VlxB3/component
+import CtCheckbox from "../../CtCheckbox"; // plasmic-import: h4AhLHpwZjUP/component
+import CtContent from "../../CtContent"; // plasmic-import: 30qwjyl-gzyD/component
+import CtNoData from "../../CtNoData"; // plasmic-import: iPx11GU5dJeG/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -75,10 +78,8 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gR
 import sty from "./PlasmicCustomTable.module.css"; // plasmic-import: SyYLCRWlXb0u/css
 
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
 import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
 import ColumnHeightSvgIcon from "./icons/PlasmicIcon__ColumnHeightSvg"; // plasmic-import: UR9SzrRcmRdF/icon
-import AntEmptySvgIcon from "./icons/PlasmicIcon__AntEmptySvg"; // plasmic-import: Kq2sI6IXlzM2/icon
 
 createPlasmicElementProxy;
 
@@ -93,32 +94,28 @@ export const PlasmicCustomTable__VariantProps = new Array<VariantPropType>(
   "noData"
 );
 
-export type PlasmicCustomTable__ArgsType = {
-  label?: React.ReactNode;
-  icon?: React.ReactNode;
-};
+export type PlasmicCustomTable__ArgsType = {};
 type ArgPropType = keyof PlasmicCustomTable__ArgsType;
-export const PlasmicCustomTable__ArgProps = new Array<ArgPropType>(
-  "label",
-  "icon"
-);
+export const PlasmicCustomTable__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCustomTable__OverridesType = {
   table?: Flex__<"div">;
   tableColumnActions?: Flex__<"div">;
   tableSearch?: Flex__<typeof TableSearch>;
   freeBox?: Flex__<"div">;
-  svg?: Flex__<"svg">;
-  checkbox?: Flex__<typeof Checkbox>;
-  body?: Flex__<"div">;
-  tableColumnHeader?: Flex__<"div">;
-  tableColumnData?: Flex__<"div">;
-  noDataSection?: Flex__<"div">;
+  exportButton?: Flex__<typeof CustomDropdown>;
+  densityButton?: Flex__<typeof CustomDropdown>;
+  settingsButton?: Flex__<typeof CustomDropdown>;
+  tableItems?: Flex__<typeof Checkbox>;
+  tableBody?: Flex__<"section">;
+  ctHeader?: Flex__<typeof CtHeader>;
+  primaryCheckbox?: Flex__<typeof CtCheckbox>;
+  ctContent?: Flex__<typeof CtContent>;
+  secondaryCheckbox?: Flex__<typeof CtCheckbox>;
+  ctNoData?: Flex__<typeof CtNoData>;
 };
 
 export interface DefaultCustomTableProps {
-  label?: React.ReactNode;
-  icon?: React.ReactNode;
   noData?: SingleBooleanChoiceArg<"noData">;
   className?: string;
 }
@@ -172,15 +169,32 @@ function PlasmicCustomTable__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "checkbox[].isChecked",
+        path: "variable",
         type: "private",
-        variableType: "boolean"
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "noData",
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.noData
+      },
+      {
+        path: "tableItems[].isChecked",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "secondaryCheckbox[].isChecked",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "primaryCheckbox.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -236,7 +250,9 @@ function PlasmicCustomTable__RenderFunc(props: {
           className={classNames(projectcss.all, sty.freeBox)}
         >
           <CustomDropdown
-            className={classNames("__wab_instance", sty.customDropdown__vAsiM)}
+            data-plasmic-name={"exportButton"}
+            data-plasmic-override={overrides.exportButton}
+            className={classNames("__wab_instance", sty.exportButton)}
             dropdownAlignment={"right"}
             slot={
               <ActionsList
@@ -245,7 +261,7 @@ function PlasmicCustomTable__RenderFunc(props: {
                     <ActionListItems
                       className={classNames(
                         "__wab_instance",
-                        sty.actionListItems__wmtpp
+                        sty.actionListItems__rfP
                       )}
                     >
                       <Trans__>{"Download as CSV"}</Trans__>
@@ -253,26 +269,28 @@ function PlasmicCustomTable__RenderFunc(props: {
                     <ActionListItems
                       className={classNames(
                         "__wab_instance",
-                        sty.actionListItems___5MusI
+                        sty.actionListItems__c8UBj
                       )}
                     >
                       <Trans__>{"Download as JSON"}</Trans__>
                     </ActionListItems>
                   </React.Fragment>
                 }
-                className={classNames("__wab_instance", sty.actionsList__pOOl)}
+                className={classNames("__wab_instance", sty.actionsList__xdswB)}
                 noTitle={true}
               />
             }
           >
             <CustomButton
               buttonLabel={<Trans__>{"Export"}</Trans__>}
-              className={classNames("__wab_instance", sty.customButton__j4Bbo)}
+              className={classNames("__wab_instance", sty.customButton__o2GQ6)}
               type={"labelOnly"}
             />
           </CustomDropdown>
           <CustomDropdown
-            className={classNames("__wab_instance", sty.customDropdown__wNuH)}
+            data-plasmic-name={"densityButton"}
+            data-plasmic-override={overrides.densityButton}
+            className={classNames("__wab_instance", sty.densityButton)}
             dropdownAlignment={"right"}
             slot={
               <ActionsList
@@ -281,39 +299,15 @@ function PlasmicCustomTable__RenderFunc(props: {
                     <ActionListItems
                       className={classNames(
                         "__wab_instance",
-                        sty.actionListItems__nTvCa
+                        sty.actionListItems__va4Ei
                       )}
-                      listItemClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateVariant"] = true
-                          ? (() => {
-                              const actionArgs = {};
-                              return (({ vgroup, value }) => {
-                                if (typeof value === "string") {
-                                  value = [value];
-                                }
-                                undefined;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateVariant"] != null &&
-                          typeof $steps["updateVariant"] === "object" &&
-                          typeof $steps["updateVariant"].then === "function"
-                        ) {
-                          $steps["updateVariant"] = await $steps[
-                            "updateVariant"
-                          ];
-                        }
-                      }}
                     >
                       <Trans__>{"Larger"}</Trans__>
                     </ActionListItems>
                     <ActionListItems
                       className={classNames(
                         "__wab_instance",
-                        sty.actionListItems__psHzh
+                        sty.actionListItems__lCdGl
                       )}
                     >
                       <Trans__>{"Middle"}</Trans__>
@@ -321,14 +315,14 @@ function PlasmicCustomTable__RenderFunc(props: {
                     <ActionListItems
                       className={classNames(
                         "__wab_instance",
-                        sty.actionListItems__wJUnU
+                        sty.actionListItems__h8K5G
                       )}
                     >
                       <Trans__>{"Compact"}</Trans__>
                     </ActionListItems>
                   </React.Fragment>
                 }
-                className={classNames("__wab_instance", sty.actionsList__l1Xmb)}
+                className={classNames("__wab_instance", sty.actionsList___58SS)}
                 noTitle={true}
               />
             }
@@ -336,19 +330,19 @@ function PlasmicCustomTable__RenderFunc(props: {
             <CustomButton
               buttonIcon={
                 <ColumnHeightSvgIcon
-                  data-plasmic-name={"svg"}
-                  data-plasmic-override={overrides.svg}
-                  className={classNames(projectcss.all, sty.svg)}
+                  className={classNames(projectcss.all, sty.svg__iSjC)}
                   role={"img"}
                 />
               }
-              className={classNames("__wab_instance", sty.customButton__hl3Tz)}
-              iconTooltip={$translator?.("Density") ?? "Density"}
+              buttonLabel={<Trans__>{"Density"}</Trans__>}
+              className={classNames("__wab_instance", sty.customButton__ooKeS)}
               type={"iconOnly"}
             />
           </CustomDropdown>
           <CustomDropdown
-            className={classNames("__wab_instance", sty.customDropdown__sjUiG)}
+            data-plasmic-name={"settingsButton"}
+            data-plasmic-override={overrides.settingsButton}
+            className={classNames("__wab_instance", sty.settingsButton)}
             dropdownAlignment={"right"}
             slot={
               <ActionsList
@@ -360,17 +354,17 @@ function PlasmicCustomTable__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (() => {
                     const child$Props = {
-                      className: classNames("__wab_instance", sty.checkbox),
+                      className: classNames("__wab_instance", sty.tableItems),
                       isChecked:
                         generateStateValueProp($state, [
-                          "checkbox",
+                          "tableItems",
                           __plasmic_idx_0,
                           "isChecked"
                         ]) ?? false,
                       key: currentIndex,
                       onChange: (...eventArgs) => {
                         generateStateOnChangeProp($state, [
-                          "checkbox",
+                          "tableItems",
                           __plasmic_idx_0,
                           "isChecked"
                         ])(eventArgs[0]);
@@ -381,7 +375,7 @@ function PlasmicCustomTable__RenderFunc(props: {
                       $state,
                       [
                         {
-                          name: "checkbox[].isChecked",
+                          name: "tableItems[].isChecked",
                           initFunc: ({ $props, $state, $queries }) =>
                             "isChecked"
                         }
@@ -390,111 +384,153 @@ function PlasmicCustomTable__RenderFunc(props: {
                     );
                     return (
                       <Checkbox
-                        data-plasmic-name={"checkbox"}
-                        data-plasmic-override={overrides.checkbox}
+                        data-plasmic-name={"tableItems"}
+                        data-plasmic-override={overrides.tableItems}
                         {...child$Props}
                       />
                     );
                   })();
                 })}
-                className={classNames("__wab_instance", sty.actionsList__m2DKn)}
+                className={classNames("__wab_instance", sty.actionsList__vuEzx)}
                 dropdownTitle={<Trans__>{"Column Display"}</Trans__>}
               />
             }
           >
             <CustomButton
-              className={classNames("__wab_instance", sty.customButton__xFTc)}
-              iconTooltip={$translator?.("Settings") ?? "Settings"}
+              buttonIcon={
+                <SettingSvgIcon
+                  className={classNames(projectcss.all, sty.svg___09Vju)}
+                  role={"img"}
+                />
+              }
+              buttonLabel={<Trans__>{"Settings"}</Trans__>}
+              className={classNames("__wab_instance", sty.customButton__lCgje)}
               type={"iconOnly"}
             />
           </CustomDropdown>
         </Stack__>
       </div>
-      <div
-        data-plasmic-name={"body"}
-        data-plasmic-override={overrides.body}
-        className={classNames(projectcss.all, sty.body)}
+      <section
+        data-plasmic-name={"tableBody"}
+        data-plasmic-override={overrides.tableBody}
+        className={classNames(projectcss.all, sty.tableBody)}
       >
-        <div
-          data-plasmic-name={"tableColumnHeader"}
-          data-plasmic-override={overrides.tableColumnHeader}
-          className={classNames(projectcss.all, sty.tableColumnHeader)}
-        >
-          <TableColumnHeader
-            className={classNames(
-              "__wab_instance",
-              sty.tableColumnHeader__tfOr0
-            )}
-            stateTypes={"checkBox"}
-          />
+        <CtHeader
+          data-plasmic-name={"ctHeader"}
+          data-plasmic-override={overrides.ctHeader}
+          className={classNames("__wab_instance", sty.ctHeader)}
+          headerCheckboxSection2={
+            <CtCheckbox
+              data-plasmic-name={"primaryCheckbox"}
+              data-plasmic-override={overrides.primaryCheckbox}
+              aria-label={"Primary"}
+              isChecked={
+                generateStateValueProp($state, [
+                  "primaryCheckbox",
+                  "isChecked"
+                ]) ?? false
+              }
+              isDisabled={(() => {
+                try {
+                  return $props.noData === true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "isDisabled";
+                  }
+                  throw e;
+                }
+              })()}
+              isIndeterminate={true}
+              onChange={(...eventArgs) => {
+                generateStateOnChangeProp($state, [
+                  "primaryCheckbox",
+                  "isChecked"
+                ])(eventArgs[0]);
+              }}
+            />
+          }
+          noData={$state.noData}
+        />
 
-          <TableColumnHeader
-            className={classNames(
-              "__wab_instance",
-              sty.tableColumnHeader__i6I0
-            )}
-            stateTypes={"empty"}
-          />
-
-          <TableColumnHeader
-            className={classNames(
-              "__wab_instance",
-              sty.tableColumnHeader__oQvHq
-            )}
-            endRow={true}
-            stateTypes={"sorting"}
-          />
-        </div>
-        <div
-          data-plasmic-name={"tableColumnData"}
-          data-plasmic-override={overrides.tableColumnData}
-          className={classNames(projectcss.all, sty.tableColumnData)}
-        >
-          {(() => {
+        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+          (() => {
             try {
-              return $state.noData === true;
+              return [2, 3, 4, 5];
             } catch (e) {
               if (
                 e instanceof TypeError ||
                 e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                return true;
+                return [];
               }
               throw e;
             }
-          })() ? (
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"noDataSection"}
-              data-plasmic-override={overrides.noDataSection}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.noDataSection, {
-                [sty.noDataSectionnoData]: hasVariant(
-                  $state,
-                  "noData",
-                  "noData"
-                )
+          })()
+        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+          const currentItem = __plasmic_item_0;
+          const currentIndex = __plasmic_idx_0;
+          return (
+            <CtContent
+              data-plasmic-name={"ctContent"}
+              data-plasmic-override={overrides.ctContent}
+              className={classNames("__wab_instance", sty.ctContent, {
+                [sty.ctContentnoData]: hasVariant($state, "noData", "noData")
               })}
-            >
-              {renderPlasmicSlot({
-                defaultContents: (
-                  <AntEmptySvgIcon
-                    className={classNames(projectcss.all, sty.svg__oJEp)}
-                    role={"img"}
-                  />
-                ),
+              contentCheckboxSection2={(() => {
+                const child$Props = {
+                  "aria-label": "Secondary",
+                  className: classNames(
+                    "__wab_instance",
+                    sty.secondaryCheckbox
+                  ),
+                  isChecked:
+                    generateStateValueProp($state, [
+                      "secondaryCheckbox",
+                      __plasmic_idx_0,
+                      "isChecked"
+                    ]) ?? false,
+                  onChange: (...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "secondaryCheckbox",
+                      __plasmic_idx_0,
+                      "isChecked"
+                    ])(eventArgs[0]);
+                  }
+                };
 
-                value: args.icon
-              })}
-              {renderPlasmicSlot({
-                defaultContents: <Trans__>{"No data"}</Trans__>,
-                value: args.label,
-                className: classNames(sty.slotTargetLabel)
-              })}
-            </Stack__>
-          ) : null}
-        </div>
-      </div>
+                initializePlasmicStates(
+                  $state,
+                  [
+                    {
+                      name: "secondaryCheckbox[].isChecked",
+                      initFunc: ({ $props, $state, $queries }) => undefined
+                    }
+                  ],
+                  [__plasmic_idx_0]
+                );
+                return (
+                  <CtCheckbox
+                    data-plasmic-name={"secondaryCheckbox"}
+                    data-plasmic-override={overrides.secondaryCheckbox}
+                    {...child$Props}
+                  />
+                );
+              })()}
+              key={currentIndex}
+              noData={hasVariant($state, "noData", "noData") ? true : undefined}
+              primaryCheckboxIsChecked={$state.primaryCheckboxIsChecked}
+            />
+          );
+        })}
+        <CtNoData
+          data-plasmic-name={"ctNoData"}
+          data-plasmic-override={overrides.ctNoData}
+          className={classNames("__wab_instance", sty.ctNoData)}
+        />
+      </section>
     </Stack__>
   ) as React.ReactElement | null;
 }
@@ -505,28 +541,51 @@ const PlasmicDescendants = {
     "tableColumnActions",
     "tableSearch",
     "freeBox",
-    "svg",
-    "checkbox",
-    "body",
-    "tableColumnHeader",
-    "tableColumnData",
-    "noDataSection"
+    "exportButton",
+    "densityButton",
+    "settingsButton",
+    "tableItems",
+    "tableBody",
+    "ctHeader",
+    "primaryCheckbox",
+    "ctContent",
+    "secondaryCheckbox",
+    "ctNoData"
   ],
   tableColumnActions: [
     "tableColumnActions",
     "tableSearch",
     "freeBox",
-    "svg",
-    "checkbox"
+    "exportButton",
+    "densityButton",
+    "settingsButton",
+    "tableItems"
   ],
   tableSearch: ["tableSearch"],
-  freeBox: ["freeBox", "svg", "checkbox"],
-  svg: ["svg"],
-  checkbox: ["checkbox"],
-  body: ["body", "tableColumnHeader", "tableColumnData", "noDataSection"],
-  tableColumnHeader: ["tableColumnHeader"],
-  tableColumnData: ["tableColumnData", "noDataSection"],
-  noDataSection: ["noDataSection"]
+  freeBox: [
+    "freeBox",
+    "exportButton",
+    "densityButton",
+    "settingsButton",
+    "tableItems"
+  ],
+  exportButton: ["exportButton"],
+  densityButton: ["densityButton"],
+  settingsButton: ["settingsButton", "tableItems"],
+  tableItems: ["tableItems"],
+  tableBody: [
+    "tableBody",
+    "ctHeader",
+    "primaryCheckbox",
+    "ctContent",
+    "secondaryCheckbox",
+    "ctNoData"
+  ],
+  ctHeader: ["ctHeader", "primaryCheckbox"],
+  primaryCheckbox: ["primaryCheckbox"],
+  ctContent: ["ctContent", "secondaryCheckbox"],
+  secondaryCheckbox: ["secondaryCheckbox"],
+  ctNoData: ["ctNoData"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -536,12 +595,16 @@ type NodeDefaultElementType = {
   tableColumnActions: "div";
   tableSearch: typeof TableSearch;
   freeBox: "div";
-  svg: "svg";
-  checkbox: typeof Checkbox;
-  body: "div";
-  tableColumnHeader: "div";
-  tableColumnData: "div";
-  noDataSection: "div";
+  exportButton: typeof CustomDropdown;
+  densityButton: typeof CustomDropdown;
+  settingsButton: typeof CustomDropdown;
+  tableItems: typeof Checkbox;
+  tableBody: "section";
+  ctHeader: typeof CtHeader;
+  primaryCheckbox: typeof CtCheckbox;
+  ctContent: typeof CtContent;
+  secondaryCheckbox: typeof CtCheckbox;
+  ctNoData: typeof CtNoData;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -607,12 +670,16 @@ export const PlasmicCustomTable = Object.assign(
     tableColumnActions: makeNodeComponent("tableColumnActions"),
     tableSearch: makeNodeComponent("tableSearch"),
     freeBox: makeNodeComponent("freeBox"),
-    svg: makeNodeComponent("svg"),
-    checkbox: makeNodeComponent("checkbox"),
-    body: makeNodeComponent("body"),
-    tableColumnHeader: makeNodeComponent("tableColumnHeader"),
-    tableColumnData: makeNodeComponent("tableColumnData"),
-    noDataSection: makeNodeComponent("noDataSection"),
+    exportButton: makeNodeComponent("exportButton"),
+    densityButton: makeNodeComponent("densityButton"),
+    settingsButton: makeNodeComponent("settingsButton"),
+    tableItems: makeNodeComponent("tableItems"),
+    tableBody: makeNodeComponent("tableBody"),
+    ctHeader: makeNodeComponent("ctHeader"),
+    primaryCheckbox: makeNodeComponent("primaryCheckbox"),
+    ctContent: makeNodeComponent("ctContent"),
+    secondaryCheckbox: makeNodeComponent("secondaryCheckbox"),
+    ctNoData: makeNodeComponent("ctNoData"),
 
     // Metadata about props expected for PlasmicCustomTable
     internalVariantProps: PlasmicCustomTable__VariantProps,

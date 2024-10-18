@@ -190,9 +190,6 @@ function PlasmicCustomButton__RenderFunc(props: {
           [sty.buttontype_labelOnly]: hasVariant($state, "type", "labelOnly")
         }
       )}
-      onClick={async event => {
-        const $steps = {};
-      }}
     >
       <AntdTooltip
         data-plasmic-name={"tooltip"}

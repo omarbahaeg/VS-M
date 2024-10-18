@@ -69,8 +69,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicTableColumnHeader.module.css"; // plasmic-import: 6J6LHNmu-UTh/css
 
-import Icon35Icon from "./icons/PlasmicIcon__Icon35"; // plasmic-import: uv-esoD0qkDh/icon
-import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: e46BsyJ2bjKq/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: fQuvc6bYBWs_/icon
 
 createPlasmicElementProxy;
@@ -101,13 +99,13 @@ export const PlasmicTableColumnHeader__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicTableColumnHeader__OverridesType = {
   root?: Flex__<"div">;
+  line?: Flex__<"span">;
   state?: Flex__<"div">;
   checkbox?: Flex__<typeof Checkbox>;
   text?: Flex__<"div">;
   freeBox?: Flex__<"div">;
   sorting?: Flex__<"div">;
   infoIcon?: Flex__<"div">;
-  line?: Flex__<"span">;
 };
 
 export interface DefaultTableColumnHeaderProps {
@@ -294,6 +292,41 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
       }}
       data-plasmic-trigger-props={[triggerRootHoverProps]}
     >
+      {(
+        hasVariant($state, "stateTypes", "sorting") && triggers.hover_root
+          ? true
+          : (() => {
+              try {
+                return (
+                  !$state.endRow &&
+                  !($state.stateTypes === "empty") &&
+                  !($state.stateTypes === "checkBox") &&
+                  !$state.sortTypes.includes("ascending") &&
+                  !$state.sortTypes.includes("descending")
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
+        <span
+          data-plasmic-name={"line"}
+          data-plasmic-override={overrides.line}
+          className={classNames(projectcss.all, projectcss.span, sty.line, {
+            [sty.linestateTypes_sorting]: hasVariant(
+              $state,
+              "stateTypes",
+              "sorting"
+            )
+          })}
+        />
+      ) : null}
       <Stack__
         as={"div"}
         data-plasmic-name={"state"}
@@ -378,6 +411,11 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
               $state,
               "stateTypes",
               "info"
+            ),
+            [sty.freeBoxstateTypes_sorting]: hasVariant(
+              $state,
+              "stateTypes",
+              "sorting"
             )
           })}
         >
@@ -441,7 +479,7 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
             hasGap={true}
             className={classNames(projectcss.all, sty.sorting)}
           >
-            <Icon35Icon
+            <svg
               className={classNames(projectcss.all, sty.svg__bmOrH, {
                 [sty.svgsortTypes_ascending__bmOrHGTfT]: hasVariant(
                   $state,
@@ -460,7 +498,7 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
               role={"img"}
             />
 
-            <Icon36Icon
+            <svg
               className={classNames(projectcss.all, sty.svg___3KXqS, {
                 [sty.svgsortTypes_ascending___3KXqSGTfT]: hasVariant(
                   $state,
@@ -517,41 +555,6 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
           </div>
         </AntdTooltip>
       </Stack__>
-      {(
-        hasVariant($state, "stateTypes", "sorting") && triggers.hover_root
-          ? true
-          : (() => {
-              try {
-                return (
-                  !$state.endRow &&
-                  !($state.stateTypes === "empty") &&
-                  !($state.stateTypes === "checkBox") &&
-                  !$state.sortTypes.includes("ascending") &&
-                  !$state.sortTypes.includes("descending")
-                );
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })()
-      ) ? (
-        <span
-          data-plasmic-name={"line"}
-          data-plasmic-override={overrides.line}
-          className={classNames(projectcss.all, projectcss.span, sty.line, {
-            [sty.linestateTypes_sorting]: hasVariant(
-              $state,
-              "stateTypes",
-              "sorting"
-            )
-          })}
-        />
-      ) : null}
     </Stack__>
   ) as React.ReactElement | null;
 }
@@ -559,34 +562,34 @@ function PlasmicTableColumnHeader__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "line",
     "state",
     "checkbox",
     "text",
     "freeBox",
     "sorting",
-    "infoIcon",
-    "line"
+    "infoIcon"
   ],
+  line: ["line"],
   state: ["state", "checkbox", "text", "freeBox", "sorting", "infoIcon"],
   checkbox: ["checkbox", "text"],
   text: ["text"],
   freeBox: ["freeBox"],
   sorting: ["sorting"],
-  infoIcon: ["infoIcon"],
-  line: ["line"]
+  infoIcon: ["infoIcon"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  line: "span";
   state: "div";
   checkbox: typeof Checkbox;
   text: "div";
   freeBox: "div";
   sorting: "div";
   infoIcon: "div";
-  line: "span";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -649,13 +652,13 @@ export const PlasmicTableColumnHeader = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    line: makeNodeComponent("line"),
     state: makeNodeComponent("state"),
     checkbox: makeNodeComponent("checkbox"),
     text: makeNodeComponent("text"),
     freeBox: makeNodeComponent("freeBox"),
     sorting: makeNodeComponent("sorting"),
     infoIcon: makeNodeComponent("infoIcon"),
-    line: makeNodeComponent("line"),
 
     // Metadata about props expected for PlasmicTableColumnHeader
     internalVariantProps: PlasmicTableColumnHeader__VariantProps,

@@ -489,16 +489,14 @@ function PlasmicESignature__RenderFunc(props: {
                           >
                             {(() => {
                               const child$Props = {
-                                canSelectRows: "multiple",
+                                canSelectRows: "click",
                                 className: classNames(
                                   "__wab_instance",
                                   sty.table
                                 ),
                                 data: (() => {
                                   try {
-                                    return $queries.eSign.data.response[
-                                      "Awaiting Signatures"
-                                    ].documents;
+                                    return $queries.eSign.data.response.Signed;
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -747,18 +745,7 @@ function PlasmicESignature__RenderFunc(props: {
                                 })(),
 
                                 hideDensity: false,
-                                hideSelectionBar: true,
-                                rowActions: (() => {
-                                  const __composite = [
-                                    { type: "item", label: null },
-                                    { type: null, label: null }
-                                  ];
-                                  __composite["0"]["label"] = "Edit";
-                                  __composite["1"]["type"] = "item";
-                                  __composite["1"]["label"] = "Delete";
-                                  return __composite;
-                                })(),
-
+                                hideSelectionBar: false,
                                 rowKey: ``,
                                 scopeClassName: sty["table__instance"],
                                 themeResetClassName: classNames(

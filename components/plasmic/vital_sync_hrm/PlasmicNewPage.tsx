@@ -68,8 +68,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicNewPage.module.css"; // plasmic-import: rOOOzuY_irvz/css
 
-import AntEmptySvgIcon from "./icons/PlasmicIcon__AntEmptySvg"; // plasmic-import: Kq2sI6IXlzM2/icon
-
 createPlasmicElementProxy;
 
 export type PlasmicNewPage__VariantMembers = {};

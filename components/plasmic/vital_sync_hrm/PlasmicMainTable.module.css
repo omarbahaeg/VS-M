@@ -38,6 +38,7 @@
 }
 .tableSearch:global(.__wab_instance) {
   max-width: 100%;
+  flex-shrink: 0;
 }
 .svg__hSsz {
   position: relative;
@@ -45,12 +46,6 @@
   width: auto;
   height: 1em;
   color: var(--token-6D_pqZd49N3h);
-}
-.svg__duHe {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
 }
 .freeBox__j4HIp {
   display: flex;
@@ -89,16 +84,17 @@
   height: 18px;
   width: auto;
 }
-.actionsList__foKoB:global(.__wab_instance) {
+.actionsList__fDYv:global(.__wab_instance) {
   position: absolute;
   width: auto;
   height: auto;
   z-index: 99;
+  top: 5px;
 }
-.actionListItems__vyq37:global(.__wab_instance) {
+.actionListItems__v5DUk:global(.__wab_instance) {
   position: relative;
 }
-.actionListItems__nvtSg:global(.__wab_instance) {
+.actionListItems__tK2X:global(.__wab_instance) {
   position: relative;
 }
 .customDropdown__bvqDz:global(.__wab_instance) {
@@ -113,16 +109,17 @@
   height: 18px;
   width: auto;
 }
-.actionsList__uSbyo:global(.__wab_instance) {
+.actionsList__upAd:global(.__wab_instance) {
   position: absolute;
   width: auto;
   height: auto;
   z-index: 99;
+  top: 5px;
 }
-.actionListItems__kzZcF:global(.__wab_instance) {
+.actionListItems__cek0N:global(.__wab_instance) {
   position: relative;
 }
-.actionListItems__vbrBj:global(.__wab_instance) {
+.actionListItems__lpWsD:global(.__wab_instance) {
   position: relative;
 }
 .tableColumnHeader {
