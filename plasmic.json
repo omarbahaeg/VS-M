@@ -76,8 +76,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -1307,19 +1306,6 @@
           "componentType": "component"
         },
         {
-          "id": "W3XppgG_PD08",
-          "name": "CtState",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCtState.tsx",
-          "importSpec": {
-            "modulePath": "CtState.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtState.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "h4AhLHpwZjUP",
           "name": "CtCheckbox",
           "type": "managed",
@@ -1356,19 +1342,6 @@
             "modulePath": "CtNoData.tsx"
           },
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtNoData.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "YmOXyBudE7hg",
-          "name": "CtHeaderLabel",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeaderLabel.tsx",
-          "importSpec": {
-            "modulePath": "CtHeaderLabel.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeaderLabel.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },
@@ -1434,6 +1407,19 @@
             "modulePath": "CtHeader.tsx"
           },
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeader.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "xSZETzH5yRT1",
+          "name": "CtHeaderLabel",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeaderLabel.tsx",
+          "importSpec": {
+            "modulePath": "CtHeaderLabel.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeaderLabel.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

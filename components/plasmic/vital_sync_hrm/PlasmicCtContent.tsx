@@ -72,14 +72,14 @@ import sty from "./PlasmicCtContent.module.css"; // plasmic-import: 30qwjyl-gzyD
 createPlasmicElementProxy;
 
 export type PlasmicCtContent__VariantMembers = {
-  noData: "noData";
+  isSorting: "isSorting";
 };
 export type PlasmicCtContent__VariantsArgs = {
-  noData?: SingleBooleanChoiceArg<"noData">;
+  isSorting?: SingleBooleanChoiceArg<"isSorting">;
 };
 type VariantPropType = keyof PlasmicCtContent__VariantsArgs;
 export const PlasmicCtContent__VariantProps = new Array<VariantPropType>(
-  "noData"
+  "isSorting"
 );
 
 export type PlasmicCtContent__ArgsType = {
@@ -104,7 +104,7 @@ export type PlasmicCtContent__OverridesType = {
 export interface DefaultCtContentProps {
   primaryCheckboxIsChecked?: boolean;
   contentCheckboxSection2?: React.ReactNode;
-  noData?: SingleBooleanChoiceArg<"noData">;
+  isSorting?: SingleBooleanChoiceArg<"isSorting">;
   className?: string;
 }
 
@@ -151,10 +151,10 @@ function PlasmicCtContent__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "noData",
+        path: "isSorting",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noData
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isSorting
       }
     ],
     [$props, $ctx, $refs]
@@ -180,8 +180,7 @@ function PlasmicCtContent__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.content,
-        { [sty.contentnoData]: hasVariant($state, "noData", "noData") }
+        sty.content
       )}
     >
       <section
@@ -216,7 +215,13 @@ function PlasmicCtContent__RenderFunc(props: {
       <section
         data-plasmic-name={"contentSection"}
         data-plasmic-override={overrides.contentSection}
-        className={classNames(projectcss.all, sty.contentSection)}
+        className={classNames(projectcss.all, sty.contentSection, {
+          [sty.contentSectionisSorting]: hasVariant(
+            $state,
+            "isSorting",
+            "isSorting"
+          )
+        })}
       >
         <div
           data-plasmic-name={"text"}

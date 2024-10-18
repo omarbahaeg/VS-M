@@ -60,8 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import CtCheckbox from "../../CtCheckbox"; // plasmic-import: h4AhLHpwZjUP/component
-import CtSorting from "../../CtSorting"; // plasmic-import: LtnGs58PcPwQ/component
-import CtInfoIcon from "../../CtInfoIcon"; // plasmic-import: g9gKYSYktTlZ/component
+import CtHeaderLabel from "../../CtHeaderLabel"; // plasmic-import: xSZETzH5yRT1/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -78,29 +77,24 @@ type VariantPropType = keyof PlasmicCtHeader__VariantsArgs;
 export const PlasmicCtHeader__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicCtHeader__ArgsType = {
-  noData?: string;
   headerCheckboxSection2?: React.ReactNode;
+  children?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicCtHeader__ArgsType;
 export const PlasmicCtHeader__ArgProps = new Array<ArgPropType>(
-  "noData",
-  "headerCheckboxSection2"
+  "headerCheckboxSection2",
+  "children"
 );
 
 export type PlasmicCtHeader__OverridesType = {
   header?: Flex__<"section">;
   headerCheckboxSection?: Flex__<"section">;
-  labelSection?: Flex__<"div">;
-  line?: Flex__<"div">;
-  text?: Flex__<"div">;
-  ctSorting?: Flex__<typeof CtSorting>;
-  ctInfoIcon?: Flex__<typeof CtInfoIcon>;
   headerMoreSection?: Flex__<"section">;
 };
 
 export interface DefaultCtHeaderProps {
-  noData?: string;
   headerCheckboxSection2?: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
@@ -167,83 +161,20 @@ function PlasmicCtHeader__RenderFunc(props: {
         className={classNames(projectcss.all, sty.headerCheckboxSection)}
       >
         {renderPlasmicSlot({
-          defaultContents: (
-            <CtCheckbox
-              aria-label={"Primary"}
-              isDisabled={(() => {
-                try {
-                  return $props.noData === true;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "isDisabled";
-                  }
-                  throw e;
-                }
-              })()}
-              isIndeterminate={(() => {
-                try {
-                  return (() => {
-                    const checkedCount = $state.secondaryCheckbox.filter(
-                      cb => cb.isChecked
-                    ).length;
-                    const totalCount = $state.secondaryCheckbox.length;
-                    return checkedCount > 0 && checkedCount < totalCount;
-                  })();
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
-            />
-          ),
+          defaultContents: <CtCheckbox aria-label={"Primary"} />,
 
           value: args.headerCheckboxSection2
         })}
       </section>
-      <Stack__
-        as={"div"}
-        data-plasmic-name={"labelSection"}
-        data-plasmic-override={overrides.labelSection}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.labelSection)}
-      >
-        <div
-          data-plasmic-name={"line"}
-          data-plasmic-override={overrides.line}
-          className={classNames(projectcss.all, sty.line)}
-        />
+      {renderPlasmicSlot({
+        defaultContents: (
+          <CtHeaderLabel
+            className={classNames("__wab_instance", sty.ctHeaderLabel__fyRdF)}
+          />
+        ),
 
-        <div
-          data-plasmic-name={"text"}
-          data-plasmic-override={overrides.text}
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text
-          )}
-        >
-          <Trans__>{"Name"}</Trans__>
-        </div>
-        <CtSorting
-          data-plasmic-name={"ctSorting"}
-          data-plasmic-override={overrides.ctSorting}
-          className={classNames("__wab_instance", sty.ctSorting)}
-        />
-
-        <CtInfoIcon
-          data-plasmic-name={"ctInfoIcon"}
-          data-plasmic-override={overrides.ctInfoIcon}
-          className={classNames("__wab_instance", sty.ctInfoIcon)}
-        />
-      </Stack__>
+        value: args.children
+      })}
       <section
         data-plasmic-name={"headerMoreSection"}
         data-plasmic-override={overrides.headerMoreSection}
@@ -254,22 +185,8 @@ function PlasmicCtHeader__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  header: [
-    "header",
-    "headerCheckboxSection",
-    "labelSection",
-    "line",
-    "text",
-    "ctSorting",
-    "ctInfoIcon",
-    "headerMoreSection"
-  ],
+  header: ["header", "headerCheckboxSection", "headerMoreSection"],
   headerCheckboxSection: ["headerCheckboxSection"],
-  labelSection: ["labelSection", "line", "text", "ctSorting", "ctInfoIcon"],
-  line: ["line"],
-  text: ["text"],
-  ctSorting: ["ctSorting"],
-  ctInfoIcon: ["ctInfoIcon"],
   headerMoreSection: ["headerMoreSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -278,11 +195,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   header: "section";
   headerCheckboxSection: "section";
-  labelSection: "div";
-  line: "div";
-  text: "div";
-  ctSorting: typeof CtSorting;
-  ctInfoIcon: typeof CtInfoIcon;
   headerMoreSection: "section";
 };
 
@@ -347,11 +259,6 @@ export const PlasmicCtHeader = Object.assign(
   {
     // Helper components rendering sub-elements
     headerCheckboxSection: makeNodeComponent("headerCheckboxSection"),
-    labelSection: makeNodeComponent("labelSection"),
-    line: makeNodeComponent("line"),
-    text: makeNodeComponent("text"),
-    ctSorting: makeNodeComponent("ctSorting"),
-    ctInfoIcon: makeNodeComponent("ctInfoIcon"),
     headerMoreSection: makeNodeComponent("headerMoreSection"),
 
     // Metadata about props expected for PlasmicCtHeader

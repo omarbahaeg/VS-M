@@ -67,6 +67,7 @@ import ActionListItems from "../../ActionListItems"; // plasmic-import: _msz16lT
 import Checkbox from "../../Checkbox"; // plasmic-import: ssintioay6Yy/component
 import CtHeader from "../../CtHeader"; // plasmic-import: CjCWQ83VlxB3/component
 import CtCheckbox from "../../CtCheckbox"; // plasmic-import: h4AhLHpwZjUP/component
+import CtHeaderLabel from "../../CtHeaderLabel"; // plasmic-import: xSZETzH5yRT1/component
 import CtContent from "../../CtContent"; // plasmic-import: 30qwjyl-gzyD/component
 import CtNoData from "../../CtNoData"; // plasmic-import: iPx11GU5dJeG/component
 
@@ -110,6 +111,7 @@ export type PlasmicCustomTable__OverridesType = {
   tableBody?: Flex__<"section">;
   ctHeader?: Flex__<typeof CtHeader>;
   primaryCheckbox?: Flex__<typeof CtCheckbox>;
+  ctHeaderLabel?: Flex__<typeof CtHeaderLabel>;
   ctContent?: Flex__<typeof CtContent>;
   secondaryCheckbox?: Flex__<typeof CtCheckbox>;
   ctNoData?: Flex__<typeof CtNoData>;
@@ -443,7 +445,22 @@ function PlasmicCustomTable__RenderFunc(props: {
                   throw e;
                 }
               })()}
-              isIndeterminate={true}
+              isIndeterminate={(() => {
+                try {
+                  return (
+                    $state.secondaryCheckbox.some(cb => cb.isChecked) &&
+                    !$state.secondaryCheckbox.every(cb => cb.isChecked)
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               onChange={(...eventArgs) => {
                 generateStateOnChangeProp($state, [
                   "primaryCheckbox",
@@ -452,9 +469,14 @@ function PlasmicCustomTable__RenderFunc(props: {
               }}
             />
           }
-          noData={$state.noData}
-        />
-
+        >
+          <CtHeaderLabel
+            data-plasmic-name={"ctHeaderLabel"}
+            data-plasmic-override={overrides.ctHeaderLabel}
+            className={classNames("__wab_instance", sty.ctHeaderLabel)}
+            sorting={true}
+          />
+        </CtHeader>
         {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
           (() => {
             try {
@@ -506,7 +528,20 @@ function PlasmicCustomTable__RenderFunc(props: {
                   [
                     {
                       name: "secondaryCheckbox[].isChecked",
-                      initFunc: ({ $props, $state, $queries }) => undefined
+                      initFunc: ({ $props, $state, $queries }) =>
+                        (() => {
+                          try {
+                            return $state.primaryCheckbox.isChecked === true;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "isChecked";
+                            }
+                            throw e;
+                          }
+                        })()
                     }
                   ],
                   [__plasmic_idx_0]
@@ -519,8 +554,20 @@ function PlasmicCustomTable__RenderFunc(props: {
                   />
                 );
               })()}
+              isSorting={(() => {
+                try {
+                  return undefined;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               key={currentIndex}
-              noData={hasVariant($state, "noData", "noData") ? true : undefined}
               primaryCheckboxIsChecked={$state.primaryCheckboxIsChecked}
             />
           );
@@ -548,6 +595,7 @@ const PlasmicDescendants = {
     "tableBody",
     "ctHeader",
     "primaryCheckbox",
+    "ctHeaderLabel",
     "ctContent",
     "secondaryCheckbox",
     "ctNoData"
@@ -577,12 +625,14 @@ const PlasmicDescendants = {
     "tableBody",
     "ctHeader",
     "primaryCheckbox",
+    "ctHeaderLabel",
     "ctContent",
     "secondaryCheckbox",
     "ctNoData"
   ],
-  ctHeader: ["ctHeader", "primaryCheckbox"],
+  ctHeader: ["ctHeader", "primaryCheckbox", "ctHeaderLabel"],
   primaryCheckbox: ["primaryCheckbox"],
+  ctHeaderLabel: ["ctHeaderLabel"],
   ctContent: ["ctContent", "secondaryCheckbox"],
   secondaryCheckbox: ["secondaryCheckbox"],
   ctNoData: ["ctNoData"]
@@ -602,6 +652,7 @@ type NodeDefaultElementType = {
   tableBody: "section";
   ctHeader: typeof CtHeader;
   primaryCheckbox: typeof CtCheckbox;
+  ctHeaderLabel: typeof CtHeaderLabel;
   ctContent: typeof CtContent;
   secondaryCheckbox: typeof CtCheckbox;
   ctNoData: typeof CtNoData;
@@ -677,6 +728,7 @@ export const PlasmicCustomTable = Object.assign(
     tableBody: makeNodeComponent("tableBody"),
     ctHeader: makeNodeComponent("ctHeader"),
     primaryCheckbox: makeNodeComponent("primaryCheckbox"),
+    ctHeaderLabel: makeNodeComponent("ctHeaderLabel"),
     ctContent: makeNodeComponent("ctContent"),
     secondaryCheckbox: makeNodeComponent("secondaryCheckbox"),
     ctNoData: makeNodeComponent("ctNoData"),

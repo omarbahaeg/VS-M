@@ -50,6 +50,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
+  padding-top: 0px;
 }
 .freeBox > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -153,6 +154,9 @@
   overflow-x: auto;
   overflow-y: hidden;
   min-width: 0;
+}
+.ctHeaderLabel:global(.__wab_instance) {
+  position: relative;
 }
 .ctContentnoData:global(.__wab_instance) {
   display: none;

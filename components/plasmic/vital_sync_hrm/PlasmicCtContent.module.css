@@ -10,9 +10,6 @@
   min-width: 0;
   border-bottom: 1px solid var(--token-OmDX5aGPAakM);
 }
-.contentnoData {
-  display: none;
-}
 .contentCheckboxSection {
   display: flex;
   position: relative;
@@ -35,6 +32,9 @@
   max-width: auto;
   min-width: 0;
   padding: 10px;
+}
+.contentSectionisSorting {
+  background: var(--token-Qi_GcLGvv6A8);
 }
 .text {
   white-space: pre;

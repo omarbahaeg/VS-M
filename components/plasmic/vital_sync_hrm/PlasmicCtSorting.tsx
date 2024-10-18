@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -71,20 +73,29 @@ import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: LkmhWxm
 
 createPlasmicElementProxy;
 
-export type PlasmicCtSorting__VariantMembers = {};
-export type PlasmicCtSorting__VariantsArgs = {};
+export type PlasmicCtSorting__VariantMembers = {
+  sortingType: "ascending" | "descending";
+};
+export type PlasmicCtSorting__VariantsArgs = {
+  sortingType?: SingleChoiceArg<"ascending" | "descending">;
+};
 type VariantPropType = keyof PlasmicCtSorting__VariantsArgs;
-export const PlasmicCtSorting__VariantProps = new Array<VariantPropType>();
+export const PlasmicCtSorting__VariantProps = new Array<VariantPropType>(
+  "sortingType"
+);
 
 export type PlasmicCtSorting__ArgsType = {};
 type ArgPropType = keyof PlasmicCtSorting__ArgsType;
 export const PlasmicCtSorting__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCtSorting__OverridesType = {
+  root?: Flex__<"div">;
+  tooltip?: Flex__<typeof AntdTooltip>;
   sorting?: Flex__<"div">;
 };
 
 export interface DefaultCtSortingProps {
+  sortingType?: SingleChoiceArg<"ascending" | "descending">;
   className?: string;
 }
 
@@ -128,14 +139,30 @@ function PlasmicCtSorting__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "sortingType",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.sortingType
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   return (
-    <Stack__
-      as={"div"}
-      data-plasmic-name={"sorting"}
-      data-plasmic-override={overrides.sorting}
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -144,29 +171,77 @@ function PlasmicCtSorting__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.sorting
+        sty.root
       )}
     >
-      <Icon35Icon
-        className={classNames(projectcss.all, sty.svg__uw88L)}
-        role={"img"}
-      />
+      <AntdTooltip
+        data-plasmic-name={"tooltip"}
+        data-plasmic-override={overrides.tooltip}
+        className={classNames("__wab_instance", sty.tooltip, {
+          [sty.tooltipsortingType_ascending]: hasVariant(
+            $state,
+            "sortingType",
+            "ascending"
+          ),
+          [sty.tooltipsortingType_descending]: hasVariant(
+            $state,
+            "sortingType",
+            "descending"
+          )
+        })}
+        titleText={
+          hasVariant($state, "sortingType", "descending")
+            ? "Click to cancel sorting"
+            : hasVariant($state, "sortingType", "ascending")
+            ? "Click to sort descending"
+            : "Click to sort ascending"
+        }
+      >
+        <Stack__
+          as={"div"}
+          data-plasmic-name={"sorting"}
+          data-plasmic-override={overrides.sorting}
+          hasGap={true}
+          className={classNames(projectcss.all, sty.sorting)}
+        >
+          <Icon35Icon
+            className={classNames(projectcss.all, sty.svg__uw88L, {
+              [sty.svgsortingType_ascending__uw88LUrZtn]: hasVariant(
+                $state,
+                "sortingType",
+                "ascending"
+              )
+            })}
+            role={"img"}
+          />
 
-      <Icon36Icon
-        className={classNames(projectcss.all, sty.svg__a3JP2)}
-        role={"img"}
-      />
-    </Stack__>
+          <Icon36Icon
+            className={classNames(projectcss.all, sty.svg__a3JP2, {
+              [sty.svgsortingType_descending__a3JP2TYdLw]: hasVariant(
+                $state,
+                "sortingType",
+                "descending"
+              )
+            })}
+            role={"img"}
+          />
+        </Stack__>
+      </AntdTooltip>
+    </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
+  root: ["root", "tooltip", "sorting"],
+  tooltip: ["tooltip", "sorting"],
   sorting: ["sorting"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
+  root: "div";
+  tooltip: typeof AntdTooltip;
   sorting: "div";
 };
 
@@ -217,7 +292,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "sorting") {
+  if (nodeName === "root") {
     func.displayName = "PlasmicCtSorting";
   } else {
     func.displayName = `PlasmicCtSorting.${nodeName}`;
@@ -227,9 +302,11 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicCtSorting = Object.assign(
   // Top-level PlasmicCtSorting renders the root element
-  makeNodeComponent("sorting"),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    tooltip: makeNodeComponent("tooltip"),
+    sorting: makeNodeComponent("sorting"),
 
     // Metadata about props expected for PlasmicCtSorting
     internalVariantProps: PlasmicCtSorting__VariantProps,
