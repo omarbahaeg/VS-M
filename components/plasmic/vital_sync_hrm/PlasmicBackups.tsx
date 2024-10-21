@@ -67,6 +67,12 @@ import {
 
 import Sidebar from "../../Sidebar"; // plasmic-import: MaimrxZZ2uDo/component
 import Header from "../../Header"; // plasmic-import: zd496FfthYEg/component
+import RightBarToggle from "../../RightBarToggle"; // plasmic-import: 7-guXMnuxTk_/component
+import UserAvatar from "../../UserAvatar"; // plasmic-import: gWWU5Ob64_0l/component
+import NotificationButton from "../../NotificationButton"; // plasmic-import: KnYNZm1t2IR5/component
+import MessagesButton from "../../MessagesButton"; // plasmic-import: Ir4fGGB2J2Ay/component
+import HomeButton from "../../HomeButton"; // plasmic-import: vc4QrCJM7nhW/component
+import SidebarToggleButton from "../../SidebarToggleButton"; // plasmic-import: vp-0ZJI-DQym/component
 import Button from "../../Button"; // plasmic-import: JRPPbMhYptfo/component
 import { TabsContainer } from "@plasmicpkgs/plasmic-tabs";
 import { TabButton } from "@plasmicpkgs/plasmic-tabs";
@@ -109,6 +115,8 @@ export type PlasmicBackups__OverridesType = {
   sidebar?: Flex__<typeof Sidebar>;
   body?: Flex__<"div">;
   header?: Flex__<typeof Header>;
+  rightBarToggle?: Flex__<typeof RightBarToggle>;
+  sidebarToggleButton?: Flex__<typeof SidebarToggleButton>;
   content?: Flex__<"div">;
   frame7?: Flex__<"div">;
   frame8?: Flex__<"div">;
@@ -170,6 +178,29 @@ function PlasmicBackups__RenderFunc(props: {
   let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
   >({});
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "rightBarToggle.collapsed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sidebarToggleButton.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: $queries,
+    $refs
+  });
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
     user: usePlasmicDataOp(() => {
@@ -267,9 +298,36 @@ function PlasmicBackups__RenderFunc(props: {
             data-plasmic-name={"header"}
             data-plasmic-override={overrides.header}
             className={classNames("__wab_instance", sty.header)}
-            user={$queries.user}
-          />
-
+            rightBarToggle2={
+              <RightBarToggle
+                data-plasmic-name={"rightBarToggle"}
+                data-plasmic-override={overrides.rightBarToggle}
+                className={classNames("__wab_instance", sty.rightBarToggle)}
+                collapsed={generateStateValueProp($state, [
+                  "rightBarToggle",
+                  "collapsed"
+                ])}
+                onCollapsedChange={generateStateOnChangeProp($state, [
+                  "rightBarToggle",
+                  "collapsed"
+                ])}
+              />
+            }
+          >
+            <SidebarToggleButton
+              data-plasmic-name={"sidebarToggleButton"}
+              data-plasmic-override={overrides.sidebarToggleButton}
+              className={classNames("__wab_instance", sty.sidebarToggleButton)}
+              isOpen={generateStateValueProp($state, [
+                "sidebarToggleButton",
+                "isOpen"
+              ])}
+              onIsOpenChange={generateStateOnChangeProp($state, [
+                "sidebarToggleButton",
+                "isOpen"
+              ])}
+            />
+          </Header>
           <Stack__
             as={"div"}
             data-plasmic-name={"content"}
@@ -777,6 +835,8 @@ const PlasmicDescendants = {
     "sidebar",
     "body",
     "header",
+    "rightBarToggle",
+    "sidebarToggleButton",
     "content",
     "frame7",
     "frame8",
@@ -796,6 +856,8 @@ const PlasmicDescendants = {
   body: [
     "body",
     "header",
+    "rightBarToggle",
+    "sidebarToggleButton",
     "content",
     "frame7",
     "frame8",
@@ -809,7 +871,9 @@ const PlasmicDescendants = {
     "table",
     "footer"
   ],
-  header: ["header"],
+  header: ["header", "rightBarToggle", "sidebarToggleButton"],
+  rightBarToggle: ["rightBarToggle"],
+  sidebarToggleButton: ["sidebarToggleButton"],
   content: [
     "content",
     "frame7",
@@ -852,6 +916,8 @@ type NodeDefaultElementType = {
   sidebar: typeof Sidebar;
   body: "div";
   header: typeof Header;
+  rightBarToggle: typeof RightBarToggle;
+  sidebarToggleButton: typeof SidebarToggleButton;
   content: "div";
   frame7: "div";
   frame8: "div";
@@ -931,6 +997,8 @@ export const PlasmicBackups = Object.assign(
     sidebar: makeNodeComponent("sidebar"),
     body: makeNodeComponent("body"),
     header: makeNodeComponent("header"),
+    rightBarToggle: makeNodeComponent("rightBarToggle"),
+    sidebarToggleButton: makeNodeComponent("sidebarToggleButton"),
     content: makeNodeComponent("content"),
     frame7: makeNodeComponent("frame7"),
     frame8: makeNodeComponent("frame8"),

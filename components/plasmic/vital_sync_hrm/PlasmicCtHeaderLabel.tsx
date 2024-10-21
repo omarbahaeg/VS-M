@@ -94,14 +94,18 @@ export const PlasmicCtHeaderLabel__VariantProps = new Array<VariantPropType>(
   "descending"
 );
 
-export type PlasmicCtHeaderLabel__ArgsType = {};
+export type PlasmicCtHeaderLabel__ArgsType = {
+  children?: React.ReactNode;
+};
 type ArgPropType = keyof PlasmicCtHeaderLabel__ArgsType;
-export const PlasmicCtHeaderLabel__ArgProps = new Array<ArgPropType>();
+export const PlasmicCtHeaderLabel__ArgProps = new Array<ArgPropType>(
+  "children"
+);
 
 export type PlasmicCtHeaderLabel__OverridesType = {
   labelSection?: Flex__<"div">;
   line?: Flex__<"div">;
-  text?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
   ctSortingSection?: Flex__<"div">;
   tooltip?: Flex__<typeof AntdTooltip>;
   sortingState?: Flex__<"div">;
@@ -109,6 +113,7 @@ export type PlasmicCtHeaderLabel__OverridesType = {
 };
 
 export interface DefaultCtHeaderLabelProps {
+  children?: React.ReactNode;
   info?: SingleBooleanChoiceArg<"info">;
   sorting?: SingleBooleanChoiceArg<"sorting">;
   ascending?: SingleBooleanChoiceArg<"ascending">;
@@ -215,6 +220,9 @@ function PlasmicCtHeaderLabel__RenderFunc(props: {
             "ascending",
             "ascending"
           ),
+          [sty.labelSectionascending_descending]:
+            hasVariant($state, "descending", "descending") &&
+            hasVariant($state, "ascending", "ascending"),
           [sty.labelSectiondescending]: hasVariant(
             $state,
             "descending",
@@ -229,111 +237,120 @@ function PlasmicCtHeaderLabel__RenderFunc(props: {
         data-plasmic-name={"line"}
         data-plasmic-override={overrides.line}
         className={classNames(projectcss.all, sty.line, {
+          [sty.lineascending]: hasVariant($state, "ascending", "ascending"),
+          [sty.linedescending]: hasVariant($state, "descending", "descending"),
           [sty.linesorting]: hasVariant($state, "sorting", "sorting")
         })}
       />
 
       <div
-        data-plasmic-name={"text"}
-        data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
-          [sty.textinfo]: hasVariant($state, "info", "info"),
-          [sty.textsorting]: hasVariant($state, "sorting", "sorting")
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+        className={classNames(projectcss.all, sty.freeBox, {
+          [sty.freeBoxinfo]: hasVariant($state, "info", "info"),
+          [sty.freeBoxsorting]: hasVariant($state, "sorting", "sorting")
         })}
       >
-        <Trans__>{"Name"}</Trans__>
-      </div>
-      {(
-        hasVariant($state, "descending", "descending")
-          ? true
-          : hasVariant($state, "ascending", "ascending")
-          ? true
-          : hasVariant($state, "sorting", "sorting")
-          ? true
-          : false
-      ) ? (
-        <div
-          data-plasmic-name={"ctSortingSection"}
-          data-plasmic-override={overrides.ctSortingSection}
-          className={classNames(projectcss.all, sty.ctSortingSection, {
-            [sty.ctSortingSectionascending]: hasVariant(
-              $state,
-              "ascending",
-              "ascending"
-            ),
-            [sty.ctSortingSectiondescending]: hasVariant(
-              $state,
-              "descending",
-              "descending"
-            ),
-            [sty.ctSortingSectionsorting]: hasVariant(
+        {renderPlasmicSlot({
+          defaultContents: <Trans__>{"Name"}</Trans__>,
+          value: args.children,
+          className: classNames(sty.slotTargetChildren, {
+            [sty.slotTargetChildreninfo]: hasVariant($state, "info", "info"),
+            [sty.slotTargetChildrensorting]: hasVariant(
               $state,
               "sorting",
               "sorting"
             )
+          })
+        })}
+      </div>
+      <div
+        data-plasmic-name={"ctSortingSection"}
+        data-plasmic-override={overrides.ctSortingSection}
+        className={classNames(projectcss.all, sty.ctSortingSection, {
+          [sty.ctSortingSectionascending]: hasVariant(
+            $state,
+            "ascending",
+            "ascending"
+          ),
+          [sty.ctSortingSectiondescending]: hasVariant(
+            $state,
+            "descending",
+            "descending"
+          ),
+          [sty.ctSortingSectionsorting]: hasVariant(
+            $state,
+            "sorting",
+            "sorting"
+          )
+        })}
+      >
+        <AntdTooltip
+          data-plasmic-name={"tooltip"}
+          data-plasmic-override={overrides.tooltip}
+          className={classNames("__wab_instance", sty.tooltip, {
+            [sty.tooltipascending]: hasVariant(
+              $state,
+              "ascending",
+              "ascending"
+            ),
+            [sty.tooltipdescending]: hasVariant(
+              $state,
+              "descending",
+              "descending"
+            ),
+            [sty.tooltipsorting]: hasVariant($state, "sorting", "sorting")
           })}
+          titleText={
+            hasVariant($state, "descending", "descending")
+              ? "Click to cancel sorting"
+              : hasVariant($state, "ascending", "ascending")
+              ? "Click to sort descending"
+              : "Click to sort ascending"
+          }
         >
-          <AntdTooltip
-            data-plasmic-name={"tooltip"}
-            data-plasmic-override={overrides.tooltip}
-            className={classNames("__wab_instance", sty.tooltip, {
-              [sty.tooltipascending]: hasVariant(
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"sortingState"}
+            data-plasmic-override={overrides.sortingState}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.sortingState, {
+              [sty.sortingStateascending]: hasVariant(
                 $state,
                 "ascending",
                 "ascending"
               ),
-              [sty.tooltipdescending]: hasVariant(
+              [sty.sortingStatesorting]: hasVariant(
                 $state,
-                "descending",
-                "descending"
-              ),
-              [sty.tooltipsorting]: hasVariant($state, "sorting", "sorting")
+                "sorting",
+                "sorting"
+              )
             })}
-            titleText={"Click to sort ascending"}
           >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"sortingState"}
-              data-plasmic-override={overrides.sortingState}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.sortingState, {
-                [sty.sortingStateascending]: hasVariant(
+            <Icon35Icon
+              className={classNames(projectcss.all, sty.svg__c2Sb, {
+                [sty.svgascending__c2Sb2QFb0]: hasVariant(
                   $state,
                   "ascending",
                   "ascending"
-                ),
-                [sty.sortingStatesorting]: hasVariant(
-                  $state,
-                  "sorting",
-                  "sorting"
                 )
               })}
-            >
-              <Icon35Icon
-                className={classNames(projectcss.all, sty.svg__c2Sb, {
-                  [sty.svgascending__c2Sb2QFb0]: hasVariant(
-                    $state,
-                    "ascending",
-                    "ascending"
-                  )
-                })}
-                role={"img"}
-              />
+              role={"img"}
+            />
 
-              <Icon36Icon
-                className={classNames(projectcss.all, sty.svg__yx5Dz, {
-                  [sty.svgdescending__yx5DzJem0I]: hasVariant(
-                    $state,
-                    "descending",
-                    "descending"
-                  )
-                })}
-                role={"img"}
-              />
-            </Stack__>
-          </AntdTooltip>
-        </div>
-      ) : null}
+            <Icon36Icon
+              className={classNames(projectcss.all, sty.svg__yx5Dz, {
+                [sty.svgdescending__yx5DzJem0I]: hasVariant(
+                  $state,
+                  "descending",
+                  "descending"
+                )
+              })}
+              role={"img"}
+            />
+          </Stack__>
+        </AntdTooltip>
+      </div>
       <CtInfoIcon
         data-plasmic-name={"ctInfoIcon"}
         data-plasmic-override={overrides.ctInfoIcon}
@@ -354,14 +371,14 @@ const PlasmicDescendants = {
   labelSection: [
     "labelSection",
     "line",
-    "text",
+    "freeBox",
     "ctSortingSection",
     "tooltip",
     "sortingState",
     "ctInfoIcon"
   ],
   line: ["line"],
-  text: ["text"],
+  freeBox: ["freeBox"],
   ctSortingSection: ["ctSortingSection", "tooltip", "sortingState"],
   tooltip: ["tooltip", "sortingState"],
   sortingState: ["sortingState"],
@@ -373,7 +390,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   labelSection: "div";
   line: "div";
-  text: "div";
+  freeBox: "div";
   ctSortingSection: "div";
   tooltip: typeof AntdTooltip;
   sortingState: "div";
@@ -441,7 +458,7 @@ export const PlasmicCtHeaderLabel = Object.assign(
   {
     // Helper components rendering sub-elements
     line: makeNodeComponent("line"),
-    text: makeNodeComponent("text"),
+    freeBox: makeNodeComponent("freeBox"),
     ctSortingSection: makeNodeComponent("ctSortingSection"),
     tooltip: makeNodeComponent("tooltip"),
     sortingState: makeNodeComponent("sortingState"),

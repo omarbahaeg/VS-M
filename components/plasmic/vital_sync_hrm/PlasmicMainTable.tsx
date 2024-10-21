@@ -65,7 +65,7 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
-import TableSearch from "../../TableSearch"; // plasmic-import: v9TOdYeoUJJU/component
+import Searchbox from "../../Searchbox"; // plasmic-import: HxIP9-DtSGaj/component
 import CustomDropdown from "../../CustomDropdown"; // plasmic-import: oUw-Oq8BPl_P/component
 import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/component
 import ActionsList from "../../ActionsList"; // plasmic-import: VUxalQKdyCYj/component
@@ -82,7 +82,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicMainTable.module.css"; // plasmic-import: K5hS48T_EbYY/css
 
-import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
 import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
 
 createPlasmicElementProxy;
@@ -99,7 +98,7 @@ export const PlasmicMainTable__ArgProps = new Array<ArgPropType>();
 export type PlasmicMainTable__OverridesType = {
   tableBody?: Flex__<"div">;
   tableColumnActions?: Flex__<"div">;
-  tableSearch?: Flex__<typeof TableSearch>;
+  searchbox?: Flex__<typeof Searchbox>;
   tableColumnHeader?: Flex__<"div">;
   tableColumnRow?: Flex__<"div">;
   table2?: Flex__<typeof RichTable>;
@@ -188,12 +187,6 @@ function PlasmicMainTable__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("selectedRowKeys", RichTable_Helpers)
       },
       {
-        path: "tableSearch.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
         path: "table3.selectedRowKey",
         type: "private",
         variableType: "text",
@@ -224,6 +217,12 @@ function PlasmicMainTable__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("selectedRowKeys", RichTable_Helpers)
+      },
+      {
+        path: "searchbox.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -277,16 +276,15 @@ function PlasmicMainTable__RenderFunc(props: {
         data-plasmic-override={overrides.tableColumnActions}
         className={classNames(projectcss.all, sty.tableColumnActions)}
       >
-        <TableSearch
-          data-plasmic-name={"tableSearch"}
-          data-plasmic-override={overrides.tableSearch}
-          className={classNames("__wab_instance", sty.tableSearch)}
-          onChange={(...eventArgs) => {
-            generateStateOnChangeProp($state, ["tableSearch", "value"])(
-              (e => e.target?.value).apply(null, eventArgs)
-            );
-          }}
-          value={generateStateValueProp($state, ["tableSearch", "value"]) ?? ""}
+        <Searchbox
+          data-plasmic-name={"searchbox"}
+          data-plasmic-override={overrides.searchbox}
+          className={classNames("__wab_instance", sty.searchbox)}
+          onValueChange={generateStateOnChangeProp($state, [
+            "searchbox",
+            "value"
+          ])}
+          value={generateStateValueProp($state, ["searchbox", "value"])}
         />
 
         <Stack__
@@ -565,14 +563,14 @@ const PlasmicDescendants = {
   tableBody: [
     "tableBody",
     "tableColumnActions",
-    "tableSearch",
+    "searchbox",
     "tableColumnHeader",
     "tableColumnRow",
     "table2",
     "table3"
   ],
-  tableColumnActions: ["tableColumnActions", "tableSearch"],
-  tableSearch: ["tableSearch"],
+  tableColumnActions: ["tableColumnActions", "searchbox"],
+  searchbox: ["searchbox"],
   tableColumnHeader: ["tableColumnHeader"],
   tableColumnRow: ["tableColumnRow"],
   table2: ["table2"],
@@ -584,7 +582,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   tableBody: "div";
   tableColumnActions: "div";
-  tableSearch: typeof TableSearch;
+  searchbox: typeof Searchbox;
   tableColumnHeader: "div";
   tableColumnRow: "div";
   table2: typeof RichTable;
@@ -652,7 +650,7 @@ export const PlasmicMainTable = Object.assign(
   {
     // Helper components rendering sub-elements
     tableColumnActions: makeNodeComponent("tableColumnActions"),
-    tableSearch: makeNodeComponent("tableSearch"),
+    searchbox: makeNodeComponent("searchbox"),
     tableColumnHeader: makeNodeComponent("tableColumnHeader"),
     tableColumnRow: makeNodeComponent("tableColumnRow"),
     table2: makeNodeComponent("table2"),

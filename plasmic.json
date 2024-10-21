@@ -76,7 +76,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -810,19 +811,6 @@
           "plumeType": "switch"
         },
         {
-          "id": "M2BFYvan2hjN",
-          "name": "SidebarNavigation",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigation.tsx",
-          "importSpec": {
-            "modulePath": "SidebarNavigation.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigation.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "wVHeFJcN9sea",
           "name": "Logo",
           "type": "managed",
@@ -847,20 +835,6 @@
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarToggle.module.css",
           "scheme": "blackbox",
           "componentType": "component"
-        },
-        {
-          "id": "ca9OvSNLUBNw",
-          "name": "TextInput",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicTextInput.tsx",
-          "importSpec": {
-            "modulePath": "TextInput.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicTextInput.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "text-input"
         },
         {
           "id": "7-guXMnuxTk_",
@@ -967,32 +941,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/e-sign"
-        },
-        {
-          "id": "Dbp6QW6F8Oz_",
-          "name": "SubItem",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSubItem.tsx",
-          "importSpec": {
-            "modulePath": "SubItem.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSubItem.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "ZuuWfkNiYXry",
-          "name": "SidebarNavigationLabel",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationLabel.tsx",
-          "importSpec": {
-            "modulePath": "SidebarNavigationLabel.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationLabel.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
         },
         {
           "id": "7axq3JOxCFIc",
@@ -1145,20 +1093,6 @@
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicMainTable.module.css",
           "scheme": "blackbox",
           "componentType": "component"
-        },
-        {
-          "id": "v9TOdYeoUJJU",
-          "name": "TableSearch",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicTableSearch.tsx",
-          "importSpec": {
-            "modulePath": "TableSearch.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicTableSearch.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "text-input"
         },
         {
           "id": "6J6LHNmu-UTh",
@@ -1420,6 +1354,228 @@
             "modulePath": "CtHeaderLabel.tsx"
           },
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtHeaderLabel.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "M2BFYvan2hjN",
+          "name": "SidebarNavigationDropdown",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationDropdown.tsx",
+          "importSpec": {
+            "modulePath": "SidebarNavigationDropdown.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationDropdown.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZuuWfkNiYXry",
+          "name": "SidebarNavigationItem",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationItem.tsx",
+          "importSpec": {
+            "modulePath": "SidebarNavigationItem.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "4t2Qy5WUSJVp",
+          "name": "CtContentData",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCtContentData.tsx",
+          "importSpec": {
+            "modulePath": "CtContentData.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtContentData.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "zKVxLfUZw9WN",
+          "name": "Breadcrumb",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicBreadcrumb.tsx",
+          "importSpec": {
+            "modulePath": "Breadcrumb.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicBreadcrumb.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "p0mnkpzglymX",
+          "name": "BadgeCount",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeCount.tsx",
+          "importSpec": {
+            "modulePath": "BadgeCount.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeCount.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "vp-0ZJI-DQym",
+          "name": "SidebarToggleButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarToggleButton.tsx",
+          "importSpec": {
+            "modulePath": "SidebarToggleButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarToggleButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "LXPYsuIaJqY7",
+          "name": "BadgeLabel",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeLabel.tsx",
+          "importSpec": {
+            "modulePath": "BadgeLabel.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeLabel.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "HxIP9-DtSGaj",
+          "name": "Searchbox",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSearchbox.tsx",
+          "importSpec": {
+            "modulePath": "Searchbox.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSearchbox.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Dxo6omEgGGYV",
+          "name": "BadgeSidebar",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeSidebar.tsx",
+          "importSpec": {
+            "modulePath": "BadgeSidebar.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicBadgeSidebar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "HEiaqG6S4t6W",
+          "name": "SidebarNavigationSubitem",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationSubitem.tsx",
+          "importSpec": {
+            "modulePath": "SidebarNavigationSubitem.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationSubitem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "TAXiLlfQD5MN",
+          "name": "TabButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicTabButton.tsx",
+          "importSpec": {
+            "modulePath": "TabButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicTabButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "Ir4fGGB2J2Ay",
+          "name": "MessagesButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicMessagesButton.tsx",
+          "importSpec": {
+            "modulePath": "MessagesButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicMessagesButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "KnYNZm1t2IR5",
+          "name": "NotificationButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicNotificationButton.tsx",
+          "importSpec": {
+            "modulePath": "NotificationButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicNotificationButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "vc4QrCJM7nhW",
+          "name": "HomeButton",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicHomeButton.tsx",
+          "importSpec": {
+            "modulePath": "HomeButton.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicHomeButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "gWWU5Ob64_0l",
+          "name": "UserAvatar",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicUserAvatar.tsx",
+          "importSpec": {
+            "modulePath": "UserAvatar.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicUserAvatar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "-5yQM3hZscI3",
+          "name": "PageInfo",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicPageInfo.tsx",
+          "importSpec": {
+            "modulePath": "PageInfo.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicPageInfo.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "2l3jZIBKayAy",
+          "name": "CtTabs",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicCtTabs.tsx",
+          "importSpec": {
+            "modulePath": "CtTabs.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicCtTabs.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

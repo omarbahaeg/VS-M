@@ -59,7 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import TableSearch from "../../TableSearch"; // plasmic-import: v9TOdYeoUJJU/component
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
+import Searchbox from "../../Searchbox"; // plasmic-import: HxIP9-DtSGaj/component
 import CustomDropdown from "../../CustomDropdown"; // plasmic-import: oUw-Oq8BPl_P/component
 import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/component
 import ActionsList from "../../ActionsList"; // plasmic-import: VUxalQKdyCYj/component
@@ -69,7 +75,10 @@ import CtHeader from "../../CtHeader"; // plasmic-import: CjCWQ83VlxB3/component
 import CtCheckbox from "../../CtCheckbox"; // plasmic-import: h4AhLHpwZjUP/component
 import CtHeaderLabel from "../../CtHeaderLabel"; // plasmic-import: xSZETzH5yRT1/component
 import CtContent from "../../CtContent"; // plasmic-import: 30qwjyl-gzyD/component
+import CtContentData from "../../CtContentData"; // plasmic-import: 4t2Qy5WUSJVp/component
+import CtMoreButton from "../../CtMoreButton"; // plasmic-import: V-WhOu_9VTgo/component
 import CtNoData from "../../CtNoData"; // plasmic-import: iPx11GU5dJeG/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -78,7 +87,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicCustomTable.module.css"; // plasmic-import: SyYLCRWlXb0u/css
 
-import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
 import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
 import ColumnHeightSvgIcon from "./icons/PlasmicIcon__ColumnHeightSvg"; // plasmic-import: UR9SzrRcmRdF/icon
 
@@ -102,7 +110,7 @@ export const PlasmicCustomTable__ArgProps = new Array<ArgPropType>();
 export type PlasmicCustomTable__OverridesType = {
   table?: Flex__<"div">;
   tableColumnActions?: Flex__<"div">;
-  tableSearch?: Flex__<typeof TableSearch>;
+  searchbox?: Flex__<typeof Searchbox>;
   freeBox?: Flex__<"div">;
   exportButton?: Flex__<typeof CustomDropdown>;
   densityButton?: Flex__<typeof CustomDropdown>;
@@ -112,7 +120,12 @@ export type PlasmicCustomTable__OverridesType = {
   ctHeader?: Flex__<typeof CtHeader>;
   primaryCheckbox?: Flex__<typeof CtCheckbox>;
   ctHeaderLabel?: Flex__<typeof CtHeaderLabel>;
+  ctHeaderLabel2?: Flex__<typeof CtHeaderLabel>;
+  ctHeaderLabel3?: Flex__<typeof CtHeaderLabel>;
   ctContent?: Flex__<typeof CtContent>;
+  contentSection?: Flex__<"section">;
+  contentSection2?: Flex__<"section">;
+  contentSection3?: Flex__<"section">;
   secondaryCheckbox?: Flex__<typeof CtCheckbox>;
   ctNoData?: Flex__<typeof CtNoData>;
 };
@@ -162,14 +175,11 @@ function PlasmicCustomTable__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  let [$queries, setDollarQueries] = React.useState<
+    Record<string, ReturnType<typeof usePlasmicDataOp>>
+  >({});
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
-      {
-        path: "tableSearch.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
       {
         path: "variable",
         type: "private",
@@ -188,15 +198,21 @@ function PlasmicCustomTable__RenderFunc(props: {
         variableType: "boolean"
       },
       {
+        path: "primaryCheckbox.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
         path: "secondaryCheckbox[].isChecked",
         type: "private",
         variableType: "boolean"
       },
       {
-        path: "primaryCheckbox.isChecked",
+        path: "searchbox.value",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -204,9 +220,27 @@ function PlasmicCustomTable__RenderFunc(props: {
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
-    $queries: {},
+    $queries: $queries,
     $refs
   });
+
+  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
+    componentData: usePlasmicDataOp(() => {
+      return {
+        sourceId: "jy9oBFjmhhSMLYBVGZ4Xm2",
+        opId: "c0c3f78b-dfe5-4015-a5e3-04ffe1715358",
+        userArgs: {},
+        cacheKey: `plasmic.$.c0c3f78b-dfe5-4015-a5e3-04ffe1715358.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    })
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
+  }
 
   return (
     <Stack__
@@ -232,16 +266,16 @@ function PlasmicCustomTable__RenderFunc(props: {
         data-plasmic-override={overrides.tableColumnActions}
         className={classNames(projectcss.all, sty.tableColumnActions)}
       >
-        <TableSearch
-          data-plasmic-name={"tableSearch"}
-          data-plasmic-override={overrides.tableSearch}
-          className={classNames("__wab_instance", sty.tableSearch)}
-          onChange={(...eventArgs) => {
-            generateStateOnChangeProp($state, ["tableSearch", "value"])(
-              (e => e.target?.value).apply(null, eventArgs)
-            );
-          }}
-          value={generateStateValueProp($state, ["tableSearch", "value"]) ?? ""}
+        <Searchbox
+          data-plasmic-name={"searchbox"}
+          data-plasmic-override={overrides.searchbox}
+          className={classNames("__wab_instance", sty.searchbox)}
+          onValueChange={generateStateOnChangeProp($state, [
+            "searchbox",
+            "value"
+          ])}
+          showStartIcon={true}
+          value={generateStateValueProp($state, ["searchbox", "value"])}
         />
 
         <Stack__
@@ -475,12 +509,29 @@ function PlasmicCustomTable__RenderFunc(props: {
             data-plasmic-override={overrides.ctHeaderLabel}
             className={classNames("__wab_instance", sty.ctHeaderLabel)}
             sorting={true}
+          >
+            <Trans__>{"Id"}</Trans__>
+          </CtHeaderLabel>
+          <CtHeaderLabel
+            data-plasmic-name={"ctHeaderLabel2"}
+            data-plasmic-override={overrides.ctHeaderLabel2}
+            className={classNames("__wab_instance", sty.ctHeaderLabel2)}
+            sorting={true}
           />
+
+          <CtHeaderLabel
+            data-plasmic-name={"ctHeaderLabel3"}
+            data-plasmic-override={overrides.ctHeaderLabel3}
+            className={classNames("__wab_instance", sty.ctHeaderLabel3)}
+            info={true}
+          >
+            <Trans__>{"Email"}</Trans__>
+          </CtHeaderLabel>
         </CtHeader>
         {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
           (() => {
             try {
-              return [2, 3, 4, 5];
+              return $queries.componentData.data.response;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -498,10 +549,9 @@ function PlasmicCustomTable__RenderFunc(props: {
             <CtContent
               data-plasmic-name={"ctContent"}
               data-plasmic-override={overrides.ctContent}
-              className={classNames("__wab_instance", sty.ctContent, {
-                [sty.ctContentnoData]: hasVariant($state, "noData", "noData")
-              })}
-              contentCheckboxSection2={(() => {
+              className={classNames("__wab_instance", sty.ctContent)}
+              key={currentIndex}
+              secondaryCheckbox2={(() => {
                 const child$Props = {
                   "aria-label": "Secondary",
                   className: classNames(
@@ -554,22 +604,125 @@ function PlasmicCustomTable__RenderFunc(props: {
                   />
                 );
               })()}
-              isSorting={(() => {
-                try {
-                  return undefined;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
-              key={currentIndex}
-              primaryCheckboxIsChecked={$state.primaryCheckboxIsChecked}
-            />
+            >
+              <CtContentData
+                className={classNames(
+                  "__wab_instance",
+                  sty.ctContentData___84Ye
+                )}
+              >
+                <section
+                  data-plasmic-name={"contentSection"}
+                  data-plasmic-override={overrides.contentSection}
+                  className={classNames(projectcss.all, sty.contentSection)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xvtLh
+                    )}
+                  >
+                    <div
+                      className={projectcss.__wab_expr_html_text}
+                      dangerouslySetInnerHTML={{
+                        __html: (() => {
+                          try {
+                            return currentItem.id;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "None";
+                            }
+                            throw e;
+                          }
+                        })()
+                      }}
+                    />
+                  </div>
+                </section>
+              </CtContentData>
+              <CtContentData
+                className={classNames(
+                  "__wab_instance",
+                  sty.ctContentData__dKqD
+                )}
+              >
+                <section
+                  data-plasmic-name={"contentSection2"}
+                  data-plasmic-override={overrides.contentSection2}
+                  className={classNames(projectcss.all, sty.contentSection2)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__v6UpW
+                    )}
+                  >
+                    <div
+                      className={projectcss.__wab_expr_html_text}
+                      dangerouslySetInnerHTML={{
+                        __html: (() => {
+                          try {
+                            return currentItem["Display Name"];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "None";
+                            }
+                            throw e;
+                          }
+                        })()
+                      }}
+                    />
+                  </div>
+                </section>
+              </CtContentData>
+              <CtContentData
+                className={classNames(
+                  "__wab_instance",
+                  sty.ctContentData__cZoHr
+                )}
+              >
+                <section
+                  data-plasmic-name={"contentSection3"}
+                  data-plasmic-override={overrides.contentSection3}
+                  className={classNames(projectcss.all, sty.contentSection3)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___4G9Iw
+                    )}
+                  >
+                    <div
+                      className={projectcss.__wab_expr_html_text}
+                      dangerouslySetInnerHTML={{
+                        __html: (() => {
+                          try {
+                            return currentItem.Email;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "None";
+                            }
+                            throw e;
+                          }
+                        })()
+                      }}
+                    />
+                  </div>
+                </section>
+              </CtContentData>
+            </CtContent>
           );
         })}
         <CtNoData
@@ -586,7 +739,7 @@ const PlasmicDescendants = {
   table: [
     "table",
     "tableColumnActions",
-    "tableSearch",
+    "searchbox",
     "freeBox",
     "exportButton",
     "densityButton",
@@ -596,20 +749,25 @@ const PlasmicDescendants = {
     "ctHeader",
     "primaryCheckbox",
     "ctHeaderLabel",
+    "ctHeaderLabel2",
+    "ctHeaderLabel3",
     "ctContent",
+    "contentSection",
+    "contentSection2",
+    "contentSection3",
     "secondaryCheckbox",
     "ctNoData"
   ],
   tableColumnActions: [
     "tableColumnActions",
-    "tableSearch",
+    "searchbox",
     "freeBox",
     "exportButton",
     "densityButton",
     "settingsButton",
     "tableItems"
   ],
-  tableSearch: ["tableSearch"],
+  searchbox: ["searchbox"],
   freeBox: [
     "freeBox",
     "exportButton",
@@ -626,14 +784,36 @@ const PlasmicDescendants = {
     "ctHeader",
     "primaryCheckbox",
     "ctHeaderLabel",
+    "ctHeaderLabel2",
+    "ctHeaderLabel3",
     "ctContent",
+    "contentSection",
+    "contentSection2",
+    "contentSection3",
     "secondaryCheckbox",
     "ctNoData"
   ],
-  ctHeader: ["ctHeader", "primaryCheckbox", "ctHeaderLabel"],
+  ctHeader: [
+    "ctHeader",
+    "primaryCheckbox",
+    "ctHeaderLabel",
+    "ctHeaderLabel2",
+    "ctHeaderLabel3"
+  ],
   primaryCheckbox: ["primaryCheckbox"],
   ctHeaderLabel: ["ctHeaderLabel"],
-  ctContent: ["ctContent", "secondaryCheckbox"],
+  ctHeaderLabel2: ["ctHeaderLabel2"],
+  ctHeaderLabel3: ["ctHeaderLabel3"],
+  ctContent: [
+    "ctContent",
+    "contentSection",
+    "contentSection2",
+    "contentSection3",
+    "secondaryCheckbox"
+  ],
+  contentSection: ["contentSection"],
+  contentSection2: ["contentSection2"],
+  contentSection3: ["contentSection3"],
   secondaryCheckbox: ["secondaryCheckbox"],
   ctNoData: ["ctNoData"]
 } as const;
@@ -643,7 +823,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   table: "div";
   tableColumnActions: "div";
-  tableSearch: typeof TableSearch;
+  searchbox: typeof Searchbox;
   freeBox: "div";
   exportButton: typeof CustomDropdown;
   densityButton: typeof CustomDropdown;
@@ -653,7 +833,12 @@ type NodeDefaultElementType = {
   ctHeader: typeof CtHeader;
   primaryCheckbox: typeof CtCheckbox;
   ctHeaderLabel: typeof CtHeaderLabel;
+  ctHeaderLabel2: typeof CtHeaderLabel;
+  ctHeaderLabel3: typeof CtHeaderLabel;
   ctContent: typeof CtContent;
+  contentSection: "section";
+  contentSection2: "section";
+  contentSection3: "section";
   secondaryCheckbox: typeof CtCheckbox;
   ctNoData: typeof CtNoData;
 };
@@ -719,7 +904,7 @@ export const PlasmicCustomTable = Object.assign(
   {
     // Helper components rendering sub-elements
     tableColumnActions: makeNodeComponent("tableColumnActions"),
-    tableSearch: makeNodeComponent("tableSearch"),
+    searchbox: makeNodeComponent("searchbox"),
     freeBox: makeNodeComponent("freeBox"),
     exportButton: makeNodeComponent("exportButton"),
     densityButton: makeNodeComponent("densityButton"),
@@ -729,7 +914,12 @@ export const PlasmicCustomTable = Object.assign(
     ctHeader: makeNodeComponent("ctHeader"),
     primaryCheckbox: makeNodeComponent("primaryCheckbox"),
     ctHeaderLabel: makeNodeComponent("ctHeaderLabel"),
+    ctHeaderLabel2: makeNodeComponent("ctHeaderLabel2"),
+    ctHeaderLabel3: makeNodeComponent("ctHeaderLabel3"),
     ctContent: makeNodeComponent("ctContent"),
+    contentSection: makeNodeComponent("contentSection"),
+    contentSection2: makeNodeComponent("contentSection2"),
+    contentSection3: makeNodeComponent("contentSection3"),
     secondaryCheckbox: makeNodeComponent("secondaryCheckbox"),
     ctNoData: makeNodeComponent("ctNoData"),
 

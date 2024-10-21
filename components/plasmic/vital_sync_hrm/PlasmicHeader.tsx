@@ -59,7 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import SidebarToggleButton from "../../SidebarToggleButton"; // plasmic-import: vp-0ZJI-DQym/component
 import RightBarToggle from "../../RightBarToggle"; // plasmic-import: 7-guXMnuxTk_/component
+import Breadcrumb from "../../Breadcrumb"; // plasmic-import: zKVxLfUZw9WN/component
+import HomeButton from "../../HomeButton"; // plasmic-import: vc4QrCJM7nhW/component
+import MessagesButton from "../../MessagesButton"; // plasmic-import: Ir4fGGB2J2Ay/component
+import NotificationButton from "../../NotificationButton"; // plasmic-import: KnYNZm1t2IR5/component
+import UserAvatar from "../../UserAvatar"; // plasmic-import: gWWU5Ob64_0l/component
 
 import { useScreenVariants as useScreenVariantsujc2VYpomBng } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: UJC2VYpomBng/globalVariant
 
@@ -70,11 +76,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicHeader.module.css"; // plasmic-import: zd496FfthYEg/css
 
-import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: yj3hHsNYYAuP/icon
-import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: tfoFva40Lasy/icon
-import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: qYDC0LhkIc2_/icon
-import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: fWVG_utiKGQ1/icon
-
 createPlasmicElementProxy;
 
 export type PlasmicHeader__VariantMembers = {};
@@ -83,29 +84,43 @@ type VariantPropType = keyof PlasmicHeader__VariantsArgs;
 export const PlasmicHeader__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicHeader__ArgsType = {
-  user?: any;
+  rightBarToggle2?: React.ReactNode;
+  pageLink?: string;
+  openInNewTab?: Target;
+  userAvatar?: React.ReactNode;
+  notificationButton?: React.ReactNode;
+  messagesButton?: React.ReactNode;
+  homeButton?: React.ReactNode;
+  children?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicHeader__ArgsType;
-export const PlasmicHeader__ArgProps = new Array<ArgPropType>("user");
+export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
+  "rightBarToggle2",
+  "pageLink",
+  "openInNewTab",
+  "userAvatar",
+  "notificationButton",
+  "messagesButton",
+  "homeButton",
+  "children"
+);
 
 export type PlasmicHeader__OverridesType = {
   header?: Flex__<"div">;
-  rightBarToggle?: Flex__<typeof RightBarToggle>;
-  breadcrumb?: Flex__<"div">;
-  button?: Flex__<"div">;
-  text106?: Flex__<"div">;
-  text107?: Flex__<"div">;
-  text108?: Flex__<"div">;
-  text109?: Flex__<"div">;
-  button2?: Flex__<"div">;
-  text110?: Flex__<"div">;
-  text111?: Flex__<"div">;
-  freeBox?: Flex__<"div">;
-  userAvatar?: Flex__<typeof PlasmicImg__>;
+  actions?: Flex__<"section">;
+  breadcrumb?: Flex__<typeof Breadcrumb>;
+  alerts?: Flex__<"section">;
 };
 
 export interface DefaultHeaderProps {
-  user?: any;
+  rightBarToggle2?: React.ReactNode;
+  pageLink?: string;
+  openInNewTab?: Target;
+  userAvatar?: React.ReactNode;
+  notificationButton?: React.ReactNode;
+  messagesButton?: React.ReactNode;
+  homeButton?: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
@@ -131,7 +146,9 @@ function PlasmicHeader__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
+        {
+          pageLink: "https://vitalsynchealth.com/"
+        },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
         )
@@ -174,242 +191,127 @@ function PlasmicHeader__RenderFunc(props: {
     >
       <Stack__
         as={"section"}
+        data-plasmic-name={"actions"}
+        data-plasmic-override={overrides.actions}
         hasGap={true}
-        className={classNames(projectcss.all, sty.section__fSzN6)}
+        className={classNames(projectcss.all, sty.actions)}
       >
-        <Icon24Icon
-          className={classNames(projectcss.all, sty.svg__rN6Bm)}
-          role={"img"}
-        />
+        {renderPlasmicSlot({
+          defaultContents: (
+            <SidebarToggleButton
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarToggleButton__rBwFr
+              )}
+            />
+          ),
 
-        <RightBarToggle
-          data-plasmic-name={"rightBarToggle"}
-          data-plasmic-override={overrides.rightBarToggle}
-          className={classNames("__wab_instance", sty.rightBarToggle)}
-        />
+          value: args.children
+        })}
+        {(hasVariant(globalVariants, "screen", "tablet") ? false : true)
+          ? renderPlasmicSlot({
+              defaultContents: (
+                <RightBarToggle
+                  className={classNames(
+                    "__wab_instance",
+                    sty.rightBarToggle__cgx5
+                  )}
+                />
+              ),
 
-        <Stack__
-          as={"div"}
+              value: args.rightBarToggle2
+            })
+          : null}
+        <Breadcrumb
           data-plasmic-name={"breadcrumb"}
           data-plasmic-override={overrides.breadcrumb}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.breadcrumb)}
-        >
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"button"}
-            data-plasmic-override={overrides.button}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.button)}
-          >
-            <div
-              data-plasmic-name={"text106"}
-              data-plasmic-override={overrides.text106}
-              className={classNames(projectcss.all, sty.text106)}
-            >
-              <div
-                data-plasmic-name={"text107"}
-                data-plasmic-override={overrides.text107}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text107
-                )}
-              >
-                <Trans__>{"Dashboards"}</Trans__>
-              </div>
-            </div>
-          </Stack__>
-          <div
-            data-plasmic-name={"text108"}
-            data-plasmic-override={overrides.text108}
-            className={classNames(projectcss.all, sty.text108)}
-          >
-            <div
-              data-plasmic-name={"text109"}
-              data-plasmic-override={overrides.text109}
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text109
-              )}
-            >
-              <Trans__>{"/"}</Trans__>
-            </div>
-          </div>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"button2"}
-            data-plasmic-override={overrides.button2}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.button2)}
-          >
-            <div
-              data-plasmic-name={"text110"}
-              data-plasmic-override={overrides.text110}
-              className={classNames(projectcss.all, sty.text110)}
-            >
-              <div
-                data-plasmic-name={"text111"}
-                data-plasmic-override={overrides.text111}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text111
-                )}
-              >
-                <Trans__>{"Default"}</Trans__>
-              </div>
-            </div>
-          </Stack__>
-        </Stack__>
-      </Stack__>
-      <Stack__
-        as={"section"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.section___9DhMg)}
-      >
-        <Icon22Icon
-          className={classNames(projectcss.all, sty.svg__zg93Y)}
-          role={"img"}
-        />
-
-        <section className={classNames(projectcss.all, sty.section__inwFm)}>
-          <Icon21Icon
-            className={classNames(projectcss.all, sty.svg__vhrCq)}
-            role={"img"}
-          />
-
-          <section className={classNames(projectcss.all, sty.section__dubfV)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___8MT3L
-              )}
-            >
-              <Trans__>{"0"}</Trans__>
-            </div>
-          </section>
-        </section>
-        <section className={classNames(projectcss.all, sty.section___2Mag)}>
-          <Icon20Icon
-            className={classNames(projectcss.all, sty.svg__pKyTw)}
-            role={"img"}
-          />
-
-          <section className={classNames(projectcss.all, sty.section__rrn8)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xtv6X
-              )}
-            >
-              <Trans__>{"0"}</Trans__>
-            </div>
-          </section>
-        </section>
-      </Stack__>
-      <div
-        data-plasmic-name={"freeBox"}
-        data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
-      >
-        <PlasmicImg__
-          data-plasmic-name={"userAvatar"}
-          data-plasmic-override={overrides.userAvatar}
-          alt={""}
-          className={classNames(sty.userAvatar)}
-          displayHeight={"auto"}
-          displayMaxHeight={"none"}
-          displayMaxWidth={"100%"}
-          displayMinHeight={"0"}
-          displayMinWidth={"0"}
-          displayWidth={"auto"}
-          height={"40"}
-          loading={"lazy"}
-          src={(() => {
+          className={classNames("__wab_instance", sty.breadcrumb)}
+          noRoot={(() => {
             try {
-              return $props.user.data.response[6].avatar;
+              return (
+                window.location.pathname !== "/" &&
+                window.location.pathname.split("/").length === 3
+              );
             } catch (e) {
               if (
                 e instanceof TypeError ||
                 e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                return {
-                  src: "/plasmic/vital_sync_hrm/images/defaultUserImagePng.png",
-                  fullWidth: 1280,
-                  fullHeight: 1280,
-                  aspectRatio: undefined
-                };
+                return [];
               }
               throw e;
             }
           })()}
-          width={"40"}
         />
-      </div>
+      </Stack__>
+      <Stack__
+        as={"section"}
+        data-plasmic-name={"alerts"}
+        data-plasmic-override={overrides.alerts}
+        hasGap={true}
+        className={classNames(projectcss.all, sty.alerts)}
+      >
+        {renderPlasmicSlot({
+          defaultContents: (
+            <HomeButton
+              className={classNames("__wab_instance", sty.homeButton__qy4Qc)}
+            />
+          ),
+
+          value: args.homeButton
+        })}
+        {renderPlasmicSlot({
+          defaultContents: (
+            <MessagesButton
+              className={classNames(
+                "__wab_instance",
+                sty.messagesButton___8UM0
+              )}
+            />
+          ),
+
+          value: args.messagesButton
+        })}
+        {renderPlasmicSlot({
+          defaultContents: (
+            <NotificationButton
+              className={classNames(
+                "__wab_instance",
+                sty.notificationButton__kS6Mh
+              )}
+            />
+          ),
+
+          value: args.notificationButton
+        })}
+      </Stack__>
+      {renderPlasmicSlot({
+        defaultContents: (
+          <UserAvatar
+            className={classNames("__wab_instance", sty.userAvatar__nZysw)}
+          />
+        ),
+
+        value: args.userAvatar
+      })}
     </Stack__>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  header: [
-    "header",
-    "rightBarToggle",
-    "breadcrumb",
-    "button",
-    "text106",
-    "text107",
-    "text108",
-    "text109",
-    "button2",
-    "text110",
-    "text111",
-    "freeBox",
-    "userAvatar"
-  ],
-  rightBarToggle: ["rightBarToggle"],
-  breadcrumb: [
-    "breadcrumb",
-    "button",
-    "text106",
-    "text107",
-    "text108",
-    "text109",
-    "button2",
-    "text110",
-    "text111"
-  ],
-  button: ["button", "text106", "text107"],
-  text106: ["text106", "text107"],
-  text107: ["text107"],
-  text108: ["text108", "text109"],
-  text109: ["text109"],
-  button2: ["button2", "text110", "text111"],
-  text110: ["text110", "text111"],
-  text111: ["text111"],
-  freeBox: ["freeBox", "userAvatar"],
-  userAvatar: ["userAvatar"]
+  header: ["header", "actions", "breadcrumb", "alerts"],
+  actions: ["actions", "breadcrumb"],
+  breadcrumb: ["breadcrumb"],
+  alerts: ["alerts"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   header: "div";
-  rightBarToggle: typeof RightBarToggle;
-  breadcrumb: "div";
-  button: "div";
-  text106: "div";
-  text107: "div";
-  text108: "div";
-  text109: "div";
-  button2: "div";
-  text110: "div";
-  text111: "div";
-  freeBox: "div";
-  userAvatar: typeof PlasmicImg__;
+  actions: "section";
+  breadcrumb: typeof Breadcrumb;
+  alerts: "section";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -472,18 +374,9 @@ export const PlasmicHeader = Object.assign(
   makeNodeComponent("header"),
   {
     // Helper components rendering sub-elements
-    rightBarToggle: makeNodeComponent("rightBarToggle"),
+    actions: makeNodeComponent("actions"),
     breadcrumb: makeNodeComponent("breadcrumb"),
-    button: makeNodeComponent("button"),
-    text106: makeNodeComponent("text106"),
-    text107: makeNodeComponent("text107"),
-    text108: makeNodeComponent("text108"),
-    text109: makeNodeComponent("text109"),
-    button2: makeNodeComponent("button2"),
-    text110: makeNodeComponent("text110"),
-    text111: makeNodeComponent("text111"),
-    freeBox: makeNodeComponent("freeBox"),
-    userAvatar: makeNodeComponent("userAvatar"),
+    alerts: makeNodeComponent("alerts"),
 
     // Metadata about props expected for PlasmicHeader
     internalVariantProps: PlasmicHeader__VariantProps,

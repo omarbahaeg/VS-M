@@ -46,6 +46,24 @@
     flex-shrink: 0;
   }
 }
+.rightBarToggle:global(.__wab_instance) {
+  margin-right: 0;
+}
+.userAvatar__pHDg2:global(.__wab_instance) {
+  position: relative;
+}
+.notificationButton__hJnGa:global(.__wab_instance) {
+  position: relative;
+}
+.messagesButton__jbXg:global(.__wab_instance) {
+  position: relative;
+}
+.homeButton__iflt:global(.__wab_instance) {
+  position: relative;
+}
+.sidebarToggleButton:global(.__wab_instance) {
+  position: relative;
+}
 .content {
   position: relative;
   flex-direction: column;

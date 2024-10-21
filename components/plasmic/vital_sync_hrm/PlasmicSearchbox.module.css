@@ -1,0 +1,112 @@
+.searchbox {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 250px;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  background: none;
+  border-radius: 25px;
+  padding: 7px 13px;
+  border: 1px solid var(--token-OmDX5aGPAakM);
+}
+.searchboxcollapsed {
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  justify-self: flex-start;
+  display: inline-flex;
+}
+.searchboxcolor_dark {
+  border-color: var(--token-6D_pqZd49N3h);
+}
+.searchbox:hover {
+  border-color: var(--token-O4Zz0mqbaSbS);
+}
+.searchbox:focus-within {
+  border-color: var(--token-iNAvusl4ky87);
+}
+.searchbox___focusVisibleWithin {
+  border-color: var(--token-iNAvusl4ky87);
+}
+.searchboxcolor_dark:hover {
+  border-color: var(--token-OmDX5aGPAakM);
+}
+.searchboxcolor_dark:focus-within {
+  border-color: var(--token-db3btmdZTlPQ);
+}
+.searchbox___focusVisibleWithin_color_dark {
+  border-color: var(--token-db3btmdZTlPQ);
+}
+.startIconContainer {
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  left: auto;
+  top: auto;
+  margin-right: 8px;
+  display: none;
+}
+.startIconContainershowStartIcon {
+  display: flex;
+}
+.startIconContainercollapsed {
+  display: flex;
+  margin: 0px;
+}
+.svg__eUsqL {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+  color: var(--token-6D_pqZd49N3h);
+}
+.svgcolor_dark__eUsqLjd9Bf {
+  color: var(--token-db3btmdZTlPQ);
+}
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: #ffffff00;
+  font-size: 14px;
+  height: 100%;
+  margin-bottom: 1px;
+  min-width: 0;
+  min-height: 0;
+  border: 0px none #ffffff00;
+}
+.searchInputcollapsed {
+  display: none;
+}
+.searchInputcolor_dark {
+  color: var(--token-db3btmdZTlPQ);
+}
+.endIconContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  left: auto;
+  top: auto;
+  margin-left: 8px;
+  height: auto;
+  width: auto;
+}
+.endIconContainercollapsed {
+  display: none;
+}
+.svg___6X7B {
+  position: relative;
+  object-fit: cover;
+  cursor: pointer;
+  width: auto;
+  height: 14px;
+  color: var(--token-db3btmdZTlPQ);
+}

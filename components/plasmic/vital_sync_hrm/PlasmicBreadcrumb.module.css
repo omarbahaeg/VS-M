@@ -1,0 +1,154 @@
+.breadcrumb {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  border-radius: 8px;
+}
+.breadcrumb > :global(.__wab_flex-container) {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: calc(0px - 8px);
+  width: calc(100% + 8px);
+  margin-top: calc(0px - 8px);
+  height: calc(100% + 8px);
+}
+.breadcrumb > :global(.__wab_flex-container) > *,
+.breadcrumb > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.breadcrumb > :global(.__wab_flex-container) > picture > img,
+.breadcrumb
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 8px;
+  margin-top: 8px;
+}
+@media (min-width: 0px) and (max-width: 430px) {
+  .breadcrumb {
+    display: none;
+  }
+}
+.mainPage {
+  height: auto;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: auto;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.mainPage > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 4px);
+  width: calc(100% + 4px);
+}
+.mainPage > :global(.__wab_flex-container) > *,
+.mainPage > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.mainPage > :global(.__wab_flex-container) > picture > img,
+.mainPage
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 4px;
+}
+.mainValue {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 20px;
+  color: rgba(27, 27, 27, 0.4);
+  align-self: stretch;
+  position: relative;
+  user-select: none;
+  white-space: pre;
+}
+.mainValuenoRoot {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--token-pQARgiXwvs4L);
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 0em;
+  white-space: pre;
+  user-select: none;
+}
+.rootPage {
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 8px;
+}
+.rootPagenoRoot {
+  display: none;
+}
+.rootValue {
+  display: block;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 20px;
+  color: rgba(27, 27, 27, 0.2);
+  align-self: stretch;
+  position: relative;
+  white-space: pre;
+  user-select: none;
+}
+.subPage {
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.subPage > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 4px);
+  width: calc(100% + 4px);
+}
+.subPage > :global(.__wab_flex-container) > *,
+.subPage > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.subPage > :global(.__wab_flex-container) > picture > img,
+.subPage
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 4px;
+}
+.subPagenoRoot {
+  display: none;
+}
+.subPageValue {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 20px;
+  color: var(--token-pQARgiXwvs4L);
+  align-self: stretch;
+  position: relative;
+  user-select: none;
+  white-space: pre;
+}

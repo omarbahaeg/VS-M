@@ -25,6 +25,10 @@
   --plasmic-token-white-c: var(--token-OmDX5aGPAakM);
   --token-hnOulcbGGs5_: 1px;
   --plasmic-token-unnamed-style-token: var(--token-hnOulcbGGs5_);
+  --token-O4Zz0mqbaSbS: #006e2880;
+  --plasmic-token-main-hover: var(--token-O4Zz0mqbaSbS);
+  --token-HcdbHG3Uj2tS: #37373cb3;
+  --plasmic-token-black-d: var(--token-HcdbHG3Uj2tS);
 }
 
 .plasmic_tokens {
@@ -63,7 +67,6 @@
   --mixin-z_F_brEuwJWi_letter-spacing: -0.5px;
   --mixin-z_F_brEuwJWi_line-height: 1.1;
   --mixin-z_F_brEuwJWi_white-space: pre-wrap;
-  --mixin-eVHcrjnD2zC7_color: #0070f3;
   --mixin-eVHcrjnD2zC7_white-space: pre-wrap;
   --mixin-1r0BjxsuB8BS_color: #000000;
   --mixin-1r0BjxsuB8BS_font-size: 32px;
@@ -155,7 +158,7 @@
   --mixin-xgQJjPa34I59_font-weight: 600;
   --mixin-xgQJjPa34I59_line-height: 1.5;
   --mixin-xgQJjPa34I59_white-space: pre-wrap;
-  --mixin-Smhrjdi_gu1s_color: #3291ff;
+  --mixin-Smhrjdi_gu1s_color: var(--token-iNAvusl4ky87);
   --mixin-Smhrjdi_gu1s_white-space: pre-wrap;
   --mixin-QvMGG8owkqCt_white-space: pre-wrap;
   --mixin-lVicY5z0qDLr_white-space: pre-wrap;
@@ -518,7 +521,6 @@ a:where(.root_reset.a),
 :where(.root_reset .__wab_expr_html_text) a,
 :where(.root_reset_tags) a,
 a:where(.root_reset_tags) {
-  color: var(--mixin-eVHcrjnD2zC7_color);
 }
 
 :where(.root_reset) h3:where(.h3),

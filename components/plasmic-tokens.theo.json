@@ -31,6 +31,16 @@
       }
     },
     {
+      "name": "Black D",
+      "type": "color",
+      "value": "#37373CB3",
+      "category": "color",
+      "meta": {
+        "projectId": "qFgf32neWRE8gRveVBaatz",
+        "id": "HcdbHG3Uj2tS"
+      }
+    },
+    {
       "name": "Gray",
       "type": "color",
       "value": "#CECECE",
@@ -48,6 +58,16 @@
       "meta": {
         "projectId": "qFgf32neWRE8gRveVBaatz",
         "id": "iNAvusl4ky87"
+      }
+    },
+    {
+      "name": "Main Hover",
+      "type": "color",
+      "value": "#006E2880",
+      "category": "color",
+      "meta": {
+        "projectId": "qFgf32neWRE8gRveVBaatz",
+        "id": "O4Zz0mqbaSbS"
       }
     },
     {

@@ -1,18 +1,21 @@
 .subItem {
   background: none;
-  width: auto;
+  width: 100%;
   height: auto;
-  display: inline-flex;
+  display: flex;
   overflow: hidden;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
+  min-width: 0;
   border-radius: 25px;
-  padding: 0px 0px 0px 40px;
+  padding: 5px 10px;
 }
 .subItem > :global(.__wab_flex-container) {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  min-width: 0;
   margin-left: calc(0px - 12px);
   width: calc(100% + 12px);
   margin-top: calc(0px - 5px);
@@ -29,32 +32,15 @@
   margin-left: 12px;
   margin-top: 5px;
 }
-.link {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: flex-start;
-  justify-content: center;
-  height: auto;
-  max-width: 100%;
-  cursor: pointer;
-  width: 100%;
-  min-width: 0;
-  padding: 5px;
-}
-.slotTargetChildren {
+.slotTargetLabel {
   color: var(--token-db3btmdZTlPQ);
   font-size: 12px;
+  user-select: none;
+  white-space: pre;
 }
-.slotTargetChildrenpressed {
+.slotTargetLabelactive {
   color: var(--token-Ja7FXg_cLkuz);
 }
-.subItem:hover .slotTargetChildren {
+.subItem:hover .slotTargetLabel {
   color: var(--token-Ja7FXg_cLkuz);
-}
-.subItem:focus-within .slotTargetChildren {
-  color: var(--token-iNAvusl4ky87);
-}
-.subItem .slotTargetChildren___focusVisibleWithin {
-  color: var(--token-iNAvusl4ky87);
 }

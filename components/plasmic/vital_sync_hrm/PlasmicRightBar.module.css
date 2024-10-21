@@ -8,7 +8,7 @@
   box-shadow: none;
   position: relative;
   padding: 16px;
-  border: 1px solid #0000001a;
+  border-left: 1px solid #0000001a;
 }
 .rightBar > :global(.__wab_flex-container) {
   flex-direction: column;

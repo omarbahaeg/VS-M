@@ -1,0 +1,22 @@
+.badgeSidebar {
+  background: var(--token-Ja7FXg_cLkuz);
+  box-shadow: inset 0px 0px 0px 1px var(--token-db3btmdZTlPQ);
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border-radius: 20px;
+  padding: 2px 6px;
+}
+.slotTargetBadgeLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--token-agMVXjnCbzoc);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0px;
+}

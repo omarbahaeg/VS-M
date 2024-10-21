@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import CtCheckbox from "../../CtCheckbox"; // plasmic-import: h4AhLHpwZjUP/component
+import CtContentData from "../../CtContentData"; // plasmic-import: 4t2Qy5WUSJVp/component
 import CtMoreButton from "../../CtMoreButton"; // plasmic-import: V-WhOu_9VTgo/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -71,40 +72,36 @@ import sty from "./PlasmicCtContent.module.css"; // plasmic-import: 30qwjyl-gzyD
 
 createPlasmicElementProxy;
 
-export type PlasmicCtContent__VariantMembers = {
-  isSorting: "isSorting";
-};
-export type PlasmicCtContent__VariantsArgs = {
-  isSorting?: SingleBooleanChoiceArg<"isSorting">;
-};
+export type PlasmicCtContent__VariantMembers = {};
+export type PlasmicCtContent__VariantsArgs = {};
 type VariantPropType = keyof PlasmicCtContent__VariantsArgs;
-export const PlasmicCtContent__VariantProps = new Array<VariantPropType>(
-  "isSorting"
-);
+export const PlasmicCtContent__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicCtContent__ArgsType = {
   primaryCheckboxIsChecked?: boolean;
-  contentCheckboxSection2?: React.ReactNode;
+  children?: React.ReactNode;
+  secondaryCheckbox2?: React.ReactNode;
+  slot?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicCtContent__ArgsType;
 export const PlasmicCtContent__ArgProps = new Array<ArgPropType>(
   "primaryCheckboxIsChecked",
-  "contentCheckboxSection2"
+  "children",
+  "secondaryCheckbox2",
+  "slot"
 );
 
 export type PlasmicCtContent__OverridesType = {
   content?: Flex__<"section">;
   contentCheckboxSection?: Flex__<"section">;
-  contentSection?: Flex__<"section">;
-  text?: Flex__<"div">;
   contentMoreSection?: Flex__<"section">;
-  ctMoreButton?: Flex__<typeof CtMoreButton>;
 };
 
 export interface DefaultCtContentProps {
   primaryCheckboxIsChecked?: boolean;
-  contentCheckboxSection2?: React.ReactNode;
-  isSorting?: SingleBooleanChoiceArg<"isSorting">;
+  children?: React.ReactNode;
+  secondaryCheckbox2?: React.ReactNode;
+  slot?: React.ReactNode;
   className?: string;
 }
 
@@ -148,24 +145,6 @@ function PlasmicCtContent__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "isSorting",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isSorting
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
   return (
     <section
       data-plasmic-name={"content"}
@@ -192,78 +171,56 @@ function PlasmicCtContent__RenderFunc(props: {
           defaultContents: (
             <CtCheckbox
               aria-label={"Secondary"}
-              className={classNames("__wab_instance", sty.ctCheckbox___7GSuh)}
-              isChecked={(() => {
-                try {
-                  return $state.primaryCheckbox.isChecked;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "isChecked";
-                  }
-                  throw e;
-                }
-              })()}
+              className={classNames("__wab_instance", sty.ctCheckbox__nxQrM)}
             />
           ),
 
-          value: args.contentCheckboxSection2
+          value: args.secondaryCheckbox2
         })}
       </section>
-      <section
-        data-plasmic-name={"contentSection"}
-        data-plasmic-override={overrides.contentSection}
-        className={classNames(projectcss.all, sty.contentSection, {
-          [sty.contentSectionisSorting]: hasVariant(
-            $state,
-            "isSorting",
-            "isSorting"
-          )
-        })}
-      >
-        <div
-          data-plasmic-name={"text"}
-          data-plasmic-override={overrides.text}
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text
-          )}
-        >
-          <Trans__>{"None"}</Trans__>
-        </div>
-      </section>
+      {renderPlasmicSlot({
+        defaultContents: (
+          <CtContentData
+            className={classNames("__wab_instance", sty.ctContentData__rcmke)}
+          >
+            <section className={classNames(projectcss.all, sty.section__hk1K7)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__sa4Cd
+                )}
+              >
+                <Trans__>{"None"}</Trans__>
+              </div>
+            </section>
+          </CtContentData>
+        ),
+        value: args.children
+      })}
       <section
         data-plasmic-name={"contentMoreSection"}
         data-plasmic-override={overrides.contentMoreSection}
         className={classNames(projectcss.all, sty.contentMoreSection)}
       >
-        <CtMoreButton
-          data-plasmic-name={"ctMoreButton"}
-          data-plasmic-override={overrides.ctMoreButton}
-          className={classNames("__wab_instance", sty.ctMoreButton)}
-        />
+        {renderPlasmicSlot({
+          defaultContents: (
+            <CtMoreButton
+              className={classNames("__wab_instance", sty.ctMoreButton__dvQMt)}
+            />
+          ),
+
+          value: args.slot
+        })}
       </section>
     </section>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  content: [
-    "content",
-    "contentCheckboxSection",
-    "contentSection",
-    "text",
-    "contentMoreSection",
-    "ctMoreButton"
-  ],
+  content: ["content", "contentCheckboxSection", "contentMoreSection"],
   contentCheckboxSection: ["contentCheckboxSection"],
-  contentSection: ["contentSection", "text"],
-  text: ["text"],
-  contentMoreSection: ["contentMoreSection", "ctMoreButton"],
-  ctMoreButton: ["ctMoreButton"]
+  contentMoreSection: ["contentMoreSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -271,10 +228,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   content: "section";
   contentCheckboxSection: "section";
-  contentSection: "section";
-  text: "div";
   contentMoreSection: "section";
-  ctMoreButton: typeof CtMoreButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -338,10 +292,7 @@ export const PlasmicCtContent = Object.assign(
   {
     // Helper components rendering sub-elements
     contentCheckboxSection: makeNodeComponent("contentCheckboxSection"),
-    contentSection: makeNodeComponent("contentSection"),
-    text: makeNodeComponent("text"),
     contentMoreSection: makeNodeComponent("contentMoreSection"),
-    ctMoreButton: makeNodeComponent("ctMoreButton"),
 
     // Metadata about props expected for PlasmicCtContent
     internalVariantProps: PlasmicCtContent__VariantProps,

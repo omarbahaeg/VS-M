@@ -203,6 +203,7 @@ function PlasmicTooltip__RenderFunc(props: {
           </div>
         ) : null
       }
+      slideIn={true}
       themeResetClass={classNames(
         projectcss.root_reset,
         projectcss.plasmic_default_styles,

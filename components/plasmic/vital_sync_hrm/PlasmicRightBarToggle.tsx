@@ -83,9 +83,13 @@ export const PlasmicRightBarToggle__VariantProps = new Array<VariantPropType>(
   "collapsed"
 );
 
-export type PlasmicRightBarToggle__ArgsType = {};
+export type PlasmicRightBarToggle__ArgsType = {
+  onCollapsedChange?: (val: any) => void;
+};
 type ArgPropType = keyof PlasmicRightBarToggle__ArgsType;
-export const PlasmicRightBarToggle__ArgProps = new Array<ArgPropType>();
+export const PlasmicRightBarToggle__ArgProps = new Array<ArgPropType>(
+  "onCollapsedChange"
+);
 
 export type PlasmicRightBarToggle__OverridesType = {
   rightBarToggle?: Flex__<"div">;
@@ -94,6 +98,7 @@ export type PlasmicRightBarToggle__OverridesType = {
 };
 
 export interface DefaultRightBarToggleProps {
+  onCollapsedChange?: (val: any) => void;
   collapsed?: SingleBooleanChoiceArg<"collapsed">;
   className?: string;
 }
@@ -142,9 +147,11 @@ function PlasmicRightBarToggle__RenderFunc(props: {
     () => [
       {
         path: "collapsed",
-        type: "private",
+        type: "writable",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.collapsed
+
+        valueProp: "collapsed",
+        onChangeProp: "onCollapsedChange"
       }
     ],
     [$props, $ctx, $refs]

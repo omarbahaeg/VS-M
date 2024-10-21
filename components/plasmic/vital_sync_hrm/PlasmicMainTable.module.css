@@ -36,16 +36,9 @@
   max-width: 100%;
   min-width: 0;
 }
-.tableSearch:global(.__wab_instance) {
+.searchbox:global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
-}
-.svg__hSsz {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-  color: var(--token-6D_pqZd49N3h);
 }
 .freeBox__j4HIp {
   display: flex;

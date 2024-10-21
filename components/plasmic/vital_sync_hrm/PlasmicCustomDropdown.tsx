@@ -267,7 +267,7 @@ function PlasmicCustomDropdown__RenderFunc(props: {
             })()
       ) ? (
         <div
-          className={classNames(projectcss.all, sty.freeBox__w5LgS, {
+          className={classNames(projectcss.all, sty.freeBox__w5LgS, "dn-cc", {
             [sty.freeBoxdropdownAlignment_left__w5LgSba33L]: hasVariant(
               $state,
               "dropdownAlignment",

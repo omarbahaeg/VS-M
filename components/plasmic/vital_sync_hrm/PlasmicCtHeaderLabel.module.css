@@ -16,7 +16,7 @@
 .labelSection > :global(.__wab_flex-container) {
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   min-width: 0;
   margin-left: calc(0px - 5px);
   width: calc(100% + 5px);
@@ -31,14 +31,19 @@
   > img {
   margin-left: 5px;
 }
+.labelSectioninfo > :global(.__wab_flex-container) {
+  justify-content: flex-start;
+}
 .labelSectionsorting {
   cursor: pointer;
 }
 .labelSectionascending {
   background: var(--token-0eEXGjtMoqHb);
+  cursor: pointer;
 }
 .labelSectiondescending {
   background: var(--token-0eEXGjtMoqHb);
+  cursor: pointer;
 }
 .line {
   display: block;
@@ -50,12 +55,20 @@
   flex-shrink: 0;
   border-left: 1px solid var(--token-OmDX5aGPAakM);
 }
-.text {
-  width: 100%;
-  min-width: 0;
+.lineascending {
+  display: none;
+}
+.linedescending {
+  display: none;
+}
+.freeBox {
+  display: flex;
+  width: auto;
+}
+.slotTargetChildren {
+  white-space: pre;
 }
 .ctSortingSection {
-  display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
@@ -63,6 +76,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
+  display: none;
 }
 .ctSortingSectionsorting {
   display: flex;

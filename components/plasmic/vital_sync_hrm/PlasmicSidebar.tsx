@@ -61,10 +61,11 @@ import {
 
 import Logo from "../../Logo"; // plasmic-import: wVHeFJcN9sea/component
 import SidebarToggle from "../../SidebarToggle"; // plasmic-import: ApLXdRYqAk86/component
-import TextInput from "../../TextInput"; // plasmic-import: ca9OvSNLUBNw/component
-import SidebarNavigation from "../../SidebarNavigation"; // plasmic-import: M2BFYvan2hjN/component
-import SubItem from "../../SubItem"; // plasmic-import: Dbp6QW6F8Oz_/component
-import SidebarNavigationLabel from "../../SidebarNavigationLabel"; // plasmic-import: ZuuWfkNiYXry/component
+import Searchbox from "../../Searchbox"; // plasmic-import: HxIP9-DtSGaj/component
+import SidebarNavigationDropdown from "../../SidebarNavigationDropdown"; // plasmic-import: M2BFYvan2hjN/component
+import SidebarNavigationSubitem from "../../SidebarNavigationSubitem"; // plasmic-import: HEiaqG6S4t6W/component
+import SidebarNavigationItem from "../../SidebarNavigationItem"; // plasmic-import: ZuuWfkNiYXry/component
+import BadgeLabel from "../../BadgeLabel"; // plasmic-import: LXPYsuIaJqY7/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
 
 import { useScreenVariants as useScreenVariantsujc2VYpomBng } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: UJC2VYpomBng/globalVariant
@@ -79,11 +80,9 @@ import sty from "./PlasmicSidebar.module.css"; // plasmic-import: MaimrxZZ2uDo/c
 import VitalSyncBrandMarkFullColorSvgIcon from "./icons/PlasmicIcon__VitalSyncBrandMarkFullColorSvg"; // plasmic-import: 8hkhCDveuUnG/icon
 import VitalSyncWordMarkSvgIcon from "./icons/PlasmicIcon__VitalSyncWordMarkSvg"; // plasmic-import: 3l0KPQLrYeJ1/icon
 import MenuOpenSvgIcon from "./icons/PlasmicIcon__MenuOpenSvg"; // plasmic-import: 9ASPN5fdPsXG/icon
+import CloseSvgIcon from "./icons/PlasmicIcon__CloseSvg"; // plasmic-import: IGlXIVeYZFwp/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: t1CcSEYsK3cc/icon
-import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: s6V8mYogtXIl/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: -hHWm0myDKZV/icon
-import Icon5Icon from "./icons/PlasmicIcon__Icon5"; // plasmic-import: buLjXiTjgKgo/icon
 import UserPlusSvgIcon from "./icons/PlasmicIcon__UserPlusSvg"; // plasmic-import: pR-88zDwQEnc/icon
 import PencilBoltSvgIcon from "./icons/PlasmicIcon__PencilBoltSvg"; // plasmic-import: fxeDYeFnMhcL/icon
 import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: qYDC0LhkIc2_/icon
@@ -97,13 +96,16 @@ createPlasmicElementProxy;
 
 export type PlasmicSidebar__VariantMembers = {
   collapsed: "collapsed";
+  close: "close";
 };
 export type PlasmicSidebar__VariantsArgs = {
   collapsed?: SingleBooleanChoiceArg<"collapsed">;
+  close?: SingleBooleanChoiceArg<"close">;
 };
 type VariantPropType = keyof PlasmicSidebar__VariantsArgs;
 export const PlasmicSidebar__VariantProps = new Array<VariantPropType>(
-  "collapsed"
+  "collapsed",
+  "close"
 );
 
 export type PlasmicSidebar__ArgsType = {};
@@ -111,31 +113,36 @@ type ArgPropType = keyof PlasmicSidebar__ArgsType;
 export const PlasmicSidebar__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicSidebar__OverridesType = {
+  body?: Flex__<"div">;
   sidebar?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
   navigationHeader?: Flex__<"div">;
   logo?: Flex__<typeof Logo>;
   icons?: Flex__<"div">;
-  sidebarToggle?: Flex__<typeof SidebarToggle>;
-  textInput?: Flex__<typeof TextInput>;
+  closeButton?: Flex__<"div">;
+  searchbox?: Flex__<typeof Searchbox>;
   navigation?: Flex__<"div">;
-  badge17?: Flex__<"div">;
-  badgeNum?: Flex__<"div">;
-  subItem?: Flex__<typeof SubItem>;
+  sidebarNavigationSubitem?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem2?: Flex__<typeof SidebarNavigationSubitem>;
   navigation2?: Flex__<"div">;
   title?: Flex__<"div">;
   navigation3?: Flex__<"div">;
   title2?: Flex__<"div">;
-  badge18?: Flex__<"div">;
-  badgeNum2?: Flex__<"div">;
-  account?: Flex__<"div">;
+  sidebarNavigationSubitem3?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem4?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem5?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem6?: Flex__<typeof SidebarNavigationSubitem>;
+  accountSection?: Flex__<"div">;
   avatarLabel?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
   nameRolle?: Flex__<"div">;
+  badgeLabel?: Flex__<typeof BadgeLabel>;
   tooltip?: Flex__<typeof AntdTooltip>;
 };
 
 export interface DefaultSidebarProps {
   collapsed?: SingleBooleanChoiceArg<"collapsed">;
+  close?: SingleBooleanChoiceArg<"close">;
   className?: string;
 }
 
@@ -182,16 +189,22 @@ function PlasmicSidebar__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "textInput.value",
+        path: "collapsed",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.collapsed
+      },
+      {
+        path: "searchbox.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "collapsed",
+        path: "close",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.collapsed
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.close
       }
     ],
     [$props, $ctx, $refs]
@@ -203,18 +216,21 @@ function PlasmicSidebar__RenderFunc(props: {
     $refs
   });
 
+  const [isBodyHover, triggerBodyHoverProps] = useTrigger("useHover", {});
+  const triggers = {
+    hover_body: isBodyHover
+  };
+
   const globalVariants = ensureGlobalVariants({
     screen: useScreenVariantsujc2VYpomBng()
   });
 
   return (
-    <Stack__
-      as={"div"}
-      data-plasmic-name={"sidebar"}
-      data-plasmic-override={overrides.sidebar}
+    <div
+      data-plasmic-name={"body"}
+      data-plasmic-override={overrides.body}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -223,601 +239,296 @@ function PlasmicSidebar__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.sidebar,
-        { [sty.sidebarcollapsed]: hasVariant($state, "collapsed", "collapsed") }
+        sty.body,
+        {
+          [sty.bodyclose]: hasVariant($state, "close", "close"),
+          [sty.bodycollapsed]: hasVariant($state, "collapsed", "collapsed")
+        }
       )}
+      data-plasmic-trigger-props={[triggerBodyHoverProps]}
     >
       <Stack__
         as={"div"}
+        data-plasmic-name={"sidebar"}
+        data-plasmic-override={overrides.sidebar}
         hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__iBuk7)}
+        className={classNames(projectcss.all, sty.sidebar, {
+          [sty.sidebarclose]: hasVariant($state, "close", "close"),
+          [sty.sidebarcollapsed]: hasVariant($state, "collapsed", "collapsed")
+        })}
       >
         <Stack__
           as={"div"}
-          data-plasmic-name={"navigationHeader"}
-          data-plasmic-override={overrides.navigationHeader}
+          data-plasmic-name={"freeBox"}
+          data-plasmic-override={overrides.freeBox}
           hasGap={true}
-          className={classNames(projectcss.all, sty.navigationHeader, {
-            [sty.navigationHeadercollapsed]: hasVariant(
-              $state,
-              "collapsed",
-              "collapsed"
-            )
+          className={classNames(projectcss.all, sty.freeBox, {
+            [sty.freeBoxcollapsed]: hasVariant($state, "collapsed", "collapsed")
           })}
         >
-          <Logo
-            data-plasmic-name={"logo"}
-            data-plasmic-override={overrides.logo}
-            className={classNames("__wab_instance", sty.logo, {
-              [sty.logocollapsed]: hasVariant($state, "collapsed", "collapsed")
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"navigationHeader"}
+            data-plasmic-override={overrides.navigationHeader}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.navigationHeader, {
+              [sty.navigationHeadercollapsed]: hasVariant(
+                $state,
+                "collapsed",
+                "collapsed"
+              )
             })}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            wordmark={
-              <VitalSyncWordMarkSvgIcon
-                className={classNames(projectcss.all, sty.svg__l8W0S, {
-                  [sty.svgcollapsed__l8W0SiUi1M]: hasVariant(
-                    $state,
-                    "collapsed",
-                    "collapsed"
-                  )
-                })}
-                role={"img"}
-              />
-            }
-          />
-
-          <div
-            data-plasmic-name={"icons"}
-            data-plasmic-override={overrides.icons}
-            className={classNames(projectcss.all, sty.icons)}
-            onClick={async event => {
-              const $steps = {};
-
-              $steps["updateCollapsed"] = true
-                ? (() => {
-                    const actionArgs = {
-                      vgroup: "collapsed",
-                      operation: 2,
-                      value: "collapsed"
-                    };
-                    return (({ vgroup, value }) => {
-                      if (typeof value === "string") {
-                        value = [value];
-                      }
-
-                      const oldValue = $stateGet($state, vgroup);
-                      $stateSet($state, vgroup, !oldValue);
-                      return !oldValue;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateCollapsed"] != null &&
-                typeof $steps["updateCollapsed"] === "object" &&
-                typeof $steps["updateCollapsed"].then === "function"
-              ) {
-                $steps["updateCollapsed"] = await $steps["updateCollapsed"];
-              }
-            }}
           >
-            <SidebarToggle
-              data-plasmic-name={"sidebarToggle"}
-              data-plasmic-override={overrides.sidebarToggle}
-              className={classNames("__wab_instance", sty.sidebarToggle, {
-                [sty.sidebarTogglecollapsed]: hasVariant(
+            <Logo
+              data-plasmic-name={"logo"}
+              data-plasmic-override={overrides.logo}
+              className={classNames("__wab_instance", sty.logo, {
+                [sty.logocollapsed]: hasVariant(
                   $state,
                   "collapsed",
                   "collapsed"
                 )
               })}
-              collapsedIcon={
-                <MenuOpenSvgIcon
-                  className={classNames(projectcss.all, sty.svg__vl5Nj)}
-                  role={"img"}
-                />
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
               }
-              expandIcon={
-                <Icon25Icon
-                  className={classNames(projectcss.all, sty.svg__k3GGf)}
+              wordmark={
+                <VitalSyncWordMarkSvgIcon
+                  className={classNames(projectcss.all, sty.svg__l8W0S, {
+                    [sty.svgcollapsed__l8W0SiUi1M]: hasVariant(
+                      $state,
+                      "collapsed",
+                      "collapsed"
+                    )
+                  })}
                   role={"img"}
                 />
               }
             />
-          </div>
-        </Stack__>
-        <TextInput
-          data-plasmic-name={"textInput"}
-          data-plasmic-override={overrides.textInput}
-          autoFocus={false}
-          className={classNames("__wab_instance", sty.textInput, {
-            [sty.textInputcollapsed]: hasVariant(
-              $state,
-              "collapsed",
-              "collapsed"
-            )
-          })}
-          onChange={(...eventArgs) => {
-            generateStateOnChangeProp($state, ["textInput", "value"])(
-              (e => e.target?.value).apply(null, eventArgs)
-            );
-          }}
-          placeholder={$translator?.("Search") ?? "Search"}
-          showStartIcon={true}
-          value={generateStateValueProp($state, ["textInput", "value"]) ?? ""}
-        />
 
-        <div
-          data-plasmic-name={"navigation"}
-          data-plasmic-override={overrides.navigation}
-          className={classNames(projectcss.all, sty.navigation, {
-            [sty.navigationcollapsed]: hasVariant(
-              $state,
-              "collapsed",
-              "collapsed"
-            )
-          })}
-        >
-          <SidebarNavigation
-            badge={
-              <div
-                data-plasmic-name={"badge17"}
-                data-plasmic-override={overrides.badge17}
-                className={classNames(projectcss.all, sty.badge17)}
-              >
-                <div
-                  data-plasmic-name={"badgeNum"}
-                  data-plasmic-override={overrides.badgeNum}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.badgeNum
-                  )}
-                >
-                  <Trans__>{"0"}</Trans__>
-                </div>
-              </div>
-            }
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigation__sYjSx,
-              {
-                [sty.sidebarNavigationcollapsed__sYjSXiUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            isOpen={
-              hasVariant($state, "collapsed", "collapsed")
-                ? (() => {
-                    try {
-                      return !$state.collapsed;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()
-                : undefined
-            }
-            label={
-              <React.Fragment>
-                <SubItem
-                  data-plasmic-name={"subItem"}
-                  data-plasmic-override={overrides.subItem}
-                  className={classNames("__wab_instance", sty.subItem)}
-                  pageLink={`/`}
-                >
-                  <Trans__>{"Overview"}</Trans__>
-                </SubItem>
-                <SubItem
-                  className={classNames("__wab_instance", sty.subItem___4WyfX)}
-                  pageLink={`/dashboard/analytics`}
-                >
-                  <Trans__>{"Analytics"}</Trans__>
-                </SubItem>
-              </React.Fragment>
-            }
-            showBadge={
-              hasVariant($state, "collapsed", "collapsed")
-                ? undefined
-                : undefined
-            }
-            startIcon={
-              <Icon4Icon
-                className={classNames(projectcss.all, sty.svg__fMOt)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"Dashboard"}</Trans__>
-          </SidebarNavigation>
-        </div>
-        <Stack__
-          as={"div"}
-          data-plasmic-name={"navigation2"}
-          data-plasmic-override={overrides.navigation2}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.navigation2)}
-        >
-          <div
-            data-plasmic-name={"title"}
-            data-plasmic-override={overrides.title}
-            className={classNames(projectcss.all, sty.title, {
-              [sty.titlecollapsed]: hasVariant($state, "collapsed", "collapsed")
-            })}
-          >
             <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__dW9T,
-                {
-                  [sty.textcollapsed__dW9TiUi1M]: hasVariant(
-                    $state,
-                    "collapsed",
-                    "collapsed"
-                  )
+              data-plasmic-name={"icons"}
+              data-plasmic-override={overrides.icons}
+              className={classNames(projectcss.all, sty.icons)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateCollapsed"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "collapsed",
+                        operation: 2,
+                        value: "collapsed"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        const oldValue = $stateGet($state, vgroup);
+                        $stateSet($state, vgroup, !oldValue);
+                        return !oldValue;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateCollapsed"] != null &&
+                  typeof $steps["updateCollapsed"] === "object" &&
+                  typeof $steps["updateCollapsed"].then === "function"
+                ) {
+                  $steps["updateCollapsed"] = await $steps["updateCollapsed"];
                 }
-              )}
+              }}
             >
-              <Trans__>{"Tools"}</Trans__>
+              <SidebarToggle
+                className={classNames(
+                  "__wab_instance",
+                  sty.sidebarToggle___3YNj,
+                  {
+                    [sty.sidebarTogglecollapsed___3YNjIUi1M]: hasVariant(
+                      $state,
+                      "collapsed",
+                      "collapsed"
+                    )
+                  }
+                )}
+                collapsedIcon={
+                  <PlasmicIcon__
+                    PlasmicIconType={
+                      hasVariant(globalVariants, "screen", "tablet")
+                        ? CloseSvgIcon
+                        : MenuOpenSvgIcon
+                    }
+                    className={classNames(projectcss.all, sty.svg__vl5Nj)}
+                    role={"img"}
+                  />
+                }
+                expandIcon={
+                  <Icon25Icon
+                    className={classNames(projectcss.all, sty.svg__k3GGf)}
+                    role={"img"}
+                  />
+                }
+              />
             </div>
-          </div>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel__aI5E,
-              {
-                [sty.sidebarNavigationLabelcollapsed__aI5EiUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/requests`}
-            startIcon={
-              <UserPlusSvgIcon
-                className={classNames(projectcss.all, sty.svg__qgCov)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"Requests"}</Trans__>
-          </SidebarNavigationLabel>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel__wa8Df,
-              {
-                [sty.sidebarNavigationLabelcollapsed__wa8DFiUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/e-sign`}
-            startIcon={
-              <PencilBoltSvgIcon
-                className={classNames(projectcss.all, sty.svg___3DeUn)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"E-Signature"}</Trans__>
-          </SidebarNavigationLabel>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel__vD4X1,
-              {
-                [sty.sidebarNavigationLabelcollapsed__vD4X1IUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/messages`}
-            startIcon={
-              <Icon21Icon
-                className={classNames(projectcss.all, sty.svg__t0IYd)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"Messages"}</Trans__>
-          </SidebarNavigationLabel>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel__m1WaZ,
-              {
-                [sty.sidebarNavigationLabelcollapsed__m1WaZiUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/user-management`}
-            startIcon={
-              <UserEditSvgIcon
-                className={classNames(projectcss.all, sty.svg__pBgm)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"User Management"}</Trans__>
-          </SidebarNavigationLabel>
-        </Stack__>
-        <Stack__
-          as={"div"}
-          data-plasmic-name={"navigation3"}
-          data-plasmic-override={overrides.navigation3}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.navigation3)}
-        >
-          <div
-            data-plasmic-name={"title2"}
-            data-plasmic-override={overrides.title2}
-            className={classNames(projectcss.all, sty.title2, {
-              [sty.title2collapsed]: hasVariant(
+            {(hasVariant(globalVariants, "screen", "tablet") ? true : false) ? (
+              <div
+                data-plasmic-name={"closeButton"}
+                data-plasmic-override={overrides.closeButton}
+                className={classNames(projectcss.all, sty.closeButton)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateClose"] = true
+                    ? (() => {
+                        const actionArgs = { vgroup: "close", operation: 6 };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateClose"] != null &&
+                    typeof $steps["updateClose"] === "object" &&
+                    typeof $steps["updateClose"].then === "function"
+                  ) {
+                    $steps["updateClose"] = await $steps["updateClose"];
+                  }
+                }}
+              >
+                <SidebarToggle
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sidebarToggle__hLclq,
+                    {
+                      [sty.sidebarTogglecollapsed__hLclqiUi1M]: hasVariant(
+                        $state,
+                        "collapsed",
+                        "collapsed"
+                      )
+                    }
+                  )}
+                  collapsedIcon={
+                    <PlasmicIcon__
+                      PlasmicIconType={
+                        hasVariant(globalVariants, "screen", "tablet")
+                          ? CloseSvgIcon
+                          : MenuOpenSvgIcon
+                      }
+                      className={classNames(projectcss.all, sty.svg__qTa25)}
+                      role={"img"}
+                    />
+                  }
+                  expandIcon={
+                    <Icon25Icon
+                      className={classNames(projectcss.all, sty.svg__pheZz)}
+                      role={"img"}
+                    />
+                  }
+                />
+              </div>
+            ) : null}
+          </Stack__>
+          <Searchbox
+            data-plasmic-name={"searchbox"}
+            data-plasmic-override={overrides.searchbox}
+            className={classNames("__wab_instance", sty.searchbox, {
+              [sty.searchboxcollapsed]: hasVariant(
                 $state,
                 "collapsed",
                 "collapsed"
               )
             })}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__cpag3,
-                {
-                  [sty.textcollapsed__cpag3IUi1M]: hasVariant(
-                    $state,
-                    "collapsed",
-                    "collapsed"
-                  )
-                }
-              )}
-            >
-              <Trans__>{"Manage"}</Trans__>
-            </div>
-          </div>
-          <SidebarNavigation
-            badge={
-              <div
-                data-plasmic-name={"badge18"}
-                data-plasmic-override={overrides.badge18}
-                className={classNames(projectcss.all, sty.badge18)}
-              >
-                <div
-                  data-plasmic-name={"badgeNum2"}
-                  data-plasmic-override={overrides.badgeNum2}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.badgeNum2
-                  )}
-                >
-                  <Trans__>{"0"}</Trans__>
-                </div>
-              </div>
-            }
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigation___1BtS5,
-              {
-                [sty.sidebarNavigationcollapsed___1BtS5IUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
             collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            endIcon={
-              <Icon5Icon
-                className={classNames(projectcss.all, sty.svg__gRxhu, {
-                  [sty.svgcollapsed__gRxhuiUi1M]: hasVariant(
-                    $state,
-                    "collapsed",
-                    "collapsed"
-                  )
-                })}
-                role={"img"}
-              />
-            }
-            isOpen={
-              hasVariant($state, "collapsed", "collapsed")
-                ? (() => {
-                    try {
-                      return !$state.collapsed;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()
-                : (() => {
-                    try {
-                      return $props.subItem == false;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "isOpen";
-                      }
-                      throw e;
-                    }
-                  })()
-            }
-            label={
-              <React.Fragment>
-                <SubItem
-                  className={classNames("__wab_instance", sty.subItem___15JJc)}
-                  pageLink={`/records/forms`}
-                  pressed={undefined}
-                >
-                  <Trans__>{"Forms"}</Trans__>
-                </SubItem>
-                <SubItem
-                  className={classNames("__wab_instance", sty.subItem___63Cds)}
-                  pageLink={`/records/emails`}
-                >
-                  <Trans__>{"Emails"}</Trans__>
-                </SubItem>
-                <SubItem
-                  className={classNames("__wab_instance", sty.subItem__boQCp)}
-                  pageLink={`/records/submissions`}
-                >
-                  <Trans__>{"Submissions"}</Trans__>
-                </SubItem>
-                <SubItem
-                  className={classNames("__wab_instance", sty.subItem__jff95)}
-                  pageLink={`/records/automations`}
-                >
-                  <Trans__>{"Automations"}</Trans__>
-                </SubItem>
-              </React.Fragment>
-            }
-            showBadge={
-              hasVariant($state, "collapsed", "collapsed")
+              hasVariant($state, "collapsed", "collapsed") &&
+              triggers.hover_body
                 ? undefined
+                : hasVariant($state, "collapsed", "collapsed")
+                ? true
                 : undefined
             }
-            startIcon={
-              <PointerCodeSvgIcon
-                className={classNames(projectcss.all, sty.svg__cfeC8)}
-                role={"img"}
-              />
-            }
-            subItem={false}
-          >
-            <Trans__>{"Records"}</Trans__>
-          </SidebarNavigation>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel___2Kt5V,
-              {
-                [sty.sidebarNavigationLabelcollapsed___2Kt5ViUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/settings`}
-            startIcon={
-              <SettingsSvgIcon
-                className={classNames(projectcss.all, sty.svg__sqBq4)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"Settings"}</Trans__>
-          </SidebarNavigationLabel>
-          <SidebarNavigationLabel
-            className={classNames(
-              "__wab_instance",
-              sty.sidebarNavigationLabel__u9Bcy,
-              {
-                [sty.sidebarNavigationLabelcollapsed__u9BcyiUi1M]: hasVariant(
-                  $state,
-                  "collapsed",
-                  "collapsed"
-                )
-              }
-            )}
-            collapsed={
-              hasVariant($state, "collapsed", "collapsed") ? true : undefined
-            }
-            pageLink={`/backups`}
-            startIcon={
-              <CloudPlusSvgIcon
-                className={classNames(projectcss.all, sty.svg__dlWn)}
-                role={"img"}
-              />
-            }
-          >
-            <Trans__>{"Backups"}</Trans__>
-          </SidebarNavigationLabel>
-        </Stack__>
-      </Stack__>
-      <Stack__
-        as={"div"}
-        data-plasmic-name={"account"}
-        data-plasmic-override={overrides.account}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.account, {
-          [sty.accountcollapsed]: hasVariant($state, "collapsed", "collapsed")
-        })}
-      >
-        <Stack__
-          as={"div"}
-          data-plasmic-name={"avatarLabel"}
-          data-plasmic-override={overrides.avatarLabel}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.avatarLabel)}
-        >
-          <PlasmicImg__
-            data-plasmic-name={"img"}
-            data-plasmic-override={overrides.img}
-            alt={""}
-            className={classNames(sty.img)}
-            displayHeight={"40px"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"100%"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"40px"}
-            loading={"lazy"}
+            color={"dark"}
+            onValueChange={generateStateOnChangeProp($state, [
+              "searchbox",
+              "value"
+            ])}
+            showStartIcon={true}
+            value={generateStateValueProp($state, ["searchbox", "value"])}
           />
 
+          <div
+            data-plasmic-name={"navigation"}
+            data-plasmic-override={overrides.navigation}
+            className={classNames(projectcss.all, sty.navigation, {
+              [sty.navigationcollapsed]: hasVariant(
+                $state,
+                "collapsed",
+                "collapsed"
+              )
+            })}
+          >
+            <SidebarNavigationDropdown
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationDropdown__fum8J,
+                {
+                  [sty.sidebarNavigationDropdowncollapsed__fum8JiUi1M]:
+                    hasVariant($state, "collapsed", "collapsed")
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              label={<Trans__>{"Dashboard"}</Trans__>}
+              subItems={
+                <React.Fragment>
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem
+                    )}
+                    label={<Trans__>{"Overview"}</Trans__>}
+                    pageLink={`/`}
+                  />
+
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem2"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem2}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem2
+                    )}
+                    label={<Trans__>{"Analytics"}</Trans__>}
+                    pageLink={`/dashboard/analytics`}
+                  />
+                </React.Fragment>
+              }
+            />
+          </div>
           <Stack__
             as={"div"}
-            data-plasmic-name={"nameRolle"}
-            data-plasmic-override={overrides.nameRolle}
+            data-plasmic-name={"navigation2"}
+            data-plasmic-override={overrides.navigation2}
             hasGap={true}
-            className={classNames(projectcss.all, sty.nameRolle, {
-              [sty.nameRollecollapsed]: hasVariant(
+            className={classNames(projectcss.all, sty.navigation2, {
+              [sty.navigation2collapsed]: hasVariant(
                 $state,
                 "collapsed",
                 "collapsed"
@@ -825,125 +536,573 @@ function PlasmicSidebar__RenderFunc(props: {
             })}
           >
             <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__atUgn,
-                {
-                  [sty.textcollapsed__atUgNiUi1M]: hasVariant(
-                    $state,
-                    "collapsed",
-                    "collapsed"
-                  )
-                }
-              )}
+              data-plasmic-name={"title"}
+              data-plasmic-override={overrides.title}
+              className={classNames(projectcss.all, sty.title, {
+                [sty.titlecollapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
             >
-              <Trans__>{"Jhone Smith"}</Trans__>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__xkK2)}>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__vRr3V
+                  sty.text__dW9T,
+                  {
+                    [sty.textcollapsed__dW9TiUi1M]: hasVariant(
+                      $state,
+                      "collapsed",
+                      "collapsed"
+                    )
+                  }
                 )}
               >
-                <Trans__>{"Admin"}</Trans__>
+                <Trans__>{"Tools"}</Trans__>
               </div>
             </div>
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem__aI5E,
+                {
+                  [sty.sidebarNavigationItemcollapsed__aI5EiUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <UserPlusSvgIcon
+                  className={classNames(projectcss.all, sty.svg__tEg7K)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"Requests"}</Trans__>}
+              pageLink={`/requests`}
+            />
+
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem__wa8Df,
+                {
+                  [sty.sidebarNavigationItemcollapsed__wa8DFiUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <PencilBoltSvgIcon
+                  className={classNames(projectcss.all, sty.svg__rnmwa)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"E-Signature"}</Trans__>}
+              pageLink={`/e-sign`}
+            />
+
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem__vD4X1,
+                {
+                  [sty.sidebarNavigationItemcollapsed__vD4X1IUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <Icon21Icon
+                  className={classNames(projectcss.all, sty.svg__npPHs)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"Messages"}</Trans__>}
+              pageLink={`/messages`}
+            />
+
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem__m1WaZ,
+                {
+                  [sty.sidebarNavigationItemcollapsed__m1WaZiUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <UserEditSvgIcon
+                  className={classNames(projectcss.all, sty.svg__ht617)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"User Management"}</Trans__>}
+              pageLink={`/user-management`}
+            />
           </Stack__>
-        </Stack__>
-        <AntdTooltip
-          data-plasmic-name={"tooltip"}
-          data-plasmic-override={overrides.tooltip}
-          className={classNames("__wab_instance", sty.tooltip)}
-          titleText={"Open Profile"}
-        >
-          <Icon17Icon
-            className={classNames(projectcss.all, sty.svg__c8Wep, {
-              [sty.svgcollapsed__c8WepiUi1M]: hasVariant(
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"navigation3"}
+            data-plasmic-override={overrides.navigation3}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.navigation3, {
+              [sty.navigation3collapsed]: hasVariant(
                 $state,
                 "collapsed",
                 "collapsed"
               )
             })}
-            role={"img"}
-          />
-        </AntdTooltip>
+          >
+            <div
+              data-plasmic-name={"title2"}
+              data-plasmic-override={overrides.title2}
+              className={classNames(projectcss.all, sty.title2, {
+                [sty.title2collapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__cpag3,
+                  {
+                    [sty.textcollapsed__cpag3IUi1M]: hasVariant(
+                      $state,
+                      "collapsed",
+                      "collapsed"
+                    )
+                  }
+                )}
+              >
+                <Trans__>{"Manage"}</Trans__>
+              </div>
+            </div>
+            <SidebarNavigationDropdown
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationDropdown___6NnS,
+                {
+                  [sty.sidebarNavigationDropdowncollapsed___6NnSiUi1M]:
+                    hasVariant($state, "collapsed", "collapsed")
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <PointerCodeSvgIcon
+                  className={classNames(projectcss.all, sty.svg___8CrqZ)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"Records"}</Trans__>}
+              subItems={
+                <React.Fragment>
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem3"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem3}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem3
+                    )}
+                    label={<Trans__>{"Forms"}</Trans__>}
+                    pageLink={`/records/forms`}
+                  />
+
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem4"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem4}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem4
+                    )}
+                    label={<Trans__>{"Emails"}</Trans__>}
+                    pageLink={`/records/emails`}
+                  />
+
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem5"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem5}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem5
+                    )}
+                    label={<Trans__>{"Submissions"}</Trans__>}
+                    pageLink={`/records/submissions`}
+                  />
+
+                  <SidebarNavigationSubitem
+                    data-plasmic-name={"sidebarNavigationSubitem6"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem6}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sidebarNavigationSubitem6
+                    )}
+                    label={<Trans__>{"Automations"}</Trans__>}
+                    pageLink={`/records/automations`}
+                  />
+                </React.Fragment>
+              }
+            />
+
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem___2Kt5V,
+                {
+                  [sty.sidebarNavigationItemcollapsed___2Kt5ViUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <SettingsSvgIcon
+                  className={classNames(projectcss.all, sty.svg__eTkW0)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"Settings"}</Trans__>}
+              pageLink={`/settings`}
+            />
+
+            <SidebarNavigationItem
+              className={classNames(
+                "__wab_instance",
+                sty.sidebarNavigationItem__u9Bcy,
+                {
+                  [sty.sidebarNavigationItemcollapsed__u9BcyiUi1M]: hasVariant(
+                    $state,
+                    "collapsed",
+                    "collapsed"
+                  )
+                }
+              )}
+              collapsed={
+                hasVariant($state, "collapsed", "collapsed") &&
+                triggers.hover_body
+                  ? undefined
+                  : hasVariant($state, "collapsed", "collapsed")
+                  ? true
+                  : undefined
+              }
+              icon={
+                <CloudPlusSvgIcon
+                  className={classNames(projectcss.all, sty.svg__wsyMd)}
+                  role={"img"}
+                />
+              }
+              label={<Trans__>{"Backups"}</Trans__>}
+              pageLink={`/backups`}
+            />
+          </Stack__>
+        </Stack__>
+        <Stack__
+          as={"div"}
+          data-plasmic-name={"accountSection"}
+          data-plasmic-override={overrides.accountSection}
+          hasGap={true}
+          className={classNames(projectcss.all, sty.accountSection, {
+            [sty.accountSectioncollapsed]: hasVariant(
+              $state,
+              "collapsed",
+              "collapsed"
+            )
+          })}
+        >
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"avatarLabel"}
+            data-plasmic-override={overrides.avatarLabel}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.avatarLabel)}
+          >
+            <PlasmicImg__
+              data-plasmic-name={"img"}
+              data-plasmic-override={overrides.img}
+              alt={""}
+              className={classNames(sty.img, {
+                [sty.imgcollapsed]: hasVariant($state, "collapsed", "collapsed")
+              })}
+              displayHeight={"40px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"40px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/vital_sync_hrm/images/defaultUserImagePng.png",
+                fullWidth: 1280,
+                fullHeight: 1280,
+                aspectRatio: undefined
+              }}
+            />
+
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"nameRolle"}
+              data-plasmic-override={overrides.nameRolle}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.nameRolle, {
+                [sty.nameRollecollapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__atUgn,
+                  {
+                    [sty.textcollapsed__atUgNiUi1M]: hasVariant(
+                      $state,
+                      "collapsed",
+                      "collapsed"
+                    )
+                  }
+                )}
+              >
+                <Trans__>{"Jhone Smith"}</Trans__>
+              </div>
+              <BadgeLabel
+                data-plasmic-name={"badgeLabel"}
+                data-plasmic-override={overrides.badgeLabel}
+                className={classNames("__wab_instance", sty.badgeLabel)}
+              >
+                <Trans__>{"Admin"}</Trans__>
+              </BadgeLabel>
+            </Stack__>
+          </Stack__>
+          <AntdTooltip
+            data-plasmic-name={"tooltip"}
+            data-plasmic-override={overrides.tooltip}
+            className={classNames("__wab_instance", sty.tooltip)}
+            titleText={"Open Profile"}
+          >
+            <Icon17Icon
+              className={classNames(projectcss.all, sty.svg__c8Wep, {
+                [sty.svgcollapsed__c8WepiUi1M]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
+              role={"img"}
+            />
+          </AntdTooltip>
+        </Stack__>
       </Stack__>
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  sidebar: [
+  body: [
+    "body",
     "sidebar",
+    "freeBox",
     "navigationHeader",
     "logo",
     "icons",
-    "sidebarToggle",
-    "textInput",
+    "closeButton",
+    "searchbox",
     "navigation",
-    "badge17",
-    "badgeNum",
-    "subItem",
+    "sidebarNavigationSubitem",
+    "sidebarNavigationSubitem2",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "badge18",
-    "badgeNum2",
-    "account",
+    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem4",
+    "sidebarNavigationSubitem5",
+    "sidebarNavigationSubitem6",
+    "accountSection",
     "avatarLabel",
     "img",
     "nameRolle",
+    "badgeLabel",
     "tooltip"
   ],
-  navigationHeader: ["navigationHeader", "logo", "icons", "sidebarToggle"],
+  sidebar: [
+    "sidebar",
+    "freeBox",
+    "navigationHeader",
+    "logo",
+    "icons",
+    "closeButton",
+    "searchbox",
+    "navigation",
+    "sidebarNavigationSubitem",
+    "sidebarNavigationSubitem2",
+    "navigation2",
+    "title",
+    "navigation3",
+    "title2",
+    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem4",
+    "sidebarNavigationSubitem5",
+    "sidebarNavigationSubitem6",
+    "accountSection",
+    "avatarLabel",
+    "img",
+    "nameRolle",
+    "badgeLabel",
+    "tooltip"
+  ],
+  freeBox: [
+    "freeBox",
+    "navigationHeader",
+    "logo",
+    "icons",
+    "closeButton",
+    "searchbox",
+    "navigation",
+    "sidebarNavigationSubitem",
+    "sidebarNavigationSubitem2",
+    "navigation2",
+    "title",
+    "navigation3",
+    "title2",
+    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem4",
+    "sidebarNavigationSubitem5",
+    "sidebarNavigationSubitem6"
+  ],
+  navigationHeader: ["navigationHeader", "logo", "icons", "closeButton"],
   logo: ["logo"],
-  icons: ["icons", "sidebarToggle"],
-  sidebarToggle: ["sidebarToggle"],
-  textInput: ["textInput"],
-  navigation: ["navigation", "badge17", "badgeNum", "subItem"],
-  badge17: ["badge17", "badgeNum"],
-  badgeNum: ["badgeNum"],
-  subItem: ["subItem"],
+  icons: ["icons"],
+  closeButton: ["closeButton"],
+  searchbox: ["searchbox"],
+  navigation: [
+    "navigation",
+    "sidebarNavigationSubitem",
+    "sidebarNavigationSubitem2"
+  ],
+  sidebarNavigationSubitem: ["sidebarNavigationSubitem"],
+  sidebarNavigationSubitem2: ["sidebarNavigationSubitem2"],
   navigation2: ["navigation2", "title"],
   title: ["title"],
-  navigation3: ["navigation3", "title2", "badge18", "badgeNum2"],
+  navigation3: [
+    "navigation3",
+    "title2",
+    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem4",
+    "sidebarNavigationSubitem5",
+    "sidebarNavigationSubitem6"
+  ],
   title2: ["title2"],
-  badge18: ["badge18", "badgeNum2"],
-  badgeNum2: ["badgeNum2"],
-  account: ["account", "avatarLabel", "img", "nameRolle", "tooltip"],
-  avatarLabel: ["avatarLabel", "img", "nameRolle"],
+  sidebarNavigationSubitem3: ["sidebarNavigationSubitem3"],
+  sidebarNavigationSubitem4: ["sidebarNavigationSubitem4"],
+  sidebarNavigationSubitem5: ["sidebarNavigationSubitem5"],
+  sidebarNavigationSubitem6: ["sidebarNavigationSubitem6"],
+  accountSection: [
+    "accountSection",
+    "avatarLabel",
+    "img",
+    "nameRolle",
+    "badgeLabel",
+    "tooltip"
+  ],
+  avatarLabel: ["avatarLabel", "img", "nameRolle", "badgeLabel"],
   img: ["img"],
-  nameRolle: ["nameRolle"],
+  nameRolle: ["nameRolle", "badgeLabel"],
+  badgeLabel: ["badgeLabel"],
   tooltip: ["tooltip"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
+  body: "div";
   sidebar: "div";
+  freeBox: "div";
   navigationHeader: "div";
   logo: typeof Logo;
   icons: "div";
-  sidebarToggle: typeof SidebarToggle;
-  textInput: typeof TextInput;
+  closeButton: "div";
+  searchbox: typeof Searchbox;
   navigation: "div";
-  badge17: "div";
-  badgeNum: "div";
-  subItem: typeof SubItem;
+  sidebarNavigationSubitem: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem2: typeof SidebarNavigationSubitem;
   navigation2: "div";
   title: "div";
   navigation3: "div";
   title2: "div";
-  badge18: "div";
-  badgeNum2: "div";
-  account: "div";
+  sidebarNavigationSubitem3: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem4: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem5: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem6: typeof SidebarNavigationSubitem;
+  accountSection: "div";
   avatarLabel: "div";
   img: typeof PlasmicImg__;
   nameRolle: "div";
+  badgeLabel: typeof BadgeLabel;
   tooltip: typeof AntdTooltip;
 };
 
@@ -994,7 +1153,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "sidebar") {
+  if (nodeName === "body") {
     func.displayName = "PlasmicSidebar";
   } else {
     func.displayName = `PlasmicSidebar.${nodeName}`;
@@ -1004,28 +1163,32 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicSidebar = Object.assign(
   // Top-level PlasmicSidebar renders the root element
-  makeNodeComponent("sidebar"),
+  makeNodeComponent("body"),
   {
     // Helper components rendering sub-elements
+    sidebar: makeNodeComponent("sidebar"),
+    freeBox: makeNodeComponent("freeBox"),
     navigationHeader: makeNodeComponent("navigationHeader"),
     logo: makeNodeComponent("logo"),
     icons: makeNodeComponent("icons"),
-    sidebarToggle: makeNodeComponent("sidebarToggle"),
-    textInput: makeNodeComponent("textInput"),
+    closeButton: makeNodeComponent("closeButton"),
+    searchbox: makeNodeComponent("searchbox"),
     navigation: makeNodeComponent("navigation"),
-    badge17: makeNodeComponent("badge17"),
-    badgeNum: makeNodeComponent("badgeNum"),
-    subItem: makeNodeComponent("subItem"),
+    sidebarNavigationSubitem: makeNodeComponent("sidebarNavigationSubitem"),
+    sidebarNavigationSubitem2: makeNodeComponent("sidebarNavigationSubitem2"),
     navigation2: makeNodeComponent("navigation2"),
     title: makeNodeComponent("title"),
     navigation3: makeNodeComponent("navigation3"),
     title2: makeNodeComponent("title2"),
-    badge18: makeNodeComponent("badge18"),
-    badgeNum2: makeNodeComponent("badgeNum2"),
-    account: makeNodeComponent("account"),
+    sidebarNavigationSubitem3: makeNodeComponent("sidebarNavigationSubitem3"),
+    sidebarNavigationSubitem4: makeNodeComponent("sidebarNavigationSubitem4"),
+    sidebarNavigationSubitem5: makeNodeComponent("sidebarNavigationSubitem5"),
+    sidebarNavigationSubitem6: makeNodeComponent("sidebarNavigationSubitem6"),
+    accountSection: makeNodeComponent("accountSection"),
     avatarLabel: makeNodeComponent("avatarLabel"),
     img: makeNodeComponent("img"),
     nameRolle: makeNodeComponent("nameRolle"),
+    badgeLabel: makeNodeComponent("badgeLabel"),
     tooltip: makeNodeComponent("tooltip"),
 
     // Metadata about props expected for PlasmicSidebar

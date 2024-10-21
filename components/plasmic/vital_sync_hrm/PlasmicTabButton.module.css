@@ -1,0 +1,164 @@
+.root {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  background: none;
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.1s;
+  -webkit-transition-property: background;
+  -webkit-transition-duration: 0.1s;
+  border-radius: 6px;
+  padding: 12px 20px;
+  border-width: 0px;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 8px);
+  width: calc(100% + 8px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-left: 8px;
+}
+.rootshowStartIcon {
+  padding-left: 16px;
+}
+.rootshowEndIcon {
+  padding-right: 16px;
+}
+.rootisDisabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.rootshape_rounded {
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 100px;
+  border-radius: 999px;
+}
+.rootshape_round {
+  border-radius: 50%;
+  padding: 12px;
+}
+.rootshape_sharp {
+  border-radius: 0px;
+}
+.rootsize_compact {
+  padding: 6px 8px;
+}
+.rootsize_minimal {
+  padding: 0px;
+}
+.rootshape_rounded_showStartIcon {
+  padding-left: 16px;
+}
+.rootshowEndIcon_shape_rounded {
+  padding-right: 16px;
+}
+.rootshape_round_size_compact {
+  border-radius: 20px;
+  padding: 6px;
+}
+.root___focusVisibleWithin {
+  box-shadow: none;
+}
+.root:focus-within {
+  box-shadow: none;
+}
+.root:hover {
+  background: none;
+}
+.root:active {
+  background: none;
+}
+.startIconContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.startIconContainershowStartIcon {
+  display: flex;
+}
+.slotTargetStartIcon {
+  color: #ededec;
+}
+.svg___66B {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.contentContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+.contentContainer > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-left: calc(0px - 5px);
+  width: calc(100% + 5px);
+}
+.contentContainer > :global(.__wab_flex-container) > *,
+.contentContainer > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.contentContainer > :global(.__wab_flex-container) > picture > img,
+.contentContainer
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 5px;
+}
+.slotTargetLabel {
+  color: var(--token-HcdbHG3Uj2tS);
+  font-weight: 500;
+  white-space: pre;
+  font-size: 14px;
+  user-select: none;
+}
+.root:focus-within .slotTargetLabel {
+  color: var(--token-pQARgiXwvs4L);
+}
+.root .slotTargetLabel___focusVisibleWithin {
+  color: var(--token-pQARgiXwvs4L);
+}
+.root:hover .slotTargetLabel {
+  color: var(--token-6D_pqZd49N3h);
+}
+.root:active .slotTargetLabel {
+  color: var(--token-pQARgiXwvs4L);
+}
+.slotTargetCount {
+  color: var(--token-HcdbHG3Uj2tS);
+  font-weight: 500;
+  white-space: pre;
+  font-size: 14px;
+  user-select: none;
+}
+.endIconContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.endIconContainershowEndIcon {
+  display: flex;
+}
+.slotTargetEndIcon {
+  color: #ededec;
+}
+.svg__kNKqW {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}

@@ -34,4 +34,6 @@
 }
 .text {
   color: var(--token-db3btmdZTlPQ);
+  white-space: pre;
+  user-select: none;
 }

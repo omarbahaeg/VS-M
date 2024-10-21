@@ -1,0 +1,23 @@
+.badgeLabel {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-iNAvusl4ky87);
+  position: relative;
+  border-radius: 25px;
+  padding: 3px 8px;
+}
+.slotTargetChildren {
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--token-Ja7FXg_cLkuz);
+  line-height: 1.5;
+  letter-spacing: 0px;
+  user-select: none;
+  white-space: pre;
+}
