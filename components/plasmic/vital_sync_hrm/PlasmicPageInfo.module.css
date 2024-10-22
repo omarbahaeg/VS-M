@@ -53,7 +53,7 @@
     margin-top: 25px;
   }
 }
-.title {
+.titleSection {
   width: auto;
   height: auto;
   display: flex;
@@ -62,24 +62,28 @@
   left: auto;
   flex-direction: column;
 }
-.title > :global(.__wab_flex-container) {
+.titleSection > :global(.__wab_flex-container) {
   flex-direction: column;
   margin-top: calc(0px - 5px);
   height: calc(100% + 5px);
 }
-.title > :global(.__wab_flex-container) > *,
-.title > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.title > :global(.__wab_flex-container) > picture > img,
-.title > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+.titleSection > :global(.__wab_flex-container) > *,
+.titleSection > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.titleSection > :global(.__wab_flex-container) > picture > img,
+.titleSection
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
   margin-top: 5px;
 }
 @media (min-width: 0px) and (max-width: 430px) {
-  .title {
+  .titleSection {
     left: auto;
     top: auto;
   }
 }
-.slotTargetTitle2 {
+.slotTargetTitle {
   font-family: "Inter", sans-serif;
   font-size: 36px;
   font-weight: 600;
@@ -96,24 +100,24 @@
   letter-spacing: 0px;
   white-space: pre;
 }
-.action {
+.actionSection {
   width: auto;
   height: auto;
-  display: flex;
   position: relative;
   top: auto;
   left: auto;
   flex-direction: row;
+  display: none;
 }
-.action > :global(.__wab_flex-container) {
+.actionSection > :global(.__wab_flex-container) {
   flex-direction: row;
   margin-left: calc(0px - 25px);
   width: calc(100% + 25px);
 }
-.action > :global(.__wab_flex-container) > *,
-.action > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.action > :global(.__wab_flex-container) > picture > img,
-.action
+.actionSection > :global(.__wab_flex-container) > *,
+.actionSection > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.actionSection > :global(.__wab_flex-container) > picture > img,
+.actionSection
   > :global(.__wab_flex-container)
   > :global(.__wab_slot)
   > picture
@@ -121,11 +125,14 @@
   margin-left: 25px;
 }
 @media (min-width: 0px) and (max-width: 430px) {
-  .action {
+  .actionSection {
     left: auto;
     top: auto;
     display: none;
   }
+}
+.actionSectionisAction {
+  display: flex;
 }
 .button__tiF9D:global(.__wab_instance) {
   max-width: 100%;

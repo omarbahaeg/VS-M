@@ -1,0 +1,137 @@
+.metricsCard {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  background: var(--token-Ja7FXg_cLkuz);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 15px;
+  padding: 30px 20px;
+}
+.metricsCard > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: calc(0px - 15px);
+  width: calc(100% + 15px);
+}
+.metricsCard > :global(.__wab_flex-container) > *,
+.metricsCard > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.metricsCard > :global(.__wab_flex-container) > picture > img,
+.metricsCard
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 15px;
+}
+.iconSection {
+  display: flex;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-direction: row;
+  background: var(--token-iNAvusl4ky87);
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 50px;
+  padding: 10px;
+}
+.slotTargetIcon {
+  color: var(--token-Ja7FXg_cLkuz);
+}
+.svg__gZ1K {
+  object-fit: cover;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+}
+.contentSection > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin-top: calc(0px - 10px);
+  height: calc(100% + 10px);
+}
+.contentSection > :global(.__wab_flex-container) > *,
+.contentSection > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.contentSection > :global(.__wab_flex-container) > picture > img,
+.contentSection
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 10px;
+}
+.statisticTypeSection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.slotTargetStatisticType {
+  font-size: 14px;
+  white-space: pre;
+  line-height: 1;
+}
+.tooltip:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.ctInfoIcon:global(.__wab_instance) {
+  max-width: 100%;
+}
+.rolling {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+}
+.rolling > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  margin-left: calc(0px - 20px);
+  width: calc(100% + 20px);
+}
+.rolling > :global(.__wab_flex-container) > *,
+.rolling > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rolling > :global(.__wab_flex-container) > picture > img,
+.rolling
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 20px;
+}
+.h5 {
+  display: flex;
+  flex-direction: row;
+}
+.slotTargetRollingNumber {
+  line-height: 1;
+  white-space: pre;
+}
+.percentageBadge___6YjuG:global(.__wab_instance) {
+  position: relative;
+}

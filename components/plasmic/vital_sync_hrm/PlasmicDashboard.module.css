@@ -56,6 +56,8 @@
   width: 100%;
   display: flex;
   overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   min-width: 0;
   min-height: 0;
   padding: 30px 30px 0px;
@@ -106,16 +108,16 @@
   > img {
   margin-top: 30px;
 }
-.button__zoCx:global(.__wab_instance) {
+.button__yuwvP:global(.__wab_instance) {
   max-width: 100%;
 }
-.svg__jp58Z {
+.svg__vtyd4 {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
 }
-.svg__btgE {
+.svg__hwGvF {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -139,7 +141,6 @@
 .footer:global(.__wab_instance) {
   position: relative;
   margin-top: calc(30px + 30px) !important;
-  margin-bottom: 0px;
   flex-shrink: 0;
 }
 .rightBar:global(.__wab_instance) {

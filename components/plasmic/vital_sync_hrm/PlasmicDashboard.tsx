@@ -309,6 +309,7 @@ function PlasmicDashboard__RenderFunc(props: {
                       "__wab_instance",
                       sty.pageInfo__cnhQu
                     )}
+                    isAction={true}
                   />
 
                   <div

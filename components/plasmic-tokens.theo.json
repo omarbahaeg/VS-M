@@ -81,6 +81,16 @@
       }
     },
     {
+      "name": "Pink",
+      "type": "color",
+      "value": "#D3597A",
+      "category": "color",
+      "meta": {
+        "projectId": "qFgf32neWRE8gRveVBaatz",
+        "id": "Adgcd7vKw5nP"
+      }
+    },
+    {
       "name": "System: Bg Container",
       "type": "color",
       "value": "var(--antd-colorBgContainer)",

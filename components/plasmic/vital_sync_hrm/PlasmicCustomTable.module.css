@@ -31,6 +31,9 @@
   max-width: 100%;
   min-width: 0;
 }
+.tableColumnActionstopBar {
+  display: none;
+}
 .searchbox:global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
@@ -164,6 +167,9 @@
 .ctContent:global(.__wab_instance) {
   max-width: 100%;
 }
+.ctContentnoData:global(.__wab_instance) {
+  display: none;
+}
 .ctContentData___84Ye:global(.__wab_instance) {
   height: 100%;
   width: 80px;
@@ -253,4 +259,8 @@
 }
 .ctNoData:global(.__wab_instance) {
   max-width: 100%;
+  display: none;
+}
+.ctNoDatanoData:global(.__wab_instance) {
+  display: flex;
 }

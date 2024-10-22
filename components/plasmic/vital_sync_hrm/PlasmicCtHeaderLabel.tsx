@@ -186,6 +186,12 @@ function PlasmicCtHeaderLabel__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.descending
+      },
+      {
+        path: "ctInfoIcon.outline",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -362,6 +368,11 @@ function PlasmicCtHeaderLabel__RenderFunc(props: {
           ),
           [sty.ctInfoIconinfo]: hasVariant($state, "info", "info")
         })}
+        onOutlineChange={generateStateOnChangeProp($state, [
+          "ctInfoIcon",
+          "outline"
+        ])}
+        outline={generateStateValueProp($state, ["ctInfoIcon", "outline"])}
       />
     </Stack__>
   ) as React.ReactElement | null;

@@ -1,0 +1,99 @@
+.root {
+  display: inline-flex;
+  width: auto;
+  flex-direction: row;
+  height: auto;
+  background: var(--token-Qi_GcLGvv6A8);
+  position: relative;
+  transition-property: all;
+  transition-duration: 0.5s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  border-radius: 10px;
+  padding: 10px;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: row;
+  margin-left: calc(0px - 10px);
+  width: calc(100% + 10px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-left: 10px;
+}
+.section__ehUsK {
+  display: flex;
+  position: relative;
+  width: auto;
+  flex-direction: row;
+  height: auto;
+  background: var(--token-Ja7FXg_cLkuz);
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.sectionpicker_week__ehUsKBcOo {
+  width: auto;
+  height: auto;
+  background: none;
+  flex-direction: row;
+  box-shadow: none;
+  border-radius: 5px;
+}
+.sectionpicker_month__ehUsKrTgEf {
+  background: none;
+  box-shadow: none;
+}
+.text__rw8L9 {
+  white-space: pre;
+  user-select: none;
+}
+.section__jjhL6 {
+  display: flex;
+  position: relative;
+  width: auto;
+  flex-direction: row;
+  height: auto;
+  background: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.sectionpicker_week__jjhL6BcOo {
+  width: auto;
+  height: auto;
+  background: var(--token-Ja7FXg_cLkuz);
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  flex-direction: row;
+  border-radius: 5px;
+}
+.text__sHxe {
+  user-select: none;
+  white-space: pre;
+}
+.section__xjNmE {
+  display: flex;
+  position: relative;
+  width: auto;
+  flex-direction: row;
+  height: auto;
+  background: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.sectionpicker_month__xjNmErTgEf {
+  width: auto;
+  height: auto;
+  background: var(--token-Ja7FXg_cLkuz);
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  flex-direction: row;
+  border-radius: 5px;
+}
+.text___6LYnw {
+  user-select: none;
+  white-space: pre;
+}

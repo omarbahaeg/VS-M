@@ -89,7 +89,7 @@ import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: qYDC0Lh
 import UserEditSvgIcon from "./icons/PlasmicIcon__UserEditSvg"; // plasmic-import: A7wi4bTyysuA/icon
 import PointerCodeSvgIcon from "./icons/PlasmicIcon__PointerCodeSvg"; // plasmic-import: SRvQOL_VCeU2/icon
 import SettingsSvgIcon from "./icons/PlasmicIcon__SettingsSvg"; // plasmic-import: naJAblHQSjQc/icon
-import CloudPlusSvgIcon from "./icons/PlasmicIcon__CloudPlusSvg"; // plasmic-import: uOmgSDCdFDth/icon
+import Icon42Icon from "./icons/PlasmicIcon__Icon42"; // plasmic-import: Rjnzdx9L4FJ6/icon
 import Icon17Icon from "./icons/PlasmicIcon__Icon17"; // plasmic-import: 4yHxNVuFeMxE/icon
 
 createPlasmicElementProxy;
@@ -1094,7 +1094,7 @@ function PlasmicSidebar__RenderFunc(props: {
                   : undefined
               }
               icon={
-                <CloudPlusSvgIcon
+                <Icon42Icon
                   className={classNames(projectcss.all, sty.svg__wsyMd)}
                   role={"img"}
                 />

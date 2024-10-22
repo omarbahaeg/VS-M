@@ -66,18 +66,29 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicCtInfoIcon.module.css"; // plasmic-import: g9gKYSYktTlZ/css
 
-import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: fQuvc6bYBWs_/icon
+import InfoIcon from "./icons/PlasmicIcon__Info"; // plasmic-import: 3VAfASl9gbiQ/icon
+import InfoCircleSvgIcon from "./icons/PlasmicIcon__InfoCircleSvg"; // plasmic-import: eh0llC7nb7Lh/icon
 
 createPlasmicElementProxy;
 
-export type PlasmicCtInfoIcon__VariantMembers = {};
-export type PlasmicCtInfoIcon__VariantsArgs = {};
+export type PlasmicCtInfoIcon__VariantMembers = {
+  outline: "outline";
+};
+export type PlasmicCtInfoIcon__VariantsArgs = {
+  outline?: SingleBooleanChoiceArg<"outline">;
+};
 type VariantPropType = keyof PlasmicCtInfoIcon__VariantsArgs;
-export const PlasmicCtInfoIcon__VariantProps = new Array<VariantPropType>();
+export const PlasmicCtInfoIcon__VariantProps = new Array<VariantPropType>(
+  "outline"
+);
 
-export type PlasmicCtInfoIcon__ArgsType = {};
+export type PlasmicCtInfoIcon__ArgsType = {
+  onOutlineChange?: (val: any) => void;
+};
 type ArgPropType = keyof PlasmicCtInfoIcon__ArgsType;
-export const PlasmicCtInfoIcon__ArgProps = new Array<ArgPropType>();
+export const PlasmicCtInfoIcon__ArgProps = new Array<ArgPropType>(
+  "onOutlineChange"
+);
 
 export type PlasmicCtInfoIcon__OverridesType = {
   infoIcon?: Flex__<"div">;
@@ -85,6 +96,8 @@ export type PlasmicCtInfoIcon__OverridesType = {
 };
 
 export interface DefaultCtInfoIconProps {
+  onOutlineChange?: (val: any) => void;
+  outline?: SingleBooleanChoiceArg<"outline">;
   className?: string;
 }
 
@@ -128,6 +141,26 @@ function PlasmicCtInfoIcon__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "outline",
+        type: "writable",
+        variableType: "variant",
+
+        valueProp: "outline",
+        onChangeProp: "onOutlineChange"
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   return (
     <div
       data-plasmic-name={"infoIcon"}
@@ -142,13 +175,21 @@ function PlasmicCtInfoIcon__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.infoIcon
+        sty.infoIcon,
+        { [sty.infoIconoutline]: hasVariant($state, "outline", "outline") }
       )}
     >
-      <Icon37Icon
+      <PlasmicIcon__
         data-plasmic-name={"svg"}
         data-plasmic-override={overrides.svg}
-        className={classNames(projectcss.all, sty.svg)}
+        PlasmicIconType={
+          hasVariant($state, "outline", "outline")
+            ? InfoCircleSvgIcon
+            : InfoIcon
+        }
+        className={classNames(projectcss.all, sty.svg, {
+          [sty.svgoutline]: hasVariant($state, "outline", "outline")
+        })}
         role={"img"}
       />
     </div>

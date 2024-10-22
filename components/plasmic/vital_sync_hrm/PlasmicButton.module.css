@@ -203,7 +203,7 @@
   display: flex;
 }
 .slotTargetStartIcon {
-  color: #ededec;
+  color: var(--token-Ja7FXg_cLkuz);
 }
 .slotTargetStartIconcolor_yellow {
   color: #35290f;
@@ -255,6 +255,7 @@
   color: #ededec;
   font-weight: 500;
   white-space: pre;
+  user-select: none;
 }
 .slotTargetChildrencolor_blue {
   color: #ffffff;

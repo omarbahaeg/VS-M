@@ -97,7 +97,9 @@ export type PlasmicRequests__OverridesType = {
   dashboard?: Flex__<typeof Dashboard>;
   pageInfo?: Flex__<typeof PageInfo>;
   welcomeBackToRhom?: Flex__<"div">;
-  section2?: Flex__<"div">;
+  button?: Flex__<typeof Button>;
+  svg?: Flex__<"svg">;
+  section?: Flex__<"div">;
   ctTabs?: Flex__<typeof CtTabs>;
   tabsContainer?: Flex__<typeof TabsContainer>;
   tabBody?: Flex__<"div">;
@@ -211,6 +213,28 @@ function PlasmicRequests__RenderFunc(props: {
               <PageInfo
                 data-plasmic-name={"pageInfo"}
                 data-plasmic-override={overrides.pageInfo}
+                action={
+                  <Button
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
+                    color={"green"}
+                    shape={"rounded"}
+                    showStartIcon={true}
+                    size={"compact"}
+                    startIcon={
+                      <PlusSvgIcon
+                        data-plasmic-name={"svg"}
+                        data-plasmic-override={overrides.svg}
+                        className={classNames(projectcss.all, sty.svg)}
+                        role={"img"}
+                      />
+                    }
+                    submitsForm={false}
+                  >
+                    <Trans__>{"Add Employee"}</Trans__>
+                  </Button>
+                }
                 className={classNames("__wab_instance", sty.pageInfo)}
                 description={
                   <div
@@ -222,29 +246,16 @@ function PlasmicRequests__RenderFunc(props: {
                       sty.welcomeBackToRhom
                     )}
                   >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return undefined;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "Page Description Here.";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
+                    <Trans__>{"Track and manage all staff requests."}</Trans__>
                   </div>
                 }
+                isAction={true}
               />
 
               <div
-                data-plasmic-name={"section2"}
-                data-plasmic-override={overrides.section2}
-                className={classNames(projectcss.all, sty.section2)}
+                data-plasmic-name={"section"}
+                data-plasmic-override={overrides.section}
+                className={classNames(projectcss.all, sty.section)}
               >
                 <CtTabs
                   data-plasmic-name={"ctTabs"}
@@ -275,14 +286,14 @@ function PlasmicRequests__RenderFunc(props: {
                             <TabButton
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabButton__o3S2
+                                sty.tabButton__zXbW3
                               )}
                               tabKey={"tab1"}
                             >
                               <TabButton2
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.tabButton__qVu8E
+                                  sty.tabButton__je201
                                 )}
                                 label={<Trans__>{"All"}</Trans__>}
                                 size={"compact"}
@@ -291,14 +302,14 @@ function PlasmicRequests__RenderFunc(props: {
                             <TabButton
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabButton__dtHxI
+                                sty.tabButton__mDixb
                               )}
                               tabKey={"tab2"}
                             >
                               <TabButton2
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.tabButton__f0Kqz
+                                  sty.tabButton__bwi4Y
                                 )}
                                 label={<Trans__>{"Pending"}</Trans__>}
                                 size={"compact"}
@@ -307,14 +318,14 @@ function PlasmicRequests__RenderFunc(props: {
                             <TabButton
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabButton___1WCVi
+                                sty.tabButton__xbVwf
                               )}
                               tabKey={"tab3"}
                             >
                               <TabButton2
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.tabButton__sTImC
+                                  sty.tabButton__rvHcr
                                 )}
                                 label={<Trans__>{"Approved"}</Trans__>}
                                 size={"compact"}
@@ -323,14 +334,14 @@ function PlasmicRequests__RenderFunc(props: {
                             <TabButton
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabButton__nyjBt
+                                sty.tabButton__p4A39
                               )}
                               tabKey={"tab4"}
                             >
                               <TabButton2
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.tabButton__eNMeT
+                                  sty.tabButton___36AaF
                                 )}
                                 label={<Trans__>{"Rejected"}</Trans__>}
                                 size={"compact"}
@@ -353,56 +364,56 @@ function PlasmicRequests__RenderFunc(props: {
                             <TabContent
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabContent__cvyik
+                                sty.tabContent__l6Kfh
                               )}
                               tabKey={"tab1"}
                             >
                               <CustomTable
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.customTable__ju03
+                                  sty.customTable__rtot
                                 )}
                               />
                             </TabContent>
                             <TabContent
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabContent__zqZWh
+                                sty.tabContent__m3YH3
                               )}
                               tabKey={"tab2"}
                             >
                               <CustomTable
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.customTable___928Ay
+                                  sty.customTable___0MmWu
                                 )}
                               />
                             </TabContent>
                             <TabContent
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabContent__dAqgj
+                                sty.tabContent__hVka
                               )}
                               tabKey={"tab3"}
                             >
                               <CustomTable
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.customTable__ofHtn
+                                  sty.customTable__u2JbN
                                 )}
                               />
                             </TabContent>
                             <TabContent
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabContent__esR26
+                                sty.tabContent__ftgvr
                               )}
                               tabKey={"tab4"}
                             >
                               <CustomTable
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.customTable__mhQfu
+                                  sty.customTable__bc1V
                                 )}
                               />
                             </TabContent>
@@ -427,7 +438,9 @@ const PlasmicDescendants = {
     "dashboard",
     "pageInfo",
     "welcomeBackToRhom",
-    "section2",
+    "button",
+    "svg",
+    "section",
     "ctTabs",
     "tabsContainer",
     "tabBody",
@@ -439,7 +452,9 @@ const PlasmicDescendants = {
     "dashboard",
     "pageInfo",
     "welcomeBackToRhom",
-    "section2",
+    "button",
+    "svg",
+    "section",
     "ctTabs",
     "tabsContainer",
     "tabBody",
@@ -447,10 +462,12 @@ const PlasmicDescendants = {
     "tabUnderline",
     "content2"
   ],
-  pageInfo: ["pageInfo", "welcomeBackToRhom"],
+  pageInfo: ["pageInfo", "welcomeBackToRhom", "button", "svg"],
   welcomeBackToRhom: ["welcomeBackToRhom"],
-  section2: [
-    "section2",
+  button: ["button", "svg"],
+  svg: ["svg"],
+  section: [
+    "section",
     "ctTabs",
     "tabsContainer",
     "tabBody",
@@ -486,7 +503,9 @@ type NodeDefaultElementType = {
   dashboard: typeof Dashboard;
   pageInfo: typeof PageInfo;
   welcomeBackToRhom: "div";
-  section2: "div";
+  button: typeof Button;
+  svg: "svg";
+  section: "div";
   ctTabs: typeof CtTabs;
   tabsContainer: typeof TabsContainer;
   tabBody: "div";
@@ -558,7 +577,9 @@ export const PlasmicRequests = Object.assign(
     dashboard: makeNodeComponent("dashboard"),
     pageInfo: makeNodeComponent("pageInfo"),
     welcomeBackToRhom: makeNodeComponent("welcomeBackToRhom"),
-    section2: makeNodeComponent("section2"),
+    button: makeNodeComponent("button"),
+    svg: makeNodeComponent("svg"),
+    section: makeNodeComponent("section"),
     ctTabs: makeNodeComponent("ctTabs"),
     tabsContainer: makeNodeComponent("tabsContainer"),
     tabBody: makeNodeComponent("tabBody"),
@@ -573,7 +594,7 @@ export const PlasmicRequests = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "Requests",
-      description: "Track and manage staff submissions.",
+      description: "Track and manage all staff requests.",
       ogImageSrc: "",
       canonical: ""
     }

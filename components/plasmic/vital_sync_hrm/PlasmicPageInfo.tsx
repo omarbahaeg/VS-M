@@ -75,33 +75,40 @@ import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 6im6f-s
 
 createPlasmicElementProxy;
 
-export type PlasmicPageInfo__VariantMembers = {};
-export type PlasmicPageInfo__VariantsArgs = {};
+export type PlasmicPageInfo__VariantMembers = {
+  isAction: "isAction";
+};
+export type PlasmicPageInfo__VariantsArgs = {
+  isAction?: SingleBooleanChoiceArg<"isAction">;
+};
 type VariantPropType = keyof PlasmicPageInfo__VariantsArgs;
-export const PlasmicPageInfo__VariantProps = new Array<VariantPropType>();
+export const PlasmicPageInfo__VariantProps = new Array<VariantPropType>(
+  "isAction"
+);
 
 export type PlasmicPageInfo__ArgsType = {
-  title2?: React.ReactNode;
+  title?: React.ReactNode;
   description?: React.ReactNode;
-  action2?: React.ReactNode;
+  action?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicPageInfo__ArgsType;
 export const PlasmicPageInfo__ArgProps = new Array<ArgPropType>(
-  "title2",
+  "title",
   "description",
-  "action2"
+  "action"
 );
 
 export type PlasmicPageInfo__OverridesType = {
   pageInfo?: Flex__<"div">;
-  title?: Flex__<"div">;
-  action?: Flex__<"div">;
+  titleSection?: Flex__<"div">;
+  actionSection?: Flex__<"div">;
 };
 
 export interface DefaultPageInfoProps {
-  title2?: React.ReactNode;
+  title?: React.ReactNode;
   description?: React.ReactNode;
-  action2?: React.ReactNode;
+  action?: React.ReactNode;
+  isAction?: SingleBooleanChoiceArg<"isAction">;
   className?: string;
 }
 
@@ -145,6 +152,24 @@ function PlasmicPageInfo__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "isAction",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isAction
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const globalVariants = ensureGlobalVariants({
     screen: useScreenVariantsujc2VYpomBng()
   });
@@ -170,10 +195,10 @@ function PlasmicPageInfo__RenderFunc(props: {
     >
       <Stack__
         as={"div"}
-        data-plasmic-name={"title"}
-        data-plasmic-override={overrides.title}
+        data-plasmic-name={"titleSection"}
+        data-plasmic-override={overrides.titleSection}
         hasGap={true}
-        className={classNames(projectcss.all, sty.title)}
+        className={classNames(projectcss.all, sty.titleSection)}
       >
         {renderPlasmicSlot({
           defaultContents: (
@@ -184,27 +209,31 @@ function PlasmicPageInfo__RenderFunc(props: {
                 sty.text__iZCw5
               )}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $ctx.pageRoute
-                      .substring(1)
-                      .replace(/^./, char => char.toUpperCase());
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "Page Title";
+              <div
+                className={projectcss.__wab_expr_html_text}
+                dangerouslySetInnerHTML={{
+                  __html: (() => {
+                    try {
+                      return $ctx.pageRoute
+                        .split("/")
+                        .pop()
+                        .replace(/^./, char => char.toUpperCase());
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Page Title";
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+                  })()
+                }}
+              />
             </div>
           ),
-          value: args.title2,
-          className: classNames(sty.slotTargetTitle2)
+          value: args.title,
+          className: classNames(sty.slotTargetTitle)
         })}
         {renderPlasmicSlot({
           defaultContents: (
@@ -224,10 +253,16 @@ function PlasmicPageInfo__RenderFunc(props: {
       </Stack__>
       <Stack__
         as={"div"}
-        data-plasmic-name={"action"}
-        data-plasmic-override={overrides.action}
+        data-plasmic-name={"actionSection"}
+        data-plasmic-override={overrides.actionSection}
         hasGap={true}
-        className={classNames(projectcss.all, sty.action)}
+        className={classNames(projectcss.all, sty.actionSection, {
+          [sty.actionSectionisAction]: hasVariant(
+            $state,
+            "isAction",
+            "isAction"
+          )
+        })}
       >
         {renderPlasmicSlot({
           defaultContents: (
@@ -245,10 +280,10 @@ function PlasmicPageInfo__RenderFunc(props: {
               }
               submitsForm={false}
             >
-              <Trans__>{"New User"}</Trans__>
+              <Trans__>{"Action"}</Trans__>
             </Button>
           ),
-          value: args.action2
+          value: args.action
         })}
       </Stack__>
     </Stack__>
@@ -256,17 +291,17 @@ function PlasmicPageInfo__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  pageInfo: ["pageInfo", "title", "action"],
-  title: ["title"],
-  action: ["action"]
+  pageInfo: ["pageInfo", "titleSection", "actionSection"],
+  titleSection: ["titleSection"],
+  actionSection: ["actionSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   pageInfo: "div";
-  title: "div";
-  action: "div";
+  titleSection: "div";
+  actionSection: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -329,8 +364,8 @@ export const PlasmicPageInfo = Object.assign(
   makeNodeComponent("pageInfo"),
   {
     // Helper components rendering sub-elements
-    title: makeNodeComponent("title"),
-    action: makeNodeComponent("action"),
+    titleSection: makeNodeComponent("titleSection"),
+    actionSection: makeNodeComponent("actionSection"),
 
     // Metadata about props expected for PlasmicPageInfo
     internalVariantProps: PlasmicPageInfo__VariantProps,

@@ -94,13 +94,16 @@ createPlasmicElementProxy;
 
 export type PlasmicCustomTable__VariantMembers = {
   noData: "noData";
+  topBar: "topBar";
 };
 export type PlasmicCustomTable__VariantsArgs = {
   noData?: SingleBooleanChoiceArg<"noData">;
+  topBar?: SingleBooleanChoiceArg<"topBar">;
 };
 type VariantPropType = keyof PlasmicCustomTable__VariantsArgs;
 export const PlasmicCustomTable__VariantProps = new Array<VariantPropType>(
-  "noData"
+  "noData",
+  "topBar"
 );
 
 export type PlasmicCustomTable__ArgsType = {};
@@ -132,6 +135,7 @@ export type PlasmicCustomTable__OverridesType = {
 
 export interface DefaultCustomTableProps {
   noData?: SingleBooleanChoiceArg<"noData">;
+  topBar?: SingleBooleanChoiceArg<"topBar">;
   className?: string;
 }
 
@@ -213,6 +217,12 @@ function PlasmicCustomTable__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "topBar",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.topBar
       }
     ],
     [$props, $ctx, $refs]
@@ -258,13 +268,24 @@ function PlasmicCustomTable__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.table
+        sty.table,
+        {
+          [sty.tablenoData]: hasVariant($state, "noData", "noData"),
+          [sty.tabletopBar]: hasVariant($state, "topBar", "topBar")
+        }
       )}
     >
       <div
         data-plasmic-name={"tableColumnActions"}
         data-plasmic-override={overrides.tableColumnActions}
-        className={classNames(projectcss.all, sty.tableColumnActions)}
+        className={classNames(projectcss.all, sty.tableColumnActions, {
+          [sty.tableColumnActionsnoData]: hasVariant(
+            $state,
+            "noData",
+            "noData"
+          ),
+          [sty.tableColumnActionstopBar]: hasVariant($state, "topBar", "topBar")
+        })}
       >
         <Searchbox
           data-plasmic-name={"searchbox"}
@@ -450,12 +471,16 @@ function PlasmicCustomTable__RenderFunc(props: {
       <section
         data-plasmic-name={"tableBody"}
         data-plasmic-override={overrides.tableBody}
-        className={classNames(projectcss.all, sty.tableBody)}
+        className={classNames(projectcss.all, sty.tableBody, {
+          [sty.tableBodynoData]: hasVariant($state, "noData", "noData")
+        })}
       >
         <CtHeader
           data-plasmic-name={"ctHeader"}
           data-plasmic-override={overrides.ctHeader}
-          className={classNames("__wab_instance", sty.ctHeader)}
+          className={classNames("__wab_instance", sty.ctHeader, {
+            [sty.ctHeadernoData]: hasVariant($state, "noData", "noData")
+          })}
           headerCheckboxSection2={
             <CtCheckbox
               data-plasmic-name={"primaryCheckbox"}
@@ -550,7 +575,9 @@ function PlasmicCustomTable__RenderFunc(props: {
             <CtContent
               data-plasmic-name={"ctContent"}
               data-plasmic-override={overrides.ctContent}
-              className={classNames("__wab_instance", sty.ctContent)}
+              className={classNames("__wab_instance", sty.ctContent, {
+                [sty.ctContentnoData]: hasVariant($state, "noData", "noData")
+              })}
               key={currentIndex}
               secondaryCheckbox2={(() => {
                 const child$Props = {
@@ -729,7 +756,10 @@ function PlasmicCustomTable__RenderFunc(props: {
         <CtNoData
           data-plasmic-name={"ctNoData"}
           data-plasmic-override={overrides.ctNoData}
-          className={classNames("__wab_instance", sty.ctNoData)}
+          className={classNames("__wab_instance", sty.ctNoData, {
+            [sty.ctNoDatanoData]: hasVariant($state, "noData", "noData"),
+            [sty.ctNoDatatopBar]: hasVariant($state, "topBar", "topBar")
+          })}
         />
       </section>
     </Stack__>

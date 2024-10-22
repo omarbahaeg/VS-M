@@ -59,33 +59,10 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
-import Sidebar from "../../Sidebar"; // plasmic-import: MaimrxZZ2uDo/component
-import Header from "../../Header"; // plasmic-import: zd496FfthYEg/component
-import RightBarToggle from "../../RightBarToggle"; // plasmic-import: 7-guXMnuxTk_/component
-import UserAvatar from "../../UserAvatar"; // plasmic-import: gWWU5Ob64_0l/component
-import NotificationButton from "../../NotificationButton"; // plasmic-import: KnYNZm1t2IR5/component
-import MessagesButton from "../../MessagesButton"; // plasmic-import: Ir4fGGB2J2Ay/component
-import HomeButton from "../../HomeButton"; // plasmic-import: vc4QrCJM7nhW/component
-import SidebarToggleButton from "../../SidebarToggleButton"; // plasmic-import: vp-0ZJI-DQym/component
+import Dashboard from "../../Dashboard"; // plasmic-import: xrHIipmjGkuW/component
+import PageInfo from "../../PageInfo"; // plasmic-import: -5yQM3hZscI3/component
 import Button from "../../Button"; // plasmic-import: JRPPbMhYptfo/component
-import { TabsContainer } from "@plasmicpkgs/plasmic-tabs";
-import { TabButton } from "@plasmicpkgs/plasmic-tabs";
-import Button2 from "../../Button"; // plasmic-import: lBHNzts6tFyj/component
-import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
-import { TabContent } from "@plasmicpkgs/plasmic-tabs";
-import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
-import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
-import Footer from "../../Footer"; // plasmic-import: dIME4mUiH-Rp/component
-import RightBar from "../../RightBar"; // plasmic-import: pW9ClsR7IfI0/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
-import { useScreenVariants as useScreenVariantsujc2VYpomBng } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: UJC2VYpomBng/globalVariant
+import CustomTable from "../../CustomTable"; // plasmic-import: SyYLCRWlXb0u/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -94,10 +71,8 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicBackups.module.css"; // plasmic-import: RX5xG043iUMC/css
 
-import PlusSvgIcon from "./icons/PlasmicIcon__PlusSvg"; // plasmic-import: qKMzzxYWCT9r/icon
+import CloudPlusSvgIcon from "./icons/PlasmicIcon__CloudPlusSvg"; // plasmic-import: uOmgSDCdFDth/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 6im6f-sFV6o1/icon
-import CheckSvgIcon from "../plasmic_tabs/icons/PlasmicIcon__CheckSvg"; // plasmic-import: zq2s7N0xWucT/icon
-import IconIcon from "../plasmic_tabs/icons/PlasmicIcon__Icon"; // plasmic-import: 8K40faRNhuCj/icon
 
 createPlasmicElementProxy;
 
@@ -111,26 +86,14 @@ type ArgPropType = keyof PlasmicBackups__ArgsType;
 export const PlasmicBackups__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicBackups__OverridesType = {
-  home?: Flex__<"div">;
-  sidebar?: Flex__<typeof Sidebar>;
-  body?: Flex__<"div">;
-  header?: Flex__<typeof Header>;
-  rightBarToggle?: Flex__<typeof RightBarToggle>;
-  sidebarToggleButton?: Flex__<typeof SidebarToggleButton>;
-  content?: Flex__<"div">;
-  frame7?: Flex__<"div">;
-  frame8?: Flex__<"div">;
-  hiKatiePena?: Flex__<"div">;
+  main?: Flex__<"div">;
+  dashboard?: Flex__<typeof Dashboard>;
+  pageInfo?: Flex__<typeof PageInfo>;
   welcomeBackToRhom?: Flex__<"div">;
-  frame1?: Flex__<"div">;
+  button?: Flex__<typeof Button>;
   svg?: Flex__<"svg">;
-  frame10?: Flex__<"div">;
-  tabsContainer?: Flex__<typeof TabsContainer>;
-  tabUnderline?: Flex__<typeof TabUnderline>;
-  table?: Flex__<typeof RichTable>;
-  footer?: Flex__<typeof Footer>;
-  rightBar?: Flex__<typeof RightBar>;
-  overlay?: Flex__<"section">;
+  section?: Flex__<"div">;
+  customTable?: Flex__<typeof CustomTable>;
 };
 
 export interface DefaultBackupsProps {}
@@ -175,75 +138,6 @@ function PlasmicBackups__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  let [$queries, setDollarQueries] = React.useState<
-    Record<string, ReturnType<typeof usePlasmicDataOp>>
-  >({});
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "rightBarToggle.collapsed",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "sidebar.isVisible",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: $queries,
-    $refs
-  });
-
-  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
-    user: usePlasmicDataOp(() => {
-      return {
-        sourceId: "jy9oBFjmhhSMLYBVGZ4Xm2",
-        opId: "39fc56d4-2f5e-4102-bdd2-c72491c1dc13",
-        userArgs: {},
-        cacheKey: `plasmic.$.39fc56d4-2f5e-4102-bdd2-c72491c1dc13.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
-    eSign: usePlasmicDataOp(() => {
-      return {
-        sourceId: "jy9oBFjmhhSMLYBVGZ4Xm2",
-        opId: "dead7ebe-265e-4262-a3ae-78041d232a01",
-        userArgs: {},
-        cacheKey: `plasmic.$.dead7ebe-265e-4262-a3ae-78041d232a01.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
-    employees: usePlasmicDataOp(() => {
-      return {
-        sourceId: "jy9oBFjmhhSMLYBVGZ4Xm2",
-        opId: "c0c3f78b-dfe5-4015-a5e3-04ffe1715358",
-        userArgs: {},
-        cacheKey: `plasmic.$.c0c3f78b-dfe5-4015-a5e3-04ffe1715358.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    })
-  };
-  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
-    setDollarQueries(new$Queries);
-
-    $queries = new$Queries;
-  }
-
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsujc2VYpomBng()
-  });
-
   return (
     <React.Fragment>
       <Head>
@@ -259,6 +153,21 @@ function PlasmicBackups__RenderFunc(props: {
           name="twitter:title"
           content={PlasmicBackups.pageMetadata.title}
         />
+        <meta
+          key="description"
+          name="description"
+          content={PlasmicBackups.pageMetadata.description}
+        />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={PlasmicBackups.pageMetadata.description}
+        />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={PlasmicBackups.pageMetadata.description}
+        />
       </Head>
 
       <style>{`
@@ -268,8 +177,8 @@ function PlasmicBackups__RenderFunc(props: {
       `}</style>
 
       <div
-        data-plasmic-name={"home"}
-        data-plasmic-override={overrides.home}
+        data-plasmic-name={"main"}
+        data-plasmic-override={overrides.main}
         data-plasmic-root={true}
         data-plasmic-for-node={forNode}
         className={classNames(
@@ -280,546 +189,72 @@ function PlasmicBackups__RenderFunc(props: {
           projectcss.plasmic_tokens,
           plasmic_antd_5_hostless_css.plasmic_tokens,
           plasmic_plasmic_rich_components_css.plasmic_tokens,
-          sty.home
+          sty.main
         )}
       >
-        <Sidebar
-          data-plasmic-name={"sidebar"}
-          data-plasmic-override={overrides.sidebar}
-          className={classNames("__wab_instance", sty.sidebar)}
-          isVisible={generateStateValueProp($state, ["sidebar", "isVisible"])}
-          onIsVisibleChange={generateStateOnChangeProp($state, [
-            "sidebar",
-            "isVisible"
-          ])}
-        />
-
-        <div
-          data-plasmic-name={"body"}
-          data-plasmic-override={overrides.body}
-          className={classNames(projectcss.all, sty.body)}
-        >
-          <Header
-            data-plasmic-name={"header"}
-            data-plasmic-override={overrides.header}
-            className={classNames("__wab_instance", sty.header)}
-            rightBarToggle2={
-              <RightBarToggle
-                data-plasmic-name={"rightBarToggle"}
-                data-plasmic-override={overrides.rightBarToggle}
-                className={classNames("__wab_instance", sty.rightBarToggle)}
-                collapsed={generateStateValueProp($state, [
-                  "rightBarToggle",
-                  "collapsed"
-                ])}
-                onCollapsedChange={generateStateOnChangeProp($state, [
-                  "rightBarToggle",
-                  "collapsed"
-                ])}
+        <Dashboard
+          data-plasmic-name={"dashboard"}
+          data-plasmic-override={overrides.dashboard}
+          className={classNames("__wab_instance", sty.dashboard)}
+          contentSection={
+            <React.Fragment>
+              <PageInfo
+                data-plasmic-name={"pageInfo"}
+                data-plasmic-override={overrides.pageInfo}
+                action={
+                  <Button
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
+                    color={"green"}
+                    shape={"rounded"}
+                    showStartIcon={true}
+                    size={"compact"}
+                    startIcon={
+                      <CloudPlusSvgIcon
+                        data-plasmic-name={"svg"}
+                        data-plasmic-override={overrides.svg}
+                        className={classNames(projectcss.all, sty.svg)}
+                        role={"img"}
+                      />
+                    }
+                    submitsForm={false}
+                  >
+                    <Trans__>{"New Backup"}</Trans__>
+                  </Button>
+                }
+                className={classNames("__wab_instance", sty.pageInfo)}
+                description={
+                  <div
+                    data-plasmic-name={"welcomeBackToRhom"}
+                    data-plasmic-override={overrides.welcomeBackToRhom}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.welcomeBackToRhom
+                    )}
+                  >
+                    <Trans__>
+                      {"Manage and create backups, backup logs."}
+                    </Trans__>
+                  </div>
+                }
+                isAction={true}
               />
-            }
-          >
-            <SidebarToggleButton
-              data-plasmic-name={"sidebarToggleButton"}
-              data-plasmic-override={overrides.sidebarToggleButton}
-              className={classNames("__wab_instance", sty.sidebarToggleButton)}
-            />
-          </Header>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"content"}
-            data-plasmic-override={overrides.content}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.content)}
-          >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"frame7"}
-              data-plasmic-override={overrides.frame7}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.frame7)}
-            >
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"frame8"}
-                data-plasmic-override={overrides.frame8}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.frame8)}
+
+              <div
+                data-plasmic-name={"section"}
+                data-plasmic-override={overrides.section}
+                className={classNames(projectcss.all, sty.section)}
               >
-                <div
-                  data-plasmic-name={"hiKatiePena"}
-                  data-plasmic-override={overrides.hiKatiePena}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.hiKatiePena
-                  )}
-                >
-                  <Trans__>{"User Management"}</Trans__>
-                </div>
-                <div
-                  data-plasmic-name={"welcomeBackToRhom"}
-                  data-plasmic-override={overrides.welcomeBackToRhom}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.welcomeBackToRhom
-                  )}
-                >
-                  <Trans__>{"Welcome back to Rhombus CRM dashboard"}</Trans__>
-                </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"frame1"}
-                data-plasmic-override={overrides.frame1}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.frame1)}
-              >
-                <Button
-                  className={classNames("__wab_instance", sty.button__qz5X8)}
-                  color={"green"}
-                  shape={"rounded"}
-                  showStartIcon={true}
-                  size={"compact"}
-                  startIcon={
-                    <PlusSvgIcon
-                      data-plasmic-name={"svg"}
-                      data-plasmic-override={overrides.svg}
-                      className={classNames(projectcss.all, sty.svg)}
-                      role={"img"}
-                    />
-                  }
-                  submitsForm={false}
-                >
-                  <Trans__>{"New User"}</Trans__>
-                </Button>
-              </Stack__>
-            </Stack__>
-            <div
-              data-plasmic-name={"frame10"}
-              data-plasmic-override={overrides.frame10}
-              className={classNames(projectcss.all, sty.frame10)}
-            >
-              <TabsContainer
-                data-plasmic-name={"tabsContainer"}
-                data-plasmic-override={overrides.tabsContainer}
-                className={classNames("__wab_instance", sty.tabsContainer)}
-                initialKey={"tab1"}
-                previewAll={false}
-              >
-                <DataCtxReader__>
-                  {$ctx => (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___10SXx
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1VjY
-                        )}
-                      >
-                        <TabButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tabButton__jfjcH
-                          )}
-                          tabKey={"tab1"}
-                        >
-                          <Button2 color={"clear"}>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__g3Ygj
-                              )}
-                            >
-                              <Trans__>{"Users"}</Trans__>
-                            </div>
-                          </Button2>
-                        </TabButton>
-                        <TabButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tabButton__o0Fo
-                          )}
-                          tabKey={"tab2"}
-                        >
-                          <Button2 color={"clear"}>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___5A5Sq
-                              )}
-                            >
-                              <Trans__>{"Activity"}</Trans__>
-                            </div>
-                          </Button2>
-                        </TabButton>
-                        <TabUnderline
-                          data-plasmic-name={"tabUnderline"}
-                          data-plasmic-override={overrides.tabUnderline}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tabUnderline
-                          )}
-                        />
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__iZm48
-                        )}
-                      >
-                        <TabContent
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tabContent__nCsg9
-                          )}
-                          tabKey={"tab1"}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__vdG0
-                            )}
-                          >
-                            {(() => {
-                              const child$Props = {
-                                canSelectRows: "multiple",
-                                className: classNames(
-                                  "__wab_instance",
-                                  sty.table
-                                ),
-                                data: (() => {
-                                  try {
-                                    return $queries.eSign.data.response[
-                                      "Awaiting Signatures"
-                                    ].documents;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })(),
-                                fields: (() => {
-                                  const __composite = [
-                                    {
-                                      key: "id",
-                                      fieldId: "id",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Profile Picture",
-                                      fieldId: "Profile Picture",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Username",
-                                      fieldId: "Username",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "First Name",
-                                      fieldId: "First Name",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Last Name",
-                                      fieldId: "Last Name",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Nickname",
-                                      fieldId: "Nickname",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Display Name",
-                                      fieldId: "Display Name",
-                                      disableSorting: null,
-                                      title: null
-                                    },
-                                    {
-                                      key: "Email",
-                                      fieldId: "Email",
-                                      disableSorting: null
-                                    },
-                                    {
-                                      key: "Website",
-                                      fieldId: "Website",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Biographical Info",
-                                      fieldId: "Biographical Info",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_avatar",
-                                      fieldId: "_employee_avatar",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_email",
-                                      fieldId: "_employee_email",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_birthday",
-                                      fieldId: "_employee_birthday",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_phone",
-                                      fieldId: "_employee_phone",
-                                      disableSorting: null,
-                                      title: null,
-                                      dataType: null,
-                                      maximumFractionDigits: null,
-                                      minimumFractionDigits: null
-                                    },
-                                    {
-                                      key: "_employee_address",
-                                      fieldId: "_employee_address",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_address_2",
-                                      fieldId: "_employee_address_2",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "city",
-                                      fieldId: "city",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "state_province",
-                                      fieldId: "state_province",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "zip_postal_code",
-                                      fieldId: "zip_postal_code",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "country",
-                                      fieldId: "country",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_professional_summary",
-                                      fieldId: "_professional_summary",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "_employee_skills",
-                                      fieldId: "_employee_skills",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "facebook",
-                                      fieldId: "facebook",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "twitter",
-                                      fieldId: "twitter",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "linkedin",
-                                      fieldId: "linkedin",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "services_agreement_approval",
-                                      fieldId: "services_agreement_approval",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "services_agreement_status",
-                                      fieldId: "services_agreement_status",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "employee_status",
-                                      fieldId: "employee_status",
-                                      title: null
-                                    },
-                                    {
-                                      key: "points",
-                                      fieldId: "points",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "alert",
-                                      fieldId: "alert",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Registered on",
-                                      fieldId: "Registered on",
-                                      dataType: null,
-                                      dateStyle: null,
-                                      timeStyle: null,
-                                      title: null
-                                    },
-                                    {
-                                      key: "Is Online",
-                                      fieldId: "Is Online",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Last Login",
-                                      fieldId: "Last Login",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Last Logout",
-                                      fieldId: "Last Logout",
-                                      isHidden: null
-                                    },
-                                    {
-                                      key: "Visited Pages",
-                                      fieldId: "Visited Pages",
-                                      isHidden: null
-                                    }
-                                  ];
-                                  __composite["0"]["isHidden"] = true;
-                                  __composite["1"]["isHidden"] = true;
-                                  __composite["2"]["isHidden"] = true;
-                                  __composite["3"]["isHidden"] = true;
-                                  __composite["4"]["isHidden"] = true;
-                                  __composite["5"]["isHidden"] = true;
-                                  __composite["6"]["disableSorting"] = true;
-                                  __composite["6"]["title"] = "Name";
-                                  __composite["7"]["disableSorting"] = true;
-                                  __composite["8"]["isHidden"] = true;
-                                  __composite["9"]["isHidden"] = true;
-                                  __composite["10"]["isHidden"] = true;
-                                  __composite["11"]["isHidden"] = true;
-                                  __composite["12"]["isHidden"] = true;
-                                  __composite["13"]["disableSorting"] = true;
-                                  __composite["13"]["title"] = "Phone";
-                                  __composite["13"]["dataType"] = "auto";
-                                  __composite["13"][
-                                    "maximumFractionDigits"
-                                  ] = 10;
-                                  __composite["13"][
-                                    "minimumFractionDigits"
-                                  ] = 10;
-                                  __composite["14"]["isHidden"] = true;
-                                  __composite["15"]["isHidden"] = true;
-                                  __composite["16"]["isHidden"] = true;
-                                  __composite["17"]["isHidden"] = true;
-                                  __composite["18"]["isHidden"] = true;
-                                  __composite["19"]["isHidden"] = true;
-                                  __composite["20"]["isHidden"] = true;
-                                  __composite["21"]["isHidden"] = true;
-                                  __composite["22"]["isHidden"] = true;
-                                  __composite["23"]["isHidden"] = true;
-                                  __composite["24"]["isHidden"] = true;
-                                  __composite["25"]["isHidden"] = true;
-                                  __composite["26"]["isHidden"] = true;
-                                  __composite["27"]["title"] = "Status";
-                                  __composite["28"]["isHidden"] = true;
-                                  __composite["29"]["isHidden"] = true;
-                                  __composite["30"]["dataType"] = "datetime";
-                                  __composite["30"]["dateStyle"] = "medium";
-                                  __composite["30"]["timeStyle"] = "none";
-                                  __composite["30"]["title"] = "Join on";
-                                  __composite["31"]["isHidden"] = true;
-                                  __composite["32"]["isHidden"] = true;
-                                  __composite["33"]["isHidden"] = true;
-                                  __composite["34"]["isHidden"] = true;
-                                  return __composite;
-                                })(),
-
-                                hideDensity: false,
-                                hideSelectionBar: true,
-                                rowActions: (() => {
-                                  const __composite = [
-                                    { type: "item", label: null },
-                                    { type: null, label: null }
-                                  ];
-                                  __composite["0"]["label"] = "Edit";
-                                  __composite["1"]["type"] = "item";
-                                  __composite["1"]["label"] = "Delete";
-                                  return __composite;
-                                })(),
-
-                                rowKey: ``,
-                                scopeClassName: sty["table__instance"],
-                                themeResetClassName: classNames(
-                                  projectcss.root_reset,
-                                  projectcss.root_reset_tags,
-                                  projectcss.plasmic_default_styles,
-                                  projectcss.plasmic_mixins,
-                                  projectcss.plasmic_tokens,
-                                  plasmic_antd_5_hostless_css.plasmic_tokens,
-                                  plasmic_plasmic_rich_components_css.plasmic_tokens
-                                )
-                              };
-
-                              return (
-                                <RichTable
-                                  data-plasmic-name={"table"}
-                                  data-plasmic-override={overrides.table}
-                                  {...child$Props}
-                                />
-                              );
-                            })()}
-                          </div>
-                        </TabContent>
-                        <TabContent
-                          className={classNames(
-                            "__wab_instance",
-                            sty.tabContent__po2D5
-                          )}
-                          tabKey={"tab2"}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__rs4Tw
-                            )}
-                          />
-                        </TabContent>
-                      </div>
-                    </div>
-                  )}
-                </DataCtxReader__>
-              </TabsContainer>
-            </div>
-          </Stack__>
-          <Footer
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames("__wab_instance", sty.footer)}
-          />
-        </div>
-        <RightBar
-          data-plasmic-name={"rightBar"}
-          data-plasmic-override={overrides.rightBar}
-          className={classNames("__wab_instance", sty.rightBar)}
-        />
-
-        <section
-          data-plasmic-name={"overlay"}
-          data-plasmic-override={overrides.overlay}
-          className={classNames(projectcss.all, sty.overlay)}
+                <CustomTable
+                  data-plasmic-name={"customTable"}
+                  data-plasmic-override={overrides.customTable}
+                  className={classNames("__wab_instance", sty.customTable)}
+                />
+              </div>
+            </React.Fragment>
+          }
         />
       </div>
     </React.Fragment>
@@ -827,108 +262,44 @@ function PlasmicBackups__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  home: [
-    "home",
-    "sidebar",
-    "body",
-    "header",
-    "rightBarToggle",
-    "sidebarToggleButton",
-    "content",
-    "frame7",
-    "frame8",
-    "hiKatiePena",
+  main: [
+    "main",
+    "dashboard",
+    "pageInfo",
     "welcomeBackToRhom",
-    "frame1",
+    "button",
     "svg",
-    "frame10",
-    "tabsContainer",
-    "tabUnderline",
-    "table",
-    "footer",
-    "rightBar",
-    "overlay"
+    "section",
+    "customTable"
   ],
-  sidebar: ["sidebar"],
-  body: [
-    "body",
-    "header",
-    "rightBarToggle",
-    "sidebarToggleButton",
-    "content",
-    "frame7",
-    "frame8",
-    "hiKatiePena",
+  dashboard: [
+    "dashboard",
+    "pageInfo",
     "welcomeBackToRhom",
-    "frame1",
+    "button",
     "svg",
-    "frame10",
-    "tabsContainer",
-    "tabUnderline",
-    "table",
-    "footer"
+    "section",
+    "customTable"
   ],
-  header: ["header", "rightBarToggle", "sidebarToggleButton"],
-  rightBarToggle: ["rightBarToggle"],
-  sidebarToggleButton: ["sidebarToggleButton"],
-  content: [
-    "content",
-    "frame7",
-    "frame8",
-    "hiKatiePena",
-    "welcomeBackToRhom",
-    "frame1",
-    "svg",
-    "frame10",
-    "tabsContainer",
-    "tabUnderline",
-    "table"
-  ],
-  frame7: [
-    "frame7",
-    "frame8",
-    "hiKatiePena",
-    "welcomeBackToRhom",
-    "frame1",
-    "svg"
-  ],
-  frame8: ["frame8", "hiKatiePena", "welcomeBackToRhom"],
-  hiKatiePena: ["hiKatiePena"],
+  pageInfo: ["pageInfo", "welcomeBackToRhom", "button", "svg"],
   welcomeBackToRhom: ["welcomeBackToRhom"],
-  frame1: ["frame1", "svg"],
+  button: ["button", "svg"],
   svg: ["svg"],
-  frame10: ["frame10", "tabsContainer", "tabUnderline", "table"],
-  tabsContainer: ["tabsContainer", "tabUnderline", "table"],
-  tabUnderline: ["tabUnderline"],
-  table: ["table"],
-  footer: ["footer"],
-  rightBar: ["rightBar"],
-  overlay: ["overlay"]
+  section: ["section", "customTable"],
+  customTable: ["customTable"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  home: "div";
-  sidebar: typeof Sidebar;
-  body: "div";
-  header: typeof Header;
-  rightBarToggle: typeof RightBarToggle;
-  sidebarToggleButton: typeof SidebarToggleButton;
-  content: "div";
-  frame7: "div";
-  frame8: "div";
-  hiKatiePena: "div";
+  main: "div";
+  dashboard: typeof Dashboard;
+  pageInfo: typeof PageInfo;
   welcomeBackToRhom: "div";
-  frame1: "div";
+  button: typeof Button;
   svg: "svg";
-  frame10: "div";
-  tabsContainer: typeof TabsContainer;
-  tabUnderline: typeof TabUnderline;
-  table: typeof RichTable;
-  footer: typeof Footer;
-  rightBar: typeof RightBar;
-  overlay: "section";
+  section: "div";
+  customTable: typeof CustomTable;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -978,7 +349,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "home") {
+  if (nodeName === "main") {
     func.displayName = "PlasmicBackups";
   } else {
     func.displayName = `PlasmicBackups.${nodeName}`;
@@ -988,28 +359,16 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicBackups = Object.assign(
   // Top-level PlasmicBackups renders the root element
-  makeNodeComponent("home"),
+  makeNodeComponent("main"),
   {
     // Helper components rendering sub-elements
-    sidebar: makeNodeComponent("sidebar"),
-    body: makeNodeComponent("body"),
-    header: makeNodeComponent("header"),
-    rightBarToggle: makeNodeComponent("rightBarToggle"),
-    sidebarToggleButton: makeNodeComponent("sidebarToggleButton"),
-    content: makeNodeComponent("content"),
-    frame7: makeNodeComponent("frame7"),
-    frame8: makeNodeComponent("frame8"),
-    hiKatiePena: makeNodeComponent("hiKatiePena"),
+    dashboard: makeNodeComponent("dashboard"),
+    pageInfo: makeNodeComponent("pageInfo"),
     welcomeBackToRhom: makeNodeComponent("welcomeBackToRhom"),
-    frame1: makeNodeComponent("frame1"),
+    button: makeNodeComponent("button"),
     svg: makeNodeComponent("svg"),
-    frame10: makeNodeComponent("frame10"),
-    tabsContainer: makeNodeComponent("tabsContainer"),
-    tabUnderline: makeNodeComponent("tabUnderline"),
-    table: makeNodeComponent("table"),
-    footer: makeNodeComponent("footer"),
-    rightBar: makeNodeComponent("rightBar"),
-    overlay: makeNodeComponent("overlay"),
+    section: makeNodeComponent("section"),
+    customTable: makeNodeComponent("customTable"),
 
     // Metadata about props expected for PlasmicBackups
     internalVariantProps: PlasmicBackups__VariantProps,
@@ -1018,7 +377,7 @@ export const PlasmicBackups = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "Backups",
-      description: "",
+      description: "Manage and create backups, backup logs.",
       ogImageSrc: "",
       canonical: ""
     }
