@@ -116,4 +116,5 @@
 .slotTargetButtonLabel {
   color: var(--token-6D_pqZd49N3h);
   white-space: pre;
+  user-select: none;
 }

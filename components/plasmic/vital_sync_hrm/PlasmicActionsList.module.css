@@ -45,6 +45,7 @@
 .slotTargetDropdownTitle {
   font-weight: 500;
   white-space: pre;
+  user-select: none;
 }
 .actions {
   display: flex;

@@ -190,6 +190,7 @@ function PlasmicCustomDropdown__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
         sty.dropdown,
+        "custom-dropdown-section",
         {
           [sty.dropdowndropdownAlignment_left]: hasVariant(
             $state,
@@ -204,6 +205,38 @@ function PlasmicCustomDropdown__RenderFunc(props: {
           [sty.dropdownisOpen]: hasVariant($state, "isOpen", "isOpen")
         }
       )}
+      onClick={async event => {
+        const $steps = {};
+
+        $steps["runCode"] = true
+          ? (() => {
+              const actionArgs = {
+                customFunction: async () => {
+                  return (() => {
+                    return document.addEventListener("click", event => {
+                      const dropdownSection = event.target.closest(
+                        ".custom-dropdown-section"
+                      );
+                      if (!dropdownSection) {
+                        $state.isOpen = false;
+                      }
+                    });
+                  })();
+                }
+              };
+              return (({ customFunction }) => {
+                return customFunction();
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["runCode"] != null &&
+          typeof $steps["runCode"] === "object" &&
+          typeof $steps["runCode"].then === "function"
+        ) {
+          $steps["runCode"] = await $steps["runCode"];
+        }
+      }}
     >
       <div
         className={classNames(projectcss.all, sty.freeBox__lDdac, {
@@ -218,7 +251,11 @@ function PlasmicCustomDropdown__RenderFunc(props: {
 
           $steps["updateIsOpen"] = true
             ? (() => {
-                const actionArgs = { vgroup: "isOpen", operation: 2 };
+                const actionArgs = {
+                  vgroup: "isOpen",
+                  operation: 2,
+                  value: "isOpen"
+                };
                 return (({ vgroup, value }) => {
                   if (typeof value === "string") {
                     value = [value];

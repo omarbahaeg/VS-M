@@ -60,6 +60,15 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Dashboard from "../../Dashboard"; // plasmic-import: xrHIipmjGkuW/component
+import PageInfo from "../../PageInfo"; // plasmic-import: -5yQM3hZscI3/component
+import Button from "../../Button"; // plasmic-import: JRPPbMhYptfo/component
+import CtTabs from "../../CtTabs"; // plasmic-import: 2l3jZIBKayAy/component
+import { TabsContainer } from "@plasmicpkgs/plasmic-tabs";
+import { TabButton } from "@plasmicpkgs/plasmic-tabs";
+import TabButton2 from "../../TabButton"; // plasmic-import: TAXiLlfQD5MN/component
+import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
+import { TabContent } from "@plasmicpkgs/plasmic-tabs";
+import CustomTable from "../../CustomTable"; // plasmic-import: SyYLCRWlXb0u/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -67,6 +76,10 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gRveVBaatz/projectcss
 import sty from "./PlasmicRequests.module.css"; // plasmic-import: 5cct2o2gRnd1/css
+
+import PlusSvgIcon from "./icons/PlasmicIcon__PlusSvg"; // plasmic-import: qKMzzxYWCT9r/icon
+import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 6im6f-sFV6o1/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
 
 createPlasmicElementProxy;
 
@@ -80,8 +93,17 @@ type ArgPropType = keyof PlasmicRequests__ArgsType;
 export const PlasmicRequests__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicRequests__OverridesType = {
-  root?: Flex__<"div">;
+  main?: Flex__<"div">;
   dashboard?: Flex__<typeof Dashboard>;
+  pageInfo?: Flex__<typeof PageInfo>;
+  welcomeBackToRhom?: Flex__<"div">;
+  section2?: Flex__<"div">;
+  ctTabs?: Flex__<typeof CtTabs>;
+  tabsContainer?: Flex__<typeof TabsContainer>;
+  tabBody?: Flex__<"div">;
+  header?: Flex__<"div">;
+  tabUnderline?: Flex__<typeof TabUnderline>;
+  content2?: Flex__<"div">;
 };
 
 export interface DefaultRequestsProps {}
@@ -141,6 +163,21 @@ function PlasmicRequests__RenderFunc(props: {
           name="twitter:title"
           content={PlasmicRequests.pageMetadata.title}
         />
+        <meta
+          key="description"
+          name="description"
+          content={PlasmicRequests.pageMetadata.description}
+        />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={PlasmicRequests.pageMetadata.description}
+        />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={PlasmicRequests.pageMetadata.description}
+        />
       </Head>
 
       <style>{`
@@ -149,44 +186,313 @@ function PlasmicRequests__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
-        <div
-          data-plasmic-name={"root"}
-          data-plasmic-override={overrides.root}
-          data-plasmic-root={true}
-          data-plasmic-for-node={forNode}
-          className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
-            sty.root
-          )}
-        >
-          <Dashboard
-            data-plasmic-name={"dashboard"}
-            data-plasmic-override={overrides.dashboard}
-            className={classNames("__wab_instance", sty.dashboard)}
-          />
-        </div>
+      <div
+        data-plasmic-name={"main"}
+        data-plasmic-override={overrides.main}
+        data-plasmic-root={true}
+        data-plasmic-for-node={forNode}
+        className={classNames(
+          projectcss.all,
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens,
+          sty.main
+        )}
+      >
+        <Dashboard
+          data-plasmic-name={"dashboard"}
+          data-plasmic-override={overrides.dashboard}
+          className={classNames("__wab_instance", sty.dashboard)}
+          contentSection={
+            <React.Fragment>
+              <PageInfo
+                data-plasmic-name={"pageInfo"}
+                data-plasmic-override={overrides.pageInfo}
+                className={classNames("__wab_instance", sty.pageInfo)}
+                description={
+                  <div
+                    data-plasmic-name={"welcomeBackToRhom"}
+                    data-plasmic-override={overrides.welcomeBackToRhom}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.welcomeBackToRhom
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return undefined;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Page Description Here.";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                }
+              />
+
+              <div
+                data-plasmic-name={"section2"}
+                data-plasmic-override={overrides.section2}
+                className={classNames(projectcss.all, sty.section2)}
+              >
+                <CtTabs
+                  data-plasmic-name={"ctTabs"}
+                  data-plasmic-override={overrides.ctTabs}
+                  className={classNames("__wab_instance", sty.ctTabs)}
+                >
+                  <TabsContainer
+                    data-plasmic-name={"tabsContainer"}
+                    data-plasmic-override={overrides.tabsContainer}
+                    className={classNames("__wab_instance", sty.tabsContainer)}
+                    initialKey={"tab1"}
+                    previewAll={false}
+                  >
+                    <DataCtxReader__>
+                      {$ctx => (
+                        <Stack__
+                          as={"div"}
+                          data-plasmic-name={"tabBody"}
+                          data-plasmic-override={overrides.tabBody}
+                          hasGap={true}
+                          className={classNames(projectcss.all, sty.tabBody)}
+                        >
+                          <div
+                            data-plasmic-name={"header"}
+                            data-plasmic-override={overrides.header}
+                            className={classNames(projectcss.all, sty.header)}
+                          >
+                            <TabButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabButton__o3S2
+                              )}
+                              tabKey={"tab1"}
+                            >
+                              <TabButton2
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.tabButton__qVu8E
+                                )}
+                                label={<Trans__>{"All"}</Trans__>}
+                                size={"compact"}
+                              />
+                            </TabButton>
+                            <TabButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabButton__dtHxI
+                              )}
+                              tabKey={"tab2"}
+                            >
+                              <TabButton2
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.tabButton__f0Kqz
+                                )}
+                                label={<Trans__>{"Pending"}</Trans__>}
+                                size={"compact"}
+                              />
+                            </TabButton>
+                            <TabButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabButton___1WCVi
+                              )}
+                              tabKey={"tab3"}
+                            >
+                              <TabButton2
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.tabButton__sTImC
+                                )}
+                                label={<Trans__>{"Approved"}</Trans__>}
+                                size={"compact"}
+                              />
+                            </TabButton>
+                            <TabButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabButton__nyjBt
+                              )}
+                              tabKey={"tab4"}
+                            >
+                              <TabButton2
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.tabButton__eNMeT
+                                )}
+                                label={<Trans__>{"Rejected"}</Trans__>}
+                                size={"compact"}
+                              />
+                            </TabButton>
+                            <TabUnderline
+                              data-plasmic-name={"tabUnderline"}
+                              data-plasmic-override={overrides.tabUnderline}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabUnderline
+                              )}
+                            />
+                          </div>
+                          <div
+                            data-plasmic-name={"content2"}
+                            data-plasmic-override={overrides.content2}
+                            className={classNames(projectcss.all, sty.content2)}
+                          >
+                            <TabContent
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabContent__cvyik
+                              )}
+                              tabKey={"tab1"}
+                            >
+                              <CustomTable
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.customTable__ju03
+                                )}
+                              />
+                            </TabContent>
+                            <TabContent
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabContent__zqZWh
+                              )}
+                              tabKey={"tab2"}
+                            >
+                              <CustomTable
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.customTable___928Ay
+                                )}
+                              />
+                            </TabContent>
+                            <TabContent
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabContent__dAqgj
+                              )}
+                              tabKey={"tab3"}
+                            >
+                              <CustomTable
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.customTable__ofHtn
+                                )}
+                              />
+                            </TabContent>
+                            <TabContent
+                              className={classNames(
+                                "__wab_instance",
+                                sty.tabContent__esR26
+                              )}
+                              tabKey={"tab4"}
+                            >
+                              <CustomTable
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.customTable__mhQfu
+                                )}
+                              />
+                            </TabContent>
+                          </div>
+                        </Stack__>
+                      )}
+                    </DataCtxReader__>
+                  </TabsContainer>
+                </CtTabs>
+              </div>
+            </React.Fragment>
+          }
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "dashboard"],
-  dashboard: ["dashboard"]
+  main: [
+    "main",
+    "dashboard",
+    "pageInfo",
+    "welcomeBackToRhom",
+    "section2",
+    "ctTabs",
+    "tabsContainer",
+    "tabBody",
+    "header",
+    "tabUnderline",
+    "content2"
+  ],
+  dashboard: [
+    "dashboard",
+    "pageInfo",
+    "welcomeBackToRhom",
+    "section2",
+    "ctTabs",
+    "tabsContainer",
+    "tabBody",
+    "header",
+    "tabUnderline",
+    "content2"
+  ],
+  pageInfo: ["pageInfo", "welcomeBackToRhom"],
+  welcomeBackToRhom: ["welcomeBackToRhom"],
+  section2: [
+    "section2",
+    "ctTabs",
+    "tabsContainer",
+    "tabBody",
+    "header",
+    "tabUnderline",
+    "content2"
+  ],
+  ctTabs: [
+    "ctTabs",
+    "tabsContainer",
+    "tabBody",
+    "header",
+    "tabUnderline",
+    "content2"
+  ],
+  tabsContainer: [
+    "tabsContainer",
+    "tabBody",
+    "header",
+    "tabUnderline",
+    "content2"
+  ],
+  tabBody: ["tabBody", "header", "tabUnderline", "content2"],
+  header: ["header", "tabUnderline"],
+  tabUnderline: ["tabUnderline"],
+  content2: ["content2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: "div";
+  main: "div";
   dashboard: typeof Dashboard;
+  pageInfo: typeof PageInfo;
+  welcomeBackToRhom: "div";
+  section2: "div";
+  ctTabs: typeof CtTabs;
+  tabsContainer: typeof TabsContainer;
+  tabBody: "div";
+  header: "div";
+  tabUnderline: typeof TabUnderline;
+  content2: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -236,7 +542,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       forNode: nodeName
     });
   };
-  if (nodeName === "root") {
+  if (nodeName === "main") {
     func.displayName = "PlasmicRequests";
   } else {
     func.displayName = `PlasmicRequests.${nodeName}`;
@@ -246,10 +552,19 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
 
 export const PlasmicRequests = Object.assign(
   // Top-level PlasmicRequests renders the root element
-  makeNodeComponent("root"),
+  makeNodeComponent("main"),
   {
     // Helper components rendering sub-elements
     dashboard: makeNodeComponent("dashboard"),
+    pageInfo: makeNodeComponent("pageInfo"),
+    welcomeBackToRhom: makeNodeComponent("welcomeBackToRhom"),
+    section2: makeNodeComponent("section2"),
+    ctTabs: makeNodeComponent("ctTabs"),
+    tabsContainer: makeNodeComponent("tabsContainer"),
+    tabBody: makeNodeComponent("tabBody"),
+    header: makeNodeComponent("header"),
+    tabUnderline: makeNodeComponent("tabUnderline"),
+    content2: makeNodeComponent("content2"),
 
     // Metadata about props expected for PlasmicRequests
     internalVariantProps: PlasmicRequests__VariantProps,
@@ -258,7 +573,7 @@ export const PlasmicRequests = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "Requests",
-      description: "",
+      description: "Track and manage staff submissions.",
       ogImageSrc: "",
       canonical: ""
     }

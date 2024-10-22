@@ -34,6 +34,7 @@
 .slotTargetChildren {
   white-space: pre;
   font-size: 14px;
+  user-select: none;
 }
 .slotTargetChildrenisPressed {
   color: var(--token-Ja7FXg_cLkuz);

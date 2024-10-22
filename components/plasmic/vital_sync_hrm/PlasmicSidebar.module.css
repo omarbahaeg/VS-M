@@ -292,6 +292,12 @@
 .searchboxcollapsed:global(.__wab_instance) {
   margin-right: 5px;
 }
+@media (min-width: 0px) and (max-width: 430px) {
+  .searchboxisVisible:global(.__wab_instance) {
+    width: 100%;
+    min-width: 0;
+  }
+}
 .navigation {
   height: auto;
   display: flex;

@@ -290,6 +290,7 @@ function PlasmicCustomTable__RenderFunc(props: {
             data-plasmic-override={overrides.exportButton}
             className={classNames("__wab_instance", sty.exportButton)}
             dropdownAlignment={"right"}
+            isOpen={undefined}
             slot={
               <ActionsList
                 actionsList={

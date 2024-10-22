@@ -624,6 +624,11 @@ function PlasmicSidebar__RenderFunc(props: {
                 $state,
                 "collapsed",
                 "collapsed"
+              ),
+              [sty.searchboxisVisible]: hasVariant(
+                $state,
+                "isVisible",
+                "isVisible"
               )
             })}
             collapsed={
