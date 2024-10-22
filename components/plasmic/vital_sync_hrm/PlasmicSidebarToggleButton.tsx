@@ -72,22 +72,18 @@ import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: yj3hHsN
 
 createPlasmicElementProxy;
 
-export type PlasmicSidebarToggleButton__VariantMembers = {
-  isOpen: "isOpen";
-};
-export type PlasmicSidebarToggleButton__VariantsArgs = {
-  isOpen?: SingleBooleanChoiceArg<"isOpen">;
-};
+export type PlasmicSidebarToggleButton__VariantMembers = {};
+export type PlasmicSidebarToggleButton__VariantsArgs = {};
 type VariantPropType = keyof PlasmicSidebarToggleButton__VariantsArgs;
 export const PlasmicSidebarToggleButton__VariantProps =
-  new Array<VariantPropType>("isOpen");
+  new Array<VariantPropType>();
 
 export type PlasmicSidebarToggleButton__ArgsType = {
-  onIsOpenChange?: (val: any) => void;
+  onClick?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicSidebarToggleButton__ArgsType;
 export const PlasmicSidebarToggleButton__ArgProps = new Array<ArgPropType>(
-  "onIsOpenChange"
+  "onClick"
 );
 
 export type PlasmicSidebarToggleButton__OverridesType = {
@@ -96,8 +92,7 @@ export type PlasmicSidebarToggleButton__OverridesType = {
 };
 
 export interface DefaultSidebarToggleButtonProps {
-  onIsOpenChange?: (val: any) => void;
-  isOpen?: SingleBooleanChoiceArg<"isOpen">;
+  onClick?: (event: any) => void;
   className?: string;
 }
 
@@ -141,26 +136,6 @@ function PlasmicSidebarToggleButton__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "isOpen",
-        type: "writable",
-        variableType: "variant",
-
-        valueProp: "isOpen",
-        onChangeProp: "onIsOpenChange"
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
-
   const globalVariants = ensureGlobalVariants({
     screen: useScreenVariantsujc2VYpomBng()
   });
@@ -181,35 +156,7 @@ function PlasmicSidebarToggleButton__RenderFunc(props: {
         plasmic_plasmic_rich_components_css.plasmic_tokens,
         sty.sidebarToggle
       )}
-      onClick={async event => {
-        const $steps = {};
-
-        $steps["updateIsOpen"] = true
-          ? (() => {
-              const actionArgs = {
-                vgroup: "isOpen",
-                operation: 2,
-                value: "isOpen"
-              };
-              return (({ vgroup, value }) => {
-                if (typeof value === "string") {
-                  value = [value];
-                }
-
-                const oldValue = $stateGet($state, vgroup);
-                $stateSet($state, vgroup, !oldValue);
-                return !oldValue;
-              })?.apply(null, [actionArgs]);
-            })()
-          : undefined;
-        if (
-          $steps["updateIsOpen"] != null &&
-          typeof $steps["updateIsOpen"] === "object" &&
-          typeof $steps["updateIsOpen"].then === "function"
-        ) {
-          $steps["updateIsOpen"] = await $steps["updateIsOpen"];
-        }
-      }}
+      onClick={args.onClick}
     >
       <Icon24Icon
         data-plasmic-name={"svg"}

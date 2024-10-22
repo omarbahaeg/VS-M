@@ -79,12 +79,14 @@ export const PlasmicSidebarNavigationSubitem__VariantProps =
   new Array<VariantPropType>("active");
 
 export type PlasmicSidebarNavigationSubitem__ArgsType = {
+  onActiveChange?: (val: any) => void;
   label?: React.ReactNode;
   pageLink?: string;
   openInNewTab?: Target;
 };
 type ArgPropType = keyof PlasmicSidebarNavigationSubitem__ArgsType;
 export const PlasmicSidebarNavigationSubitem__ArgProps = new Array<ArgPropType>(
+  "onActiveChange",
   "label",
   "pageLink",
   "openInNewTab"
@@ -95,6 +97,7 @@ export type PlasmicSidebarNavigationSubitem__OverridesType = {
 };
 
 export interface DefaultSidebarNavigationSubitemProps {
+  onActiveChange?: (val: any) => void;
   label?: React.ReactNode;
   pageLink?: string;
   openInNewTab?: Target;
@@ -146,22 +149,11 @@ function PlasmicSidebarNavigationSubitem__RenderFunc(props: {
     () => [
       {
         path: "active",
-        type: "private",
+        type: "writable",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })() ?? $props.active
+
+        valueProp: "active",
+        onChangeProp: "onActiveChange"
       }
     ],
     [$props, $ctx, $refs]

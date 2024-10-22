@@ -381,9 +381,8 @@ function PlasmicSidebarNavigationDropdown__RenderFunc(props: {
               <SidebarNavigationSubitem
                 className={classNames(
                   "__wab_instance",
-                  sty.sidebarNavigationSubitem__oC1Oa
+                  sty.sidebarNavigationSubitem__dODS
                 )}
-                openInNewTab={undefined}
               />
             ),
 

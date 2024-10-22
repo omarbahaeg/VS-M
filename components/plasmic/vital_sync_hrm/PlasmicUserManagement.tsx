@@ -187,7 +187,7 @@ function PlasmicUserManagement__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarToggleButton.isOpen",
+        path: "sidebar.isVisible",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -288,6 +288,11 @@ function PlasmicUserManagement__RenderFunc(props: {
             data-plasmic-name={"sidebar"}
             data-plasmic-override={overrides.sidebar}
             className={classNames("__wab_instance", sty.sidebar)}
+            isVisible={generateStateValueProp($state, ["sidebar", "isVisible"])}
+            onIsVisibleChange={generateStateOnChangeProp($state, [
+              "sidebar",
+              "isVisible"
+            ])}
           />
 
           <div
@@ -322,14 +327,6 @@ function PlasmicUserManagement__RenderFunc(props: {
                   "__wab_instance",
                   sty.sidebarToggleButton
                 )}
-                isOpen={generateStateValueProp($state, [
-                  "sidebarToggleButton",
-                  "isOpen"
-                ])}
-                onIsOpenChange={generateStateOnChangeProp($state, [
-                  "sidebarToggleButton",
-                  "isOpen"
-                ])}
               />
             </Header>
             <Stack__

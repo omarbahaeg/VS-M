@@ -327,6 +327,7 @@ function PlasmicSearchbox__RenderFunc(props: {
           projectcss.all,
           projectcss.input,
           sty.searchInput,
+          "searchbox-search-input",
           {
             [sty.searchInput___focusVisibleWithin]:
               triggers.focusVisibleWithin_searchbox,

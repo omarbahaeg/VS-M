@@ -8,15 +8,18 @@ import * as React from "react";
 import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
 import { ContentfulCredentialsProvider } from "@plasmicpkgs/plasmic-contentful";
+import { EmbedCss } from "@plasmicpkgs/plasmic-embed-css";
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
+  >;
+  embedCssProps?: Partial<
+    Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
 }
 
@@ -26,7 +29,8 @@ export default function GlobalContextsProvider(
   const {
     children,
     antdConfigProviderProps,
-    contentfulCredentialsProviderProps
+    contentfulCredentialsProviderProps,
+    embedCssProps
   } = props;
 
   return (
@@ -143,7 +147,16 @@ export default function GlobalContextsProvider(
             : "lmfbwqzbh93n"
         }
       >
-        {children}
+        <EmbedCss
+          {...embedCssProps}
+          css={
+            embedCssProps && "css" in embedCssProps
+              ? embedCssProps.css!
+              : "/* Search Inupt */\r\n.searchbox-search-input {\r\n  outline: none;\r\n  border: none;\r\n  box-shadow: none;\r\n}\r\n\r\n/* Customizes the scrollbar for webkit browsers (like Chrome and Safari) */\r\n::-webkit-scrollbar {\r\n  width: 12px; /* Width of the scrollbar */\r\n  height: 12px; /* Height of the scrollbar */\r\n}\r\n\r\n::-webkit-scrollbar-track {\r\n  background-color: transparent; /* Background color of the scrollbar track */\r\n  border-radius: 10px; /* Border radius of the scrollbar track */\r\n}\r\n\r\n::-webkit-scrollbar-thumb {\r\n  background-color: #c1c1c1; /* Background color of the scrollbar thumb */\r\n  border-radius: 10px; /* Border radius of the scrollbar thumb */\r\n  border: 3px solid transparent; /* Border of the scrollbar thumb */\r\n  background-clip: content-box; /* Background clip of the scrollbar thumb */\r\n}\r\n\r\n::-webkit-scrollbar-thumb:hover {\r\n  background-color: #a8a8a8; /* Background color of the scrollbar thumb on hover */\r\n}\r\n\r\n/* Customizes the scrollbar for Firefox */\r\n* {\r\n  scrollbar-width: thin; /* Width of the scrollbar */\r\n  scrollbar-color: #c1c1c1 transparent; /* Color of the scrollbar */\r\n}\r\n\r\n/* Customizes the scrollbar for dark mode */\r\n@media (prefers-color-scheme: dark) {\r\n  ::-webkit-scrollbar-thumb {\r\n    background-color: #4d4d4d; /* Dark background color of the scrollbar thumb */\r\n  }\r\n\r\n  ::-webkit-scrollbar-thumb:hover {\r\n    background-color: #5a5a5a; /* Dark background color of the scrollbar thumb on hover */\r\n  }\r\n\r\n  * {\r\n    scrollbar-color: #4d4d4d transparent; /* Dark color of the scrollbar */\r\n  }\r\n}"
+          }
+        >
+          {children}
+        </EmbedCss>
       </ContentfulCredentialsProvider>
     </AntdConfigProvider>
   );

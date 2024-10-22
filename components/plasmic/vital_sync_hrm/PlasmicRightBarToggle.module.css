@@ -25,9 +25,12 @@
 }
 .svg {
   object-fit: cover;
-  max-width: 100%;
+  max-width: 30px;
   height: 30px;
   color: var(--token-6D_pqZd49N3h);
   cursor: pointer;
   transform: none;
+  width: 30px;
+  min-height: 30px;
+  max-height: 30px;
 }

@@ -59,8 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -86,12 +84,16 @@ export const PlasmicSidebarToggle__VariantProps = new Array<VariantPropType>(
 
 export type PlasmicSidebarToggle__ArgsType = {
   collapsedIcon?: React.ReactNode;
+  onExpandChange?: (val: any) => void;
   expandIcon?: React.ReactNode;
+  onClick?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicSidebarToggle__ArgsType;
 export const PlasmicSidebarToggle__ArgProps = new Array<ArgPropType>(
   "collapsedIcon",
-  "expandIcon"
+  "onExpandChange",
+  "expandIcon",
+  "onClick"
 );
 
 export type PlasmicSidebarToggle__OverridesType = {
@@ -100,7 +102,9 @@ export type PlasmicSidebarToggle__OverridesType = {
 
 export interface DefaultSidebarToggleProps {
   collapsedIcon?: React.ReactNode;
+  onExpandChange?: (val: any) => void;
   expandIcon?: React.ReactNode;
+  onClick?: (event: any) => void;
   expand?: SingleBooleanChoiceArg<"expand">;
   className?: string;
 }
@@ -149,9 +153,11 @@ function PlasmicSidebarToggle__RenderFunc(props: {
     () => [
       {
         path: "expand",
-        type: "private",
+        type: "writable",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.expand
+
+        valueProp: "expand",
+        onChangeProp: "onExpandChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -181,35 +187,7 @@ function PlasmicSidebarToggle__RenderFunc(props: {
         sty.buttonIcon,
         { [sty.buttonIconexpand]: hasVariant($state, "expand", "expand") }
       )}
-      onClick={async event => {
-        const $steps = {};
-
-        $steps["updateExpand"] = true
-          ? (() => {
-              const actionArgs = {
-                vgroup: "expand",
-                operation: 2,
-                value: "expand"
-              };
-              return (({ vgroup, value }) => {
-                if (typeof value === "string") {
-                  value = [value];
-                }
-
-                const oldValue = $stateGet($state, vgroup);
-                $stateSet($state, vgroup, !oldValue);
-                return !oldValue;
-              })?.apply(null, [actionArgs]);
-            })()
-          : undefined;
-        if (
-          $steps["updateExpand"] != null &&
-          typeof $steps["updateExpand"] === "object" &&
-          typeof $steps["updateExpand"].then === "function"
-        ) {
-          $steps["updateExpand"] = await $steps["updateExpand"];
-        }
-      }}
+      onClick={args.onClick}
       ref={ref => {
         $refs["buttonIcon"] = ref;
       }}

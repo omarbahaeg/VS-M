@@ -96,21 +96,25 @@ createPlasmicElementProxy;
 
 export type PlasmicSidebar__VariantMembers = {
   collapsed: "collapsed";
-  close: "close";
+  isVisible: "isVisible";
 };
 export type PlasmicSidebar__VariantsArgs = {
   collapsed?: SingleBooleanChoiceArg<"collapsed">;
-  close?: SingleBooleanChoiceArg<"close">;
+  isVisible?: SingleBooleanChoiceArg<"isVisible">;
 };
 type VariantPropType = keyof PlasmicSidebar__VariantsArgs;
 export const PlasmicSidebar__VariantProps = new Array<VariantPropType>(
   "collapsed",
-  "close"
+  "isVisible"
 );
 
-export type PlasmicSidebar__ArgsType = {};
+export type PlasmicSidebar__ArgsType = {
+  onIsVisibleChange?: (val: any) => void;
+};
 type ArgPropType = keyof PlasmicSidebar__ArgsType;
-export const PlasmicSidebar__ArgProps = new Array<ArgPropType>();
+export const PlasmicSidebar__ArgProps = new Array<ArgPropType>(
+  "onIsVisibleChange"
+);
 
 export type PlasmicSidebar__OverridesType = {
   body?: Flex__<"div">;
@@ -118,17 +122,17 @@ export type PlasmicSidebar__OverridesType = {
   freeBox?: Flex__<"div">;
   navigationHeader?: Flex__<"div">;
   logo?: Flex__<typeof Logo>;
-  icons?: Flex__<"div">;
-  closeButton?: Flex__<"div">;
+  sidebarToggle?: Flex__<typeof SidebarToggle>;
+  sidebarToggleResponsive?: Flex__<typeof SidebarToggle>;
   searchbox?: Flex__<typeof Searchbox>;
   navigation?: Flex__<"div">;
   sidebarNavigationSubitem?: Flex__<typeof SidebarNavigationSubitem>;
-  sidebarNavigationSubitem2?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem3?: Flex__<typeof SidebarNavigationSubitem>;
   navigation2?: Flex__<"div">;
   title?: Flex__<"div">;
   navigation3?: Flex__<"div">;
   title2?: Flex__<"div">;
-  sidebarNavigationSubitem3?: Flex__<typeof SidebarNavigationSubitem>;
+  sidebarNavigationSubitem2?: Flex__<typeof SidebarNavigationSubitem>;
   sidebarNavigationSubitem4?: Flex__<typeof SidebarNavigationSubitem>;
   sidebarNavigationSubitem5?: Flex__<typeof SidebarNavigationSubitem>;
   sidebarNavigationSubitem6?: Flex__<typeof SidebarNavigationSubitem>;
@@ -141,8 +145,9 @@ export type PlasmicSidebar__OverridesType = {
 };
 
 export interface DefaultSidebarProps {
+  onIsVisibleChange?: (val: any) => void;
   collapsed?: SingleBooleanChoiceArg<"collapsed">;
-  close?: SingleBooleanChoiceArg<"close">;
+  isVisible?: SingleBooleanChoiceArg<"isVisible">;
   className?: string;
 }
 
@@ -201,10 +206,138 @@ function PlasmicSidebar__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "close",
-        type: "private",
+        path: "isVisible",
+        type: "writable",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.close
+
+        valueProp: "isVisible",
+        onChangeProp: "onIsVisibleChange"
+      },
+      {
+        path: "sidebarToggle.expand",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sidebarToggleResponsive.expand",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sidebarNavigationSubitem.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sidebarNavigationSubitem2.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sidebarNavigationSubitem3.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sidebarNavigationSubitem4.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sidebarNavigationSubitem5.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sidebarNavigationSubitem6.active",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.pageLink === $ctx.pagePath;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -241,8 +374,8 @@ function PlasmicSidebar__RenderFunc(props: {
         plasmic_plasmic_rich_components_css.plasmic_tokens,
         sty.body,
         {
-          [sty.bodyclose]: hasVariant($state, "close", "close"),
-          [sty.bodycollapsed]: hasVariant($state, "collapsed", "collapsed")
+          [sty.bodycollapsed]: hasVariant($state, "collapsed", "collapsed"),
+          [sty.bodyisVisible]: hasVariant($state, "isVisible", "isVisible")
         }
       )}
       data-plasmic-trigger-props={[triggerBodyHoverProps]}
@@ -253,8 +386,8 @@ function PlasmicSidebar__RenderFunc(props: {
         data-plasmic-override={overrides.sidebar}
         hasGap={true}
         className={classNames(projectcss.all, sty.sidebar, {
-          [sty.sidebarclose]: hasVariant($state, "close", "close"),
-          [sty.sidebarcollapsed]: hasVariant($state, "collapsed", "collapsed")
+          [sty.sidebarcollapsed]: hasVariant($state, "collapsed", "collapsed"),
+          [sty.sidebarisVisible]: hasVariant($state, "isVisible", "isVisible")
         })}
       >
         <Stack__
@@ -287,6 +420,11 @@ function PlasmicSidebar__RenderFunc(props: {
                   $state,
                   "collapsed",
                   "collapsed"
+                ),
+                [sty.logoisVisible]: hasVariant(
+                  $state,
+                  "isVisible",
+                  "isVisible"
                 )
               })}
               collapsed={
@@ -311,82 +449,148 @@ function PlasmicSidebar__RenderFunc(props: {
               }
             />
 
-            <div
-              data-plasmic-name={"icons"}
-              data-plasmic-override={overrides.icons}
-              className={classNames(projectcss.all, sty.icons)}
+            <SidebarToggle
+              data-plasmic-name={"sidebarToggle"}
+              data-plasmic-override={overrides.sidebarToggle}
+              className={classNames("__wab_instance", sty.sidebarToggle, {
+                [sty.sidebarTogglecollapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                ),
+                [sty.sidebarToggleisVisible]: hasVariant(
+                  $state,
+                  "isVisible",
+                  "isVisible"
+                )
+              })}
+              collapsedIcon={
+                <PlasmicIcon__
+                  PlasmicIconType={
+                    hasVariant($state, "isVisible", "isVisible")
+                      ? CloseSvgIcon
+                      : hasVariant(globalVariants, "screen", "tablet")
+                      ? CloseSvgIcon
+                      : MenuOpenSvgIcon
+                  }
+                  className={classNames(projectcss.all, sty.svg__vl5Nj, {
+                    [sty.svgisVisible__vl5Njz07S0]: hasVariant(
+                      $state,
+                      "isVisible",
+                      "isVisible"
+                    )
+                  })}
+                  role={"img"}
+                />
+              }
+              expand={generateStateValueProp($state, [
+                "sidebarToggle",
+                "expand"
+              ])}
+              expandIcon={
+                <Icon25Icon
+                  className={classNames(projectcss.all, sty.svg__k3GGf)}
+                  role={"img"}
+                />
+              }
               onClick={async event => {
                 const $steps = {};
 
-                $steps["updateCollapsed"] = true
+                $steps["runCode"] = true
                   ? (() => {
                       const actionArgs = {
-                        vgroup: "collapsed",
-                        operation: 2,
-                        value: "collapsed"
-                      };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
+                        customFunction: async () => {
+                          return (() => {
+                            $state.sidebarToggle.expand =
+                              !$state.sidebarToggle.expand;
+                            return ($state.collapsed =
+                              $state.sidebarToggle.expand);
+                          })();
                         }
-
-                        const oldValue = $stateGet($state, vgroup);
-                        $stateSet($state, vgroup, !oldValue);
-                        return !oldValue;
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["updateCollapsed"] != null &&
-                  typeof $steps["updateCollapsed"] === "object" &&
-                  typeof $steps["updateCollapsed"].then === "function"
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
                 ) {
-                  $steps["updateCollapsed"] = await $steps["updateCollapsed"];
+                  $steps["runCode"] = await $steps["runCode"];
                 }
               }}
-            >
+              onExpandChange={generateStateOnChangeProp($state, [
+                "sidebarToggle",
+                "expand"
+              ])}
+            />
+
+            {(
+              hasVariant($state, "isVisible", "isVisible")
+                ? true
+                : hasVariant(globalVariants, "screen", "tablet")
+                ? true
+                : false
+            ) ? (
               <SidebarToggle
+                data-plasmic-name={"sidebarToggleResponsive"}
+                data-plasmic-override={overrides.sidebarToggleResponsive}
                 className={classNames(
                   "__wab_instance",
-                  sty.sidebarToggle___3YNj,
+                  sty.sidebarToggleResponsive,
                   {
-                    [sty.sidebarTogglecollapsed___3YNjIUi1M]: hasVariant(
+                    [sty.sidebarToggleResponsivecollapsed]: hasVariant(
                       $state,
                       "collapsed",
                       "collapsed"
+                    ),
+                    [sty.sidebarToggleResponsiveisVisible]: hasVariant(
+                      $state,
+                      "isVisible",
+                      "isVisible"
                     )
                   }
                 )}
                 collapsedIcon={
                   <PlasmicIcon__
                     PlasmicIconType={
-                      hasVariant(globalVariants, "screen", "tablet")
+                      hasVariant($state, "isVisible", "isVisible")
+                        ? CloseSvgIcon
+                        : hasVariant(globalVariants, "screen", "tablet")
                         ? CloseSvgIcon
                         : MenuOpenSvgIcon
                     }
-                    className={classNames(projectcss.all, sty.svg__vl5Nj)}
+                    className={classNames(projectcss.all, sty.svg__lDyYr, {
+                      [sty.svgisVisible__lDyYrz07S0]: hasVariant(
+                        $state,
+                        "isVisible",
+                        "isVisible"
+                      )
+                    })}
                     role={"img"}
                   />
                 }
+                expand={generateStateValueProp($state, [
+                  "sidebarToggleResponsive",
+                  "expand"
+                ])}
                 expandIcon={
                   <Icon25Icon
-                    className={classNames(projectcss.all, sty.svg__k3GGf)}
+                    className={classNames(projectcss.all, sty.svg___4XP1)}
                     role={"img"}
                   />
                 }
-              />
-            </div>
-            {(hasVariant(globalVariants, "screen", "tablet") ? true : false) ? (
-              <div
-                data-plasmic-name={"closeButton"}
-                data-plasmic-override={overrides.closeButton}
-                className={classNames(projectcss.all, sty.closeButton)}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateClose"] = true
+                  $steps["updateIsVisible"] = true
                     ? (() => {
-                        const actionArgs = { vgroup: "close", operation: 6 };
+                        const actionArgs = {
+                          vgroup: "isVisible",
+                          operation: 6
+                        };
                         return (({ vgroup, value }) => {
                           if (typeof value === "string") {
                             value = [value];
@@ -398,45 +602,18 @@ function PlasmicSidebar__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["updateClose"] != null &&
-                    typeof $steps["updateClose"] === "object" &&
-                    typeof $steps["updateClose"].then === "function"
+                    $steps["updateIsVisible"] != null &&
+                    typeof $steps["updateIsVisible"] === "object" &&
+                    typeof $steps["updateIsVisible"].then === "function"
                   ) {
-                    $steps["updateClose"] = await $steps["updateClose"];
+                    $steps["updateIsVisible"] = await $steps["updateIsVisible"];
                   }
                 }}
-              >
-                <SidebarToggle
-                  className={classNames(
-                    "__wab_instance",
-                    sty.sidebarToggle__hLclq,
-                    {
-                      [sty.sidebarTogglecollapsed__hLclqiUi1M]: hasVariant(
-                        $state,
-                        "collapsed",
-                        "collapsed"
-                      )
-                    }
-                  )}
-                  collapsedIcon={
-                    <PlasmicIcon__
-                      PlasmicIconType={
-                        hasVariant(globalVariants, "screen", "tablet")
-                          ? CloseSvgIcon
-                          : MenuOpenSvgIcon
-                      }
-                      className={classNames(projectcss.all, sty.svg__qTa25)}
-                      role={"img"}
-                    />
-                  }
-                  expandIcon={
-                    <Icon25Icon
-                      className={classNames(projectcss.all, sty.svg__pheZz)}
-                      role={"img"}
-                    />
-                  }
-                />
-              </div>
+                onExpandChange={generateStateOnChangeProp($state, [
+                  "sidebarToggleResponsive",
+                  "expand"
+                ])}
+              />
             ) : null}
           </Stack__>
           <Searchbox
@@ -494,28 +671,60 @@ function PlasmicSidebar__RenderFunc(props: {
                   ? true
                   : undefined
               }
+              isOpen={(() => {
+                try {
+                  return (
+                    $state.sidebarNavigationSubitem.active === true ||
+                    $state.sidebarNavigationSubitem3.active === true
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "isOpen";
+                  }
+                  throw e;
+                }
+              })()}
               label={<Trans__>{"Dashboard"}</Trans__>}
               subItems={
                 <React.Fragment>
                   <SidebarNavigationSubitem
                     data-plasmic-name={"sidebarNavigationSubitem"}
                     data-plasmic-override={overrides.sidebarNavigationSubitem}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
                       sty.sidebarNavigationSubitem
                     )}
                     label={<Trans__>{"Overview"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem",
+                      "active"
+                    ])}
                     pageLink={`/`}
                   />
 
                   <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem2"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem2}
+                    data-plasmic-name={"sidebarNavigationSubitem3"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem3}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem3",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem2
+                      sty.sidebarNavigationSubitem3
                     )}
                     label={<Trans__>{"Analytics"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem3",
+                      "active"
+                    ])}
                     pageLink={`/dashboard/analytics`}
                   />
                 </React.Fragment>
@@ -751,46 +960,78 @@ function PlasmicSidebar__RenderFunc(props: {
               subItems={
                 <React.Fragment>
                   <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem3"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem3}
+                    data-plasmic-name={"sidebarNavigationSubitem2"}
+                    data-plasmic-override={overrides.sidebarNavigationSubitem2}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem2",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem3
+                      sty.sidebarNavigationSubitem2
                     )}
                     label={<Trans__>{"Forms"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem2",
+                      "active"
+                    ])}
                     pageLink={`/records/forms`}
                   />
 
                   <SidebarNavigationSubitem
                     data-plasmic-name={"sidebarNavigationSubitem4"}
                     data-plasmic-override={overrides.sidebarNavigationSubitem4}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem4",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
                       sty.sidebarNavigationSubitem4
                     )}
                     label={<Trans__>{"Emails"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem4",
+                      "active"
+                    ])}
                     pageLink={`/records/emails`}
                   />
 
                   <SidebarNavigationSubitem
                     data-plasmic-name={"sidebarNavigationSubitem5"}
                     data-plasmic-override={overrides.sidebarNavigationSubitem5}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem5",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
                       sty.sidebarNavigationSubitem5
                     )}
                     label={<Trans__>{"Submissions"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem5",
+                      "active"
+                    ])}
                     pageLink={`/records/submissions`}
                   />
 
                   <SidebarNavigationSubitem
                     data-plasmic-name={"sidebarNavigationSubitem6"}
                     data-plasmic-override={overrides.sidebarNavigationSubitem6}
+                    active={generateStateValueProp($state, [
+                      "sidebarNavigationSubitem6",
+                      "active"
+                    ])}
                     className={classNames(
                       "__wab_instance",
                       sty.sidebarNavigationSubitem6
                     )}
                     label={<Trans__>{"Automations"}</Trans__>}
+                    onActiveChange={generateStateOnChangeProp($state, [
+                      "sidebarNavigationSubitem6",
+                      "active"
+                    ])}
                     pageLink={`/records/automations`}
                   />
                 </React.Fragment>
@@ -968,17 +1209,17 @@ const PlasmicDescendants = {
     "freeBox",
     "navigationHeader",
     "logo",
-    "icons",
-    "closeButton",
+    "sidebarToggle",
+    "sidebarToggleResponsive",
     "searchbox",
     "navigation",
     "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem2",
+    "sidebarNavigationSubitem3",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem2",
     "sidebarNavigationSubitem4",
     "sidebarNavigationSubitem5",
     "sidebarNavigationSubitem6",
@@ -994,17 +1235,17 @@ const PlasmicDescendants = {
     "freeBox",
     "navigationHeader",
     "logo",
-    "icons",
-    "closeButton",
+    "sidebarToggle",
+    "sidebarToggleResponsive",
     "searchbox",
     "navigation",
     "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem2",
+    "sidebarNavigationSubitem3",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem2",
     "sidebarNavigationSubitem4",
     "sidebarNavigationSubitem5",
     "sidebarNavigationSubitem6",
@@ -1019,45 +1260,50 @@ const PlasmicDescendants = {
     "freeBox",
     "navigationHeader",
     "logo",
-    "icons",
-    "closeButton",
+    "sidebarToggle",
+    "sidebarToggleResponsive",
     "searchbox",
     "navigation",
     "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem2",
+    "sidebarNavigationSubitem3",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem2",
     "sidebarNavigationSubitem4",
     "sidebarNavigationSubitem5",
     "sidebarNavigationSubitem6"
   ],
-  navigationHeader: ["navigationHeader", "logo", "icons", "closeButton"],
+  navigationHeader: [
+    "navigationHeader",
+    "logo",
+    "sidebarToggle",
+    "sidebarToggleResponsive"
+  ],
   logo: ["logo"],
-  icons: ["icons"],
-  closeButton: ["closeButton"],
+  sidebarToggle: ["sidebarToggle"],
+  sidebarToggleResponsive: ["sidebarToggleResponsive"],
   searchbox: ["searchbox"],
   navigation: [
     "navigation",
     "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem2"
+    "sidebarNavigationSubitem3"
   ],
   sidebarNavigationSubitem: ["sidebarNavigationSubitem"],
-  sidebarNavigationSubitem2: ["sidebarNavigationSubitem2"],
+  sidebarNavigationSubitem3: ["sidebarNavigationSubitem3"],
   navigation2: ["navigation2", "title"],
   title: ["title"],
   navigation3: [
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem3",
+    "sidebarNavigationSubitem2",
     "sidebarNavigationSubitem4",
     "sidebarNavigationSubitem5",
     "sidebarNavigationSubitem6"
   ],
   title2: ["title2"],
-  sidebarNavigationSubitem3: ["sidebarNavigationSubitem3"],
+  sidebarNavigationSubitem2: ["sidebarNavigationSubitem2"],
   sidebarNavigationSubitem4: ["sidebarNavigationSubitem4"],
   sidebarNavigationSubitem5: ["sidebarNavigationSubitem5"],
   sidebarNavigationSubitem6: ["sidebarNavigationSubitem6"],
@@ -1084,17 +1330,17 @@ type NodeDefaultElementType = {
   freeBox: "div";
   navigationHeader: "div";
   logo: typeof Logo;
-  icons: "div";
-  closeButton: "div";
+  sidebarToggle: typeof SidebarToggle;
+  sidebarToggleResponsive: typeof SidebarToggle;
   searchbox: typeof Searchbox;
   navigation: "div";
   sidebarNavigationSubitem: typeof SidebarNavigationSubitem;
-  sidebarNavigationSubitem2: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem3: typeof SidebarNavigationSubitem;
   navigation2: "div";
   title: "div";
   navigation3: "div";
   title2: "div";
-  sidebarNavigationSubitem3: typeof SidebarNavigationSubitem;
+  sidebarNavigationSubitem2: typeof SidebarNavigationSubitem;
   sidebarNavigationSubitem4: typeof SidebarNavigationSubitem;
   sidebarNavigationSubitem5: typeof SidebarNavigationSubitem;
   sidebarNavigationSubitem6: typeof SidebarNavigationSubitem;
@@ -1170,17 +1416,17 @@ export const PlasmicSidebar = Object.assign(
     freeBox: makeNodeComponent("freeBox"),
     navigationHeader: makeNodeComponent("navigationHeader"),
     logo: makeNodeComponent("logo"),
-    icons: makeNodeComponent("icons"),
-    closeButton: makeNodeComponent("closeButton"),
+    sidebarToggle: makeNodeComponent("sidebarToggle"),
+    sidebarToggleResponsive: makeNodeComponent("sidebarToggleResponsive"),
     searchbox: makeNodeComponent("searchbox"),
     navigation: makeNodeComponent("navigation"),
     sidebarNavigationSubitem: makeNodeComponent("sidebarNavigationSubitem"),
-    sidebarNavigationSubitem2: makeNodeComponent("sidebarNavigationSubitem2"),
+    sidebarNavigationSubitem3: makeNodeComponent("sidebarNavigationSubitem3"),
     navigation2: makeNodeComponent("navigation2"),
     title: makeNodeComponent("title"),
     navigation3: makeNodeComponent("navigation3"),
     title2: makeNodeComponent("title2"),
-    sidebarNavigationSubitem3: makeNodeComponent("sidebarNavigationSubitem3"),
+    sidebarNavigationSubitem2: makeNodeComponent("sidebarNavigationSubitem2"),
     sidebarNavigationSubitem4: makeNodeComponent("sidebarNavigationSubitem4"),
     sidebarNavigationSubitem5: makeNodeComponent("sidebarNavigationSubitem5"),
     sidebarNavigationSubitem6: makeNodeComponent("sidebarNavigationSubitem6"),

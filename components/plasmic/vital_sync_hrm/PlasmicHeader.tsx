@@ -196,18 +196,20 @@ function PlasmicHeader__RenderFunc(props: {
         hasGap={true}
         className={classNames(projectcss.all, sty.actions)}
       >
-        {renderPlasmicSlot({
-          defaultContents: (
-            <SidebarToggleButton
-              className={classNames(
-                "__wab_instance",
-                sty.sidebarToggleButton__rBwFr
-              )}
-            />
-          ),
+        {(hasVariant(globalVariants, "screen", "tablet") ? true : false)
+          ? renderPlasmicSlot({
+              defaultContents: (
+                <SidebarToggleButton
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sidebarToggleButton__rBwFr
+                  )}
+                />
+              ),
 
-          value: args.children
-        })}
+              value: args.children
+            })
+          : null}
         {(hasVariant(globalVariants, "screen", "tablet") ? false : true)
           ? renderPlasmicSlot({
               defaultContents: (
