@@ -143,9 +143,11 @@
   width: auto;
   height: 1em;
 }
-.svg__mJqNb {
+.svg__xuHmL {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
+  color: var(--token-HcdbHG3Uj2tS);
+  margin-left: 5px;
 }

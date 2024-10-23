@@ -93,6 +93,7 @@ export type PlasmicButton__VariantMembers = {
     | "softSand"
     | "clear"
     | "link";
+  iconOnly: "iconOnly";
 };
 export type PlasmicButton__VariantsArgs = {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
@@ -115,6 +116,7 @@ export type PlasmicButton__VariantsArgs = {
     | "clear"
     | "link"
   >;
+  iconOnly?: SingleBooleanChoiceArg<"iconOnly">;
 };
 type VariantPropType = keyof PlasmicButton__VariantsArgs;
 export const PlasmicButton__VariantProps = new Array<VariantPropType>(
@@ -123,7 +125,8 @@ export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "isDisabled",
   "shape",
   "size",
-  "color"
+  "color",
+  "iconOnly"
 );
 
 export type PlasmicButton__ArgsType = {
@@ -171,6 +174,7 @@ export interface DefaultButtonProps extends pp.BaseButtonProps {
     | "clear"
     | "link"
   >;
+  iconOnly?: SingleBooleanChoiceArg<"iconOnly">;
 }
 
 const $$ = {};
@@ -250,6 +254,12 @@ function PlasmicButton__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+      },
+      {
+        path: "iconOnly",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.iconOnly
       }
     ],
     [$props, $ctx, $refs]
@@ -291,6 +301,9 @@ function PlasmicButton__RenderFunc(props: {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
           [sty.rootcolor_blue]: hasVariant($state, "color", "blue"),
           [sty.rootcolor_clear]: hasVariant($state, "color", "clear"),
+          [sty.rootcolor_clear_showEndIcon]:
+            hasVariant($state, "showEndIcon", "showEndIcon") &&
+            hasVariant($state, "color", "clear"),
           [sty.rootcolor_green]: hasVariant($state, "color", "green"),
           [sty.rootcolor_link]: hasVariant($state, "color", "link"),
           [sty.rootcolor_red]: hasVariant($state, "color", "red"),
@@ -302,6 +315,7 @@ function PlasmicButton__RenderFunc(props: {
           [sty.rootcolor_softYellow]: hasVariant($state, "color", "softYellow"),
           [sty.rootcolor_white]: hasVariant($state, "color", "white"),
           [sty.rootcolor_yellow]: hasVariant($state, "color", "yellow"),
+          [sty.rooticonOnly]: hasVariant($state, "iconOnly", "iconOnly"),
           [sty.rootisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
           [sty.rootshape_round]: hasVariant($state, "shape", "round"),
           [sty.rootshape_rounded]: hasVariant($state, "shape", "rounded"),
@@ -347,7 +361,13 @@ function PlasmicButton__RenderFunc(props: {
       )}
       data-plasmic-trigger-props={[triggerRootFocusVisibleWithinProps]}
     >
-      {(hasVariant($state, "showStartIcon", "showStartIcon") ? true : false) ? (
+      {(
+        hasVariant($state, "iconOnly", "iconOnly")
+          ? true
+          : hasVariant($state, "showStartIcon", "showStartIcon")
+          ? true
+          : false
+      ) ? (
         <div
           data-plasmic-name={"startIconContainer"}
           data-plasmic-override={overrides.startIconContainer}
@@ -356,6 +376,11 @@ function PlasmicButton__RenderFunc(props: {
               $state,
               "color",
               "blue"
+            ),
+            [sty.startIconContainericonOnly]: hasVariant(
+              $state,
+              "iconOnly",
+              "iconOnly"
             ),
             [sty.startIconContainershape_rounded_showStartIcon]:
               hasVariant($state, "shape", "rounded") &&
@@ -427,6 +452,11 @@ function PlasmicButton__RenderFunc(props: {
                 "color",
                 "yellow"
               ),
+              [sty.slotTargetStartIconiconOnly]: hasVariant(
+                $state,
+                "iconOnly",
+                "iconOnly"
+              ),
               [sty.slotTargetStartIconshowStartIcon]: hasVariant(
                 $state,
                 "showStartIcon",
@@ -442,6 +472,11 @@ function PlasmicButton__RenderFunc(props: {
         className={classNames(projectcss.all, sty.contentContainer, {
           [sty.contentContainer___focusVisibleWithin]:
             triggers.focusVisibleWithin_root,
+          [sty.contentContainericonOnly]: hasVariant(
+            $state,
+            "iconOnly",
+            "iconOnly"
+          ),
           [sty.contentContainerisDisabled]: hasVariant(
             $state,
             "isDisabled",
@@ -475,6 +510,9 @@ function PlasmicButton__RenderFunc(props: {
               "color",
               "clear"
             ),
+            [sty.slotTargetChildrencolor_clear_showEndIcon]:
+              hasVariant($state, "showEndIcon", "showEndIcon") &&
+              hasVariant($state, "color", "clear"),
             [sty.slotTargetChildrencolor_green]: hasVariant(
               $state,
               "color",
@@ -575,6 +613,11 @@ function PlasmicButton__RenderFunc(props: {
               $state,
               "color",
               "yellow"
+            ),
+            [sty.endIconContainericonOnly]: hasVariant(
+              $state,
+              "iconOnly",
+              "iconOnly"
             ),
             [sty.endIconContainershowEndIcon]: hasVariant(
               $state,

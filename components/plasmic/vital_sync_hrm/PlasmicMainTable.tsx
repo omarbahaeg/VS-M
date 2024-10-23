@@ -99,6 +99,14 @@ export type PlasmicMainTable__OverridesType = {
   tableBody?: Flex__<"div">;
   tableColumnActions?: Flex__<"div">;
   searchbox?: Flex__<typeof Searchbox>;
+  customDropdown?: Flex__<typeof CustomDropdown>;
+  customButton?: Flex__<typeof CustomButton>;
+  actionListItems?: Flex__<typeof ActionListItems>;
+  actionListItems2?: Flex__<typeof ActionListItems>;
+  customDropdown2?: Flex__<typeof CustomDropdown>;
+  customButton2?: Flex__<typeof CustomButton>;
+  actionListItems3?: Flex__<typeof ActionListItems>;
+  actionListItems4?: Flex__<typeof ActionListItems>;
   tableColumnHeader?: Flex__<"div">;
   tableColumnRow?: Flex__<"div">;
   table2?: Flex__<typeof RichTable>;
@@ -223,6 +231,54 @@ function PlasmicMainTable__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "actionListItems.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems2.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems3.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems4.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton2.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown2.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -293,19 +349,143 @@ function PlasmicMainTable__RenderFunc(props: {
           className={classNames(projectcss.all, sty.freeBox__j4HIp)}
         >
           <CustomDropdown
-            className={classNames("__wab_instance", sty.customDropdown__cwKFt)}
+            data-plasmic-name={"customDropdown"}
+            data-plasmic-override={overrides.customDropdown}
+            className={classNames("__wab_instance", sty.customDropdown)}
             dropdownAlignment={"right"}
+            isOpen={generateStateValueProp($state, [
+              "customDropdown",
+              "isOpen"
+            ])}
+            onIsOpenChange={generateStateOnChangeProp($state, [
+              "customDropdown",
+              "isOpen"
+            ])}
+            slot={
+              <ActionsList
+                actionsList={
+                  <React.Fragment>
+                    <ActionListItems
+                      data-plasmic-name={"actionListItems"}
+                      data-plasmic-override={overrides.actionListItems}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems
+                      )}
+                      isPressed={generateStateValueProp($state, [
+                        "actionListItems",
+                        "isPressed"
+                      ])}
+                      onIsPressedChange={generateStateOnChangeProp($state, [
+                        "actionListItems",
+                        "isPressed"
+                      ])}
+                    />
+
+                    <ActionListItems
+                      data-plasmic-name={"actionListItems2"}
+                      data-plasmic-override={overrides.actionListItems2}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems2
+                      )}
+                      isPressed={generateStateValueProp($state, [
+                        "actionListItems2",
+                        "isPressed"
+                      ])}
+                      onIsPressedChange={generateStateOnChangeProp($state, [
+                        "actionListItems2",
+                        "isPressed"
+                      ])}
+                    />
+                  </React.Fragment>
+                }
+                className={classNames("__wab_instance", sty.actionsList__fDYv)}
+              />
+            }
           >
             <CustomButton
-              className={classNames("__wab_instance", sty.customButton__fjeg7)}
+              data-plasmic-name={"customButton"}
+              data-plasmic-override={overrides.customButton}
+              className={classNames("__wab_instance", sty.customButton)}
+              isDown={generateStateValueProp($state, [
+                "customButton",
+                "isDown"
+              ])}
+              onIsDownChange={generateStateOnChangeProp($state, [
+                "customButton",
+                "isDown"
+              ])}
             />
           </CustomDropdown>
           <CustomDropdown
-            className={classNames("__wab_instance", sty.customDropdown__bvqDz)}
+            data-plasmic-name={"customDropdown2"}
+            data-plasmic-override={overrides.customDropdown2}
+            className={classNames("__wab_instance", sty.customDropdown2)}
             dropdownAlignment={"right"}
+            isOpen={generateStateValueProp($state, [
+              "customDropdown2",
+              "isOpen"
+            ])}
+            onIsOpenChange={generateStateOnChangeProp($state, [
+              "customDropdown2",
+              "isOpen"
+            ])}
+            slot={
+              <ActionsList
+                actionsList={
+                  <React.Fragment>
+                    <ActionListItems
+                      data-plasmic-name={"actionListItems3"}
+                      data-plasmic-override={overrides.actionListItems3}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems3
+                      )}
+                      isPressed={generateStateValueProp($state, [
+                        "actionListItems3",
+                        "isPressed"
+                      ])}
+                      onIsPressedChange={generateStateOnChangeProp($state, [
+                        "actionListItems3",
+                        "isPressed"
+                      ])}
+                    />
+
+                    <ActionListItems
+                      data-plasmic-name={"actionListItems4"}
+                      data-plasmic-override={overrides.actionListItems4}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems4
+                      )}
+                      isPressed={generateStateValueProp($state, [
+                        "actionListItems4",
+                        "isPressed"
+                      ])}
+                      onIsPressedChange={generateStateOnChangeProp($state, [
+                        "actionListItems4",
+                        "isPressed"
+                      ])}
+                    />
+                  </React.Fragment>
+                }
+                className={classNames("__wab_instance", sty.actionsList__upAd)}
+              />
+            }
           >
             <CustomButton
-              className={classNames("__wab_instance", sty.customButton__ewwL)}
+              data-plasmic-name={"customButton2"}
+              data-plasmic-override={overrides.customButton2}
+              className={classNames("__wab_instance", sty.customButton2)}
+              isDown={generateStateValueProp($state, [
+                "customButton2",
+                "isDown"
+              ])}
+              onIsDownChange={generateStateOnChangeProp($state, [
+                "customButton2",
+                "isDown"
+              ])}
             />
           </CustomDropdown>
         </Stack__>
@@ -564,13 +744,50 @@ const PlasmicDescendants = {
     "tableBody",
     "tableColumnActions",
     "searchbox",
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2",
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4",
     "tableColumnHeader",
     "tableColumnRow",
     "table2",
     "table3"
   ],
-  tableColumnActions: ["tableColumnActions", "searchbox"],
+  tableColumnActions: [
+    "tableColumnActions",
+    "searchbox",
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2",
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4"
+  ],
   searchbox: ["searchbox"],
+  customDropdown: [
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2"
+  ],
+  customButton: ["customButton"],
+  actionListItems: ["actionListItems"],
+  actionListItems2: ["actionListItems2"],
+  customDropdown2: [
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4"
+  ],
+  customButton2: ["customButton2"],
+  actionListItems3: ["actionListItems3"],
+  actionListItems4: ["actionListItems4"],
   tableColumnHeader: ["tableColumnHeader"],
   tableColumnRow: ["tableColumnRow"],
   table2: ["table2"],
@@ -583,6 +800,14 @@ type NodeDefaultElementType = {
   tableBody: "div";
   tableColumnActions: "div";
   searchbox: typeof Searchbox;
+  customDropdown: typeof CustomDropdown;
+  customButton: typeof CustomButton;
+  actionListItems: typeof ActionListItems;
+  actionListItems2: typeof ActionListItems;
+  customDropdown2: typeof CustomDropdown;
+  customButton2: typeof CustomButton;
+  actionListItems3: typeof ActionListItems;
+  actionListItems4: typeof ActionListItems;
   tableColumnHeader: "div";
   tableColumnRow: "div";
   table2: typeof RichTable;
@@ -651,6 +876,14 @@ export const PlasmicMainTable = Object.assign(
     // Helper components rendering sub-elements
     tableColumnActions: makeNodeComponent("tableColumnActions"),
     searchbox: makeNodeComponent("searchbox"),
+    customDropdown: makeNodeComponent("customDropdown"),
+    customButton: makeNodeComponent("customButton"),
+    actionListItems: makeNodeComponent("actionListItems"),
+    actionListItems2: makeNodeComponent("actionListItems2"),
+    customDropdown2: makeNodeComponent("customDropdown2"),
+    customButton2: makeNodeComponent("customButton2"),
+    actionListItems3: makeNodeComponent("actionListItems3"),
+    actionListItems4: makeNodeComponent("actionListItems4"),
     tableColumnHeader: makeNodeComponent("tableColumnHeader"),
     tableColumnRow: makeNodeComponent("tableColumnRow"),
     table2: makeNodeComponent("table2"),

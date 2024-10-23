@@ -69,30 +69,39 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gR
 import sty from "./PlasmicCustomButton.module.css"; // plasmic-import: r1AkQsrHSZtQ/css
 
 import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
+import Iconsax4Icon from "./icons/PlasmicIcon__Iconsax4"; // plasmic-import: k5A1ltOLNl2p/icon
 
 createPlasmicElementProxy;
 
 export type PlasmicCustomButton__VariantMembers = {
   type: "labelOnly" | "iconOnly";
+  noEndIcon: "noEndIcon";
+  isDown: "isDown";
 };
 export type PlasmicCustomButton__VariantsArgs = {
   type?: SingleChoiceArg<"labelOnly" | "iconOnly">;
+  noEndIcon?: SingleBooleanChoiceArg<"noEndIcon">;
+  isDown?: SingleBooleanChoiceArg<"isDown">;
 };
 type VariantPropType = keyof PlasmicCustomButton__VariantsArgs;
 export const PlasmicCustomButton__VariantProps = new Array<VariantPropType>(
-  "type"
+  "type",
+  "noEndIcon",
+  "isDown"
 );
 
 export type PlasmicCustomButton__ArgsType = {
   buttonLabel?: React.ReactNode;
   buttonIcon?: React.ReactNode;
   iconTooltip?: string;
+  onIsDownChange?: (val: any) => void;
 };
 type ArgPropType = keyof PlasmicCustomButton__ArgsType;
 export const PlasmicCustomButton__ArgProps = new Array<ArgPropType>(
   "buttonLabel",
   "buttonIcon",
-  "iconTooltip"
+  "iconTooltip",
+  "onIsDownChange"
 );
 
 export type PlasmicCustomButton__OverridesType = {
@@ -100,13 +109,18 @@ export type PlasmicCustomButton__OverridesType = {
   tooltip?: Flex__<typeof AntdTooltip>;
   icon?: Flex__<"div">;
   label?: Flex__<"div">;
+  endIcon?: Flex__<"div">;
+  svg?: Flex__<"svg">;
 };
 
 export interface DefaultCustomButtonProps {
   buttonLabel?: React.ReactNode;
   buttonIcon?: React.ReactNode;
   iconTooltip?: string;
+  onIsDownChange?: (val: any) => void;
   type?: SingleChoiceArg<"labelOnly" | "iconOnly">;
+  noEndIcon?: SingleBooleanChoiceArg<"noEndIcon">;
+  isDown?: SingleBooleanChoiceArg<"isDown">;
   className?: string;
 }
 
@@ -157,6 +171,20 @@ function PlasmicCustomButton__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.type
+      },
+      {
+        path: "noEndIcon",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noEndIcon
+      },
+      {
+        path: "isDown",
+        type: "writable",
+        variableType: "variant",
+
+        valueProp: "isDown",
+        onChangeProp: "onIsDownChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -186,6 +214,7 @@ function PlasmicCustomButton__RenderFunc(props: {
         plasmic_plasmic_rich_components_css.plasmic_tokens,
         sty.button,
         {
+          [sty.buttonisDown]: hasVariant($state, "isDown", "isDown"),
           [sty.buttontype_iconOnly]: hasVariant($state, "type", "iconOnly"),
           [sty.buttontype_labelOnly]: hasVariant($state, "type", "labelOnly")
         }
@@ -239,15 +268,34 @@ function PlasmicCustomButton__RenderFunc(props: {
           className: classNames(sty.slotTargetButtonLabel)
         })}
       </div>
+      <div
+        data-plasmic-name={"endIcon"}
+        data-plasmic-override={overrides.endIcon}
+        className={classNames(projectcss.all, sty.endIcon, {
+          [sty.endIconnoEndIcon]: hasVariant($state, "noEndIcon", "noEndIcon"),
+          [sty.endIcontype_iconOnly]: hasVariant($state, "type", "iconOnly")
+        })}
+      >
+        <Iconsax4Icon
+          data-plasmic-name={"svg"}
+          data-plasmic-override={overrides.svg}
+          className={classNames(projectcss.all, sty.svg, {
+            [sty.svgisDown]: hasVariant($state, "isDown", "isDown")
+          })}
+          role={"img"}
+        />
+      </div>
     </Stack__>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  button: ["button", "tooltip", "icon", "label"],
+  button: ["button", "tooltip", "icon", "label", "endIcon", "svg"],
   tooltip: ["tooltip", "icon"],
   icon: ["icon"],
-  label: ["label"]
+  label: ["label"],
+  endIcon: ["endIcon", "svg"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -257,6 +305,8 @@ type NodeDefaultElementType = {
   tooltip: typeof AntdTooltip;
   icon: "div";
   label: "div";
+  endIcon: "div";
+  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -322,6 +372,8 @@ export const PlasmicCustomButton = Object.assign(
     tooltip: makeNodeComponent("tooltip"),
     icon: makeNodeComponent("icon"),
     label: makeNodeComponent("label"),
+    endIcon: makeNodeComponent("endIcon"),
+    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicCustomButton
     internalVariantProps: PlasmicCustomButton__VariantProps,

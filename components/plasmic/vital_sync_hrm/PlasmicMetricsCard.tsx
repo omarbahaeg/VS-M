@@ -74,10 +74,19 @@ import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: OOawLNc
 
 createPlasmicElementProxy;
 
-export type PlasmicMetricsCard__VariantMembers = {};
-export type PlasmicMetricsCard__VariantsArgs = {};
+export type PlasmicMetricsCard__VariantMembers = {
+  addional: "info" | "percentage";
+  styleType: "minimal";
+};
+export type PlasmicMetricsCard__VariantsArgs = {
+  addional?: MultiChoiceArg<"info" | "percentage">;
+  styleType?: SingleChoiceArg<"minimal">;
+};
 type VariantPropType = keyof PlasmicMetricsCard__VariantsArgs;
-export const PlasmicMetricsCard__VariantProps = new Array<VariantPropType>();
+export const PlasmicMetricsCard__VariantProps = new Array<VariantPropType>(
+  "addional",
+  "styleType"
+);
 
 export type PlasmicMetricsCard__ArgsType = {
   statisticType?: React.ReactNode;
@@ -112,6 +121,8 @@ export interface DefaultMetricsCardProps {
   rollingNumber?: React.ReactNode;
   icon?: React.ReactNode;
   percentageBadge2?: React.ReactNode;
+  addional?: MultiChoiceArg<"info" | "percentage">;
+  styleType?: SingleChoiceArg<"minimal">;
   className?: string;
 }
 
@@ -164,6 +175,18 @@ function PlasmicMetricsCard__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => "outline"
+      },
+      {
+        path: "addional",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.addional
+      },
+      {
+        path: "styleType",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.styleType
       }
     ],
     [$props, $ctx, $refs]
@@ -191,13 +214,36 @@ function PlasmicMetricsCard__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         plasmic_plasmic_rich_components_css.plasmic_tokens,
-        sty.metricsCard
+        sty.metricsCard,
+        {
+          [sty.metricsCardaddional_info]: hasVariant(
+            $state,
+            "addional",
+            "info"
+          ),
+          [sty.metricsCardaddional_percentage]: hasVariant(
+            $state,
+            "addional",
+            "percentage"
+          ),
+          [sty.metricsCardstyleType_minimal]: hasVariant(
+            $state,
+            "styleType",
+            "minimal"
+          )
+        }
       )}
     >
       <div
         data-plasmic-name={"iconSection"}
         data-plasmic-override={overrides.iconSection}
-        className={classNames(projectcss.all, sty.iconSection)}
+        className={classNames(projectcss.all, sty.iconSection, {
+          [sty.iconSectionstyleType_minimal]: hasVariant(
+            $state,
+            "styleType",
+            "minimal"
+          )
+        })}
       >
         {renderPlasmicSlot({
           defaultContents: (
@@ -231,7 +277,9 @@ function PlasmicMetricsCard__RenderFunc(props: {
           <AntdTooltip
             data-plasmic-name={"tooltip"}
             data-plasmic-override={overrides.tooltip}
-            className={classNames("__wab_instance", sty.tooltip)}
+            className={classNames("__wab_instance", sty.tooltip, {
+              [sty.tooltipaddional_info]: hasVariant($state, "addional", "info")
+            })}
             titleText={args.tooltip}
           >
             <CtInfoIcon
@@ -267,18 +315,20 @@ function PlasmicMetricsCard__RenderFunc(props: {
               className: classNames(sty.slotTargetRollingNumber)
             })}
           </h5>
-          {renderPlasmicSlot({
-            defaultContents: (
-              <PercentageBadge
-                className={classNames(
-                  "__wab_instance",
-                  sty.percentageBadge___6YjuG
-                )}
-              />
-            ),
+          {(hasVariant($state, "addional", "percentage") ? true : false)
+            ? renderPlasmicSlot({
+                defaultContents: (
+                  <PercentageBadge
+                    className={classNames(
+                      "__wab_instance",
+                      sty.percentageBadge___6YjuG
+                    )}
+                  />
+                ),
 
-            value: args.percentageBadge2
-          })}
+                value: args.percentageBadge2
+              })
+            : null}
         </Stack__>
       </Stack__>
     </Stack__>

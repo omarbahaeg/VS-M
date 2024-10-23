@@ -89,11 +89,13 @@ export const PlasmicCustomDropdown__VariantProps = new Array<VariantPropType>(
 );
 
 export type PlasmicCustomDropdown__ArgsType = {
+  onIsOpenChange?: (val: any) => void;
   children?: React.ReactNode;
   slot?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicCustomDropdown__ArgsType;
 export const PlasmicCustomDropdown__ArgProps = new Array<ArgPropType>(
+  "onIsOpenChange",
   "children",
   "slot"
 );
@@ -103,6 +105,7 @@ export type PlasmicCustomDropdown__OverridesType = {
 };
 
 export interface DefaultCustomDropdownProps {
+  onIsOpenChange?: (val: any) => void;
   children?: React.ReactNode;
   slot?: React.ReactNode;
   isOpen?: SingleBooleanChoiceArg<"isOpen">;
@@ -154,9 +157,11 @@ function PlasmicCustomDropdown__RenderFunc(props: {
     () => [
       {
         path: "isOpen",
-        type: "private",
+        type: "writable",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isOpen
+
+        valueProp: "isOpen",
+        onChangeProp: "onIsOpenChange"
       },
       {
         path: "dropdownAlignment",
@@ -280,6 +285,7 @@ function PlasmicCustomDropdown__RenderFunc(props: {
           defaultContents: (
             <CustomButton
               className={classNames("__wab_instance", sty.customButton__yt0Wy)}
+              noEndIcon={true}
             />
           ),
 
@@ -325,6 +331,23 @@ function PlasmicCustomDropdown__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <ActionsList
+                actionsList={
+                  <React.Fragment>
+                    <ActionListItems
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems__sz4A1
+                      )}
+                    />
+
+                    <ActionListItems
+                      className={classNames(
+                        "__wab_instance",
+                        sty.actionListItems__cAs0O
+                      )}
+                    />
+                  </React.Fragment>
+                }
                 className={classNames("__wab_instance", sty.actionsList__u5RQy)}
               />
             ),

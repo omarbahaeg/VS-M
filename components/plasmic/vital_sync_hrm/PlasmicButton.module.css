@@ -4,10 +4,10 @@
   flex-direction: row;
   background: #232320;
   cursor: pointer;
-  transition-property: background;
-  transition-duration: 0.1s;
-  -webkit-transition-property: background;
-  -webkit-transition-duration: 0.1s;
+  transition-property: background, all;
+  transition-duration: 0.1s, 0.5s;
+  -webkit-transition-property: background, all;
+  -webkit-transition-duration: 0.1s, 0.5s;
   border-radius: 6px;
   padding: 12px 20px;
   border-width: 0px;
@@ -70,7 +70,8 @@
   background: #717069;
 }
 .rootcolor_white {
-  background: #ffffff;
+  background: var(--token-Ja7FXg_cLkuz);
+  border: 1px solid #cecece80;
 }
 .rootcolor_softBlue {
   background: #edf6ff;
@@ -92,6 +93,14 @@
 }
 .rootcolor_link {
   background: #ffffff00;
+}
+.rooticonOnly {
+  background: none;
+  width: auto;
+  justify-self: flex-start;
+  height: auto;
+  display: inline-flex;
+  padding: 5px;
 }
 .rootshape_rounded_showStartIcon {
   padding-left: 16px;
@@ -145,10 +154,12 @@
   background: #a1a09a;
 }
 .rootcolor_white:hover {
-  background: #ffef5c;
+  background: var(--token-Ja7FXg_cLkuz);
+  border-color: var(--token-O4Zz0mqbaSbS);
 }
 .rootcolor_white:active {
-  background: #f0c000;
+  background: var(--token-Ja7FXg_cLkuz);
+  border-color: var(--token-O4Zz0mqbaSbS);
 }
 .rootcolor_softBlue:hover {
   background: #e1f0ff;
@@ -192,6 +203,9 @@
 .rootcolor_link:active {
   background: #ffffff00;
 }
+.rooticonOnly:hover {
+  background: none;
+}
 .startIconContainer {
   display: flex;
   position: relative;
@@ -200,6 +214,11 @@
   justify-content: flex-start;
 }
 .startIconContainershowStartIcon {
+  display: flex;
+}
+.startIconContainericonOnly {
+  width: auto;
+  height: auto;
   display: flex;
 }
 .slotTargetStartIcon {
@@ -238,11 +257,16 @@
 .rootcolor_link:active .slotTargetStartIconcolor_link {
   color: #006adc;
 }
+.rooticonOnly:hover .slotTargetStartIconiconOnly {
+  color: var(--token-iNAvusl4ky87);
+}
 .svg__t8LvX {
   position: relative;
   object-fit: cover;
-  width: auto;
-  height: 1em;
+  width: 18px;
+  height: 18px;
+  color: var(--token-6D_pqZd49N3h);
+  flex-shrink: 0;
 }
 .contentContainer {
   display: flex;
@@ -250,6 +274,9 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
+}
+.contentContainericonOnly {
+  display: none;
 }
 .slotTargetChildren {
   color: #ededec;
@@ -273,7 +300,7 @@
   color: #ffffff;
 }
 .slotTargetChildrencolor_white {
-  color: #1b1b18;
+  color: var(--token-pQARgiXwvs4L);
 }
 .slotTargetChildrencolor_softBlue {
   color: #006adc;
@@ -291,16 +318,16 @@
   color: #1b1b18;
 }
 .slotTargetChildrencolor_clear {
-  color: var(--token-6D_pqZd49N3h);
+  color: var(--token-pQARgiXwvs4L);
 }
 .slotTargetChildrencolor_link {
   color: #0091ff;
 }
 .rootcolor_clear:active .slotTargetChildrencolor_clear {
-  color: var(--token-pQARgiXwvs4L);
+  color: var(--token-iNAvusl4ky87);
 }
 .rootcolor_clear:hover .slotTargetChildrencolor_clear {
-  color: var(--token-pQARgiXwvs4L);
+  color: var(--token-iNAvusl4ky87);
 }
 .rootcolor_link:hover .slotTargetChildrencolor_link {
   color: #0081f1;
@@ -413,4 +440,6 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+  color: var(--token-HcdbHG3Uj2tS);
+  margin-left: 5px;
 }

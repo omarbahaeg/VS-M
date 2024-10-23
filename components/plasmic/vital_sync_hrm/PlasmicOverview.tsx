@@ -64,9 +64,13 @@ import PageInfo from "../../PageInfo"; // plasmic-import: -5yQM3hZscI3/component
 import Button from "../../Button"; // plasmic-import: JRPPbMhYptfo/component
 import MetricsCard from "../../MetricsCard"; // plasmic-import: Xjkst95OHMzJ/component
 import PercentageBadge from "../../PercentageBadge"; // plasmic-import: wOG229KbexC2/component
+import Line from "../../Line"; // plasmic-import: dMBW3NJwB5lU/component
 import SectionMetrics from "../../SectionMetrics"; // plasmic-import: TXVIWb_8PPG_/component
-import { SimpleChart } from "@plasmicpkgs/react-chartjs-2";
 import Select from "../../Select"; // plasmic-import: emalQdNAiu4w/component
+import CustomDropdown from "../../CustomDropdown"; // plasmic-import: oUw-Oq8BPl_P/component
+import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/component
+import ActionsList from "../../ActionsList"; // plasmic-import: VUxalQKdyCYj/component
+import ActionListItems from "../../ActionListItems"; // plasmic-import: _msz16lTRhj1/component
 import CustomTable from "../../CustomTable"; // plasmic-import: SyYLCRWlXb0u/component
 
 import { useScreenVariants as useScreenVariantsujc2VYpomBng } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: UJC2VYpomBng/globalVariant
@@ -80,9 +84,15 @@ import sty from "./PlasmicOverview.module.css"; // plasmic-import: rdTSMLv5knL6/
 
 import DownloadSvgIcon from "./icons/PlasmicIcon__DownloadSvg"; // plasmic-import: w6NPFY6kUz40/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 6im6f-sFV6o1/icon
-import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: OOawLNcAQduZ/icon
-import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: JTYzgKNYvC8D/icon
-import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: Wu8zjvWtUVDX/icon
+import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: u48fKLga6lpN/icon
+import Icon49Icon from "./icons/PlasmicIcon__Icon49"; // plasmic-import: X88pKwH9x6ym/icon
+import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: OiRp6kQVzRIx/icon
+import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: GFyEi4OWO67t/icon
+import PlusSvgIcon from "./icons/PlasmicIcon__PlusSvg"; // plasmic-import: qKMzzxYWCT9r/icon
+import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 9Xy14f7tX9Ax/icon
+import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: qYDC0LhkIc2_/icon
+import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: t1CcSEYsK3cc/icon
 
 createPlasmicElementProxy;
 
@@ -101,13 +111,46 @@ export type PlasmicOverview__OverridesType = {
   pageInfo?: Flex__<typeof PageInfo>;
   hiKatiePena?: Flex__<"div">;
   welcomeBackToRhom?: Flex__<"div">;
-  button?: Flex__<typeof Button>;
   keyMetrics?: Flex__<"section">;
   percentageBadge?: Flex__<typeof PercentageBadge>;
   keyMetrics2?: Flex__<"section">;
-  chart?: Flex__<typeof SimpleChart>;
+  customDropdown?: Flex__<typeof CustomDropdown>;
+  customButton?: Flex__<typeof CustomButton>;
+  actionListItems?: Flex__<typeof ActionListItems>;
+  actionListItems2?: Flex__<typeof ActionListItems>;
+  customDropdown2?: Flex__<typeof CustomDropdown>;
+  customButton2?: Flex__<typeof CustomButton>;
+  actionListItems3?: Flex__<typeof ActionListItems>;
+  actionListItems4?: Flex__<typeof ActionListItems>;
   keyMetrics3?: Flex__<"section">;
-  customTable?: Flex__<typeof CustomTable>;
+  viewLogs?: Flex__<typeof CustomDropdown>;
+  customButton3?: Flex__<typeof CustomButton>;
+  actionListItems5?: Flex__<typeof ActionListItems>;
+  actionListItems6?: Flex__<typeof ActionListItems>;
+  actionListItems7?: Flex__<typeof ActionListItems>;
+  actionListItems8?: Flex__<typeof ActionListItems>;
+  directAccess?: Flex__<typeof Button>;
+  customDropdown4?: Flex__<typeof CustomDropdown>;
+  customButton4?: Flex__<typeof CustomButton>;
+  actionListItems9?: Flex__<typeof ActionListItems>;
+  actionListItems10?: Flex__<typeof ActionListItems>;
+  keyMetrics4?: Flex__<"section">;
+  quickAccess?: Flex__<typeof Button>;
+  customDropdown5?: Flex__<typeof CustomDropdown>;
+  customButton5?: Flex__<typeof CustomButton>;
+  actionListItems11?: Flex__<typeof ActionListItems>;
+  actionListItems12?: Flex__<typeof ActionListItems>;
+  keyMetrics5?: Flex__<"section">;
+  userManagement?: Flex__<typeof Button>;
+  customDropdown6?: Flex__<typeof CustomDropdown>;
+  customButton6?: Flex__<typeof CustomButton>;
+  actionListItems13?: Flex__<typeof ActionListItems>;
+  actionListItems14?: Flex__<typeof ActionListItems>;
+  systemHealth?: Flex__<typeof Button>;
+  customDropdown7?: Flex__<typeof CustomDropdown>;
+  customButton7?: Flex__<typeof CustomButton>;
+  actionListItems15?: Flex__<typeof ActionListItems>;
+  actionListItems16?: Flex__<typeof ActionListItems>;
 };
 
 export interface DefaultOverviewProps {}
@@ -179,7 +222,151 @@ function PlasmicOverview__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
+        path: "actionListItems.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems2.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems3.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems4.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems5.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems6.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems7.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems8.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems9.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems10.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems11.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems12.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems13.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems14.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton2.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton3.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton4.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton5.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customButton6.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
         path: "select.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "week"
+      },
+      {
+        path: "select5.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "week"
+      },
+      {
+        path: "select4.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "week"
+      },
+      {
+        path: "select6.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "week"
+      },
+      {
+        path: "select3.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "week"
@@ -191,10 +378,70 @@ function PlasmicOverview__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => "week"
       },
       {
-        path: "select4.value",
+        path: "select7.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "week"
+      },
+      {
+        path: "customButton7.isDown",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems15.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "actionListItems16.isPressed",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown2.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "viewLogs.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown4.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown5.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown6.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "customDropdown7.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -267,7 +514,6 @@ function PlasmicOverview__RenderFunc(props: {
         <Dashboard
           data-plasmic-name={"dashboard"}
           data-plasmic-override={overrides.dashboard}
-          className={classNames("__wab_instance", sty.dashboard)}
           contentSection={
             <React.Fragment>
               <PageInfo
@@ -275,9 +521,7 @@ function PlasmicOverview__RenderFunc(props: {
                 data-plasmic-override={overrides.pageInfo}
                 action={
                   <Button
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
-                    className={classNames("__wab_instance", sty.button)}
+                    className={classNames("__wab_instance", sty.button__ncJxt)}
                     color={"green"}
                     shape={"rounded"}
                     showStartIcon={true}
@@ -335,6 +579,12 @@ function PlasmicOverview__RenderFunc(props: {
                     "__wab_instance",
                     sty.metricsCard__uG2Sv
                   )}
+                  icon={
+                    <Icon52Icon
+                      className={classNames(projectcss.all, sty.svg___4RJl)}
+                      role={"img"}
+                    />
+                  }
                   percentageBadge2={
                     <PercentageBadge
                       data-plasmic-name={"percentageBadge"}
@@ -353,27 +603,40 @@ function PlasmicOverview__RenderFunc(props: {
                       ])}
                     />
                   }
-                  statisticType={<Trans__>{"New visitors"}</Trans__>}
+                  rollingNumber={<Trans__>{"20"}</Trans__>}
+                  statisticType={<Trans__>{"Total Employees"}</Trans__>}
+                  styleType={"minimal"}
                   tooltip={
                     "Portion of visitors who visited your site for the first time in this timeframe"
                   }
                 />
 
+                <Line
+                  className={classNames("__wab_instance", sty.line__xyMjy)}
+                />
+
                 <MetricsCard
+                  addional={[]}
                   className={classNames(
                     "__wab_instance",
                     sty.metricsCard__yu49
                   )}
                   icon={
-                    <Icon46Icon
+                    <Icon49Icon
                       className={classNames(projectcss.all, sty.svg__kRGhR)}
                       role={"img"}
                     />
                   }
-                  statisticType={<Trans__>{"Traffic Source"}</Trans__>}
+                  rollingNumber={<Trans__>{"2"}</Trans__>}
+                  statisticType={<Trans__>{"Active Pharmacists"}</Trans__>}
+                  styleType={"minimal"}
                   tooltip={
                     "Channel (e.g. social, paid, search) that brought in the most visitors to your site"
                   }
+                />
+
+                <Line
+                  className={classNames("__wab_instance", sty.line___0Bhho)}
                 />
 
                 <MetricsCard
@@ -382,12 +645,18 @@ function PlasmicOverview__RenderFunc(props: {
                     sty.metricsCard__pVu4V
                   )}
                   icon={
-                    <Icon47Icon
+                    <Icon51Icon
                       className={classNames(projectcss.all, sty.svg__n6Fp)}
                       role={"img"}
                     />
                   }
-                  statisticType={<Trans__>{"Active Users"}</Trans__>}
+                  rollingNumber={<Trans__>{"8"}</Trans__>}
+                  statisticType={<Trans__>{"Pending Requests"}</Trans__>}
+                  styleType={"minimal"}
+                />
+
+                <Line
+                  className={classNames("__wab_instance", sty.line__p2Vui)}
                 />
 
                 <MetricsCard
@@ -395,6 +664,15 @@ function PlasmicOverview__RenderFunc(props: {
                     "__wab_instance",
                     sty.metricsCard__y8Tn
                   )}
+                  icon={
+                    <Icon50Icon
+                      className={classNames(projectcss.all, sty.svg__jKaLe)}
+                      role={"img"}
+                    />
+                  }
+                  rollingNumber={<Trans__>{"4"}</Trans__>}
+                  statisticType={<Trans__>{"Pending E-Sign"}</Trans__>}
+                  styleType={"minimal"}
                 />
               </Stack__>
               <Stack__
@@ -405,36 +683,225 @@ function PlasmicOverview__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.keyMetrics2)}
               >
                 <SectionMetrics
+                  actionType={"filter"}
                   className={classNames(
                     "__wab_instance",
                     sty.sectionMetrics__pk7VY
                   )}
-                  content={
-                    <SimpleChart
-                      data-plasmic-name={"chart"}
-                      data-plasmic-override={overrides.chart}
-                      className={classNames("__wab_instance", sty.chart)}
-                      data={[
-                        { region: "APAC", revenue: 3294, spend: 2675 },
-                        { region: "EMEA", revenue: 3245, spend: 3895 },
-                        { region: "LATAM", revenue: 2165, spend: 3498 },
-                        { region: "AMER", revenue: 3215, spend: 1656 }
-                      ]}
-                      direction={"vertical"}
-                      interactive={true}
-                      stacked={false}
-                      type={"bar"}
-                    />
+                  content={null}
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown"}
+                      data-plasmic-override={overrides.customDropdown}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems"}
+                                data-plasmic-override={
+                                  overrides.actionListItems
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems2"}
+                                data-plasmic-override={
+                                  overrides.actionListItems2
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems2
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems2",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems2", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__xAr6N
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton"}
+                        data-plasmic-override={overrides.customButton}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
                   }
-                  isAction={true}
+                  noData={true}
+                  title={<Trans__>{"Visitors Analytics"}</Trans__>}
                 />
 
                 <SectionMetrics
+                  actionType={"button"}
+                  button={
+                    <Button
+                      color={"clear"}
+                      iconOnly={true}
+                      startIcon={
+                        <Icon21Icon
+                          className={classNames(projectcss.all, sty.svg__hyKie)}
+                          role={"img"}
+                        />
+                      }
+                    >
+                      <Trans__>{"Action"}</Trans__>
+                    </Button>
+                  }
                   className={classNames(
                     "__wab_instance",
-                    sty.sectionMetrics__socan
+                    sty.sectionMetrics__slrNm
                   )}
                   content={null}
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown2"}
+                      data-plasmic-override={overrides.customDropdown2}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown2",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown2",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems3"}
+                                data-plasmic-override={
+                                  overrides.actionListItems3
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems3
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems3",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems3", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems4"}
+                                data-plasmic-override={
+                                  overrides.actionListItems4
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems4
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems4",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems4", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__ktekx
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton2"}
+                        data-plasmic-override={overrides.customButton2}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton2
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton2",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton2",
+                          "isDown"
+                        ])}
+                        type={"iconOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  footer={true}
+                  footerButton={
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__o0KLu
+                      )}
+                      color={"clear"}
+                      endIcon={
+                        <Icon25Icon
+                          className={classNames(projectcss.all, sty.svg__m9Ck)}
+                          role={"img"}
+                        />
+                      }
+                      showEndIcon={true}
+                      size={"compact"}
+                    >
+                      <Trans__>{"View All"}</Trans__>
+                    </Button>
+                  }
+                  noData={true}
+                  title={<Trans__>{"Messages"}</Trans__>}
                 />
               </Stack__>
               <Stack__
@@ -445,19 +912,650 @@ function PlasmicOverview__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.keyMetrics3)}
               >
                 <SectionMetrics
+                  actionType={"dropdown"}
                   className={classNames(
                     "__wab_instance",
                     sty.sectionMetrics__uvuSa
                   )}
                   content={
                     <CustomTable
-                      data-plasmic-name={"customTable"}
-                      data-plasmic-override={overrides.customTable}
-                      className={classNames("__wab_instance", sty.customTable)}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.customTable__vzrcX
+                      )}
                       noData={true}
                       topBar={true}
                     />
                   }
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"viewLogs"}
+                      data-plasmic-override={overrides.viewLogs}
+                      isOpen={generateStateValueProp($state, [
+                        "viewLogs",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "viewLogs",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems5"}
+                                data-plasmic-override={
+                                  overrides.actionListItems5
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems5
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems5",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems5", "isPressed"]
+                                )}
+                                pageLink={`/records/forms`}
+                              >
+                                <Trans__>{"Forms"}</Trans__>
+                              </ActionListItems>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems6"}
+                                data-plasmic-override={
+                                  overrides.actionListItems6
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems6
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems6",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems6", "isPressed"]
+                                )}
+                                pageLink={`/records/emails`}
+                              >
+                                <Trans__>{"Emails"}</Trans__>
+                              </ActionListItems>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems7"}
+                                data-plasmic-override={
+                                  overrides.actionListItems7
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems7
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems7",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems7", "isPressed"]
+                                )}
+                                pageLink={`/records/submissions`}
+                              >
+                                <Trans__>{"Submissions"}</Trans__>
+                              </ActionListItems>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems8"}
+                                data-plasmic-override={
+                                  overrides.actionListItems8
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems8
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems8",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems8", "isPressed"]
+                                )}
+                                pageLink={`/records/automations`}
+                              >
+                                <Trans__>{"Automations"}</Trans__>
+                              </ActionListItems>
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__yNFwT
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton3"}
+                        data-plasmic-override={overrides.customButton3}
+                        buttonLabel={<Trans__>{"View Logs"}</Trans__>}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton3
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton3",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton3",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  title={<Trans__>{"Record Updates"}</Trans__>}
+                />
+
+                <SectionMetrics
+                  actionType={"button"}
+                  button={
+                    <Button
+                      data-plasmic-name={"directAccess"}
+                      data-plasmic-override={overrides.directAccess}
+                      color={"white"}
+                      link={`/e-sign`}
+                      shape={"rounded"}
+                      size={"compact"}
+                      startIcon={
+                        <PlusSvgIcon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___1CaNw
+                          )}
+                          role={"img"}
+                        />
+                      }
+                    >
+                      <Trans__>{"Direct access"}</Trans__>
+                    </Button>
+                  }
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sectionMetrics___8Ou34
+                  )}
+                  content={
+                    <CustomTable
+                      className={classNames(
+                        "__wab_instance",
+                        sty.customTable__fdKAk
+                      )}
+                      noData={true}
+                      topBar={true}
+                    />
+                  }
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown4"}
+                      data-plasmic-override={overrides.customDropdown4}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown4",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown4",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems9"}
+                                data-plasmic-override={
+                                  overrides.actionListItems9
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems9
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems9",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems9", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems10"}
+                                data-plasmic-override={
+                                  overrides.actionListItems10
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems10
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems10",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems10", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__tU1Wp
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton4"}
+                        data-plasmic-override={overrides.customButton4}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton4
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton4",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton4",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  title={<Trans__>{"Contract Approvals"}</Trans__>}
+                />
+              </Stack__>
+              <Stack__
+                as={"section"}
+                data-plasmic-name={"keyMetrics4"}
+                data-plasmic-override={overrides.keyMetrics4}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.keyMetrics4)}
+              >
+                <SectionMetrics
+                  actionType={"button"}
+                  button={
+                    <Button
+                      data-plasmic-name={"quickAccess"}
+                      data-plasmic-override={overrides.quickAccess}
+                      color={"white"}
+                      link={`/requests`}
+                      shape={"rounded"}
+                      size={"compact"}
+                      startIcon={
+                        <PlusSvgIcon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___4JqQg
+                          )}
+                          role={"img"}
+                        />
+                      }
+                    >
+                      <Trans__>{"Quick access"}</Trans__>
+                    </Button>
+                  }
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sectionMetrics__fkwas
+                  )}
+                  content={
+                    <CustomTable
+                      className={classNames(
+                        "__wab_instance",
+                        sty.customTable__fYxgd
+                      )}
+                      noData={true}
+                      topBar={true}
+                    />
+                  }
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown5"}
+                      data-plasmic-override={overrides.customDropdown5}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown5",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown5",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems11"}
+                                data-plasmic-override={
+                                  overrides.actionListItems11
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems11
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems11",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems11", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems12"}
+                                data-plasmic-override={
+                                  overrides.actionListItems12
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems12
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems12",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems12", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__lcyWm
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton5"}
+                        data-plasmic-override={overrides.customButton5}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton5
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton5",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton5",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  title={<Trans__>{"Onboarding"}</Trans__>}
+                />
+              </Stack__>
+              <Stack__
+                as={"section"}
+                data-plasmic-name={"keyMetrics5"}
+                data-plasmic-override={overrides.keyMetrics5}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.keyMetrics5)}
+              >
+                <SectionMetrics
+                  actionType={"button"}
+                  button={
+                    <Button
+                      data-plasmic-name={"userManagement"}
+                      data-plasmic-override={overrides.userManagement}
+                      color={"white"}
+                      link={`/user-management`}
+                      shape={"rounded"}
+                      size={"compact"}
+                      startIcon={
+                        <PlusSvgIcon
+                          className={classNames(projectcss.all, sty.svg__xgAdh)}
+                          role={"img"}
+                        />
+                      }
+                    >
+                      <Trans__>{"User Management"}</Trans__>
+                    </Button>
+                  }
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sectionMetrics___9GZWa
+                  )}
+                  content={
+                    <CustomTable
+                      className={classNames(
+                        "__wab_instance",
+                        sty.customTable__g7Bsw
+                      )}
+                      noData={true}
+                      topBar={true}
+                    />
+                  }
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown6"}
+                      data-plasmic-override={overrides.customDropdown6}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown6",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown6",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems13"}
+                                data-plasmic-override={
+                                  overrides.actionListItems13
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems13
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems13",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems13", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems14"}
+                                data-plasmic-override={
+                                  overrides.actionListItems14
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems14
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems14",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems14", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__rDi9X
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton6"}
+                        data-plasmic-override={overrides.customButton6}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton6
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton6",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton6",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  title={<Trans__>{"Recent Activities"}</Trans__>}
+                />
+
+                <SectionMetrics
+                  actionType={"button"}
+                  button={
+                    <Button
+                      data-plasmic-name={"systemHealth"}
+                      data-plasmic-override={overrides.systemHealth}
+                      color={"clear"}
+                      iconOnly={true}
+                      startIcon={
+                        <DownloadSvgIcon
+                          className={classNames(projectcss.all, sty.svg__vjHic)}
+                          role={"img"}
+                        />
+                      }
+                    >
+                      <Trans__>{"Action"}</Trans__>
+                    </Button>
+                  }
+                  className={classNames(
+                    "__wab_instance",
+                    sty.sectionMetrics__zkDfa
+                  )}
+                  content={
+                    <CustomTable
+                      className={classNames(
+                        "__wab_instance",
+                        sty.customTable__o6Onb
+                      )}
+                      noData={true}
+                      topBar={true}
+                    />
+                  }
+                  dropdown={
+                    <CustomDropdown
+                      data-plasmic-name={"customDropdown7"}
+                      data-plasmic-override={overrides.customDropdown7}
+                      dropdownAlignment={"right"}
+                      isOpen={generateStateValueProp($state, [
+                        "customDropdown7",
+                        "isOpen"
+                      ])}
+                      onIsOpenChange={generateStateOnChangeProp($state, [
+                        "customDropdown7",
+                        "isOpen"
+                      ])}
+                      slot={
+                        <ActionsList
+                          actionsList={
+                            <React.Fragment>
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems15"}
+                                data-plasmic-override={
+                                  overrides.actionListItems15
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems15
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems15",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems15", "isPressed"]
+                                )}
+                              />
+
+                              <ActionListItems
+                                data-plasmic-name={"actionListItems16"}
+                                data-plasmic-override={
+                                  overrides.actionListItems16
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.actionListItems16
+                                )}
+                                isPressed={generateStateValueProp($state, [
+                                  "actionListItems16",
+                                  "isPressed"
+                                ])}
+                                onIsPressedChange={generateStateOnChangeProp(
+                                  $state,
+                                  ["actionListItems16", "isPressed"]
+                                )}
+                              />
+                            </React.Fragment>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.actionsList__kpw7Q
+                          )}
+                          noTitle={true}
+                        />
+                      }
+                    >
+                      <CustomButton
+                        data-plasmic-name={"customButton7"}
+                        data-plasmic-override={overrides.customButton7}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.customButton7
+                        )}
+                        isDown={generateStateValueProp($state, [
+                          "customButton7",
+                          "isDown"
+                        ])}
+                        onIsDownChange={generateStateOnChangeProp($state, [
+                          "customButton7",
+                          "isDown"
+                        ])}
+                        type={"labelOnly"}
+                      />
+                    </CustomDropdown>
+                  }
+                  title={<Trans__>{"System Health"}</Trans__>}
                 />
               </Stack__>
             </React.Fragment>
@@ -475,37 +1573,215 @@ const PlasmicDescendants = {
     "pageInfo",
     "hiKatiePena",
     "welcomeBackToRhom",
-    "button",
     "keyMetrics",
     "percentageBadge",
     "keyMetrics2",
-    "chart",
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2",
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4",
     "keyMetrics3",
-    "customTable"
+    "viewLogs",
+    "customButton3",
+    "actionListItems5",
+    "actionListItems6",
+    "actionListItems7",
+    "actionListItems8",
+    "directAccess",
+    "customDropdown4",
+    "customButton4",
+    "actionListItems9",
+    "actionListItems10",
+    "keyMetrics4",
+    "quickAccess",
+    "customDropdown5",
+    "customButton5",
+    "actionListItems11",
+    "actionListItems12",
+    "keyMetrics5",
+    "userManagement",
+    "customDropdown6",
+    "customButton6",
+    "actionListItems13",
+    "actionListItems14",
+    "systemHealth",
+    "customDropdown7",
+    "customButton7",
+    "actionListItems15",
+    "actionListItems16"
   ],
   dashboard: [
     "dashboard",
     "pageInfo",
     "hiKatiePena",
     "welcomeBackToRhom",
-    "button",
     "keyMetrics",
     "percentageBadge",
     "keyMetrics2",
-    "chart",
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2",
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4",
     "keyMetrics3",
-    "customTable"
+    "viewLogs",
+    "customButton3",
+    "actionListItems5",
+    "actionListItems6",
+    "actionListItems7",
+    "actionListItems8",
+    "directAccess",
+    "customDropdown4",
+    "customButton4",
+    "actionListItems9",
+    "actionListItems10",
+    "keyMetrics4",
+    "quickAccess",
+    "customDropdown5",
+    "customButton5",
+    "actionListItems11",
+    "actionListItems12",
+    "keyMetrics5",
+    "userManagement",
+    "customDropdown6",
+    "customButton6",
+    "actionListItems13",
+    "actionListItems14",
+    "systemHealth",
+    "customDropdown7",
+    "customButton7",
+    "actionListItems15",
+    "actionListItems16"
   ],
-  pageInfo: ["pageInfo", "hiKatiePena", "welcomeBackToRhom", "button"],
+  pageInfo: ["pageInfo", "hiKatiePena", "welcomeBackToRhom"],
   hiKatiePena: ["hiKatiePena"],
   welcomeBackToRhom: ["welcomeBackToRhom"],
-  button: ["button"],
   keyMetrics: ["keyMetrics", "percentageBadge"],
   percentageBadge: ["percentageBadge"],
-  keyMetrics2: ["keyMetrics2", "chart"],
-  chart: ["chart"],
-  keyMetrics3: ["keyMetrics3", "customTable"],
-  customTable: ["customTable"]
+  keyMetrics2: [
+    "keyMetrics2",
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2",
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4"
+  ],
+  customDropdown: [
+    "customDropdown",
+    "customButton",
+    "actionListItems",
+    "actionListItems2"
+  ],
+  customButton: ["customButton"],
+  actionListItems: ["actionListItems"],
+  actionListItems2: ["actionListItems2"],
+  customDropdown2: [
+    "customDropdown2",
+    "customButton2",
+    "actionListItems3",
+    "actionListItems4"
+  ],
+  customButton2: ["customButton2"],
+  actionListItems3: ["actionListItems3"],
+  actionListItems4: ["actionListItems4"],
+  keyMetrics3: [
+    "keyMetrics3",
+    "viewLogs",
+    "customButton3",
+    "actionListItems5",
+    "actionListItems6",
+    "actionListItems7",
+    "actionListItems8",
+    "directAccess",
+    "customDropdown4",
+    "customButton4",
+    "actionListItems9",
+    "actionListItems10"
+  ],
+  viewLogs: [
+    "viewLogs",
+    "customButton3",
+    "actionListItems5",
+    "actionListItems6",
+    "actionListItems7",
+    "actionListItems8"
+  ],
+  customButton3: ["customButton3"],
+  actionListItems5: ["actionListItems5"],
+  actionListItems6: ["actionListItems6"],
+  actionListItems7: ["actionListItems7"],
+  actionListItems8: ["actionListItems8"],
+  directAccess: ["directAccess"],
+  customDropdown4: [
+    "customDropdown4",
+    "customButton4",
+    "actionListItems9",
+    "actionListItems10"
+  ],
+  customButton4: ["customButton4"],
+  actionListItems9: ["actionListItems9"],
+  actionListItems10: ["actionListItems10"],
+  keyMetrics4: [
+    "keyMetrics4",
+    "quickAccess",
+    "customDropdown5",
+    "customButton5",
+    "actionListItems11",
+    "actionListItems12"
+  ],
+  quickAccess: ["quickAccess"],
+  customDropdown5: [
+    "customDropdown5",
+    "customButton5",
+    "actionListItems11",
+    "actionListItems12"
+  ],
+  customButton5: ["customButton5"],
+  actionListItems11: ["actionListItems11"],
+  actionListItems12: ["actionListItems12"],
+  keyMetrics5: [
+    "keyMetrics5",
+    "userManagement",
+    "customDropdown6",
+    "customButton6",
+    "actionListItems13",
+    "actionListItems14",
+    "systemHealth",
+    "customDropdown7",
+    "customButton7",
+    "actionListItems15",
+    "actionListItems16"
+  ],
+  userManagement: ["userManagement"],
+  customDropdown6: [
+    "customDropdown6",
+    "customButton6",
+    "actionListItems13",
+    "actionListItems14"
+  ],
+  customButton6: ["customButton6"],
+  actionListItems13: ["actionListItems13"],
+  actionListItems14: ["actionListItems14"],
+  systemHealth: ["systemHealth"],
+  customDropdown7: [
+    "customDropdown7",
+    "customButton7",
+    "actionListItems15",
+    "actionListItems16"
+  ],
+  customButton7: ["customButton7"],
+  actionListItems15: ["actionListItems15"],
+  actionListItems16: ["actionListItems16"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -516,13 +1792,46 @@ type NodeDefaultElementType = {
   pageInfo: typeof PageInfo;
   hiKatiePena: "div";
   welcomeBackToRhom: "div";
-  button: typeof Button;
   keyMetrics: "section";
   percentageBadge: typeof PercentageBadge;
   keyMetrics2: "section";
-  chart: typeof SimpleChart;
+  customDropdown: typeof CustomDropdown;
+  customButton: typeof CustomButton;
+  actionListItems: typeof ActionListItems;
+  actionListItems2: typeof ActionListItems;
+  customDropdown2: typeof CustomDropdown;
+  customButton2: typeof CustomButton;
+  actionListItems3: typeof ActionListItems;
+  actionListItems4: typeof ActionListItems;
   keyMetrics3: "section";
-  customTable: typeof CustomTable;
+  viewLogs: typeof CustomDropdown;
+  customButton3: typeof CustomButton;
+  actionListItems5: typeof ActionListItems;
+  actionListItems6: typeof ActionListItems;
+  actionListItems7: typeof ActionListItems;
+  actionListItems8: typeof ActionListItems;
+  directAccess: typeof Button;
+  customDropdown4: typeof CustomDropdown;
+  customButton4: typeof CustomButton;
+  actionListItems9: typeof ActionListItems;
+  actionListItems10: typeof ActionListItems;
+  keyMetrics4: "section";
+  quickAccess: typeof Button;
+  customDropdown5: typeof CustomDropdown;
+  customButton5: typeof CustomButton;
+  actionListItems11: typeof ActionListItems;
+  actionListItems12: typeof ActionListItems;
+  keyMetrics5: "section";
+  userManagement: typeof Button;
+  customDropdown6: typeof CustomDropdown;
+  customButton6: typeof CustomButton;
+  actionListItems13: typeof ActionListItems;
+  actionListItems14: typeof ActionListItems;
+  systemHealth: typeof Button;
+  customDropdown7: typeof CustomDropdown;
+  customButton7: typeof CustomButton;
+  actionListItems15: typeof ActionListItems;
+  actionListItems16: typeof ActionListItems;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -589,13 +1898,46 @@ export const PlasmicOverview = Object.assign(
     pageInfo: makeNodeComponent("pageInfo"),
     hiKatiePena: makeNodeComponent("hiKatiePena"),
     welcomeBackToRhom: makeNodeComponent("welcomeBackToRhom"),
-    button: makeNodeComponent("button"),
     keyMetrics: makeNodeComponent("keyMetrics"),
     percentageBadge: makeNodeComponent("percentageBadge"),
     keyMetrics2: makeNodeComponent("keyMetrics2"),
-    chart: makeNodeComponent("chart"),
+    customDropdown: makeNodeComponent("customDropdown"),
+    customButton: makeNodeComponent("customButton"),
+    actionListItems: makeNodeComponent("actionListItems"),
+    actionListItems2: makeNodeComponent("actionListItems2"),
+    customDropdown2: makeNodeComponent("customDropdown2"),
+    customButton2: makeNodeComponent("customButton2"),
+    actionListItems3: makeNodeComponent("actionListItems3"),
+    actionListItems4: makeNodeComponent("actionListItems4"),
     keyMetrics3: makeNodeComponent("keyMetrics3"),
-    customTable: makeNodeComponent("customTable"),
+    viewLogs: makeNodeComponent("viewLogs"),
+    customButton3: makeNodeComponent("customButton3"),
+    actionListItems5: makeNodeComponent("actionListItems5"),
+    actionListItems6: makeNodeComponent("actionListItems6"),
+    actionListItems7: makeNodeComponent("actionListItems7"),
+    actionListItems8: makeNodeComponent("actionListItems8"),
+    directAccess: makeNodeComponent("directAccess"),
+    customDropdown4: makeNodeComponent("customDropdown4"),
+    customButton4: makeNodeComponent("customButton4"),
+    actionListItems9: makeNodeComponent("actionListItems9"),
+    actionListItems10: makeNodeComponent("actionListItems10"),
+    keyMetrics4: makeNodeComponent("keyMetrics4"),
+    quickAccess: makeNodeComponent("quickAccess"),
+    customDropdown5: makeNodeComponent("customDropdown5"),
+    customButton5: makeNodeComponent("customButton5"),
+    actionListItems11: makeNodeComponent("actionListItems11"),
+    actionListItems12: makeNodeComponent("actionListItems12"),
+    keyMetrics5: makeNodeComponent("keyMetrics5"),
+    userManagement: makeNodeComponent("userManagement"),
+    customDropdown6: makeNodeComponent("customDropdown6"),
+    customButton6: makeNodeComponent("customButton6"),
+    actionListItems13: makeNodeComponent("actionListItems13"),
+    actionListItems14: makeNodeComponent("actionListItems14"),
+    systemHealth: makeNodeComponent("systemHealth"),
+    customDropdown7: makeNodeComponent("customDropdown7"),
+    customButton7: makeNodeComponent("customButton7"),
+    actionListItems15: makeNodeComponent("actionListItems15"),
+    actionListItems16: makeNodeComponent("actionListItems16"),
 
     // Metadata about props expected for PlasmicOverview
     internalVariantProps: PlasmicOverview__VariantProps,

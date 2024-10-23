@@ -1,0 +1,17 @@
+.line {
+  display: block;
+  height: 40px;
+  width: 1px;
+  background: #0000001a;
+  position: relative;
+}
+@media (max-width: 834px) {
+  .line {
+    width: 1px;
+  }
+}
+@media (min-width: 0px) and (max-width: 430px) {
+  .line {
+    flex-grow: 1;
+  }
+}

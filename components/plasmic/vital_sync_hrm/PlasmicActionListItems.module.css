@@ -22,7 +22,7 @@
 .actionListItemisPressed:hover {
   background: var(--token-iNAvusl4ky87);
 }
-.freeBox {
+.link {
   position: relative;
   width: 100%;
   height: auto;
