@@ -59,12 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import Searchbox from "../../Searchbox"; // plasmic-import: HxIP9-DtSGaj/component
 import CustomDropdown from "../../CustomDropdown"; // plasmic-import: oUw-Oq8BPl_P/component
 import CustomButton from "../../CustomButton"; // plasmic-import: r1AkQsrHSZtQ/component
@@ -78,7 +72,8 @@ import CtContent from "../../CtContent"; // plasmic-import: 30qwjyl-gzyD/compone
 import CtContentData from "../../CtContentData"; // plasmic-import: 4t2Qy5WUSJVp/component
 import CtMoreButton from "../../CtMoreButton"; // plasmic-import: V-WhOu_9VTgo/component
 import CtNoData from "../../CtNoData"; // plasmic-import: iPx11GU5dJeG/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+
+import { useScreenVariants as useScreenVariantsujc2VYpomBng } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: UJC2VYpomBng/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -88,6 +83,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: qFgf32neWRE8gR
 import sty from "./PlasmicCustomTable.module.css"; // plasmic-import: SyYLCRWlXb0u/css
 
 import SettingSvgIcon from "./icons/PlasmicIcon__SettingSvg"; // plasmic-import: GwVz15svOXJ1/icon
+import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: iURsjDvJHlfF/icon
 import ColumnHeightSvgIcon from "./icons/PlasmicIcon__ColumnHeightSvg"; // plasmic-import: UR9SzrRcmRdF/icon
 
 createPlasmicElementProxy;
@@ -130,13 +126,11 @@ export type PlasmicCustomTable__OverridesType = {
   tableBody?: Flex__<"section">;
   ctHeader?: Flex__<typeof CtHeader>;
   primaryCheckbox?: Flex__<typeof CtCheckbox>;
-  ctHeaderLabel?: Flex__<typeof CtHeaderLabel>;
   ctHeaderLabel2?: Flex__<typeof CtHeaderLabel>;
-  ctHeaderLabel3?: Flex__<typeof CtHeaderLabel>;
   ctContent?: Flex__<typeof CtContent>;
+  ctContentData?: Flex__<typeof CtContentData>;
   contentSection?: Flex__<"section">;
-  contentSection2?: Flex__<"section">;
-  contentSection3?: Flex__<"section">;
+  text?: Flex__<"div">;
   secondaryCheckbox?: Flex__<typeof CtCheckbox>;
   ctNoData?: Flex__<typeof CtNoData>;
 };
@@ -187,9 +181,6 @@ function PlasmicCustomTable__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  let [$queries, setDollarQueries] = React.useState<
-    Record<string, ReturnType<typeof usePlasmicDataOp>>
-  >({});
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -216,9 +207,23 @@ function PlasmicCustomTable__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "secondaryCheckbox[].isChecked",
+        path: "secondaryCheckbox.isChecked",
         type: "private",
-        variableType: "boolean"
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.primaryCheckbox.isChecked === true;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return "isChecked";
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "searchbox.value",
@@ -304,27 +309,13 @@ function PlasmicCustomTable__RenderFunc(props: {
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
-    $queries: $queries,
+    $queries: {},
     $refs
   });
 
-  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
-    componentData: usePlasmicDataOp(() => {
-      return {
-        sourceId: "jy9oBFjmhhSMLYBVGZ4Xm2",
-        opId: "c0c3f78b-dfe5-4015-a5e3-04ffe1715358",
-        userArgs: {},
-        cacheKey: `plasmic.$.c0c3f78b-dfe5-4015-a5e3-04ffe1715358.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    })
-  };
-  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
-    setDollarQueries(new$Queries);
-
-    $queries = new$Queries;
-  }
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsujc2VYpomBng()
+  });
 
   return (
     <Stack__
@@ -440,17 +431,37 @@ function PlasmicCustomTable__RenderFunc(props: {
             <CustomButton
               data-plasmic-name={"customButton"}
               data-plasmic-override={overrides.customButton}
+              buttonIcon={
+                <PlasmicIcon__
+                  PlasmicIconType={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? Icon56Icon
+                      : SettingSvgIcon
+                  }
+                  className={classNames(projectcss.all, sty.svg__hVcv)}
+                  role={"img"}
+                />
+              }
               buttonLabel={<Trans__>{"Export"}</Trans__>}
               className={classNames("__wab_instance", sty.customButton)}
               isDown={generateStateValueProp($state, [
                 "customButton",
                 "isDown"
               ])}
+              noEndIcon={
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? true
+                  : undefined
+              }
               onIsDownChange={generateStateOnChangeProp($state, [
                 "customButton",
                 "isDown"
               ])}
-              type={"labelOnly"}
+              type={
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? "iconOnly"
+                  : "labelOnly"
+              }
             />
           </CustomDropdown>
           <CustomDropdown
@@ -702,228 +713,62 @@ function PlasmicCustomTable__RenderFunc(props: {
           }
         >
           <CtHeaderLabel
-            data-plasmic-name={"ctHeaderLabel"}
-            data-plasmic-override={overrides.ctHeaderLabel}
-            className={classNames("__wab_instance", sty.ctHeaderLabel)}
-            sorting={true}
-          >
-            <Trans__>{"Id"}</Trans__>
-          </CtHeaderLabel>
-          <CtHeaderLabel
             data-plasmic-name={"ctHeaderLabel2"}
             data-plasmic-override={overrides.ctHeaderLabel2}
             className={classNames("__wab_instance", sty.ctHeaderLabel2)}
             sorting={true}
           />
-
-          <CtHeaderLabel
-            data-plasmic-name={"ctHeaderLabel3"}
-            data-plasmic-override={overrides.ctHeaderLabel3}
-            className={classNames("__wab_instance", sty.ctHeaderLabel3)}
-            info={true}
-          >
-            <Trans__>{"Email"}</Trans__>
-          </CtHeaderLabel>
         </CtHeader>
-        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-          (() => {
-            try {
-              return $queries.componentData.data.response;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return [];
+        <CtContent
+          data-plasmic-name={"ctContent"}
+          data-plasmic-override={overrides.ctContent}
+          className={classNames("__wab_instance", sty.ctContent, {
+            [sty.ctContentnoData]: hasVariant($state, "noData", "noData")
+          })}
+          secondaryCheckbox2={
+            <CtCheckbox
+              data-plasmic-name={"secondaryCheckbox"}
+              data-plasmic-override={overrides.secondaryCheckbox}
+              aria-label={"Secondary"}
+              className={classNames("__wab_instance", sty.secondaryCheckbox)}
+              isChecked={
+                generateStateValueProp($state, [
+                  "secondaryCheckbox",
+                  "isChecked"
+                ]) ?? false
               }
-              throw e;
-            }
-          })()
-        ).map((__plasmic_item_0, __plasmic_idx_0) => {
-          const currentItem = __plasmic_item_0;
-          const currentIndex = __plasmic_idx_0;
-          return (
-            <CtContent
-              data-plasmic-name={"ctContent"}
-              data-plasmic-override={overrides.ctContent}
-              className={classNames("__wab_instance", sty.ctContent, {
-                [sty.ctContentnoData]: hasVariant($state, "noData", "noData")
-              })}
-              key={currentIndex}
-              secondaryCheckbox2={(() => {
-                const child$Props = {
-                  "aria-label": "Secondary",
-                  className: classNames(
-                    "__wab_instance",
-                    sty.secondaryCheckbox
-                  ),
-                  isChecked:
-                    generateStateValueProp($state, [
-                      "secondaryCheckbox",
-                      __plasmic_idx_0,
-                      "isChecked"
-                    ]) ?? false,
-                  onChange: (...eventArgs) => {
-                    generateStateOnChangeProp($state, [
-                      "secondaryCheckbox",
-                      __plasmic_idx_0,
-                      "isChecked"
-                    ])(eventArgs[0]);
-                  }
-                };
-
-                initializePlasmicStates(
-                  $state,
-                  [
-                    {
-                      name: "secondaryCheckbox[].isChecked",
-                      initFunc: ({ $props, $state, $queries }) =>
-                        (() => {
-                          try {
-                            return $state.primaryCheckbox.isChecked === true;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "isChecked";
-                            }
-                            throw e;
-                          }
-                        })()
-                    }
-                  ],
-                  [__plasmic_idx_0]
-                );
-                return (
-                  <CtCheckbox
-                    data-plasmic-name={"secondaryCheckbox"}
-                    data-plasmic-override={overrides.secondaryCheckbox}
-                    {...child$Props}
-                  />
-                );
-              })()}
+              onChange={(...eventArgs) => {
+                generateStateOnChangeProp($state, [
+                  "secondaryCheckbox",
+                  "isChecked"
+                ])(eventArgs[0]);
+              }}
+            />
+          }
+        >
+          <CtContentData
+            data-plasmic-name={"ctContentData"}
+            data-plasmic-override={overrides.ctContentData}
+          >
+            <section
+              data-plasmic-name={"contentSection"}
+              data-plasmic-override={overrides.contentSection}
+              className={classNames(projectcss.all, sty.contentSection)}
             >
-              <CtContentData
+              <div
+                data-plasmic-name={"text"}
+                data-plasmic-override={overrides.text}
                 className={classNames(
-                  "__wab_instance",
-                  sty.ctContentData___84Ye
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text
                 )}
               >
-                <section
-                  data-plasmic-name={"contentSection"}
-                  data-plasmic-override={overrides.contentSection}
-                  className={classNames(projectcss.all, sty.contentSection)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xvtLh
-                    )}
-                  >
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return currentItem.id;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "None";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  </div>
-                </section>
-              </CtContentData>
-              <CtContentData
-                className={classNames(
-                  "__wab_instance",
-                  sty.ctContentData__dKqD
-                )}
-              >
-                <section
-                  data-plasmic-name={"contentSection2"}
-                  data-plasmic-override={overrides.contentSection2}
-                  className={classNames(projectcss.all, sty.contentSection2)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__v6UpW
-                    )}
-                  >
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return currentItem["Display Name"];
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "None";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  </div>
-                </section>
-              </CtContentData>
-              <CtContentData
-                className={classNames(
-                  "__wab_instance",
-                  sty.ctContentData__cZoHr
-                )}
-              >
-                <section
-                  data-plasmic-name={"contentSection3"}
-                  data-plasmic-override={overrides.contentSection3}
-                  className={classNames(projectcss.all, sty.contentSection3)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___4G9Iw
-                    )}
-                  >
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return currentItem.Email;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "None";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  </div>
-                </section>
-              </CtContentData>
-            </CtContent>
-          );
-        })}
+                <Trans__>{"None"}</Trans__>
+              </div>
+            </section>
+          </CtContentData>
+        </CtContent>
         <CtNoData
           data-plasmic-name={"ctNoData"}
           data-plasmic-override={overrides.ctNoData}
@@ -958,13 +803,11 @@ const PlasmicDescendants = {
     "tableBody",
     "ctHeader",
     "primaryCheckbox",
-    "ctHeaderLabel",
     "ctHeaderLabel2",
-    "ctHeaderLabel3",
     "ctContent",
+    "ctContentData",
     "contentSection",
-    "contentSection2",
-    "contentSection3",
+    "text",
     "secondaryCheckbox",
     "ctNoData"
   ],
@@ -1028,37 +871,27 @@ const PlasmicDescendants = {
     "tableBody",
     "ctHeader",
     "primaryCheckbox",
-    "ctHeaderLabel",
     "ctHeaderLabel2",
-    "ctHeaderLabel3",
     "ctContent",
+    "ctContentData",
     "contentSection",
-    "contentSection2",
-    "contentSection3",
+    "text",
     "secondaryCheckbox",
     "ctNoData"
   ],
-  ctHeader: [
-    "ctHeader",
-    "primaryCheckbox",
-    "ctHeaderLabel",
-    "ctHeaderLabel2",
-    "ctHeaderLabel3"
-  ],
+  ctHeader: ["ctHeader", "primaryCheckbox", "ctHeaderLabel2"],
   primaryCheckbox: ["primaryCheckbox"],
-  ctHeaderLabel: ["ctHeaderLabel"],
   ctHeaderLabel2: ["ctHeaderLabel2"],
-  ctHeaderLabel3: ["ctHeaderLabel3"],
   ctContent: [
     "ctContent",
+    "ctContentData",
     "contentSection",
-    "contentSection2",
-    "contentSection3",
+    "text",
     "secondaryCheckbox"
   ],
-  contentSection: ["contentSection"],
-  contentSection2: ["contentSection2"],
-  contentSection3: ["contentSection3"],
+  ctContentData: ["ctContentData", "contentSection", "text"],
+  contentSection: ["contentSection", "text"],
+  text: ["text"],
   secondaryCheckbox: ["secondaryCheckbox"],
   ctNoData: ["ctNoData"]
 } as const;
@@ -1085,13 +918,11 @@ type NodeDefaultElementType = {
   tableBody: "section";
   ctHeader: typeof CtHeader;
   primaryCheckbox: typeof CtCheckbox;
-  ctHeaderLabel: typeof CtHeaderLabel;
   ctHeaderLabel2: typeof CtHeaderLabel;
-  ctHeaderLabel3: typeof CtHeaderLabel;
   ctContent: typeof CtContent;
+  ctContentData: typeof CtContentData;
   contentSection: "section";
-  contentSection2: "section";
-  contentSection3: "section";
+  text: "div";
   secondaryCheckbox: typeof CtCheckbox;
   ctNoData: typeof CtNoData;
 };
@@ -1174,13 +1005,11 @@ export const PlasmicCustomTable = Object.assign(
     tableBody: makeNodeComponent("tableBody"),
     ctHeader: makeNodeComponent("ctHeader"),
     primaryCheckbox: makeNodeComponent("primaryCheckbox"),
-    ctHeaderLabel: makeNodeComponent("ctHeaderLabel"),
     ctHeaderLabel2: makeNodeComponent("ctHeaderLabel2"),
-    ctHeaderLabel3: makeNodeComponent("ctHeaderLabel3"),
     ctContent: makeNodeComponent("ctContent"),
+    ctContentData: makeNodeComponent("ctContentData"),
     contentSection: makeNodeComponent("contentSection"),
-    contentSection2: makeNodeComponent("contentSection2"),
-    contentSection3: makeNodeComponent("contentSection3"),
+    text: makeNodeComponent("text"),
     secondaryCheckbox: makeNodeComponent("secondaryCheckbox"),
     ctNoData: makeNodeComponent("ctNoData"),
 

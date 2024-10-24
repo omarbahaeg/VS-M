@@ -63,6 +63,7 @@ import Dashboard from "../../Dashboard"; // plasmic-import: xrHIipmjGkuW/compone
 import PageInfo from "../../PageInfo"; // plasmic-import: -5yQM3hZscI3/component
 import Button from "../../Button"; // plasmic-import: JRPPbMhYptfo/component
 import SectionCard from "../../SectionCard"; // plasmic-import: m-qBY6t_w4vi/component
+import Checkbox from "../../Checkbox"; // plasmic-import: ssintioay6Yy/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -90,8 +91,9 @@ export type PlasmicSettings__OverridesType = {
   dashboard?: Flex__<typeof Dashboard>;
   pageInfo?: Flex__<typeof PageInfo>;
   welcomeBackToRhom?: Flex__<"div">;
-  button?: Flex__<typeof Button>;
-  svg?: Flex__<"svg">;
+  checkbox?: Flex__<typeof Checkbox>;
+  h6?: Flex__<"h6">;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultSettingsProps {}
@@ -135,6 +137,24 @@ function PlasmicSettings__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "checkbox.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "isChecked"
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
 
   return (
     <React.Fragment>
@@ -200,26 +220,43 @@ function PlasmicSettings__RenderFunc(props: {
                 data-plasmic-name={"pageInfo"}
                 data-plasmic-override={overrides.pageInfo}
                 action={
-                  <Button
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
-                    className={classNames("__wab_instance", sty.button)}
-                    color={"green"}
-                    shape={"rounded"}
-                    showStartIcon={true}
-                    size={"compact"}
-                    startIcon={
-                      <Icon43Icon
-                        data-plasmic-name={"svg"}
-                        data-plasmic-override={overrides.svg}
-                        className={classNames(projectcss.all, sty.svg)}
-                        role={"img"}
-                      />
-                    }
-                    submitsForm={false}
-                  >
-                    <Trans__>{"Default Settings"}</Trans__>
-                  </Button>
+                  <React.Fragment>
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__xlIbd
+                      )}
+                      color={"white"}
+                      isDisabled={true}
+                      shape={"rounded"}
+                      size={"compact"}
+                      startIcon={
+                        <Icon43Icon
+                          className={classNames(projectcss.all, sty.svg__sbEbX)}
+                          role={"img"}
+                        />
+                      }
+                      submitsForm={false}
+                    >
+                      <Trans__>{"Save Changes"}</Trans__>
+                    </Button>
+                    <Button
+                      className={classNames("__wab_instance", sty.button__imSl)}
+                      color={"green"}
+                      shape={"rounded"}
+                      showStartIcon={true}
+                      size={"compact"}
+                      startIcon={
+                        <Icon43Icon
+                          className={classNames(projectcss.all, sty.svg__cAqtd)}
+                          role={"img"}
+                        />
+                      }
+                      submitsForm={false}
+                    >
+                      <Trans__>{"Restore Defaults"}</Trans__>
+                    </Button>
+                  </React.Fragment>
                 }
                 className={classNames("__wab_instance", sty.pageInfo)}
                 description={
@@ -247,17 +284,93 @@ function PlasmicSettings__RenderFunc(props: {
 
               <SectionCard
                 className={classNames("__wab_instance", sty.sectionCard__iBhGz)}
+                content={null}
                 title={<Trans__>{"Account"}</Trans__>}
               />
 
               <SectionCard
                 className={classNames("__wab_instance", sty.sectionCard__akkGe)}
+                content={
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__awMtK)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___9P6Bh
+                      )}
+                    >
+                      <Checkbox
+                        data-plasmic-name={"checkbox"}
+                        data-plasmic-override={overrides.checkbox}
+                        className={classNames("__wab_instance", sty.checkbox)}
+                        isChecked={
+                          generateStateValueProp($state, [
+                            "checkbox",
+                            "isChecked"
+                          ]) ?? false
+                        }
+                        onChange={(...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "checkbox",
+                            "isChecked"
+                          ])(eventArgs[0]);
+                        }}
+                      >
+                        <h6
+                          data-plasmic-name={"h6"}
+                          data-plasmic-override={overrides.h6}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.h6,
+                            projectcss.__wab_text,
+                            sty.h6
+                          )}
+                        >
+                          <Trans__>{"System Notifications"}</Trans__>
+                        </h6>
+                      </Checkbox>
+                      <div
+                        data-plasmic-name={"text"}
+                        data-plasmic-override={overrides.text}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text
+                        )}
+                      >
+                        <Trans__>
+                          {
+                            "Control which actions trigger email alerts (e.g., new employee requests, document approvals)."
+                          }
+                        </Trans__>
+                      </div>
+                    </div>
+                  </Stack__>
+                }
                 title={<Trans__>{"Notification"}</Trans__>}
               />
 
               <SectionCard
                 className={classNames("__wab_instance", sty.sectionCard__iuvyk)}
+                title={<Trans__>{"Employee & User Settings"}</Trans__>}
+              />
+
+              <SectionCard
+                className={classNames("__wab_instance", sty.sectionCard__jQsVu)}
+                title={<Trans__>{"E-Signature"}</Trans__>}
+              />
+
+              <SectionCard
+                className={classNames("__wab_instance", sty.sectionCard__lk0F9)}
                 title={<Trans__>{"Messages"}</Trans__>}
+              />
+
+              <SectionCard
+                className={classNames("__wab_instance", sty.sectionCard__iHblO)}
+                title={<Trans__>{"Backup & Recovery"}</Trans__>}
               />
             </React.Fragment>
           }
@@ -268,12 +381,28 @@ function PlasmicSettings__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  main: ["main", "dashboard", "pageInfo", "welcomeBackToRhom", "button", "svg"],
-  dashboard: ["dashboard", "pageInfo", "welcomeBackToRhom", "button", "svg"],
-  pageInfo: ["pageInfo", "welcomeBackToRhom", "button", "svg"],
+  main: [
+    "main",
+    "dashboard",
+    "pageInfo",
+    "welcomeBackToRhom",
+    "checkbox",
+    "h6",
+    "text"
+  ],
+  dashboard: [
+    "dashboard",
+    "pageInfo",
+    "welcomeBackToRhom",
+    "checkbox",
+    "h6",
+    "text"
+  ],
+  pageInfo: ["pageInfo", "welcomeBackToRhom"],
   welcomeBackToRhom: ["welcomeBackToRhom"],
-  button: ["button", "svg"],
-  svg: ["svg"]
+  checkbox: ["checkbox", "h6"],
+  h6: ["h6"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -283,8 +412,9 @@ type NodeDefaultElementType = {
   dashboard: typeof Dashboard;
   pageInfo: typeof PageInfo;
   welcomeBackToRhom: "div";
-  button: typeof Button;
-  svg: "svg";
+  checkbox: typeof Checkbox;
+  h6: "h6";
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -350,8 +480,9 @@ export const PlasmicSettings = Object.assign(
     dashboard: makeNodeComponent("dashboard"),
     pageInfo: makeNodeComponent("pageInfo"),
     welcomeBackToRhom: makeNodeComponent("welcomeBackToRhom"),
-    button: makeNodeComponent("button"),
-    svg: makeNodeComponent("svg"),
+    checkbox: makeNodeComponent("checkbox"),
+    h6: makeNodeComponent("h6"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicSettings
     internalVariantProps: PlasmicSettings__VariantProps,

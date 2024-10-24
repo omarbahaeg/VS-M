@@ -2468,6 +2468,11 @@
           "id": "QF9bLui_EW_6",
           "name": "Icon55Icon",
           "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__Icon55.tsx"
+        },
+        {
+          "id": "iURsjDvJHlfF",
+          "name": "Icon56Icon",
+          "moduleFilePath": "plasmic/vital_sync_hrm/icons/PlasmicIcon__Icon56.tsx"
         }
       ],
       "images": [

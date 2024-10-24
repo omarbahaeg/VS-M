@@ -80,7 +80,6 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
   transition-property: all;
   transition-duration: 0.5s;
   width: auto;
@@ -96,9 +95,13 @@
 }
 .svg___8WmPw {
   object-fit: cover;
-  max-width: 100%;
   height: 18px;
-  width: auto;
+  width: 18px;
+  min-width: 18px;
+  max-width: 18px;
+  min-height: 18px;
+  max-height: 18px;
+  flex-shrink: 0;
 }
 .label {
   display: flex;
@@ -139,11 +142,14 @@
 }
 .svg {
   object-fit: cover;
-  max-width: 100%;
+  max-width: 12px;
   height: 12px;
   width: 12px;
   transition-property: all;
   transition-duration: 0.5s;
+  min-width: 12px;
+  min-height: 12px;
+  max-height: 12px;
   flex-shrink: 0;
   -webkit-transition-property: all;
   -webkit-transition-duration: 0.5s;

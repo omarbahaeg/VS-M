@@ -601,19 +601,6 @@ function PlasmicSidebar__RenderFunc(props: {
                   ? true
                   : undefined
               }
-              isOpen={(() => {
-                try {
-                  return $state.navigationSubitem2.isActive === true;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "isOpen";
-                  }
-                  throw e;
-                }
-              })()}
               label={<Trans__>{"Dashboard"}</Trans__>}
               subItems={
                 <React.Fragment>
