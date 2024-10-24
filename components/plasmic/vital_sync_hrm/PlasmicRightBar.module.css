@@ -27,7 +27,7 @@
   > img {
   margin-top: 16px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .rightBar {
     display: none;
   }

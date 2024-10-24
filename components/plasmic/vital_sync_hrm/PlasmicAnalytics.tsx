@@ -1627,6 +1627,7 @@ function PlasmicAnalytics__RenderFunc(props: {
                       />
                     </CustomDropdown>
                   }
+                  noData={true}
                   title={<Trans__>{"Performance Overview"}</Trans__>}
                 />
 
@@ -1738,6 +1739,7 @@ function PlasmicAnalytics__RenderFunc(props: {
                       />
                     </CustomDropdown>
                   }
+                  noData={true}
                   title={<Trans__>{"Uptime/Downtime"}</Trans__>}
                 />
               </Stack__>

@@ -56,12 +56,12 @@
   margin-left: 30px;
   margin-top: 30px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics {
     display: flex;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics > :global(.__wab_flex-container) {
     flex-wrap: wrap;
     align-items: center;
@@ -72,7 +72,7 @@
     height: calc(100% + 10px);
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics > :global(.__wab_flex-container) > *,
   .keyMetrics > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
   .keyMetrics > :global(.__wab_flex-container) > picture > img,
@@ -93,7 +93,7 @@
 .metricsCard__uG2Sv:global(.__wab_instance) {
   position: relative;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .metricsCard__uG2Sv:global(.__wab_instance) {
     width: 45%;
   }
@@ -119,7 +119,7 @@
   position: relative;
   flex-shrink: 0;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .line__xyMjy:global(.__wab_instance) {
     flex-shrink: 0;
   }
@@ -133,7 +133,7 @@
 .metricsCard__yu49:global(.__wab_instance) {
   position: relative;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .metricsCard__yu49:global(.__wab_instance) {
     width: 45%;
   }
@@ -165,7 +165,7 @@
     display: none;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .line___0Bhho:global(.__wab_instance) {
     flex-shrink: 0;
     display: none;
@@ -187,7 +187,7 @@
     flex-shrink: 0;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .metricsCard__pVu4V:global(.__wab_instance) {
     width: 45%;
   }
@@ -222,7 +222,7 @@
 .metricsCard__y8Tn:global(.__wab_instance) {
   position: relative;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .metricsCard__y8Tn:global(.__wab_instance) {
     width: 45%;
   }
@@ -276,12 +276,12 @@
   margin-left: 30px;
   margin-top: 30px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics2 {
     display: flex;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics2 > :global(.__wab_flex-container) {
     flex-wrap: wrap;
     align-items: stretch;
@@ -289,7 +289,7 @@
     height: calc(100% + 30px);
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics2 > :global(.__wab_flex-container) > *,
   .keyMetrics2 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
   .keyMetrics2 > :global(.__wab_flex-container) > picture > img,
@@ -452,12 +452,12 @@
   margin-left: 30px;
   margin-top: 30px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics3 {
     display: flex;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics3 > :global(.__wab_flex-container) {
     flex-wrap: wrap;
     align-items: stretch;
@@ -465,7 +465,7 @@
     height: calc(100% + 30px);
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics3 > :global(.__wab_flex-container) > *,
   .keyMetrics3 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
   .keyMetrics3 > :global(.__wab_flex-container) > picture > img,
@@ -641,12 +641,12 @@
   margin-left: 30px;
   margin-top: 30px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics4 {
     display: flex;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics4 > :global(.__wab_flex-container) {
     flex-wrap: wrap;
     align-items: stretch;
@@ -654,7 +654,7 @@
     height: calc(100% + 30px);
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics4 > :global(.__wab_flex-container) > *,
   .keyMetrics4 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
   .keyMetrics4 > :global(.__wab_flex-container) > picture > img,
@@ -761,12 +761,12 @@
   margin-left: 30px;
   margin-top: 30px;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics5 {
     display: flex;
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics5 > :global(.__wab_flex-container) {
     flex-wrap: wrap;
     align-items: stretch;
@@ -774,7 +774,7 @@
     height: calc(100% + 30px);
   }
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .keyMetrics5 > :global(.__wab_flex-container) > *,
   .keyMetrics5 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
   .keyMetrics5 > :global(.__wab_flex-container) > picture > img,

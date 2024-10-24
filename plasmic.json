@@ -1358,32 +1358,6 @@
           "componentType": "component"
         },
         {
-          "id": "M2BFYvan2hjN",
-          "name": "SidebarNavigationDropdown",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationDropdown.tsx",
-          "importSpec": {
-            "modulePath": "SidebarNavigationDropdown.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationDropdown.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "ZuuWfkNiYXry",
-          "name": "SidebarNavigationItem",
-          "type": "managed",
-          "projectId": "qFgf32neWRE8gRveVBaatz",
-          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationItem.tsx",
-          "importSpec": {
-            "modulePath": "SidebarNavigationItem.tsx"
-          },
-          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicSidebarNavigationItem.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "4t2Qy5WUSJVp",
           "name": "CtContentData",
           "type": "managed",
@@ -1736,6 +1710,45 @@
             "modulePath": "Q1.tsx"
           },
           "cssFilePath": "plasmic/vital_sync_hrm/PlasmicQ1.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "M2BFYvan2hjN",
+          "name": "NavigationDropdown",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationDropdown.tsx",
+          "importSpec": {
+            "modulePath": "NavigationDropdown.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationDropdown.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZuuWfkNiYXry",
+          "name": "NavigationItem",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationItem.tsx",
+          "importSpec": {
+            "modulePath": "NavigationItem.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "RBxVL_67PwiO",
+          "name": "NavigationSubitem",
+          "type": "managed",
+          "projectId": "qFgf32neWRE8gRveVBaatz",
+          "renderModuleFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationSubitem.tsx",
+          "importSpec": {
+            "modulePath": "NavigationSubitem.tsx"
+          },
+          "cssFilePath": "plasmic/vital_sync_hrm/PlasmicNavigationSubitem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

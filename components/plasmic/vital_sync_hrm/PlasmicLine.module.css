@@ -5,7 +5,7 @@
   background: #0000001a;
   position: relative;
 }
-@media (max-width: 834px) {
+@media (max-width: 845px) {
   .line {
     width: 1px;
   }

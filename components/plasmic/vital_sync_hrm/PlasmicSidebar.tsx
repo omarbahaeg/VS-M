@@ -62,9 +62,9 @@ import {
 import Logo from "../../Logo"; // plasmic-import: wVHeFJcN9sea/component
 import SidebarToggle from "../../SidebarToggle"; // plasmic-import: ApLXdRYqAk86/component
 import Searchbox from "../../Searchbox"; // plasmic-import: HxIP9-DtSGaj/component
-import SidebarNavigationDropdown from "../../SidebarNavigationDropdown"; // plasmic-import: M2BFYvan2hjN/component
-import SidebarNavigationSubitem from "../../SidebarNavigationSubitem"; // plasmic-import: HEiaqG6S4t6W/component
-import SidebarNavigationItem from "../../SidebarNavigationItem"; // plasmic-import: ZuuWfkNiYXry/component
+import NavigationDropdown from "../../NavigationDropdown"; // plasmic-import: M2BFYvan2hjN/component
+import NavigationSubitem from "../../NavigationSubitem"; // plasmic-import: RBxVL_67PwiO/component
+import NavigationItem from "../../NavigationItem"; // plasmic-import: ZuuWfkNiYXry/component
 import BadgeLabel from "../../BadgeLabel"; // plasmic-import: LXPYsuIaJqY7/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
 
@@ -126,16 +126,18 @@ export type PlasmicSidebar__OverridesType = {
   sidebarToggleResponsive?: Flex__<typeof SidebarToggle>;
   searchbox?: Flex__<typeof Searchbox>;
   navigation?: Flex__<"div">;
-  sidebarNavigationSubitem?: Flex__<typeof SidebarNavigationSubitem>;
-  sidebarNavigationSubitem3?: Flex__<typeof SidebarNavigationSubitem>;
+  navigationDropdown?: Flex__<typeof NavigationDropdown>;
+  navigationSubitem?: Flex__<typeof NavigationSubitem>;
+  navigationSubitem2?: Flex__<typeof NavigationSubitem>;
   navigation2?: Flex__<"div">;
   title?: Flex__<"div">;
   navigation3?: Flex__<"div">;
   title2?: Flex__<"div">;
-  sidebarNavigationSubitem2?: Flex__<typeof SidebarNavigationSubitem>;
-  sidebarNavigationSubitem4?: Flex__<typeof SidebarNavigationSubitem>;
-  sidebarNavigationSubitem5?: Flex__<typeof SidebarNavigationSubitem>;
-  sidebarNavigationSubitem6?: Flex__<typeof SidebarNavigationSubitem>;
+  navigationDropdown2?: Flex__<typeof NavigationDropdown>;
+  navigationSubitem3?: Flex__<typeof NavigationSubitem>;
+  navigationSubitem4?: Flex__<typeof NavigationSubitem>;
+  navigationSubitem5?: Flex__<typeof NavigationSubitem>;
+  navigationSubitem6?: Flex__<typeof NavigationSubitem>;
   accountSection?: Flex__<"div">;
   avatarLabel?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
@@ -226,118 +228,40 @@ function PlasmicSidebar__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem.active",
+        path: "navigationSubitem.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem2.active",
+        path: "navigationSubitem2.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem3.active",
+        path: "navigationSubitem3.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem4.active",
+        path: "navigationSubitem4.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem5.active",
+        path: "navigationSubitem5.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "sidebarNavigationSubitem6.active",
+        path: "navigationSubitem6.isActive",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $props.pageLink === $ctx.pagePath;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -659,15 +583,16 @@ function PlasmicSidebar__RenderFunc(props: {
               )
             })}
           >
-            <SidebarNavigationDropdown
-              className={classNames(
-                "__wab_instance",
-                sty.sidebarNavigationDropdown__fum8J,
-                {
-                  [sty.sidebarNavigationDropdowncollapsed__fum8JiUi1M]:
-                    hasVariant($state, "collapsed", "collapsed")
-                }
-              )}
+            <NavigationDropdown
+              data-plasmic-name={"navigationDropdown"}
+              data-plasmic-override={overrides.navigationDropdown}
+              className={classNames("__wab_instance", sty.navigationDropdown, {
+                [sty.navigationDropdowncollapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
               collapsed={
                 hasVariant($state, "collapsed", "collapsed") &&
                 triggers.hover_body
@@ -678,10 +603,7 @@ function PlasmicSidebar__RenderFunc(props: {
               }
               isOpen={(() => {
                 try {
-                  return (
-                    $state.sidebarNavigationSubitem.active === true ||
-                    $state.sidebarNavigationSubitem3.active === true
-                  );
+                  return $state.navigationSubitem2.isActive === true;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -695,43 +617,36 @@ function PlasmicSidebar__RenderFunc(props: {
               label={<Trans__>{"Dashboard"}</Trans__>}
               subItems={
                 <React.Fragment>
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem",
-                      "active"
-                    ])}
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem"}
+                    data-plasmic-override={overrides.navigationSubitem}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem
+                      sty.navigationSubitem
                     )}
-                    label={<Trans__>{"Overview"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem",
+                      "isActive"
                     ])}
                     pageLink={`/`}
-                  />
-
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem3"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem3}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem3",
-                      "active"
-                    ])}
+                  >
+                    <Trans__>{"Overview"}</Trans__>
+                  </NavigationSubitem>
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem2"}
+                    data-plasmic-override={overrides.navigationSubitem2}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem3
+                      sty.navigationSubitem2
                     )}
-                    label={<Trans__>{"Analytics"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem3",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem2",
+                      "isActive"
                     ])}
                     pageLink={`/dashboard/analytics`}
-                  />
+                  >
+                    <Trans__>{"Analytics"}</Trans__>
+                  </NavigationSubitem>
                 </React.Fragment>
               }
             />
@@ -777,12 +692,12 @@ function PlasmicSidebar__RenderFunc(props: {
                 <Trans__>{"Tools"}</Trans__>
               </div>
             </div>
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem__aI5E,
+                sty.navigationItem__aI5E,
                 {
-                  [sty.sidebarNavigationItemcollapsed__aI5EiUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed__aI5EiUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -807,12 +722,12 @@ function PlasmicSidebar__RenderFunc(props: {
               pageLink={`/requests`}
             />
 
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem__wa8Df,
+                sty.navigationItem__wa8Df,
                 {
-                  [sty.sidebarNavigationItemcollapsed__wa8DFiUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed__wa8DFiUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -837,12 +752,12 @@ function PlasmicSidebar__RenderFunc(props: {
               pageLink={`/e-sign`}
             />
 
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem__vD4X1,
+                sty.navigationItem__vD4X1,
                 {
-                  [sty.sidebarNavigationItemcollapsed__vD4X1IUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed__vD4X1IUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -867,12 +782,12 @@ function PlasmicSidebar__RenderFunc(props: {
               pageLink={`/messages`}
             />
 
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem__m1WaZ,
+                sty.navigationItem__m1WaZ,
                 {
-                  [sty.sidebarNavigationItemcollapsed__m1WaZiUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed__m1WaZiUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -938,15 +853,16 @@ function PlasmicSidebar__RenderFunc(props: {
                 <Trans__>{"Manage"}</Trans__>
               </div>
             </div>
-            <SidebarNavigationDropdown
-              className={classNames(
-                "__wab_instance",
-                sty.sidebarNavigationDropdown___6NnS,
-                {
-                  [sty.sidebarNavigationDropdowncollapsed___6NnSiUi1M]:
-                    hasVariant($state, "collapsed", "collapsed")
-                }
-              )}
+            <NavigationDropdown
+              data-plasmic-name={"navigationDropdown2"}
+              data-plasmic-override={overrides.navigationDropdown2}
+              className={classNames("__wab_instance", sty.navigationDropdown2, {
+                [sty.navigationDropdown2collapsed]: hasVariant(
+                  $state,
+                  "collapsed",
+                  "collapsed"
+                )
+              })}
               collapsed={
                 hasVariant($state, "collapsed", "collapsed") &&
                 triggers.hover_body
@@ -964,91 +880,76 @@ function PlasmicSidebar__RenderFunc(props: {
               label={<Trans__>{"Records"}</Trans__>}
               subItems={
                 <React.Fragment>
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem2"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem2}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem2",
-                      "active"
-                    ])}
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem3"}
+                    data-plasmic-override={overrides.navigationSubitem3}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem2
+                      sty.navigationSubitem3
                     )}
-                    label={<Trans__>{"Forms"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem2",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem3",
+                      "isActive"
                     ])}
                     pageLink={`/records/forms`}
-                  />
-
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem4"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem4}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem4",
-                      "active"
-                    ])}
+                  >
+                    <Trans__>{"Forms"}</Trans__>
+                  </NavigationSubitem>
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem4"}
+                    data-plasmic-override={overrides.navigationSubitem4}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem4
+                      sty.navigationSubitem4
                     )}
-                    label={<Trans__>{"Emails"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem4",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem4",
+                      "isActive"
                     ])}
                     pageLink={`/records/emails`}
-                  />
-
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem5"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem5}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem5",
-                      "active"
-                    ])}
+                  >
+                    <Trans__>{"Emails"}</Trans__>
+                  </NavigationSubitem>
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem5"}
+                    data-plasmic-override={overrides.navigationSubitem5}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem5
+                      sty.navigationSubitem5
                     )}
-                    label={<Trans__>{"Submissions"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem5",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem5",
+                      "isActive"
                     ])}
                     pageLink={`/records/submissions`}
-                  />
-
-                  <SidebarNavigationSubitem
-                    data-plasmic-name={"sidebarNavigationSubitem6"}
-                    data-plasmic-override={overrides.sidebarNavigationSubitem6}
-                    active={generateStateValueProp($state, [
-                      "sidebarNavigationSubitem6",
-                      "active"
-                    ])}
+                  >
+                    <Trans__>{"Submissions"}</Trans__>
+                  </NavigationSubitem>
+                  <NavigationSubitem
+                    data-plasmic-name={"navigationSubitem6"}
+                    data-plasmic-override={overrides.navigationSubitem6}
                     className={classNames(
                       "__wab_instance",
-                      sty.sidebarNavigationSubitem6
+                      sty.navigationSubitem6
                     )}
-                    label={<Trans__>{"Automations"}</Trans__>}
-                    onActiveChange={generateStateOnChangeProp($state, [
-                      "sidebarNavigationSubitem6",
-                      "active"
+                    onIsActiveChange={generateStateOnChangeProp($state, [
+                      "navigationSubitem6",
+                      "isActive"
                     ])}
                     pageLink={`/records/automations`}
-                  />
+                  >
+                    <Trans__>{"Automations"}</Trans__>
+                  </NavigationSubitem>
                 </React.Fragment>
               }
             />
 
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem___2Kt5V,
+                sty.navigationItem___2Kt5V,
                 {
-                  [sty.sidebarNavigationItemcollapsed___2Kt5ViUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed___2Kt5ViUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -1073,12 +974,12 @@ function PlasmicSidebar__RenderFunc(props: {
               pageLink={`/settings`}
             />
 
-            <SidebarNavigationItem
+            <NavigationItem
               className={classNames(
                 "__wab_instance",
-                sty.sidebarNavigationItem__u9Bcy,
+                sty.navigationItem__u9Bcy,
                 {
-                  [sty.sidebarNavigationItemcollapsed__u9BcyiUi1M]: hasVariant(
+                  [sty.navigationItemcollapsed__u9BcyiUi1M]: hasVariant(
                     $state,
                     "collapsed",
                     "collapsed"
@@ -1218,16 +1119,18 @@ const PlasmicDescendants = {
     "sidebarToggleResponsive",
     "searchbox",
     "navigation",
-    "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem3",
+    "navigationDropdown",
+    "navigationSubitem",
+    "navigationSubitem2",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem2",
-    "sidebarNavigationSubitem4",
-    "sidebarNavigationSubitem5",
-    "sidebarNavigationSubitem6",
+    "navigationDropdown2",
+    "navigationSubitem3",
+    "navigationSubitem4",
+    "navigationSubitem5",
+    "navigationSubitem6",
     "accountSection",
     "avatarLabel",
     "img",
@@ -1244,16 +1147,18 @@ const PlasmicDescendants = {
     "sidebarToggleResponsive",
     "searchbox",
     "navigation",
-    "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem3",
+    "navigationDropdown",
+    "navigationSubitem",
+    "navigationSubitem2",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem2",
-    "sidebarNavigationSubitem4",
-    "sidebarNavigationSubitem5",
-    "sidebarNavigationSubitem6",
+    "navigationDropdown2",
+    "navigationSubitem3",
+    "navigationSubitem4",
+    "navigationSubitem5",
+    "navigationSubitem6",
     "accountSection",
     "avatarLabel",
     "img",
@@ -1269,16 +1174,18 @@ const PlasmicDescendants = {
     "sidebarToggleResponsive",
     "searchbox",
     "navigation",
-    "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem3",
+    "navigationDropdown",
+    "navigationSubitem",
+    "navigationSubitem2",
     "navigation2",
     "title",
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem2",
-    "sidebarNavigationSubitem4",
-    "sidebarNavigationSubitem5",
-    "sidebarNavigationSubitem6"
+    "navigationDropdown2",
+    "navigationSubitem3",
+    "navigationSubitem4",
+    "navigationSubitem5",
+    "navigationSubitem6"
   ],
   navigationHeader: [
     "navigationHeader",
@@ -1292,26 +1199,40 @@ const PlasmicDescendants = {
   searchbox: ["searchbox"],
   navigation: [
     "navigation",
-    "sidebarNavigationSubitem",
-    "sidebarNavigationSubitem3"
+    "navigationDropdown",
+    "navigationSubitem",
+    "navigationSubitem2"
   ],
-  sidebarNavigationSubitem: ["sidebarNavigationSubitem"],
-  sidebarNavigationSubitem3: ["sidebarNavigationSubitem3"],
+  navigationDropdown: [
+    "navigationDropdown",
+    "navigationSubitem",
+    "navigationSubitem2"
+  ],
+  navigationSubitem: ["navigationSubitem"],
+  navigationSubitem2: ["navigationSubitem2"],
   navigation2: ["navigation2", "title"],
   title: ["title"],
   navigation3: [
     "navigation3",
     "title2",
-    "sidebarNavigationSubitem2",
-    "sidebarNavigationSubitem4",
-    "sidebarNavigationSubitem5",
-    "sidebarNavigationSubitem6"
+    "navigationDropdown2",
+    "navigationSubitem3",
+    "navigationSubitem4",
+    "navigationSubitem5",
+    "navigationSubitem6"
   ],
   title2: ["title2"],
-  sidebarNavigationSubitem2: ["sidebarNavigationSubitem2"],
-  sidebarNavigationSubitem4: ["sidebarNavigationSubitem4"],
-  sidebarNavigationSubitem5: ["sidebarNavigationSubitem5"],
-  sidebarNavigationSubitem6: ["sidebarNavigationSubitem6"],
+  navigationDropdown2: [
+    "navigationDropdown2",
+    "navigationSubitem3",
+    "navigationSubitem4",
+    "navigationSubitem5",
+    "navigationSubitem6"
+  ],
+  navigationSubitem3: ["navigationSubitem3"],
+  navigationSubitem4: ["navigationSubitem4"],
+  navigationSubitem5: ["navigationSubitem5"],
+  navigationSubitem6: ["navigationSubitem6"],
   accountSection: [
     "accountSection",
     "avatarLabel",
@@ -1339,16 +1260,18 @@ type NodeDefaultElementType = {
   sidebarToggleResponsive: typeof SidebarToggle;
   searchbox: typeof Searchbox;
   navigation: "div";
-  sidebarNavigationSubitem: typeof SidebarNavigationSubitem;
-  sidebarNavigationSubitem3: typeof SidebarNavigationSubitem;
+  navigationDropdown: typeof NavigationDropdown;
+  navigationSubitem: typeof NavigationSubitem;
+  navigationSubitem2: typeof NavigationSubitem;
   navigation2: "div";
   title: "div";
   navigation3: "div";
   title2: "div";
-  sidebarNavigationSubitem2: typeof SidebarNavigationSubitem;
-  sidebarNavigationSubitem4: typeof SidebarNavigationSubitem;
-  sidebarNavigationSubitem5: typeof SidebarNavigationSubitem;
-  sidebarNavigationSubitem6: typeof SidebarNavigationSubitem;
+  navigationDropdown2: typeof NavigationDropdown;
+  navigationSubitem3: typeof NavigationSubitem;
+  navigationSubitem4: typeof NavigationSubitem;
+  navigationSubitem5: typeof NavigationSubitem;
+  navigationSubitem6: typeof NavigationSubitem;
   accountSection: "div";
   avatarLabel: "div";
   img: typeof PlasmicImg__;
@@ -1425,16 +1348,18 @@ export const PlasmicSidebar = Object.assign(
     sidebarToggleResponsive: makeNodeComponent("sidebarToggleResponsive"),
     searchbox: makeNodeComponent("searchbox"),
     navigation: makeNodeComponent("navigation"),
-    sidebarNavigationSubitem: makeNodeComponent("sidebarNavigationSubitem"),
-    sidebarNavigationSubitem3: makeNodeComponent("sidebarNavigationSubitem3"),
+    navigationDropdown: makeNodeComponent("navigationDropdown"),
+    navigationSubitem: makeNodeComponent("navigationSubitem"),
+    navigationSubitem2: makeNodeComponent("navigationSubitem2"),
     navigation2: makeNodeComponent("navigation2"),
     title: makeNodeComponent("title"),
     navigation3: makeNodeComponent("navigation3"),
     title2: makeNodeComponent("title2"),
-    sidebarNavigationSubitem2: makeNodeComponent("sidebarNavigationSubitem2"),
-    sidebarNavigationSubitem4: makeNodeComponent("sidebarNavigationSubitem4"),
-    sidebarNavigationSubitem5: makeNodeComponent("sidebarNavigationSubitem5"),
-    sidebarNavigationSubitem6: makeNodeComponent("sidebarNavigationSubitem6"),
+    navigationDropdown2: makeNodeComponent("navigationDropdown2"),
+    navigationSubitem3: makeNodeComponent("navigationSubitem3"),
+    navigationSubitem4: makeNodeComponent("navigationSubitem4"),
+    navigationSubitem5: makeNodeComponent("navigationSubitem5"),
+    navigationSubitem6: makeNodeComponent("navigationSubitem6"),
     accountSection: makeNodeComponent("accountSection"),
     avatarLabel: makeNodeComponent("avatarLabel"),
     img: makeNodeComponent("img"),
